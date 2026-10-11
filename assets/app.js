@@ -358,6 +358,7 @@
     fetch("assets/world.json").then(function (r) { return r.json(); }).then(function (geo) {
       geo.features = geo.features.filter(function (f) { return f.id !== "ATA"; });
       geo.features.forEach(function (f) { NOMBRES[f.id] = f.properties.nombre; });
+      NOMBRES.TWN = "Taiwán"; NOMBRES.KOR = "Corea del Sur"; NOMBRES.PRK = "Corea del Norte"; NOMBRES.CHN = "China"; NOMBRES.HKG = "Hong Kong";
       echarts.registerMap("world", geo);
       mapChart = mk("mapChart");
       mapChart.on("click", function (q) {
@@ -524,7 +525,12 @@
     if (!pr.length) $("cardProy").style.display = "none";
     else table("tProyecciones", [
       { t: "Concepto", h: function (r) { return esc(r.concepto); }, cls: "wide" },
-      { t: "Monto", num: true, h: function (r) { return fig(r, { noWhen: true }); } },
+      { t: "Monto", num: true, h: function (r) {
+        if (num(r) != null) return fig(r, { noWhen: true });
+        var a = num(r.valor_min), b = num(r.valor_max);
+        if (a == null && b == null) return '<span class="mut">—</span>';
+        return "<b>" + (a != null && b != null ? money(a, r.unidad) + " – " + fmt(b) : a != null ? "más de " + money(a, r.unidad) : "hasta " + money(b, r.unidad)) + "</b>" + lv(r);
+      } },
       { t: "Horizonte", h: function (r) { return esc(r.horizonte || ""); } },
       { t: "Fuente", h: function (r) { return link(r.fuente || "ver", r.url); } }
     ], pr);
@@ -562,6 +568,17 @@
       { t: "Fecha", v: function (r) { return String(r.fecha || ""); }, h: function (r) { return esc(r.fecha || ""); } },
       { t: "Inversores", h: function (r) { return esc(r.inversores || ""); }, cls: "wide" }
     ], arr(L.megarondas), { sort: 1, rank: true });
+    var gp = arr(L.gasto_perdidas);
+    if (!gp.length) $("cardGasto").style.display = "none"; else table("tGasto", [
+      { t: "Empresa", v: function (r) { return r.empresa; }, h: function (r) { return "<b>" + esc(r.empresa) + "</b>"; }, asc: true },
+      { t: "Concepto", h: function (r) { return esc(r.concepto || "") + (r.tipo ? ' <span class="tag">' + esc(r.tipo) + "</span>" : ""); }, cls: "wide" },
+      { t: "Monto", num: true, v: function (r) { return toBn(r); }, h: function (r) { return fig(r); } }
+    ], gp, { sort: 2 });
+    var lr = [].concat.apply([], Object.keys(LA.latam_regional || {}).map(function (k) { return arr(LA.latam_regional[k]); }));
+    if (!lr.length) $("cardLatReg").style.display = "none"; else table("tLatReg", [
+      { t: "Indicador regional", h: function (r) { return esc(r.indicador || r.concepto || "") + (r.rondas ? ' <span class="mut">' + esc(r.rondas) + " rondas</span>" : ""); }, cls: "wide" },
+      { t: "Valor", num: true, h: function (r) { return fig(r, { raw: !/usd|us\$/i.test(unitOf(r)) }); } }
+    ], lr);
     table("tMega", [
       { t: "Proyecto", v: function (m) { return m.nombre; }, h: function (m) { return "<b>" + esc(m.nombre) + "</b>" + (m.promotores ? '<br><span class="mut">' + esc(m.promotores) + "</span>" : ""); }, cls: "wide", asc: true },
       { t: "Ubicación", v: function (m) { return nombre(m.pais_iso3); }, h: function (m) { return esc(m.lugar || "") + '<br><span class="mut">' + esc(nombre(m.pais_iso3)) + "</span>"; }, asc: true },
@@ -698,7 +715,7 @@
     var pe = LA.peru, el = $("peruCard");
     if (!pe) { el.style.display = "none"; return; }
     function ul2(t, items, f) { return items.length ? "<div><h4>" + esc(t) + "</h4><ul>" + items.map(function (i) { return "<li>" + f(i) + "</li>"; }).join("") + "</ul></div>" : ""; }
-    function any(i) { return typeof i === "string" ? esc(i) : (i.nombre || i.empresa || i.universidad || i.norma ? "<b>" + link(i.nombre || i.empresa || i.universidad || i.norma, i.url) + "</b>" : "") + (i.concepto || i.resumen || i.descripcion || i.nota ? " — " + esc(i.concepto || i.resumen || i.descripcion || i.nota) : "") + (num(i.monto) != null ? " " + fig(i.monto, { noWhen: true }) : "") + (i.fecha ? ' <span class="mut">' + esc(i.fecha) + "</span>" : ""); }
+    function any(i) { return typeof i === "string" ? esc(i) : (i.nombre || i.empresa || i.universidad || i.norma ? "<b>" + link(i.nombre || i.empresa || i.universidad || i.norma, i.url) + "</b>" : "") + (i.concepto || i.resumen || i.descripcion || i.programa || i.nota ? " — " + esc(i.concepto || i.resumen || i.descripcion || i.programa || i.nota) : "") + (num(i.monto) != null ? " " + fig(i.monto, { noWhen: true }) : "") + (i.fecha ? ' <span class="mut">' + esc(i.fecha) + "</span>" : ""); }
     el.innerHTML = "<h3>Perú, a detalle</h3>" + (pe.resumen ? '<p class="res">' + esc(pe.resumen) + "</p>" : "") + '<div class="cols">' +
       ul2("Indicadores", arr(pe.indicadores), function (i) { return esc(i.indicador) + ": " + fig(i, { raw: !/usd|us\$/i.test(unitOf(i)) }); }) +
       ul2("Marco legal", arr(pe.marco_legal), any) + ul2("Startups", arr(pe.startups), any) + ul2("Anuncios de inversión", arr(pe.anuncios), any) + ul2("Universidades", arr(pe.universidades), any) + "</div>";
@@ -724,6 +741,13 @@
     if (!started) { fuentes(); started = true; }
   }
   function boot() {
+    // bloques cuyo JSON aún no existe: se oculta la sección y su enlace
+    Array.prototype.forEach.call(document.querySelectorAll("section[data-block]"), function (sec) {
+      var blk = D[sec.getAttribute("data-block")];
+      if (blk && Object.keys(blk).length) return;
+      sec.style.display = "none";
+      var a = document.querySelector('.nav a[href="#' + sec.id + '"]'); if (a) a.style.display = "none";
+    });
     buildIndex(); initBloques();
     var saved = null; try { saved = localStorage.getItem("ia-theme"); } catch (e) {}
     if (saved) document.documentElement.setAttribute("data-theme", saved);

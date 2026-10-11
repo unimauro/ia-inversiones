@@ -134,7 +134,7 @@ td.rk{color:var(--muted);font-variant-numeric:tabular-nums;width:1%}
 tr:last-child td{border-bottom:none}
 tbody tr:hover{background:var(--accent-soft)}
 td .mut{color:var(--muted);font-size:12px}
-td.wide{min-width:220px}
+td.wide{min-width:250px}
 .lv{display:inline-block;font:700 10px/1 var(--sans);padding:3px 5px;border-radius:5px;margin-left:5px;vertical-align:middle;
   border:1px solid var(--line-2);color:var(--ink-2);text-decoration:none}
 .lvA{background:var(--accent-soft);border-color:transparent;color:var(--accent-ink)}
