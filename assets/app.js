@@ -759,8 +759,8 @@
     if (!sl.length) $("cardStartLatam").style.display = "none"; else table("tStartLatam", [
       { t: "Startup", v: function (r) { return r.nombre; }, h: function (r) { return "<b>" + link(r.nombre, r.url) + "</b>" + (r.descripcion ? '<br><span class="mut">' + esc(r.descripcion) + "</span>" : ""); }, cls: "wide", asc: true },
       { t: "País", v: function (r) { return nombre(r.pais_iso3); }, h: function (r) { return esc(nombre(r.pais_iso3)); }, asc: true },
-      { t: "Total recaudado", num: true, v: function (r) { return toBn(r.total_recaudado); }, h: function (r) { return fig(r.total_recaudado, { noWhen: true }); } },
-      { t: "Última ronda", num: true, v: function (r) { return toBn(r.ultima_ronda); }, h: function (r) { return fig(r.ultima_ronda); } }
+      { t: "Ronda", num: true, v: function (r) { return toBn(r.ultima_ronda); }, h: function (r) { return fig(r.ultima_ronda) + (r.ultima_ronda && r.ultima_ronda.tipo ? '<br><span class="mut">' + esc(r.ultima_ronda.tipo) + "</span>" : ""); } },
+      { t: "Total recaudado", num: true, v: function (r) { return toBn(r.total_recaudado); }, h: function (r) { return fig(r.total_recaudado, { noWhen: true }); } }
     ], sl, { sort: 2, rank: true });
     table("tLatam", [
       { t: "País", v: function (r) { return nombre(r.iso3); }, h: function (r) { return '<a href="#mapa" data-iso="' + esc(r.iso3) + '"><b>' + esc(nombre(r.iso3)) + "</b></a>"; }, asc: true },

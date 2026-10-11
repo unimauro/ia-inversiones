@@ -188,6 +188,8 @@ def fusionar():
             anexar(y.setdefault("anuncios", []), x.get("anuncios"), ["empresa", "concepto"])
         if e.get("startups_latam"):
             d["startups_latam"] = e["startups_latam"]
+        if e.get("latam_regional_extra"):
+            d.setdefault("latam_regional", {})["extra"] = e["latam_regional_extra"]
         d.setdefault("meta", {}).setdefault("advertencias", []).extend(e.get("meta", {}).get("advertencias", []))
     if log:
         print("complementos:", log)
