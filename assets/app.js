@@ -463,11 +463,11 @@
     });
     note("nPubRank", pub.length ? "Miles de millones de US$. No es un ranking estricto: EE.UU. es I+D federal en IA, Corea es presupuesto de IA en sentido amplio y los demás son partidas de un ministerio o programa. Solo 7 gobiernos publican una cifra anual; China no lo hace." : "");
 
-    var ga = arr(G.ai_index_gasto).filter(function (r) { return num(r) != null && enBloque(r.iso3); }).sort(function (a, b) { return toBn(b) - toBn(a); });
+    var ga = arr(G.ai_index_gasto).filter(function (r) { return num(r) != null && /acumulado/i.test(String(r.anio)) && (!bloque.isos || enBloque(r.iso3)); }).sort(function (a, b) { return toBn(b) - toBn(a); });
     if (!arr(G.ai_index_gasto).length) $("cardGastoAI").style.display = "none";
     else {
       hbar("cGastoAI", ga.slice(0, 20).map(function (r) { return { name: r.nombre_es || nombre(r.iso3), value: toBn(r), extra: (r.concepto || "") + " · " + when(r), iso: r.iso3 }; }), { color: 2, fmt: function (v) { return money(v, "USD miles de millones"); }, short: function (v) { return fmt(v); } });
-      note("nGastoAI", ga.length ? "Miles de millones de US$. Es la comparación más homogénea disponible entre gobiernos. " + srcNote(ga[0]) : "");
+      note("nGastoAI", ga.length ? "Miles de millones de US$, acumulado " + esc(String(ga[0].anio).replace(/\s*\(.*\)/, "")) + ". Contratos y subvenciones públicas adjudicados para IA: es la comparación más homogénea disponible entre gobiernos, pero solo cubre EE.UU. y Europa. " + srcNote(ga[0]) : "");
     }
     var comp = []; Object.keys(C).filter(enBloque).forEach(function (i) { C[i].compromisos.forEach(function (k) { comp.push({ iso: i, k: k }); }); });
     table("tCompromisos", [

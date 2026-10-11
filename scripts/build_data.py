@@ -148,11 +148,16 @@ def fusionar():
                     d["paises"].append(x)
                 continue
             est = x.get("estrategia")
-            if isinstance(est, dict) and est.get("nombre") and (est.get("url_abierta") or not (y.get("estrategia") or {}).get("url")):
+            vieja = y.get("estrategia") or {}
+            # solo se reemplaza una estrategia que no tenía URL verificada
+            if isinstance(est, dict) and est.get("nombre") and (not vieja.get("url") or vieja.get("url_abierta") is False):
                 y["estrategia"] = est
             if tiene(x.get("publico_anual")) and not tiene(y.get("publico_anual")):
                 y["publico_anual"] = x["publico_anual"]
-            anexar(y.setdefault("compromisos", []), x.get("compromisos"), ["nombre"])
+            # mismo monto en el mismo país = mismo programa con otro nombre: no duplicar
+            montos = {round(float(c.get("valor_original") or c.get("valor") or 0), 1) for c in y.get("compromisos") or []}
+            anexar(y.setdefault("compromisos", []), [c for c in x.get("compromisos") or [] if round(float(c.get("valor_original") or c.get("valor") or 0), 1) not in montos
+                                                         and not ("gigafactor" in c.get("nombre", "").lower() and any("gigafactor" in o.get("nombre", "").lower() for o in y.get("compromisos") or []))], ["nombre"])
         if e.get("ai_index_gasto_publico"):
             d["ai_index_gasto"] = e["ai_index_gasto_publico"]
         d.setdefault("meta", {}).setdefault("advertencias", []).extend(e.get("meta", {}).get("advertencias", []))
