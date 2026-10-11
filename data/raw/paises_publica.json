@@ -1,0 +1,1396 @@
+{
+  "meta": {
+    "bloque": "gasto_publico_pais",
+    "consultado": "2026-10-11",
+    "tipos_de_cambio_usd": {
+      "fecha": "2026-10-11",
+      "fuente": "https://open.er-api.com/v6/latest/USD",
+      "unidades_por_usd": {
+        "EUR": 0.892438,
+        "GBP": 0.755923,
+        "JPY": 158.287265,
+        "KRW": 1341.69027,
+        "INR": 96.829695,
+        "CAD": 1.425015,
+        "CNY": 6.706851,
+        "SGD": 1.280697,
+        "TWD": 31.959582,
+        "ILS": 3.063406,
+        "AUD": 1.433149,
+        "SEK": 9.990571,
+        "PLN": 3.911664,
+        "CHF": 0.830936,
+        "BRL": 5.010865,
+        "MXN": 18.304854,
+        "COP": 3236.681829,
+        "RUB": 84.994885,
+        "USD": 1.0
+      }
+    },
+    "fuentes_principales": [
+      {
+        "nombre": "NITRD, Supplement to the President's FY2026 Budget (y suplementos FY2020-FY2025)",
+        "url": "https://www.nitrd.gov/pubs/FY26-NITRD-Budget-Supplement.pdf"
+      },
+      {
+        "nombre": "NITRD AI R&D Investments dashboard",
+        "url": "https://www.nitrd.gov/apps/itdashboard/ai-rd-investments/"
+      },
+      {
+        "nombre": "Banco Mundial WDI, gasto en I+D % del PIB (UNESCO UIS), actualizado 2026-10-08",
+        "url": "https://api.worldbank.org/v2/country/all/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1&per_page=400"
+      },
+      {
+        "nombre": "Comisión Europea, AI Factories / AI Gigafactories",
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-factories"
+      },
+      {
+        "nombre": "OECD.AI Policy Navigator",
+        "url": "https://oecd.ai/en/dashboards/policy-initiatives/investai"
+      },
+      {
+        "nombre": "GOV.UK, UK Compute Roadmap",
+        "url": "https://www.gov.uk/government/publications/uk-compute-roadmap/uk-compute-roadmap"
+      }
+    ],
+    "advertencias": [
+      "Las cifras NO son comparables entre países: mezclan presupuesto anual de I+D en IA (EE.UU.), presupuesto anual de IA en sentido amplio (Corea), partidas de un solo ministerio (Japón, Suecia, Polonia, Taiwán), compromisos plurianuales, fondos soberanos e inversión 'movilizada' mayoritariamente privada (InvestAI UE, 109 mil millones de Francia, MGX, Arabia Saudita).",
+      "'publico_anual' solo existe para 7 países; no rankear países por ese campo sin mostrar la definición de cada uno.",
+      "Dentro de un mismo país varias filas de 'compromisos' se solapan (Reino Unido, Canadá, UE): no sumarlas.",
+      "Fondos UE (InvestAI, EuroHPC, NextGeneration) cofinancian programas nacionales de España, Países Bajos, Polonia, etc.: riesgo de doble conteo.",
+      "Varias cifras son de IA + semiconductores u otras tecnologías (Japón 10 billones JPY, Corea megaproyectos, Alemania Hightech Agenda, fondo de capital de riesgo de China, Italia): están marcadas en 'nota'.",
+      "Nivel C = reportes de prensa con fuentes anónimas sin confirmación oficial (plan chino de 2 billones CNY, Project Transcendence saudí).",
+      "Conversión a USD: cuando la fuente da el equivalente se usa ese; si no, tipo de cambio spot del 2026-10-11 (ver meta.tipos_de_cambio_usd), que no corresponde al año del compromiso. Usar 'valor_original' para precisión.",
+      "Estrategias con 'url_abierta': false o sin URL: nombre y año provienen de conocimiento general o de resultados de búsqueda, no de una página abierta en esta consulta; verificar antes de publicar.",
+      "I+D/PIB (GERD) es el último año disponible por país en el Banco Mundial y varía entre 2020 y 2024; India (2020), Indonesia (2020), Colombia (2020), Australia (2021) y EAU (2021) están desactualizados.",
+      "Serie NITRD: hay un quiebre metodológico. FY2019 es solo no-defensa; FY2020 incluye defensa parcial; desde FY2021 incluye defensa. FY2024-FY2026 se calcularon sumando la PCA de IA y la tabla de IA transversal del suplemento FY2026 (el documento solo publica la suma para 2026: 'just over $2.8 billion'), e incluyen fondos suplementarios. No hay dato FY2018 (el reporte de IA empezó con la solicitud FY2020) ni suplemento FY2027 publicado a la fecha.",
+      "No se incluyen Stargate ni otro capex privado."
+    ]
+  },
+  "paises": [
+    {
+      "iso3": "USA",
+      "nombre_es": "Estados Unidos",
+      "publico_anual": {
+        "valor": 2.823,
+        "unidad": "USD miles de millones",
+        "anio": "FY2026",
+        "valor_original": 2.8228,
+        "moneda_original": "USD miles de millones",
+        "conversion": "no aplica",
+        "fuente": "NITRD, Supplement to the President's FY2026 Budget (Tablas 4 y 5): PCA de IA 1,834.0 M + IA transversal en otras PCA 988.8 M; el texto dice 'just over $2.8 billion'",
+        "url": "https://www.nitrd.gov/pubs/FY26-NITRD-Budget-Supplement.pdf",
+        "nivel": "A",
+        "tipo": "presupuesto_anual",
+        "nota": "Solicitud presidencial (no apropiación final). I+D federal en IA de las agencias NITRD, incluye defensa no clasificada reportada. FY2025 estimado: 4.19 mil millones; FY2024 real: 3.91 mil millones."
+      },
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "America's AI Action Plan",
+        "anio": 2025,
+        "url_abierta": true,
+        "url": "https://www.nitrd.gov/pubs/FY26-NITRD-Budget-Supplement.pdf"
+      },
+      "gerd_pct_pib": {
+        "valor": 3.45,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/USA/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Contexto: el programa NITRD completo (redes y TI) solicita 7.83 mil millones USD en FY2026. La cifra NITRD es I+D en IA, no gasto total del gobierno en IA (excluye adquisiciones, cómputo clasificado y la mayor parte de Defensa/inteligencia). Stargate y demás capex privado no se incluyen. El nombre y fecha (julio 2025) del AI Action Plan salen del propio suplemento NITRD; no se abrió la URL de whitehouse.gov."
+    },
+    {
+      "iso3": "CHN",
+      "nombre_es": "China",
+      "compromisos": [
+        {
+          "nombre": "Fondo Nacional de Orientación de Capital de Riesgo: aporte del gobierno central",
+          "valor": 14.0,
+          "unidad": "USD miles de millones",
+          "periodo": "lanzado 26-dic-2025 (horizonte ~20 años)",
+          "tipo": "fondo_soberano",
+          "valor_original": 100,
+          "moneda_original": "CNY miles de millones",
+          "conversion": "USD dado por la fuente",
+          "fuente": "Caixin Global, 26-dic-2025",
+          "url": "https://www.caixinglobal.com/2025-12-26/china-launches-14-billion-state-fund-to-back-strategic-tech-industries-102397440.html",
+          "nivel": "B",
+          "nota": "Meta de movilizar 1 billón de yuanes (1,000 mil millones CNY) en total. Cubre industrias estratégicas y del futuro, no solo IA."
+        },
+        {
+          "nombre": "Fondo Nacional de Inversión en la Industria de IA (capital registrado)",
+          "valor": 8.955,
+          "unidad": "USD miles de millones",
+          "periodo": "constituido 17-ene-2025",
+          "tipo": "fondo_soberano",
+          "valor_original": 60.06,
+          "moneda_original": "CNY miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "The Standard (HK), 21-ene-2025",
+          "url": "https://www.thestandard.com.hk/market/article/69564/60b-yuan-AI-giant-up-and-running",
+          "nivel": "B",
+          "nota": "Respaldado por la fase III del 'Big Fund' de semiconductores y un gestor estatal de Shanghái."
+        },
+        {
+          "nombre": "Plan de infraestructura nacional de IA (REPORTADO, sin confirmación oficial)",
+          "valor": 295.0,
+          "unidad": "USD miles de millones",
+          "periodo": "5 años (reportado jun-2026)",
+          "tipo": "infraestructura",
+          "valor_original": 2000,
+          "moneda_original": "CNY miles de millones",
+          "conversion": "USD dado por la fuente",
+          "fuente": "Mobile World Live citando a Bloomberg, 9-jun-2026",
+          "url": "https://www.mobileworldlive.com/ai-cloud/china-sets-out-295b-ai-investment-plan/",
+          "nivel": "C",
+          "nota": "Basado en fuentes anónimas; NDRC y Ministerio de Finanzas no lo han anunciado. Financiado sobre todo con bonos especiales de largo plazo."
+        }
+      ],
+      "estrategia": {
+        "nombre": "Plan de Desarrollo de la Nueva Generación de Inteligencia Artificial (Consejo de Estado)",
+        "anio": 2017,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 2.58,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/CHN/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "China no publica un presupuesto anual consolidado de IA: no hay cifra 'publico_anual' de nivel A/B. Los fondos de orientación mezclan capital estatal central, local y privado. Nombre/año de la estrategia de conocimiento general, URL oficial no abierta."
+    },
+    {
+      "iso3": "EUU",
+      "nombre_es": "Unión Europea (bloque)",
+      "compromisos": [
+        {
+          "nombre": "InvestAI: inversión a movilizar en IA (pública + privada)",
+          "valor": 224.105,
+          "unidad": "USD miles de millones",
+          "periodo": "anunciado feb-2025",
+          "tipo": "plurianual",
+          "valor_original": 200,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "OECD.AI Policy Navigator, ficha InvestAI",
+          "url": "https://oecd.ai/en/dashboards/policy-initiatives/investai",
+          "nivel": "B",
+          "nota": "Es inversión MOVILIZADA, mayoritariamente privada; incluye un fondo europeo de 20 mil millones EUR para gigafábricas de IA. No es presupuesto de la UE."
+        },
+        {
+          "nombre": "AI Gigafactories: financiación pública UE + nacional (hasta)",
+          "valor": 11.205,
+          "unidad": "USD miles de millones",
+          "periodo": "convocatoria 2026, hasta 7 gigafábricas",
+          "tipo": "infraestructura",
+          "valor_original": 10,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Comisión Europea, página de política AI Factories",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-factories",
+          "nivel": "A",
+          "nota": "La Comisión espera desbloquear al menos 20 mil millones EUR adicionales de inversión privada."
+        },
+        {
+          "nombre": "EuroHPC JU: supercómputo y AI Factories (Comisión + Estados miembros + países asociados)",
+          "valor": 11.205,
+          "unidad": "USD miles de millones",
+          "periodo": "2021-2027",
+          "tipo": "infraestructura",
+          "valor_original": 10,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Comisión Europea, página de política AI Factories",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-factories",
+          "nivel": "A",
+          "nota": "19 AI Factories y 13 antenas en despliegue. Cifra distinta de los 10 mil millones de las gigafábricas."
+        }
+      ],
+      "estrategia": {
+        "nombre": "AI Continent Action Plan (9-abr-2025) y Apply AI Strategy (8-oct-2025)",
+        "anio": 2025,
+        "url_abierta": true,
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence"
+      },
+      "gerd_pct_pib": {
+        "valor": 2.26,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/EUU/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "No es un país: es el bloque UE (código Banco Mundial EUU). Parte de estos montos se cofinancia con presupuestos nacionales listados en cada Estado miembro: riesgo de doble conteo. No se pudo abrir el comunicado IP/25/467 (página con JavaScript)."
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "compromisos": [
+        {
+          "nombre": "Compute Roadmap: inversión pública en cómputo (hasta)",
+          "valor": 2.646,
+          "unidad": "USD miles de millones",
+          "periodo": "2025-2030",
+          "tipo": "infraestructura",
+          "valor_original": 2,
+          "moneda_original": "GBP miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "GOV.UK, UK Compute Roadmap",
+          "url": "https://www.gov.uk/government/publications/uk-compute-roadmap/uk-compute-roadmap",
+          "nivel": "A",
+          "nota": "Incluye más de 1 mil millones GBP para ampliar 20x el AI Research Resource a 2030 y hasta 750 millones GBP para un nuevo supercomputador nacional en Edimburgo."
+        },
+        {
+          "nombre": "Spending Review 2025: paquete para el ecosistema de IA ('some £2 billion')",
+          "valor": 2.646,
+          "unidad": "USD miles de millones",
+          "periodo": "4 años desde 2025",
+          "tipo": "plurianual",
+          "valor_original": 2,
+          "moneda_original": "GBP miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Osborne Clarke, 20-jun-2025 (resumen del Spending Review)",
+          "url": "https://www.osborneclarke.com/insights/government-invest-over-ps2-billion-uks-ai-ecosystem",
+          "nivel": "B",
+          "nota": "Incluye ~1 mil millones GBP de cómputo soberano, hasta 500 millones para la Sovereign AI Unit y 240 millones para el AI Security Institute. Se SOLAPA con el Compute Roadmap: no sumar."
+        }
+      ],
+      "estrategia": {
+        "nombre": "AI Opportunities Action Plan",
+        "anio": 2025,
+        "url_abierta": false,
+        "url": "https://www.gov.uk/government/publications/ai-opportunities-action-plan"
+      },
+      "gerd_pct_pib": {
+        "valor": 2.68,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/GBR/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Las dos cifras de ~2 mil millones GBP se solapan parcialmente; las fuentes secundarias discrepan sobre si los 750 millones de Edimburgo están dentro. URL de la estrategia no abierta."
+    },
+    {
+      "iso3": "FRA",
+      "nombre_es": "Francia",
+      "compromisos": [
+        {
+          "nombre": "Estrategia nacional de IA: financiación pública total (incl. France 2030)",
+          "valor": 2.801,
+          "unidad": "USD miles de millones",
+          "periodo": "2018-2025 (aprox.)",
+          "tipo": "plurianual",
+          "valor_original": 2.5,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "La Finance pour Tous, 8-oct-2025",
+          "url": "https://www.lafinancepourtous.com/2025/10/08/enjeux-des-depenses-publiques-13-17-une-revolution-technique-un-retard-francais/",
+          "nivel": "B",
+          "nota": "Primera fase 2018: 1.5 mil millones EUR en 5 años; ampliada en 2021 con France 2030 hasta 2.5 mil millones EUR."
+        },
+        {
+          "nombre": "Anuncio de la Cumbre de IA de París (feb-2025): inversiones 'adicionales'",
+          "valor": 122.137,
+          "unidad": "USD miles de millones",
+          "periodo": "anunciado feb-2025, próximos años",
+          "tipo": "plurianual",
+          "valor_original": 109,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "La Finance pour Tous, 8-oct-2025",
+          "url": "https://www.lafinancepourtous.com/2025/10/08/enjeux-des-depenses-publiques-13-17-une-revolution-technique-un-retard-francais/",
+          "nivel": "B",
+          "nota": "NO es gasto público: según el Ministerio de Economía (resultado de búsqueda, página no accesible por bloqueo 403) son inversiones de empresas privadas y fondos extranjeros en centros de datos. No comparar con presupuestos públicos."
+        }
+      ],
+      "estrategia": {
+        "nombre": "Stratégie nationale pour l'intelligence artificielle (3.ª fase lanzada el 6-feb-2025)",
+        "anio": 2018,
+        "url_abierta": false,
+        "url": "https://www.economie.gouv.fr/actualites/la-strategie-nationale-pour-lintelligence-artificielle"
+      },
+      "gerd_pct_pib": {
+        "valor": 2.18,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/FRA/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Los sitios .gouv.fr devolvieron 403 a la consulta automática; las cifras se tomaron de una fuente secundaria abierta. Sin presupuesto anual de IA consolidado."
+    },
+    {
+      "iso3": "DEU",
+      "nombre_es": "Alemania",
+      "compromisos": [
+        {
+          "nombre": "Plan de Acción de IA del BMBF/BMFTR: inversión del ministerio (más de)",
+          "valor": 1.793,
+          "unidad": "USD miles de millones",
+          "periodo": "legislatura 2021-2025",
+          "tipo": "plurianual",
+          "valor_original": 1.6,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "OECD.AI Policy Navigator, ficha AI Action Plan",
+          "url": "https://oecd.ai/en/dashboards/policy-initiatives/ai-action-plan",
+          "nivel": "B",
+          "nota": "Solo el ministerio de investigación."
+        },
+        {
+          "nombre": "Hightech Agenda Deutschland: fondos totales (NO solo IA)",
+          "valor": 20.169,
+          "unidad": "USD miles de millones",
+          "periodo": "hasta 2029",
+          "tipo": "plurianual",
+          "valor_original": 18,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Forschung & Lehre, 31-jul/1-ago-2025",
+          "url": "https://www.forschung-und-lehre.de/politik/hightech-agenda-passiert-bundeskabinett-7224",
+          "nivel": "B",
+          "nota": "Cubre seis tecnologías clave (IA, cuántica, microelectrónica, biotecnología, fusión, movilidad). No existe desglose solo-IA en la fuente; sujeto a disponibilidad presupuestal."
+        }
+      ],
+      "estrategia": {
+        "nombre": "Hightech Agenda Deutschland (sucede a la KI-Strategie de 2018)",
+        "anio": 2025,
+        "url_abierta": false,
+        "url": "https://hightech-agenda-deutschland.de/"
+      },
+      "gerd_pct_pib": {
+        "valor": 3.15,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/DEU/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra anual de IA consolidada a nivel federal. La cifra de 18 mil millones NO debe graficarse como gasto en IA."
+    },
+    {
+      "iso3": "ITA",
+      "nombre_es": "Italia",
+      "compromisos": [
+        {
+          "nombre": "Ley 132/2025 de IA: capital de riesgo con respaldo estatal (hasta)",
+          "valor": 1.121,
+          "unidad": "USD miles de millones",
+          "periodo": "ley del 23-sep-2025, en vigor 10-oct-2025",
+          "tipo": "fondo_soberano",
+          "valor_original": 1,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "OECD.AI Policy Navigator, ficha Italy AI Law 132/2025",
+          "url": "https://oecd.ai/en/dashboards/policy-initiatives/italy-ai-law-1322025",
+          "nivel": "B",
+          "nota": "Para empresas de IA, ciberseguridad y telecomunicaciones; no es exclusivo de IA."
+        }
+      ],
+      "estrategia": {
+        "nombre": "Strategia Italiana per l'Intelligenza Artificiale 2024-2026",
+        "anio": 2024,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 1.38,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/ITA/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Nombre de la estrategia de conocimiento general, URL oficial no abierta."
+    },
+    {
+      "iso3": "ESP",
+      "nombre_es": "España",
+      "compromisos": [
+        {
+          "nombre": "Estrategia de Inteligencia Artificial 2024",
+          "valor": 1.681,
+          "unidad": "USD miles de millones",
+          "periodo": "2024-2025",
+          "tipo": "plurianual",
+          "valor_original": 1.5,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "La Moncloa, nota de prensa",
+          "url": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/transformacion-digital-y-funcion-publica/Paginas/2024/ia-inteligencia-artificial-estrategia-espana.aspx",
+          "nivel": "A",
+          "nota": "Financiada sobre todo con el Plan de Recuperación (fondos UE NextGeneration) y su adenda; se suma a 600 millones EUR ya movilizados."
+        }
+      ],
+      "estrategia": {
+        "nombre": "Estrategia de Inteligencia Artificial 2024",
+        "anio": 2024,
+        "url_abierta": true,
+        "url": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/transformacion-digital-y-funcion-publica/Paginas/2024/ia-inteligencia-artificial-estrategia-espana.aspx"
+      },
+      "gerd_pct_pib": {
+        "valor": 1.49,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/ESP/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Fondos de origen europeo: posible doble conteo con cifras de la UE."
+    },
+    {
+      "iso3": "NLD",
+      "nombre_es": "Países Bajos",
+      "compromisos": [
+        {
+          "nombre": "AI Factory de Groninga (gobierno 70 M + región 60 M + UE 70 M)",
+          "valor": 0.224,
+          "unidad": "USD miles de millones",
+          "periodo": "anunciado jun-2025; operación 2026-2027",
+          "tipo": "infraestructura",
+          "valor_original": 0.2,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "IO+, 27-jun-2025",
+          "url": "https://ioplus.nl/en/posts/200m-boost-for-dutch-ai-factory-in-groningen",
+          "nivel": "B",
+          "nota": "Aporte del gobierno central: 70 millones EUR. La parte UE era una solicitud de cofinanciación al momento del artículo."
+        }
+      ],
+      "gerd_pct_pib": {
+        "valor": 2.27,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/NLD/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra anual de IA; no se verificó la estrategia nacional vigente."
+    },
+    {
+      "iso3": "SWE",
+      "nombre_es": "Suecia",
+      "publico_anual": {
+        "valor": 0.048,
+        "unidad": "USD miles de millones",
+        "anio": "2026",
+        "valor_original": 0.479,
+        "moneda_original": "SEK miles de millones",
+        "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+        "fuente": "TechSverige, 10-sep-2025 (análisis del proyecto de presupuesto 2026)",
+        "url": "https://techsverige.se/en/2025/09/en-verkstad-en-fabrik-och-en-storre-sandlada-ar-det-allt-ai-kraver/",
+        "nivel": "B",
+        "tipo": "presupuesto_anual",
+        "nota": "Propuestas de IA y datos en el proyecto de presupuesto 2026: 479 millones SEK; ~500 millones SEK/año estimados para 2027-2030."
+      },
+      "compromisos": [],
+      "gerd_pct_pib": {
+        "valor": 3.6,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/SWE/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Una estrategia nacional de IA fue anunciada en feb-2026 según resultados de búsqueda (no verificado en página abierta)."
+    },
+    {
+      "iso3": "POL",
+      "nombre_es": "Polonia",
+      "publico_anual": {
+        "valor": 0.041,
+        "unidad": "USD miles de millones",
+        "anio": "2026",
+        "valor_original": 0.162,
+        "moneda_original": "PLN miles de millones",
+        "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+        "fuente": "Android.com.pl, 12-jun-2025 (citando Ministerio de Digitalización y prensa)",
+        "url": "https://android.com.pl/tech/938252-gigafabryka-ai-polska-finansowanie-plan/",
+        "nivel": "B",
+        "tipo": "presupuesto_anual",
+        "nota": "Solo la partida del presupuesto estatal para Fábricas de IA (162 millones PLN en 2026; 60 millones PLN en 2025). No es el gasto total en IA."
+      },
+      "compromisos": [
+        {
+          "nombre": "Gigafábrica de IA en Polonia: aporte público previsto (aprox.)",
+          "valor": 0.511,
+          "unidad": "USD miles de millones",
+          "periodo": "2026-2029",
+          "tipo": "infraestructura",
+          "valor_original": 2,
+          "moneda_original": "PLN miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Android.com.pl, 12-jun-2025",
+          "url": "https://android.com.pl/tech/938252-gigafabryka-ai-polska-finansowanie-plan/",
+          "nivel": "B",
+          "nota": "Inversión total estimada ~5 mil millones PLN; proyecto candidato, no adjudicado."
+        }
+      ],
+      "estrategia": {
+        "nombre": "Polityka rozwoju sztucznej inteligencji w Polsce do 2030 roku",
+        "anio": 2025,
+        "url_abierta": true,
+        "url": "https://itwiz.pl/polska-aktualizuje-strategie-ai-do-2030-roku/"
+      },
+      "gerd_pct_pib": {
+        "valor": 1.56,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/POL/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "URL de la estrategia es una nota de prensa especializada, no el documento oficial."
+    },
+    {
+      "iso3": "DNK",
+      "nombre_es": "Dinamarca",
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "Estrategia Nacional de Inteligencia Artificial",
+        "anio": 2019,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 3.05,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/DNK/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra pública de IA verificada en página abierta; solo contexto de I+D total. Participa en las AI Factories de EuroHPC (ver UE). Nombre/año de la estrategia de conocimiento general, sin URL verificada."
+    },
+    {
+      "iso3": "FIN",
+      "nombre_es": "Finlandia",
+      "compromisos": [],
+      "gerd_pct_pib": {
+        "valor": 3.09,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/FIN/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra pública de IA verificada en página abierta; solo contexto de I+D total. Participa en las AI Factories de EuroHPC (ver UE)."
+    },
+    {
+      "iso3": "IRL",
+      "nombre_es": "Irlanda",
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "AI - Here for Good: National AI Strategy",
+        "anio": 2021,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 1.59,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/IRL/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra pública de IA verificada en página abierta; solo contexto de I+D total. Participa en las AI Factories de EuroHPC (ver UE). Nombre/año de la estrategia de conocimiento general, sin URL verificada."
+    },
+    {
+      "iso3": "AUT",
+      "nombre_es": "Austria",
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "AIM AT 2030 (Artificial Intelligence Mission Austria 2030)",
+        "anio": 2021,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 3.26,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/AUT/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra pública de IA verificada en página abierta; solo contexto de I+D total. Participa en las AI Factories de EuroHPC (ver UE). Nombre/año de la estrategia de conocimiento general, sin URL verificada."
+    },
+    {
+      "iso3": "BEL",
+      "nombre_es": "Bélgica",
+      "compromisos": [],
+      "gerd_pct_pib": {
+        "valor": 3.27,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/BEL/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra pública de IA verificada en página abierta; solo contexto de I+D total. Participa en las AI Factories de EuroHPC (ver UE)."
+    },
+    {
+      "iso3": "CHE",
+      "nombre_es": "Suiza",
+      "compromisos": [
+        {
+          "nombre": "Supercomputador Alps (CSCS): costo de construcción",
+          "valor": 0.118,
+          "unidad": "USD miles de millones",
+          "periodo": "inaugurado 2024",
+          "tipo": "infraestructura",
+          "valor_original": 0.1,
+          "moneda_original": "CHF miles de millones",
+          "conversion": "USD dado por la fuente",
+          "fuente": "SWI swissinfo.ch, 3-oct-2024",
+          "url": "https://www.swissinfo.ch/eng/archive-science/how-switzerlands-alps-supercomputer-aims-to-advance-ai/87659724",
+          "nivel": "B",
+          "nota": "Financiado con fondos públicos; presupuesto operativo anual de 37 millones CHF. Supercómputo científico general, no exclusivo de IA."
+        }
+      ],
+      "gerd_pct_pib": {
+        "valor": 3.22,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/CHE/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Suiza no tiene un programa presupuestal nacional de IA de gran escala verificado; la Swiss AI Initiative (ETH/EPFL) usa Alps."
+    },
+    {
+      "iso3": "JPN",
+      "nombre_es": "Japón",
+      "publico_anual": {
+        "valor": 2.447,
+        "unidad": "USD miles de millones",
+        "anio": "FY2026",
+        "valor_original": 387.3,
+        "moneda_original": "JPY miles de millones",
+        "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+        "fuente": "eeNews Europe, 6-ene-2026 (plan presupuestal de METI)",
+        "url": "https://www.eenewseurope.com/en/meti-budget-hike-japan-chip-ai-fy-2026/",
+        "nivel": "B",
+        "tipo": "presupuesto_anual",
+        "nota": "Solo METI: 387.3 mil millones JPY para desarrollo doméstico de IA (modelos fundacionales, datos, IA física), dentro de ~1.23 billones JPY para semiconductores + IA. Plan aprobado por gabinete, pendiente de la Dieta a la fecha del artículo."
+      },
+      "compromisos": [
+        {
+          "nombre": "Marco de fortalecimiento de la industria de IA y semiconductores: apoyo público acumulado (más de)",
+          "valor": 63.176,
+          "unidad": "USD miles de millones",
+          "periodo": "FY2024-FY2030",
+          "tipo": "plurianual",
+          "valor_original": 10000,
+          "moneda_original": "JPY miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "OECD.AI Policy Navigator",
+          "url": "https://oecd.ai/en/dashboards/policy-initiatives/ai-and-semiconductor-industry-strengthening-framework",
+          "nivel": "B",
+          "nota": "10 billones JPY para IA Y semiconductores juntos (la mayor parte es chips, p. ej. Rapidus). Meta de inducir >50 billones JPY público-privados en una década."
+        }
+      ],
+      "estrategia": {
+        "nombre": "AI and Semiconductor Industry Strengthening Framework (gabinete, 22-nov-2024)",
+        "anio": 2024,
+        "url_abierta": true,
+        "url": "https://oecd.ai/en/dashboards/policy-initiatives/ai-and-semiconductor-industry-strengthening-framework"
+      },
+      "gerd_pct_pib": {
+        "valor": 3.44,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/JPN/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "La cifra anual es de un solo ministerio (METI); otros ministerios (MIC, MEXT) no incluidos. El compromiso de 10 billones JPY mezcla IA con semiconductores."
+    },
+    {
+      "iso3": "KOR",
+      "nombre_es": "Corea del Sur",
+      "publico_anual": {
+        "valor": 7.26,
+        "unidad": "USD miles de millones",
+        "anio": "2026",
+        "valor_original": 10100,
+        "moneda_original": "KRW miles de millones",
+        "conversion": "USD dado por la fuente",
+        "fuente": "Korea JoongAng Daily, 29-ago-2025 (proyecto de presupuesto 2026 aprobado por el gabinete)",
+        "url": "https://www.koreajoongangdaily.com/korea/government-allocates-101-trillion-won-for-ai-in-budget/12407041",
+        "nivel": "B",
+        "tipo": "presupuesto_anual",
+        "nota": "Proyecto del gobierno: 10.1 billones KRW, más del triple de los 3.3 billones KRW de 2025. La Asamblea aprobó el presupuesto total en dic-2025 con recortes menores a IA cuyo total final no se verificó."
+      },
+      "compromisos": [
+        {
+          "nombre": "Presupuesto 2027 (proyecto): 3 megaproyectos (semiconductores, IA física, centros de datos de IA)",
+          "valor": 15.875,
+          "unidad": "USD miles de millones",
+          "periodo": "2027",
+          "tipo": "plurianual",
+          "valor_original": 21300,
+          "moneda_original": "KRW miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "The Korea Times, 1-sep-2026",
+          "url": "https://www.koreatimes.co.kr/economy/policy/20260901/govt-bets-big-on-ai-chips-for-2027-budget-to-compete-in-global-tech-race",
+          "nivel": "B",
+          "nota": "Presupuesto de un año (2027), +97.2% vs 2026; mezcla semiconductores con IA. Proyecto, no aprobado."
+        },
+        {
+          "nombre": "Ministerio de Ciencia y TIC, solicitud 2027: transición a IA",
+          "valor": 7.006,
+          "unidad": "USD miles de millones",
+          "periodo": "2027",
+          "tipo": "plurianual",
+          "valor_original": 9400,
+          "moneda_original": "KRW miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Korea JoongAng Daily, 1-sep-2026",
+          "url": "https://www.koreajoongangdaily.com/business/science-ministry-seeks-nearly-30-trillion-won-for-record-aifocused-budget/12854458",
+          "nivel": "B",
+          "nota": "Solo un ministerio; incluye 5.59 billones KRW para modelos fundacionales y ~10,000 GPU. Solicitud."
+        }
+      ],
+      "gerd_pct_pib": {
+        "valor": 4.94,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/KOR/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Corea es el caso más claro de 'presupuesto anual de IA' gubernamental consolidado, pero la definición es amplia (infraestructura, talento, adopción), no solo I+D: no comparable 1:1 con NITRD de EE.UU."
+    },
+    {
+      "iso3": "IND",
+      "nombre_es": "India",
+      "compromisos": [
+        {
+          "nombre": "IndiaAI Mission: desembolso total aprobado",
+          "valor": 1.071,
+          "unidad": "USD miles de millones",
+          "periodo": "5 años desde mar-2024",
+          "tipo": "plurianual",
+          "valor_original": 103.7192,
+          "moneda_original": "INR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Outlook Business, 7-ago-2026 (informe 31 del comité parlamentario)",
+          "url": "https://www.outlookbusiness.com/deeptech/indiaai-mission-misses-fellowship-targets-and-faces-budget-cuts-reveals-parliamentary-panel",
+          "nivel": "B",
+          "nota": "Rs 10,371.92 crore. Ejecución baja: 32% del estimado revisado 2025-26 gastado al 31-dic-2025; Finanzas aprobó solo la mitad de lo pedido por MeitY para 2026-27 (monto en rupias no indicado)."
+        }
+      ],
+      "estrategia": {
+        "nombre": "IndiaAI Mission",
+        "anio": 2024,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 0.65,
+        "anio": 2020,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/IND/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "No se obtuvo la asignación anual 2026-27 en rupias. URL oficial de la misión no abierta."
+    },
+    {
+      "iso3": "CAN",
+      "nombre_es": "Canadá",
+      "compromisos": [
+        {
+          "nombre": "Paquete 'Securing Canada's AI Advantage' (Presupuesto 2024)",
+          "valor": 1.684,
+          "unidad": "USD miles de millones",
+          "periodo": "anunciado 7-abr-2024, ~5 años",
+          "tipo": "plurianual",
+          "valor_original": 2.4,
+          "moneda_original": "CAD miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Primer Ministro de Canadá, comunicado oficial",
+          "url": "https://www.pm.gc.ca/en/news/news-releases/2024/04/07/securing-canadas-ai-advantage",
+          "nivel": "A",
+          "nota": "Incluye los 2 mil millones CAD de cómputo (siguiente fila): no sumar."
+        },
+        {
+          "nombre": "Canadian Sovereign AI Compute Strategy (hasta)",
+          "valor": 1.403,
+          "unidad": "USD miles de millones",
+          "periodo": "5 años desde Presupuesto 2024",
+          "tipo": "infraestructura",
+          "valor_original": 2,
+          "moneda_original": "CAD miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "ISED Canadá",
+          "url": "https://ised-isde.canada.ca/site/ised/en/canadian-sovereign-ai-compute-strategy",
+          "nivel": "A",
+          "nota": "Hasta 700 M AI Compute Challenge + hasta 1,000 M supercómputo público + hasta 300 M AI Compute Access Fund."
+        },
+        {
+          "nombre": "Presupuesto 2025: capacidad soberana de cómputo de IA",
+          "valor": 0.65,
+          "unidad": "USD miles de millones",
+          "periodo": "5 años",
+          "tipo": "infraestructura",
+          "valor_original": 0.9256,
+          "moneda_original": "CAD miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Miller Thomson, 9-dic-2025",
+          "url": "https://www.millerthomson.com/en/insights/technology-ip-and-privacy/federal-budget-2025-strengthening-canadas-innovation-ai-and-intellectual-property-ecosystem/",
+          "nivel": "B",
+          "nota": "Según prensa, gran parte proviene de fondos ya reservados en 2024 (reasignación): no sumar sin verificar."
+        }
+      ],
+      "estrategia": {
+        "nombre": "Canadian Sovereign AI Compute Strategy (y Pan-Canadian AI Strategy desde 2017)",
+        "anio": 2024,
+        "url_abierta": true,
+        "url": "https://ised-isde.canada.ca/site/ised/en/canadian-sovereign-ai-compute-strategy"
+      },
+      "gerd_pct_pib": {
+        "valor": 1.79,
+        "anio": 2024,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/CAN/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Las tres filas se solapan parcialmente."
+    },
+    {
+      "iso3": "AUS",
+      "nombre_es": "Australia",
+      "compromisos": [
+        {
+          "nombre": "National AI Plan: programas de IA existentes (más de)",
+          "valor": 0.321,
+          "unidad": "USD miles de millones",
+          "periodo": "plan publicado dic-2025",
+          "tipo": "plurianual",
+          "valor_original": 0.46,
+          "moneda_original": "AUD miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "TelcoNews Australia, 4-dic-2025",
+          "url": "https://telconews.com.au/story/australia-s-national-ai-plan-to-boost-skills-safety-business",
+          "nivel": "B",
+          "nota": "Más 29.9 millones AUD para el AI Safety Institute. El plan consolida fondos ya existentes, no es dinero nuevo."
+        }
+      ],
+      "estrategia": {
+        "nombre": "National AI Plan",
+        "anio": 2025,
+        "url_abierta": true,
+        "url": "https://telconews.com.au/story/australia-s-national-ai-plan-to-boost-skills-safety-business"
+      },
+      "gerd_pct_pib": {
+        "valor": 1.86,
+        "anio": 2021,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/AUS/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "URL de estrategia es prensa, no el documento oficial de industry.gov.au."
+    },
+    {
+      "iso3": "SGP",
+      "nombre_es": "Singapur",
+      "compromisos": [
+        {
+          "nombre": "Presupuesto 2024: cómputo, talento e industria de IA (más de)",
+          "valor": 0.781,
+          "unidad": "USD miles de millones",
+          "periodo": "5 años desde feb-2024",
+          "tipo": "plurianual",
+          "valor_original": 1,
+          "moneda_original": "SGD miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "MDDI Singapur, comunicado 1-mar-2024",
+          "url": "https://www.mddi.gov.sg/newsroom/ai-initiatives-launched-to-uplift-sg-economic-potential/",
+          "nivel": "A",
+          "nota": "Incluye hasta 500 millones SGD para cómputo de alto rendimiento."
+        }
+      ],
+      "estrategia": {
+        "nombre": "National AI Strategy 2.0 (NAIS 2.0)",
+        "anio": 2023,
+        "url_abierta": true,
+        "url": "https://www.mddi.gov.sg/newsroom/ai-initiatives-launched-to-uplift-sg-economic-potential/"
+      },
+      "gerd_pct_pib": {
+        "valor": 1.81,
+        "anio": 2022,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/SGP/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Un segundo compromiso (>1 mil millones SGD para el plan nacional de I+D en IA 2025-2030) apareció en búsqueda pero la página devolvió 404: no incluido."
+    },
+    {
+      "iso3": "TWN",
+      "nombre_es": "Taiwán",
+      "publico_anual": {
+        "valor": 0.939,
+        "unidad": "USD miles de millones",
+        "anio": "2026",
+        "valor_original": 30,
+        "moneda_original": "TWD miles de millones",
+        "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+        "fuente": "Taiwan News, 7-ene-2026 (citando a la Oficina Presidencial)",
+        "url": "https://www.taiwannews.com.tw/en/news/6278239",
+        "nivel": "B",
+        "tipo": "presupuesto_anual",
+        "nota": "'Más de 30 mil millones NT$' en el proyecto de presupuesto 2026 para los Diez Grandes Proyectos de Infraestructura de IA. Proyecto, y la fuente dice 'más de'."
+      },
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "Diez Grandes Proyectos de Infraestructura de IA (AI New Ten Major Construction)",
+        "anio": 2025,
+        "url_abierta": true,
+        "url": "https://www.taiwannews.com.tw/en/news/6278239"
+      },
+      "notas": "Taiwán no figura en la base del Banco Mundial; el dato de I+D/PIB (NSTC: 4.10% en 2024 según resultados de búsqueda) no pudo verificarse en una página abierta y se omite."
+    },
+    {
+      "iso3": "ISR",
+      "nombre_es": "Israel",
+      "compromisos": [
+        {
+          "nombre": "Programa Nacional de IA: presupuesto asignado hasta la fecha (aprox.)",
+          "valor": 0.326,
+          "unidad": "USD miles de millones",
+          "periodo": "2021-2026",
+          "tipo": "plurianual",
+          "valor_original": 1,
+          "moneda_original": "ILS miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Israel Innovation Authority, National AI Program (documento del 14-may-2025)",
+          "url": "https://innovationisrael.org.il/wp-content/uploads/2025/05/AI-National-Program-en-14.5.25.pdf",
+          "nivel": "A",
+          "nota": "'Budgeted at about NIS 1 billion so far'."
+        }
+      ],
+      "estrategia": {
+        "nombre": "National Program for Artificial Intelligence (2021-2026)",
+        "anio": 2021,
+        "url_abierta": true,
+        "url": "https://innovationisrael.org.il/wp-content/uploads/2025/05/AI-National-Program-en-14.5.25.pdf"
+      },
+      "gerd_pct_pib": {
+        "valor": 6.35,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/ISR/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Israel tiene el mayor I+D/PIB del mundo, pero dominado por el sector privado."
+    },
+    {
+      "iso3": "ARE",
+      "nombre_es": "Emiratos Árabes Unidos",
+      "compromisos": [
+        {
+          "nombre": "MGX (vehículo de inversión en IA de Abu Dabi): meta de activos bajo gestión",
+          "valor": 100.0,
+          "unidad": "USD miles de millones",
+          "periodo": "meta declarada (feb-2026)",
+          "tipo": "fondo_soberano",
+          "valor_original": 100,
+          "moneda_original": "USD miles de millones",
+          "conversion": "no aplica",
+          "fuente": "Circuit News, 18-feb-2026",
+          "url": "https://circuit.news/2026/02/18/abu-dhabis-mgx-envisions-10-billion-in-annual-spending-on-ai/",
+          "nivel": "B",
+          "nota": "Prevé desplegar ~10 mil millones USD al año. Es inversión financiera global (incluye rondas de OpenAI/Anthropic), NO gasto público doméstico; meta, no capital desembolsado."
+        }
+      ],
+      "estrategia": {
+        "nombre": "UAE National Strategy for Artificial Intelligence 2031",
+        "anio": 2017,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 1.49,
+        "anio": 2021,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/ARE/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Nombre/año de la estrategia de conocimiento general, URL oficial no abierta. Sin presupuesto anual público de IA."
+    },
+    {
+      "iso3": "SAU",
+      "nombre_es": "Arabia Saudita",
+      "compromisos": [
+        {
+          "nombre": "'Project Transcendence' (iniciativa de IA respaldada por el Estado; REPORTADO)",
+          "valor": 100.0,
+          "unidad": "USD miles de millones",
+          "periodo": "reportado nov-2024",
+          "tipo": "fondo_soberano",
+          "valor_original": 100,
+          "moneda_original": "USD miles de millones",
+          "conversion": "no aplica",
+          "fuente": "CIO.com, 12-nov-2024",
+          "url": "https://www.cio.com/article/3602900/saudi-arabia-launches-100-billion-ai-initiative-to-lead-in-global-tech.html",
+          "nivel": "C",
+          "nota": "Cifra basada en 'fuentes familiarizadas'; sin confirmación oficial verificada. En 2025 el PIF creó Humain como vehículo de IA (monto total no verificado en página abierta)."
+        }
+      ],
+      "estrategia": {
+        "nombre": "National Strategy for Data & AI (NSDAI, SDAIA)",
+        "anio": 2020,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 0.64,
+        "anio": 2024,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/SAU/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Nombre/año de la estrategia de conocimiento general, URL no abierta. Cifras saudíes son fondo soberano/inversión movilizada, no presupuesto."
+    },
+    {
+      "iso3": "RUS",
+      "nombre_es": "Rusia",
+      "publico_anual": {
+        "valor": 0.061,
+        "unidad": "USD miles de millones",
+        "anio": "2024",
+        "valor_original": 5.2,
+        "moneda_original": "RUB miles de millones",
+        "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+        "fuente": "Interfax, 26-sep-2023",
+        "url": "https://www.interfax.ru/russia/922797",
+        "nivel": "B",
+        "tipo": "presupuesto_anual",
+        "nota": "Plan anunciado en 2023 para 2024 (5.2 mil millones RUB). Dato antiguo; desde 2025 la IA se integra al proyecto nacional 'Economía de datos' sin desglose verificado."
+      },
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "Estrategia Nacional de Desarrollo de la IA hasta 2030",
+        "anio": 2019,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 0.94,
+        "anio": 2024,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/RUS/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Dato anual desactualizado (2024). Estrategia: nombre/año de conocimiento general (actualizada en 2024), URL no abierta."
+    },
+    {
+      "iso3": "TUR",
+      "nombre_es": "Turquía",
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "Estrategia Nacional de Inteligencia Artificial 2021-2025 (Plan de Acción 2024-2025)",
+        "anio": 2021,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 1.42,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/TUR/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra presupuestal encontrada. Estrategia confirmada por resultados de búsqueda (Circular Presidencial 2021/18), URL oficial no abierta."
+    },
+    {
+      "iso3": "IDN",
+      "nombre_es": "Indonesia",
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "Hoja de Ruta Nacional de IA (Libro Blanco, Ministerio de Comunicación y Asuntos Digitales)",
+        "anio": 2025,
+        "url_abierta": true,
+        "url": "https://govinsider.asia/intl-en/article/indonesia-unveils-national-ai-roadmap"
+      },
+      "gerd_pct_pib": {
+        "valor": 0.28,
+        "anio": 2020,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/IDN/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "La hoja de ruta propone un Fondo Soberano de IA gestionado por Danantara (2027-2029), sin monto definido."
+    },
+    {
+      "iso3": "ZAF",
+      "nombre_es": "Sudáfrica",
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "National AI Policy Framework (DCDT)",
+        "anio": 2024,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 0.61,
+        "anio": 2022,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/ZAF/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra presupuestal encontrada. Nombre/año de conocimiento general, URL no abierta."
+    },
+    {
+      "iso3": "BRA",
+      "nombre_es": "Brasil",
+      "compromisos": [
+        {
+          "nombre": "Plano Brasileiro de Inteligência Artificial (PBIA)",
+          "valor": 4.596,
+          "unidad": "USD miles de millones",
+          "periodo": "2024-2028",
+          "tipo": "plurianual",
+          "valor_original": 23.03,
+          "moneda_original": "BRL miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Teletime, 13-jun-2025",
+          "url": "https://teletime.com.br/13/06/2025/plano-de-ia-quer-brasil-como-referencia-global-em-infraestrutura-sustentavel/",
+          "nivel": "B",
+          "nota": "Combina crédito, recursos públicos y contrapartida privada: no todo es gasto público."
+        }
+      ],
+      "estrategia": {
+        "nombre": "Plano Brasileiro de Inteligência Artificial (PBIA) 2024-2028 'IA para o Bem de Todos'",
+        "anio": 2024,
+        "url_abierta": true,
+        "url": "https://teletime.com.br/13/06/2025/plano-de-ia-quer-brasil-como-referencia-global-em-infraestrutura-sustentavel/"
+      },
+      "gerd_pct_pib": {
+        "valor": 1.19,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/BRA/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "URL es prensa especializada; documento oficial del MCTI no abierto."
+    },
+    {
+      "iso3": "MEX",
+      "nombre_es": "México",
+      "compromisos": [
+        {
+          "nombre": "Supercomputadora pública Coatlicue",
+          "valor": 0.328,
+          "unidad": "USD miles de millones",
+          "periodo": "anunciada 26-nov-2025; construcción desde 2026",
+          "tipo": "infraestructura",
+          "valor_original": 6,
+          "moneda_original": "MXN miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Excélsior, 26-nov-2025",
+          "url": "https://www.excelsior.com.mx/nacional/presentan-a-coatlicue-la-supercomputadora-publica-mexicana-costara-6-mil-mdp/1753963",
+          "nivel": "B",
+          "nota": "6 mil millones MXN; 314 petaflops, ~15,000 GPU. Anuncio, no ejecución."
+        }
+      ],
+      "gerd_pct_pib": {
+        "valor": 0.25,
+        "anio": 2024,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/MEX/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "México no tiene estrategia nacional de IA aprobada verificada (política en elaboración según prensa)."
+    },
+    {
+      "iso3": "ARG",
+      "nombre_es": "Argentina",
+      "compromisos": [],
+      "gerd_pct_pib": {
+        "valor": 0.6,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/ARG/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra pública de IA ni estrategia verificada en página abierta."
+    },
+    {
+      "iso3": "COL",
+      "nombre_es": "Colombia",
+      "compromisos": [
+        {
+          "nombre": "CONPES 4144, Política Nacional de Inteligencia Artificial",
+          "valor": 0.116,
+          "unidad": "USD miles de millones",
+          "periodo": "2025-2030",
+          "tipo": "plurianual",
+          "valor_original": 479.273,
+          "moneda_original": "COP miles de millones",
+          "conversion": "USD dado por la fuente",
+          "fuente": "TeleSemana, 17-feb-2025",
+          "url": "https://www.telesemana.com/blog/2025/02/17/colombia-publico-su-politica-nacional-de-inteligencia-artificial/",
+          "nivel": "B",
+          "nota": "479,273 millones COP; 106 acciones en seis ejes."
+        }
+      ],
+      "estrategia": {
+        "nombre": "Política Nacional de Inteligencia Artificial (CONPES 4144)",
+        "anio": 2025,
+        "url_abierta": true,
+        "url": "https://www.telesemana.com/blog/2025/02/17/colombia-publico-su-politica-nacional-de-inteligencia-artificial/"
+      },
+      "gerd_pct_pib": {
+        "valor": 0.29,
+        "anio": 2020,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/COL/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "URL es prensa especializada; el PDF oficial del DNP no se abrió."
+    },
+    {
+      "iso3": "CHL",
+      "nombre_es": "Chile",
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "Política Nacional de Inteligencia Artificial (actualizada en 2024)",
+        "anio": 2021,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 0.39,
+        "anio": 2022,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/CHL/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra presupuestal encontrada. Nombre/año de conocimiento general, URL no abierta."
+    },
+    {
+      "iso3": "PER",
+      "nombre_es": "Perú",
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "Estrategia Nacional de Inteligencia Artificial (ENIA) 2026-2030, R.M. N.° 152-2026-PCM",
+        "anio": 2026,
+        "url_abierta": true,
+        "url": "https://www.elperuano.pe/noticia/294852-estrategia-2026-2030-promovera-uso-seguro-etico-e-inclusivo-de-ia"
+      },
+      "gerd_pct_pib": {
+        "valor": 0.18,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/PER/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "La ENIA no tiene presupuesto asignado en la norma ni en la nota de El Peruano. I+D total del país: 0.18% del PIB."
+    },
+    {
+      "iso3": "URY",
+      "nombre_es": "Uruguay",
+      "compromisos": [],
+      "estrategia": {
+        "nombre": "Estrategia Nacional de Inteligencia Artificial 2024-2030 (AGESIC)",
+        "anio": 2024,
+        "url_abierta": false
+      },
+      "gerd_pct_pib": {
+        "valor": 0.7,
+        "anio": 2023,
+        "fuente": "Banco Mundial (WDI GB.XPD.RSDV.GD.ZS; dato de UNESCO UIS), último año disponible",
+        "url": "https://api.worldbank.org/v2/country/URY/indicator/GB.XPD.RSDV.GD.ZS?format=json&mrnev=1",
+        "nivel": "A"
+      },
+      "notas": "Sin cifra presupuestal encontrada. Nombre/año de conocimiento general, URL no abierta."
+    }
+  ],
+  "series": {
+    "usa_nitrd_ia": [
+      {
+        "anio": "FY2019",
+        "valor": 1.1146,
+        "tipo": "real",
+        "alcance": "no defensa",
+        "documento": "Suplemento NITRD FY2021"
+      },
+      {
+        "anio": "FY2020",
+        "valor": 1.6044,
+        "tipo": "real",
+        "alcance": "no defensa + defensa parcial (solo no defensa: 1.4260)",
+        "documento": "Suplemento NITRD/NAIIO FY2022"
+      },
+      {
+        "anio": "FY2021",
+        "valor": 2.4096,
+        "tipo": "real",
+        "alcance": "incluye defensa (solo no defensa: 1.7537)",
+        "documento": "Suplemento NITRD/NAIIO FY2023"
+      },
+      {
+        "anio": "FY2022",
+        "valor": 2.9141,
+        "tipo": "real",
+        "alcance": "incluye defensa",
+        "documento": "Suplemento NITRD/NAIIO FY2024"
+      },
+      {
+        "anio": "FY2023",
+        "valor": 3.1219,
+        "tipo": "real",
+        "alcance": "incluye defensa",
+        "documento": "Suplemento NITRD/NAIIO FY2025"
+      },
+      {
+        "anio": "FY2024",
+        "valor": 3.9113,
+        "tipo": "real",
+        "alcance": "incluye defensa y fondos suplementarios; suma de PCA IA 2,237.0 + transversal 1,674.3",
+        "documento": "Suplemento NITRD FY2026"
+      },
+      {
+        "anio": "FY2025",
+        "valor": 4.1913,
+        "tipo": "estimado (apropiación promulgada)",
+        "alcance": "incluye defensa; suma de PCA IA 2,357.4 + transversal 1,833.9",
+        "documento": "Suplemento NITRD FY2026"
+      },
+      {
+        "anio": "FY2026",
+        "valor": 2.8228,
+        "tipo": "solicitud presidencial",
+        "alcance": "incluye defensa; suma de PCA IA 1,834.0 + transversal 988.8",
+        "documento": "Suplemento NITRD FY2026"
+      }
+    ],
+    "unidad": "USD miles de millones (corrientes)",
+    "fuente": "NITRD, suplementos anuales al presupuesto presidencial FY2021-FY2026 (total de I+D en IA = PCA de IA + IA en otras PCA)",
+    "url": "https://www.nitrd.gov/pubs/FY26-NITRD-Budget-Supplement.pdf",
+    "urls_por_documento": {
+      "Suplemento NITRD FY2021": "https://www.nitrd.gov/pubs/FY2021-NITRD-Supplement.pdf",
+      "Suplemento NITRD/NAIIO FY2022": "https://www.nitrd.gov/pubs/FY2022-NITRD-NAIIO-Supplement.pdf",
+      "Suplemento NITRD/NAIIO FY2023": "https://www.nitrd.gov/pubs/FY2023-NITRD-NAIIO-Supplement.pdf",
+      "Suplemento NITRD/NAIIO FY2024": "https://www.nitrd.gov/pubs/FY2024-NITRD-NAIIO-Supplement.pdf",
+      "Suplemento NITRD/NAIIO FY2025": "https://www.nitrd.gov/pubs/FY2025-NITRD-NAIIO-Supplement.pdf",
+      "Suplemento NITRD FY2026": "https://www.nitrd.gov/pubs/FY26-NITRD-Budget-Supplement.pdf"
+    },
+    "solicitudes_originales": [
+      {
+        "anio": "FY2020",
+        "valor": 0.9735,
+        "alcance": "no defensa"
+      },
+      {
+        "anio": "FY2021",
+        "valor": 1.5025,
+        "alcance": "no defensa"
+      },
+      {
+        "anio": "FY2022",
+        "valor": 1.7895,
+        "alcance": "no defensa + defensa parcial (solo no defensa: 1.6702)"
+      },
+      {
+        "anio": "FY2023",
+        "valor": 2.6473,
+        "alcance": "incluye defensa (solo no defensa: 1.8442)"
+      },
+      {
+        "anio": "FY2024",
+        "valor": 3.0858,
+        "alcance": "incluye defensa"
+      },
+      {
+        "anio": "FY2025",
+        "valor": 3.3161,
+        "alcance": "incluye defensa"
+      },
+      {
+        "anio": "FY2026",
+        "valor": 2.8228,
+        "alcance": "incluye defensa"
+      }
+    ],
+    "nota": "'usa_nitrd_ia' usa el dato más definitivo disponible por año (real > estimado > solicitud). 'solicitudes_originales' es la serie homogénea de solicitudes presidenciales."
+  }
+}

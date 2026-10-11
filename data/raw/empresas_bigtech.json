@@ -1,0 +1,1961 @@
+{
+ "meta": {
+  "bloque": "empresas_capex_id",
+  "consultado": "2026-10-11",
+  "fuentes_principales": [
+   "SEC EDGAR, API XBRL companyfacts (10-K, 10-Q, 20-F): capex e I+D de 22 empresas y series trimestrales",
+   "Notas de resultados y documentos regulatorios (Amazon 10-K, Alibaba 6-K, Xiaomi HKEX, Tencent, Huawei, Siemens)",
+   "Platformonomics, 'Follow the CAPEX: Q2 2026 Scoreboard' (guías 2026)",
+   "Prensa financiera y especializada (MarketBeat, CFO Dive, TrendForce, Bernama-Yonhap, Korea JoongAng Daily, Caixin, TechNode, Bits&Chips)",
+   "CompaniesMarketCap (capitalización bursátil)"
+  ],
+  "advertencias": [
+   "Capex e I+D son TOTALES de cada empresa: NO equivalen a 'gasto en IA'. Solo el campo 'ia_explicito' recoge montos que la fuente atribuye a IA.",
+   "El capex de la SEC es el pago en efectivo por propiedades y equipo; excluye arrendamientos financieros y puede diferir del 'capex' que cada empresa cita en sus llamadas (Microsoft, Meta, Amazon, CoreWeave, Micron).",
+   "Las guías 2026 no usan la misma base que el dato histórico (Meta y Microsoft incluyen arrendamientos financieros; Microsoft y Oracle guían por año fiscal). No sumar ni comparar sin esa salvedad.",
+   "Años fiscales distintos: Microsoft (jul–jun), Oracle (jun–may), Apple y Qualcomm (oct–sep), Broadcom (nov–oct), Micron (sep–ago), Nvidia, Salesforce y Dell (feb–ene), Alibaba, Sony y Reliance (abr–mar), Super Micro (jul–jun), Siemens (oct–sep). El campo 'anio' indica el periodo exacto; en 'capex_2025' de Nvidia, Salesforce, Dell, Alibaba y Reliance se usa el año fiscal que la empresa llama 2026 porque es el que cubre casi todo 2025.",
+   "Monedas: cada cifra va en la moneda en que se reporta; no se hicieron conversiones propias. 'valor_usd' y 'valor_usd_aprox' son equivalencias dadas por la propia fuente.",
+   "Amazon no reporta I+D: se da 'Technology and infrastructure', que incluye costos operativos de AWS.",
+   "TSMC y Sony: no se pudo abrir una fuente con el año fiscal más reciente; se dan cifras del año anterior en campos 'capex_2024' e 'id_2024'.",
+   "Sin capex ni I+D verificables para ByteDance (privada), SoftBank, Naver y sin capex para Huawei y Siemens; sin I+D para SK Hynix, Reliance y Foxconn.",
+   "Nivel C: ByteDance (filtración de prensa), SK Hynix 2025 y Reliance (fuentes secundarias de menor rango), Morgan Stanley (resumen de terceros) y Gartner (nota oficial no accesible).",
+   "Capitalización bursátil: valores de CompaniesMarketCap leídos el 2026-10-11; la página no muestra fecha de corte."
+  ]
+ },
+ "empresas": [
+  {
+   "nombre": "Amazon",
+   "ticker": "AMZN",
+   "pais_iso3": "USA",
+   "sector": "Nube/Comercio",
+   "capex_2025": {
+    "valor": 131.819,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquireProductiveAssets, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
+    "nivel": "A",
+    "nota": "El 10-K FY2025 reporta además 'cash capital expenditures' de USD 128.3 mil millones (netos de incentivos y ventas de activos) vs 77.7 en 2024."
+   },
+   "capex_2026": {
+    "valor": 220,
+    "unidad": "USD miles de millones",
+    "tipo": "guia_oficial",
+    "fecha": "2026-07-30",
+    "nota": "Subida desde ~200 (feb-2026); la empresa la describe como capex en efectivo.",
+    "nivel": "B",
+    "fuente": "Platformonomics, 'Follow the CAPEX: Q2 2026 Scoreboard' (31-jul-2026), tabla de guías 2026",
+    "url": "https://platformonomics.com/2026/07/follow-the-capex-q2-2026-scoreboard/"
+   },
+   "id_2025": {
+    "valor": 108.521,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "'Technology and infrastructure' (Amazon no reporta I+D por separado; esta línea incluye costos de operar infraestructura de AWS, NO es I+D puro)",
+    "fuente": "Amazon 10-K FY2025, estado de resultados",
+    "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 2830,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Centros de datos y chips propios (Trainium) para AWS; el 10-K indica que la mayor parte del capex es infraestructura tecnológica para AWS."
+  },
+  {
+   "nombre": "Microsoft",
+   "ticker": "MSFT",
+   "pais_iso3": "USA",
+   "sector": "Nube/Software",
+   "capex_2025": {
+    "valor": 64.551,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (jul-2024 a jun-2025)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto); excluye arrendamientos financieros",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-06-30",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+    "nivel": "A"
+   },
+   "capex_ultimo_fy": {
+    "valor": 115.948,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (jul-2025 a jun-2026)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto); excluye arrendamientos financieros",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2026-06-30",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+    "nivel": "A"
+   },
+   "capex_2026": {
+    "valor": 175,
+    "unidad": "USD miles de millones",
+    "tipo": "guia_oficial",
+    "fecha": "2026-07-29",
+    "anio": "FY2027 (jul-2026 a jun-2027) según MarketBeat; Platformonomics la trata como cifra de año calendario 2026",
+    "nota": "Incluye arrendamientos financieros. Tras reclasificar arrendamientos de centros de datos, equivale a ~190 en la base anterior (Platformonomics). Bases no comparables con la serie de caja.",
+    "fuente": "MarketBeat, 'Microsoft Q4 earnings call highlights' (29-jul-2026); Platformonomics (31-jul-2026)",
+    "url": "https://www.marketbeat.com/instant-alerts/microsoft-q4-earnings-call-highlights-2026-07-29/",
+    "nivel": "B"
+   },
+   "id_2025": {
+    "valor": 32.488,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (jul-2024 a jun-2025)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-06-30",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+    "nivel": "A"
+   },
+   "id_ultimo_fy": {
+    "valor": 35.562,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (jul-2025 a jun-2026)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2026-06-30",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 3973,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Centros de datos Azure y GPU/CPU para servicios de IA y Copilot; cerca de dos tercios del capex trimestral fue a activos de vida corta (CPU y GPU), según la llamada de resultados."
+  },
+  {
+   "nombre": "Alphabet",
+   "ticker": "GOOGL",
+   "pais_iso3": "USA",
+   "sector": "Nube/Publicidad",
+   "capex_2025": {
+    "valor": 91.447,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
+    "nivel": "A"
+   },
+   "capex_2026": {
+    "valor_min": 195,
+    "valor_max": 205,
+    "unidad": "USD miles de millones",
+    "tipo": "guia_oficial",
+    "fecha": "2026-07-23",
+    "nota": "Subida desde 180–190 (abr-2026) y 175–185 (ene-2026).",
+    "nivel": "B",
+    "fuente": "Platformonomics, 'Follow the CAPEX: Q2 2026 Scoreboard' (31-jul-2026), tabla de guías 2026",
+    "url": "https://platformonomics.com/2026/07/follow-the-capex-q2-2026-scoreboard/"
+   },
+   "id_2025": {
+    "valor": 61.087,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 4254,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Servidores, chips TPU y centros de datos para Google Cloud, Gemini y búsqueda."
+  },
+  {
+   "nombre": "Meta Platforms",
+   "ticker": "META",
+   "pais_iso3": "USA",
+   "sector": "Redes sociales/Publicidad",
+   "capex_2025": {
+    "valor": 69.691,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
+    "nivel": "A",
+    "nota": "La cifra que Meta guía (incluye pagos de principal de arrendamientos financieros) fue 72.22 en 2025 según Regards of Wallstreet Capex Tracker."
+   },
+   "capex_2026": {
+    "valor_min": 130,
+    "valor_max": 145,
+    "unidad": "USD miles de millones",
+    "tipo": "guia_oficial",
+    "fecha": "2026-07-29",
+    "nota": "Incluye pagos de principal de arrendamientos financieros. Antes 125–145 (abr-2026) y 115–135 (ene-2026).",
+    "nivel": "B",
+    "fuente": "Platformonomics, 'Follow the CAPEX: Q2 2026 Scoreboard' (31-jul-2026), tabla de guías 2026",
+    "url": "https://platformonomics.com/2026/07/follow-the-capex-q2-2026-scoreboard/"
+   },
+   "id_2025": {
+    "valor": 57.372,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 1830,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Centros de datos y GPU para entrenar modelos propios (Meta AI/Llama) y sistemas de recomendación y publicidad."
+  },
+  {
+   "nombre": "Apple",
+   "ticker": "AAPL",
+   "pais_iso3": "USA",
+   "sector": "Dispositivos/Servicios",
+   "capex_2025": {
+    "valor": 12.715,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (oct-2024 a sep-2025)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-09-27",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 34.55,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (oct-2024 a sep-2025)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-09-27",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 4912,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "IA en el dispositivo (Apple Intelligence) y chips propios; no publica guía de capex."
+  },
+  {
+   "nombre": "Nvidia",
+   "ticker": "NVDA",
+   "pais_iso3": "USA",
+   "sector": "Semiconductores",
+   "capex_2025": {
+    "valor": 6.042,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (feb-2025 a ene-2026)",
+    "concepto": "Compras de propiedades, equipo e intangibles (flujo de caja)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquireProductiveAssets, periodo terminado 2026-01-25",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001045810.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 18.497,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (feb-2025 a ene-2026)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2026-01-25",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001045810.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 5536,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Diseña las GPU y sistemas que compran los hiperescaladores; su gasto propio es sobre todo I+D, no capex (es 'fabless')."
+  },
+  {
+   "nombre": "Oracle",
+   "ticker": "ORCL",
+   "pais_iso3": "USA",
+   "sector": "Nube/Software",
+   "capex_2025": {
+    "valor": 21.215,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (jun-2024 a may-2025)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-05-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
+    "nivel": "A"
+   },
+   "capex_ultimo_fy": {
+    "valor": 55.663,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (jun-2025 a may-2026)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2026-05-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
+    "nivel": "A"
+   },
+   "capex_2026": {
+    "valor": 95,
+    "unidad": "USD miles de millones",
+    "tipo": "guia_oficial",
+    "fecha": "2026-06-10",
+    "anio": "FY2027 (jun-2026 a may-2027)",
+    "nota": "'Hasta' 95 brutos: ~70 de gasto propio más 20–25 que espera que reembolsen clientes (CFO en la llamada de resultados).",
+    "fuente": "Outlook Business (11-jun-2026), citando la llamada de resultados de Oracle",
+    "url": "https://www.outlookbusiness.com/corporate/oracle-forecasts-95-bn-in-capex-for-fy27-plans-to-raise-40-bn-in-debt-and-equity",
+    "nivel": "B"
+   },
+   "id_2025": {
+    "valor": 9.86,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (jun-2024 a may-2025)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-05-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
+    "nivel": "A"
+   },
+   "id_ultimo_fy": {
+    "valor": 10.272,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (jun-2025 a may-2026)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2026-05-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 428.65,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Centros de datos de Oracle Cloud Infrastructure para contratos de cómputo de IA de gran tamaño (cartera contratada declarada de cientos de miles de millones)."
+  },
+  {
+   "nombre": "Tesla",
+   "ticker": "TSLA",
+   "pais_iso3": "USA",
+   "sector": "Automotriz/Robótica",
+   "capex_2025": {
+    "valor": 8.527,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "nivel": "A"
+   },
+   "capex_2026": {
+    "valor_min": 25,
+    "unidad": "USD miles de millones",
+    "tipo": "guia_oficial",
+    "fecha": "2026-07-22",
+    "nota": "'Más de' 25; el capex total incluye fábricas de autos, no solo IA.",
+    "fuente": "CFO Dive (23-jul-2026), citando al CFO en la llamada del 2T 2026",
+    "url": "https://www.cfodive.com/news/tesla-set-massive-capex-spend-25b-musk-robotaxi-auto/826071/",
+    "nivel": "B"
+   },
+   "id_2025": {
+    "valor": 6.411,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001318605.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 1511,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Cómputo de IA para conducción autónoma, flota de robotaxis, robot Optimus y una fábrica de semiconductores, junto con expansión automotriz y solar."
+  },
+  {
+   "nombre": "Broadcom",
+   "ticker": "AVGO",
+   "pais_iso3": "USA",
+   "sector": "Semiconductores",
+   "capex_2025": {
+    "valor": 0.623,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (nov-2024 a oct-2025)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-11-02",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001730168.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 10.977,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (nov-2024 a oct-2025)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-11-02",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001730168.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 1725,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Chips de IA a medida (ASIC) y redes para centros de datos; modelo 'fabless', por eso el capex es bajo frente a su I+D."
+  },
+  {
+   "nombre": "AMD",
+   "ticker": "AMD",
+   "pais_iso3": "USA",
+   "sector": "Semiconductores",
+   "capex_2025": {
+    "valor": 0.974,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-12-27",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000002488.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 8.091,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-27",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000002488.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 992.7,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "GPU y CPU para centros de datos de IA; 'fabless', gasta sobre todo en I+D."
+  },
+  {
+   "nombre": "Intel",
+   "ticker": "INTC",
+   "pais_iso3": "USA",
+   "sector": "Semiconductores",
+   "capex_2025": {
+    "valor": 14.646,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Adiciones a propiedades, planta y equipo (bruto, antes de incentivos públicos)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-12-27",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000050863.json",
+    "nivel": "A"
+   },
+   "capex_2026": {
+    "valor_min": 20,
+    "unidad": "USD miles de millones",
+    "tipo": "guia_oficial",
+    "fecha": "2026-07-23",
+    "nota": "'Más de' 20, subida en la llamada del 2T 2026; el CFO anticipó que 2027 estará significativamente por encima.",
+    "fuente": "MarketBeat, 'Intel Q2 earnings call highlights' (23-jul-2026)",
+    "url": "https://www.marketbeat.com/instant-alerts/intel-q2-earnings-call-highlights-2026-07-23/",
+    "nivel": "B"
+   },
+   "id_2025": {
+    "valor": 13.774,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-27",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000050863.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 553.45,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Fábricas de chips avanzados (equipos, salas limpias y sustratos) y procesadores para servidores de IA."
+  },
+  {
+   "nombre": "TSMC",
+   "ticker": "TSM",
+   "pais_iso3": "TWN",
+   "sector": "Semiconductores (fundición)",
+   "capex_2024": {
+    "valor": 29.155,
+    "unidad": "USD miles de millones",
+    "anio": "FY2024",
+    "concepto": "Compras de propiedades, planta y equipo (NIIF); conversión a USD de conveniencia del 20-F",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities, periodo terminado 2024-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001046179.json",
+    "nivel": "A",
+    "nota": "No se pudo abrir una fuente con el capex real de FY2025; se da FY2024 (último disponible en XBRL de la SEC)."
+   },
+   "capex_2026": {
+    "valor_min": 60,
+    "valor_max": 64,
+    "unidad": "USD miles de millones",
+    "tipo": "guia_oficial",
+    "fecha": "2026-07-16",
+    "nota": "Subida desde 52–56 (ene-2026) y ~56 (abr-2026). Capex del 2T 2026: ~15.7.",
+    "fuente": "Tiger Brokers/iTiger, resumen de la llamada de resultados del 2T 2026 de TSMC (16-jul-2026)",
+    "url": "https://www.itiger.com/news/1103082639",
+    "nivel": "B"
+   },
+   "id_2024": {
+    "valor": 6.227,
+    "unidad": "USD miles de millones",
+    "anio": "FY2024",
+    "concepto": "Gasto en I+D (NIIF); conversión a USD de conveniencia del 20-F",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2024-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001046179.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 2351,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Fabrica los chips de IA de Nvidia, AMD, Broadcom y los hiperescaladores; 70–80% del presupuesto va a procesos avanzados y 10–20% a empaquetado avanzado y otros."
+  },
+  {
+   "nombre": "Samsung Electronics",
+   "ticker": "005930.KS",
+   "pais_iso3": "KOR",
+   "sector": "Semiconductores/Electrónica",
+   "capex_2025": {
+    "valor": 52.7,
+    "unidad": "KRW billones (10^12)",
+    "anio": "FY2025",
+    "concepto": "Inversión en instalaciones",
+    "fuente": "Bernama-Yonhap (10-mar-2026), citando el informe anual de Samsung",
+    "url": "https://bernama.com/en/news.php?id=2532802",
+    "nivel": "B"
+   },
+   "plan_2026_capex_mas_id": {
+    "valor_min": 110,
+    "unidad": "KRW billones (10^12)",
+    "valor_usd_aprox": 73.3,
+    "tipo": "guia_oficial",
+    "fecha": "2026-03-19",
+    "nota": "Cifra combinada de instalaciones + I+D ('al menos'); NO es solo capex. Equivalencia en USD dada por la fuente.",
+    "fuente": "Korea JoongAng Daily (19-mar-2026), citando el plan de valor corporativo de Samsung",
+    "url": "https://www.koreajoongangdaily.com/business/samsung-to-spend-record-73-billion-on-facilities-rd-to-meet-soaring-chip-demand/12600516",
+    "nivel": "B"
+   },
+   "id_2025": {
+    "valor": 37.7,
+    "unidad": "KRW billones (10^12)",
+    "valor_usd_aprox": 25.6,
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D (récord; 35 en 2024)",
+    "fuente": "Bernama-Yonhap (10-mar-2026), citando el informe anual de Samsung",
+    "url": "https://bernama.com/en/news.php?id=2532802",
+    "nivel": "B"
+   },
+   "market_cap": {
+    "valor": 1282,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Memoria para IA (HBM, DRAM) y fundición de chips avanzados."
+  },
+  {
+   "nombre": "SK Hynix",
+   "ticker": "000660.KS",
+   "pais_iso3": "KOR",
+   "sector": "Semiconductores (memoria)",
+   "capex_2025": {
+    "valor": 30.2,
+    "unidad": "KRW billones (10^12)",
+    "anio": "FY2025",
+    "concepto": "Inversión total del año",
+    "fuente": "AI News Weekly (2-jun-2026), reproduciendo a Tom's Hardware sobre declaraciones del presidente de SK en Computex",
+    "url": "https://aiweekly.co/alerts/sk-hynix-to-double-memory-output-amid-2030-shortage",
+    "nivel": "C"
+   },
+   "capex_2026": {
+    "valor_min": 45,
+    "unidad": "KRW billones (10^12)",
+    "valor_usd_aprox": 31,
+    "tipo": "guia_oficial",
+    "fecha": "2026-08-03",
+    "nota": "'Al menos' 45 billones de wones (~50% más que 2025); equivalencia en USD dada por la fuente. Fuente secundaria que atribuye el plan a la empresa.",
+    "fuente": "Bits&Chips (3-ago-2026)",
+    "url": "https://bits-chips.com/?p=233171",
+    "nivel": "B"
+   },
+   "market_cap": {
+    "valor": 890.91,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Principal proveedor de memoria HBM para aceleradores de IA; amplía fábricas en Corea."
+  },
+  {
+   "nombre": "Micron Technology",
+   "ticker": "MU",
+   "pais_iso3": "USA",
+   "sector": "Semiconductores (memoria)",
+   "capex_2025": {
+    "valor": 15.857,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (sep-2024 a ago-2025)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-08-28",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000723125.json",
+    "nivel": "A"
+   },
+   "capex_ultimo_fy": {
+    "valor": 30.712,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (sep-2025 a sep-2026)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2026-09-03",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000723125.json",
+    "nivel": "A",
+    "nota": "Bruto en flujo de caja; la prensa cita 27.37 como capex del FY2026 (probablemente neto de incentivos)."
+   },
+   "capex_2026": {
+    "valor": 25,
+    "unidad": "USD miles de millones",
+    "tipo": "guia_oficial",
+    "fecha": "2026-10-01",
+    "anio": "Primer semestre del FY2027 (sep-2026 a feb-2027), NO año completo",
+    "nota": "El CFO guió ~11.5 para el 1T fiscal y ~25 para el primer semestre, con aumento en el segundo. 'Más de 50' para el año completo es inferencia periodística, no guía.",
+    "fuente": "Herald Corp / Korea Herald Business (1-oct-2026)",
+    "url": "https://biz.heraldcorp.com/article/10890090",
+    "nivel": "B"
+   },
+   "id_2025": {
+    "valor": 3.798,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (sep-2024 a ago-2025)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-08-28",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000723125.json",
+    "nivel": "A"
+   },
+   "id_ultimo_fy": {
+    "valor": 5.65,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (sep-2025 a sep-2026)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2026-09-03",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000723125.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 1162,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Memoria HBM y DRAM para servidores de IA; nuevas fábricas."
+  },
+  {
+   "nombre": "IBM",
+   "ticker": "IBM",
+   "pais_iso3": "USA",
+   "sector": "Software/Servicios",
+   "capex_2025": {
+    "valor": 1.091,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000051143.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 8.316,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000051143.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 213.98,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Software de IA empresarial (watsonx), consultoría y computación cuántica; gasta en I+D más que en infraestructura."
+  },
+  {
+   "nombre": "Salesforce",
+   "ticker": "CRM",
+   "pais_iso3": "USA",
+   "sector": "Software",
+   "capex_2025": {
+    "valor": 0.594,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (feb-2025 a ene-2026)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2026-01-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001108524.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 5.993,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (feb-2025 a ene-2026)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2026-01-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001108524.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 188.57,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Agentes de IA sobre su software de clientes (Agentforce); usa nube de terceros, por eso su capex es bajo."
+  },
+  {
+   "nombre": "Palantir",
+   "ticker": "PLTR",
+   "pais_iso3": "USA",
+   "sector": "Software",
+   "capex_2025": {
+    "valor": 0.034,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001321655.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 0.558,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001321655.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 502.35,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Plataformas de análisis e IA (AIP) para gobiernos y empresas; casi sin capex propio."
+  },
+  {
+   "nombre": "CoreWeave",
+   "ticker": "CRWV",
+   "pais_iso3": "USA",
+   "sector": "Nube de IA ('neocloud')",
+   "capex_2025": {
+    "valor": 10.309,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001769628.json",
+    "nivel": "A",
+    "nota": "Solo pagos en efectivo; la empresa guía un capex más amplio (incluye equipos financiados)."
+   },
+   "capex_2026": {
+    "valor_min": 35,
+    "valor_max": 39,
+    "unidad": "USD miles de millones",
+    "tipo": "guia_oficial",
+    "fecha": "2026-08-11",
+    "nota": "Capex del 2T 2026: 9.4; guía 3T: 11.5–13.5.",
+    "fuente": "MarketBeat, 'CoreWeave Q2 earnings call highlights' (11-ago-2026)",
+    "url": "https://www.marketbeat.com/instant-alerts/coreweave-q2-earnings-call-highlights-2026-08-11/",
+    "nivel": "B"
+   },
+   "id_2025": {
+    "valor": 0.352,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001769628.json",
+    "nivel": "A"
+   },
+   "ia_explicito": {
+    "concepto": "Prácticamente todo su capex es infraestructura de GPU para IA (negocio único); cartera contratada de 104 mil millones USD al cierre del 2T 2026",
+    "valor": 104,
+    "unidad": "USD miles de millones (cartera, no gasto)",
+    "fuente": "MarketBeat (11-ago-2026)",
+    "url": "https://www.marketbeat.com/instant-alerts/coreweave-q2-earnings-call-highlights-2026-08-11/",
+    "nivel": "B"
+   },
+   "foco_ia": "Alquila centros de datos con GPU Nvidia a laboratorios de IA e hiperescaladores."
+  },
+  {
+   "nombre": "Tencent",
+   "ticker": "0700.HK",
+   "pais_iso3": "CHN",
+   "sector": "Internet/Videojuegos",
+   "capex_2025": {
+    "valor": 79.2,
+    "unidad": "CNY (RMB) miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto de capital (+3% interanual): infraestructura de TI, centros de datos, terrenos y oficinas",
+    "fuente": "Tencent, nota de resultados anuales 2025 (18-mar-2026), vía PR Newswire Asia",
+    "url": "https://en.prnasia.com/releases/apac/tencent-announces-2025-annual-and-fourth-quarter-results-525781.shtml",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 85.8,
+    "unidad": "CNY (RMB) miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "Caixin Global (18-mar-2026)",
+    "url": "https://www.caixinglobal.com/2026-03-18/tencent-profit-rises-16-as-overseas-games-cloud-gain-traction-102424419.html",
+    "nivel": "B"
+   },
+   "market_cap": {
+    "valor": 493.2,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "GPU y centros de datos para su modelo Hunyuan, el asistente Yuanbao y la nube; la empresa dijo que el capex 2025 quedó limitado por la oferta de GPU."
+  },
+  {
+   "nombre": "Alibaba",
+   "ticker": "BABA",
+   "pais_iso3": "CHN",
+   "sector": "Nube/Comercio",
+   "capex_2025": {
+    "valor": 126.063,
+    "unidad": "CNY (RMB) miles de millones",
+    "valor_usd": 18.275,
+    "anio": "FY2026 (abr-2025 a mar-2026)",
+    "concepto": "Gasto de capital (85.972 en el FY2025)",
+    "fuente": "Alibaba Group, resultados del trimestre de marzo y año fiscal 2026 (6-K, anexo 99.1)",
+    "url": "https://www.sec.gov/Archives/edgar/data/1577552/000110465926060224/tm2614494d1_ex99-1.htm",
+    "nivel": "A"
+   },
+   "capex_trimestre_reciente": {
+    "valor": 67.68,
+    "unidad": "CNY (RMB) miles de millones",
+    "periodo": "abr–jun 2026",
+    "nota": "+75% interanual, principalmente infraestructura de IA.",
+    "fuente": "TechNode (21-ago-2026)",
+    "url": "https://technode.com/2026/08/21/alibabas-ai-spending-lifts-capex-75-as-quarterly-profit-falls-76/",
+    "nivel": "B"
+   },
+   "id_2025": {
+    "valor": 66.533,
+    "unidad": "CNY (RMB) miles de millones",
+    "anio": "FY2026 (abr-2025 a mar-2026)",
+    "concepto": "Gasto en desarrollo de producto (I+D)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2026-03-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001577552.json",
+    "nivel": "A",
+    "valor_usd": 9.645
+   },
+   "market_cap": {
+    "valor": 277.06,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Centros de datos y equipos de cómputo para Alibaba Cloud y sus modelos Qwen."
+  },
+  {
+   "nombre": "Baidu",
+   "ticker": "BIDU",
+   "pais_iso3": "CHN",
+   "sector": "Internet/Nube",
+   "capex_2025": {
+    "valor": 12.073,
+    "unidad": "CNY (RMB) miles de millones",
+    "anio": "FY2025",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001329099.json",
+    "nivel": "A",
+    "valor_usd": 1.726
+   },
+   "id_2025": {
+    "valor": 20.433,
+    "unidad": "CNY (RMB) miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001329099.json",
+    "nivel": "A",
+    "valor_usd": 2.922
+   },
+   "foco_ia": "Modelos Ernie, nube de IA y conducción autónoma (Apollo Go)."
+  },
+  {
+   "nombre": "ByteDance",
+   "ticker": null,
+   "pais_iso3": "CHN",
+   "sector": "Internet (privada)",
+   "ia_explicito": {
+    "concepto": "Plan preliminar de capex 2026 para infraestructura de IA",
+    "valor": 160,
+    "unidad": "CNY (RMB) miles de millones",
+    "tipo": "estimacion_prensa",
+    "fecha": "2025-12-23",
+    "nota": "Empresa privada: no publica cuentas. Cifra del Financial Times citando personas al tanto; Reuters no la verificó. Informes posteriores (no verificados aquí) hablan de montos mayores.",
+    "fuente": "The Standard (HK), nota de Reuters sobre un reporte del Financial Times (23-dic-2025)",
+    "url": "https://www.thestandard.com.hk/innovation/article/319982/ByteDance-plans-to-spend-160-b-yuan-towards-AI-infrastructure-in-2026-FT-reports",
+    "nivel": "C"
+   },
+   "foco_ia": "Chips y centros de datos para sus modelos Doubao y los algoritmos de TikTok/Douyin."
+  },
+  {
+   "nombre": "Huawei",
+   "ticker": null,
+   "pais_iso3": "CHN",
+   "sector": "Telecom/Semiconductores (no cotiza)",
+   "id_2025": {
+    "valor": 192.3,
+    "unidad": "CNY (RMB) miles de millones",
+    "anio": "FY2025",
+    "concepto": "Inversión en I+D (21.8% de los ingresos de 880.9)",
+    "fuente": "Huawei, comunicado del Informe Anual 2025 (31-mar-2026)",
+    "url": "https://www.huawei.com/br/news/2026/3/annual-report-2025",
+    "nivel": "A"
+   },
+   "foco_ia": "Chips Ascend, nube y redes para IA; su I+D total cubre también telecomunicaciones y dispositivos."
+  },
+  {
+   "nombre": "Xiaomi",
+   "ticker": "1810.HK",
+   "pais_iso3": "CHN",
+   "sector": "Dispositivos/Vehículos eléctricos",
+   "capex_2025": {
+    "valor": 18.157,
+    "unidad": "CNY (RMB) miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto de capital total (10.480 en 2024); 12.024 corresponden al segmento 'vehículos eléctricos, IA y otras iniciativas'",
+    "fuente": "Xiaomi, anuncio de resultados anuales 2025 (HKEX, 24-mar-2026)",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/2026032400608.pdf",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 33.132,
+    "unidad": "CNY (RMB) miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D (+37.8% interanual)",
+    "fuente": "Xiaomi, anuncio de resultados anuales 2025 (HKEX, 24-mar-2026)",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0324/2026032400608.pdf",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 87.53,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Modelo propio MiMo, asistente en teléfonos y hogar conectado, y conducción asistida en sus autos."
+  },
+  {
+   "nombre": "SoftBank Group",
+   "ticker": "9984.T",
+   "pais_iso3": "JPN",
+   "sector": "Holding de inversión",
+   "ia_explicito": {
+    "concepto": "Inversión en OpenAI completada el 26-dic-2025 (7.5 en abr-2025 + 22.5 en dic-2025; ~11% de participación). Es inversión financiera, NO capex",
+    "valor": 30,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-12-26",
+    "nota": "La ronda total fue de 41, incluidos 11 de coinversores. SoftBank es además socio financiero de Stargate (plan de hasta 500 en cuatro años, del conjunto de socios).",
+    "fuente": "TechInformed (7-ene-2026), citando el comunicado de SoftBank del 31-dic-2025",
+    "url": "https://techinformed.com/softbank-closes-41b-openai-investment-as-stargate-buildout-expands",
+    "nivel": "B"
+   },
+   "market_cap": {
+    "valor": 208.99,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Invierte en OpenAI y en el proyecto de centros de datos Stargate; controla Arm."
+  },
+  {
+   "nombre": "Sony Group",
+   "ticker": "SONY",
+   "pais_iso3": "JPN",
+   "sector": "Electrónica/Entretenimiento",
+   "capex_2024": {
+    "valor": 647.527,
+    "unidad": "JPY miles de millones",
+    "anio": "FY2024 (abr-2024 a mar-2025)",
+    "concepto": "Compras de propiedades, equipo e intangibles (NIIF)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PurchaseOfPropertyPlantAndEquipmentIntangibleAssetsOtherThanGoodwillInvestmentPropertyAndOtherNoncurrentAssets, periodo terminado 2025-03-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000313838.json",
+    "nivel": "A",
+    "nota": "El año fiscal cerrado en mar-2026 no está en el XBRL de la SEC; se da el último disponible."
+   },
+   "id_2024": {
+    "valor": 734.578,
+    "unidad": "JPY miles de millones",
+    "anio": "FY2024 (abr-2024 a mar-2025)",
+    "concepto": "Gasto en I+D (NIIF)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-03-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000313838.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 140.82,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Sensores de imagen y herramientas de IA para videojuegos, cine y música."
+  },
+  {
+   "nombre": "SAP",
+   "ticker": "SAP",
+   "pais_iso3": "DEU",
+   "sector": "Software",
+   "capex_2025": {
+    "valor": 0.739,
+    "unidad": "EUR miles de millones",
+    "anio": "FY2025",
+    "concepto": "Compras de propiedades, equipo e intangibles (NIIF)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PurchaseOfPropertyPlantAndEquipmentIntangibleAssetsOtherThanGoodwillInvestmentPropertyAndOtherNoncurrentAssets, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001000184.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 6.633,
+    "unidad": "EUR miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D (NIIF)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001000184.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 247.89,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Asistente Joule e IA integrada en su software de gestión empresarial."
+  },
+  {
+   "nombre": "ASML",
+   "ticker": "ASML",
+   "pais_iso3": "NLD",
+   "sector": "Equipos para semiconductores",
+   "capex_2025": {
+    "valor": 1.574,
+    "unidad": "EUR miles de millones",
+    "anio": "FY2025",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000937966.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 4.699,
+    "unidad": "EUR miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-12-31",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000937966.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 683.82,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Fabrica las máquinas de litografía EUV indispensables para producir chips de IA; no gasta 'en IA' sino que la habilita."
+  },
+  {
+   "nombre": "Siemens",
+   "ticker": "SIE.DE",
+   "pais_iso3": "DEU",
+   "sector": "Industria/Automatización",
+   "id_2025": {
+    "valor": 6.6,
+    "unidad": "EUR miles de millones",
+    "anio": "FY2025 (oct-2024 a sep-2025)",
+    "concepto": "Gasto en I+D (unos 53,200 empleados en I+D)",
+    "fuente": "Siemens, página corporativa de Investigación y Desarrollo",
+    "url": "https://www.siemens.com/es-es/company/innovation/research-development/",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 233.29,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "IA industrial: gemelos digitales, software de simulación y automatización de fábricas."
+  },
+  {
+   "nombre": "Naver",
+   "ticker": "035420.KS",
+   "pais_iso3": "KOR",
+   "sector": "Internet/Nube",
+   "ia_explicito": {
+    "concepto": "Compra de GPU prevista para 2026",
+    "valor_min": 1,
+    "unidad": "KRW billones (10^12)",
+    "tipo": "guia_oficial",
+    "fecha": "2025-11-05",
+    "nota": "'Más de' 1 billón de wones, frente a ~0.75 que estimaban analistas. En 2026 anunció además una 'AI Factory' con inversión de capital de Nvidia (USD 1 mil millones) y hasta USD 9 mil millones de Brookfield (eDaily, 3-ago-2026).",
+    "fuente": "TechNews Taiwán (6-nov-2025)",
+    "url": "https://technews.tw/2025/11/06/naver-to-spend-over-1-trillion-won-in-gpus-next-year-for-physical-ai/",
+    "nivel": "B"
+   },
+   "foco_ia": "Modelo HyperCLOVA, nube soberana coreana y 'fábricas de IA' con Nvidia."
+  },
+  {
+   "nombre": "Reliance Industries (Jio)",
+   "ticker": "RELIANCE.NS",
+   "pais_iso3": "IND",
+   "sector": "Conglomerado/Telecom",
+   "capex_2025": {
+    "valor": 144271,
+    "unidad": "INR crore (decenas de millones de rupias)",
+    "valor_usd_aprox": 15.2,
+    "anio": "FY2026 (abr-2025 a mar-2026)",
+    "concepto": "Capex total del grupo (energía, comercio minorista, telecom); equivalencia en USD dada por la fuente",
+    "fuente": "Lapaas Voice (20-jun-2026), sobre la junta anual de Reliance",
+    "url": "https://lapaasvoice.com/reliance-spent-rs-144271-crore-15-2b-on-capex-in-fy26/",
+    "nivel": "C"
+   },
+   "foco_ia": "Centros de datos de IA en Jamnagar y cómputo de IA para la red de Jio; el capex del grupo es mayormente energía, comercio y telecom."
+  },
+  {
+   "nombre": "Hon Hai (Foxconn)",
+   "ticker": "2317.TW",
+   "pais_iso3": "TWN",
+   "sector": "Manufactura electrónica",
+   "capex_2025": {
+    "valor": 174,
+    "unidad": "TWD miles de millones",
+    "anio": "FY2025",
+    "concepto": "Gasto de capital (~+27% interanual)",
+    "fuente": "TrendForce (14-may-2026), citando a Foxconn vía Central News Agency",
+    "url": "https://www.trendforce.com/news/2026/05/14/news-foxconn-to-boost-2026-capex-by-30-cpo-switches-reportedly-set-for-q3-mass-production/",
+    "nivel": "B"
+   },
+   "capex_2026": {
+    "variacion_pct_min": 30,
+    "tipo": "guia_oficial",
+    "fecha": "2026-05-14",
+    "nota": "La empresa guió un aumento de 'más de 30%' sin dar monto.",
+    "fuente": "TrendForce (14-may-2026)",
+    "url": "https://www.trendforce.com/news/2026/05/14/news-foxconn-to-boost-2026-capex-by-30-cpo-switches-reportedly-set-for-q3-mass-production/",
+    "nivel": "B"
+   },
+   "market_cap": {
+    "valor": 109.38,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Ensambla servidores de IA (racks de Nvidia) para los hiperescaladores."
+  },
+  {
+   "nombre": "Dell Technologies",
+   "ticker": "DELL",
+   "pais_iso3": "USA",
+   "sector": "Hardware/Servidores",
+   "capex_2025": {
+    "valor": 2.633,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (feb-2025 a ene-2026)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2026-01-30",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001571996.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 3.142,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (feb-2025 a ene-2026)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2026-01-30",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001571996.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 372.62,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Vende servidores de IA; es proveedor del gasto ajeno más que inversor propio."
+  },
+  {
+   "nombre": "Super Micro Computer",
+   "ticker": "SMCI",
+   "pais_iso3": "USA",
+   "sector": "Hardware/Servidores",
+   "capex_2025": {
+    "valor": 0.127,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (jul-2024 a jun-2025)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2025-06-30",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001375365.json",
+    "nivel": "A"
+   },
+   "capex_ultimo_fy": {
+    "valor": 0.162,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (jul-2025 a jun-2026)",
+    "concepto": "Pagos por compra de propiedades y equipo (flujo de caja, bruto)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquirePropertyPlantAndEquipment, periodo terminado 2026-06-30",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001375365.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 0.637,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (jul-2024 a jun-2025)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-06-30",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001375365.json",
+    "nivel": "A"
+   },
+   "id_ultimo_fy": {
+    "valor": 0.771,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (jul-2025 a jun-2026)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2026-06-30",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001375365.json",
+    "nivel": "A"
+   },
+   "foco_ia": "Servidores y racks con refrigeración líquida para GPU de IA."
+  },
+  {
+   "nombre": "Qualcomm",
+   "ticker": "QCOM",
+   "pais_iso3": "USA",
+   "sector": "Semiconductores",
+   "capex_2025": {
+    "valor": 1.192,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (oct-2024 a sep-2025)",
+    "concepto": "Gastos de capital (flujo de caja)",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta PaymentsToAcquireProductiveAssets, periodo terminado 2025-09-28",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000804328.json",
+    "nivel": "A"
+   },
+   "id_2025": {
+    "valor": 9.042,
+    "unidad": "USD miles de millones",
+    "anio": "FY2025 (oct-2024 a sep-2025)",
+    "concepto": "Gasto en I+D",
+    "fuente": "SEC EDGAR XBRL (companyfacts), etiqueta ResearchAndDevelopmentExpense, periodo terminado 2025-09-28",
+    "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000804328.json",
+    "nivel": "A"
+   },
+   "market_cap": {
+    "valor": 187.4,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-11",
+    "fuente": "CompaniesMarketCap (ranking actualizado a diario; la página no muestra fecha, consultado 2026-10-11)",
+    "url": "https://companiesmarketcap.com/",
+    "nivel": "B"
+   },
+   "foco_ia": "Chips para IA en el dispositivo (teléfonos, PC, autos) y aceleradores para centros de datos."
+  }
+ ],
+ "series": {
+  "capex_trimestral": {
+   "AMZN": [
+    {
+     "periodo": "2023-Q1",
+     "valor": 14.207,
+     "fin_periodo": "2023-03-31"
+    },
+    {
+     "periodo": "2023-Q2",
+     "valor": 11.455,
+     "fin_periodo": "2023-06-30"
+    },
+    {
+     "periodo": "2023-Q3",
+     "valor": 12.479,
+     "fin_periodo": "2023-09-30"
+    },
+    {
+     "periodo": "2023-Q4",
+     "valor": 14.588,
+     "fin_periodo": "2023-12-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q1",
+     "valor": 14.925,
+     "fin_periodo": "2024-03-31"
+    },
+    {
+     "periodo": "2024-Q2",
+     "valor": 17.62,
+     "fin_periodo": "2024-06-30"
+    },
+    {
+     "periodo": "2024-Q3",
+     "valor": 22.62,
+     "fin_periodo": "2024-09-30"
+    },
+    {
+     "periodo": "2024-Q4",
+     "valor": 27.834,
+     "fin_periodo": "2024-12-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q1",
+     "valor": 25.019,
+     "fin_periodo": "2025-03-31"
+    },
+    {
+     "periodo": "2025-Q2",
+     "valor": 32.183,
+     "fin_periodo": "2025-06-30"
+    },
+    {
+     "periodo": "2025-Q3",
+     "valor": 35.095,
+     "fin_periodo": "2025-09-30"
+    },
+    {
+     "periodo": "2025-Q4",
+     "valor": 39.522,
+     "fin_periodo": "2025-12-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2026-Q1",
+     "valor": 44.203,
+     "fin_periodo": "2026-03-31"
+    },
+    {
+     "periodo": "2026-Q2",
+     "valor": 54.208,
+     "fin_periodo": "2026-06-30"
+    }
+   ],
+   "MSFT": [
+    {
+     "periodo": "2023-Q1",
+     "valor": 6.607,
+     "fin_periodo": "2023-03-31"
+    },
+    {
+     "periodo": "2023-Q2",
+     "valor": 8.943,
+     "fin_periodo": "2023-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2023-Q3",
+     "valor": 9.917,
+     "fin_periodo": "2023-09-30"
+    },
+    {
+     "periodo": "2023-Q4",
+     "valor": 9.735,
+     "fin_periodo": "2023-12-31"
+    },
+    {
+     "periodo": "2024-Q1",
+     "valor": 10.952,
+     "fin_periodo": "2024-03-31"
+    },
+    {
+     "periodo": "2024-Q2",
+     "valor": 13.873,
+     "fin_periodo": "2024-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q3",
+     "valor": 14.923,
+     "fin_periodo": "2024-09-30"
+    },
+    {
+     "periodo": "2024-Q4",
+     "valor": 15.804,
+     "fin_periodo": "2024-12-31"
+    },
+    {
+     "periodo": "2025-Q1",
+     "valor": 16.745,
+     "fin_periodo": "2025-03-31"
+    },
+    {
+     "periodo": "2025-Q2",
+     "valor": 17.079,
+     "fin_periodo": "2025-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q3",
+     "valor": 19.394,
+     "fin_periodo": "2025-09-30"
+    },
+    {
+     "periodo": "2025-Q4",
+     "valor": 29.876,
+     "fin_periodo": "2025-12-31"
+    },
+    {
+     "periodo": "2026-Q1",
+     "valor": 30.876,
+     "fin_periodo": "2026-03-31"
+    },
+    {
+     "periodo": "2026-Q2",
+     "valor": 35.802,
+     "fin_periodo": "2026-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    }
+   ],
+   "GOOGL": [
+    {
+     "periodo": "2023-Q1",
+     "valor": 6.289,
+     "fin_periodo": "2023-03-31"
+    },
+    {
+     "periodo": "2023-Q2",
+     "valor": 6.888,
+     "fin_periodo": "2023-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2023-Q3",
+     "valor": 8.055,
+     "fin_periodo": "2023-09-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2023-Q4",
+     "valor": 11.019,
+     "fin_periodo": "2023-12-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q1",
+     "valor": 12.012,
+     "fin_periodo": "2024-03-31"
+    },
+    {
+     "periodo": "2024-Q2",
+     "valor": 13.186,
+     "fin_periodo": "2024-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q3",
+     "valor": 13.061,
+     "fin_periodo": "2024-09-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q4",
+     "valor": 14.276,
+     "fin_periodo": "2024-12-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q1",
+     "valor": 17.197,
+     "fin_periodo": "2025-03-31"
+    },
+    {
+     "periodo": "2025-Q2",
+     "valor": 22.446,
+     "fin_periodo": "2025-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q3",
+     "valor": 23.953,
+     "fin_periodo": "2025-09-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q4",
+     "valor": 27.851,
+     "fin_periodo": "2025-12-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2026-Q1",
+     "valor": 35.674,
+     "fin_periodo": "2026-03-31"
+    },
+    {
+     "periodo": "2026-Q2",
+     "valor": 44.924,
+     "fin_periodo": "2026-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    }
+   ],
+   "META": [
+    {
+     "periodo": "2023-Q1",
+     "valor": 6.823,
+     "fin_periodo": "2023-03-31"
+    },
+    {
+     "periodo": "2023-Q2",
+     "valor": 6.134,
+     "fin_periodo": "2023-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2023-Q3",
+     "valor": 6.496,
+     "fin_periodo": "2023-09-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2023-Q4",
+     "valor": 7.592,
+     "fin_periodo": "2023-12-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q1",
+     "valor": 6.4,
+     "fin_periodo": "2024-03-31"
+    },
+    {
+     "periodo": "2024-Q2",
+     "valor": 8.173,
+     "fin_periodo": "2024-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q3",
+     "valor": 8.258,
+     "fin_periodo": "2024-09-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q4",
+     "valor": 14.425,
+     "fin_periodo": "2024-12-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q1",
+     "valor": 12.941,
+     "fin_periodo": "2025-03-31"
+    },
+    {
+     "periodo": "2025-Q2",
+     "valor": 16.538,
+     "fin_periodo": "2025-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q3",
+     "valor": 18.829,
+     "fin_periodo": "2025-09-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q4",
+     "valor": 21.383,
+     "fin_periodo": "2025-12-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2026-Q1",
+     "valor": 18.997,
+     "fin_periodo": "2026-03-31"
+    },
+    {
+     "periodo": "2026-Q2",
+     "valor": 30.116,
+     "fin_periodo": "2026-06-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    }
+   ],
+   "ORCL": [
+    {
+     "periodo": "2023-Q1",
+     "valor": 2.628,
+     "fin_periodo": "2023-02-28",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2023-Q2",
+     "valor": 1.913,
+     "fin_periodo": "2023-05-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2023-Q3",
+     "valor": 1.314,
+     "fin_periodo": "2023-08-31"
+    },
+    {
+     "periodo": "2023-Q4",
+     "valor": 1.08,
+     "fin_periodo": "2023-11-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q1",
+     "valor": 1.674,
+     "fin_periodo": "2024-02-29",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q2",
+     "valor": 2.798,
+     "fin_periodo": "2024-05-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2024-Q3",
+     "valor": 2.303,
+     "fin_periodo": "2024-08-31"
+    },
+    {
+     "periodo": "2024-Q4",
+     "valor": 3.97,
+     "fin_periodo": "2024-11-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q1",
+     "valor": 5.862,
+     "fin_periodo": "2025-02-28",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q2",
+     "valor": 9.08,
+     "fin_periodo": "2025-05-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2025-Q3",
+     "valor": 8.502,
+     "fin_periodo": "2025-08-31"
+    },
+    {
+     "periodo": "2025-Q4",
+     "valor": 12.033,
+     "fin_periodo": "2025-11-30",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2026-Q1",
+     "valor": 18.635,
+     "fin_periodo": "2026-02-28",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2026-Q2",
+     "valor": 16.493,
+     "fin_periodo": "2026-05-31",
+     "derivado": "diferencia de acumulados (YTD) reportados"
+    },
+    {
+     "periodo": "2026-Q3",
+     "valor": 28.499,
+     "fin_periodo": "2026-08-31"
+    }
+   ]
+  },
+  "capex_hiperescaladores_anual": [
+   {
+    "anio": 2019,
+    "valor": 69.057,
+    "valor_5_con_oracle": 70.648,
+    "estimado": false,
+    "desglose": {
+     "AMZN": 16.861,
+     "MSFT": 13.546,
+     "GOOGL": 23.548,
+     "META": 15.102,
+     "ORCL": 1.591
+    }
+   },
+   {
+    "anio": 2020,
+    "valor": 95.176,
+    "valor_5_con_oracle": 97.009,
+    "estimado": false,
+    "desglose": {
+     "AMZN": 40.14,
+     "MSFT": 17.592,
+     "GOOGL": 22.281,
+     "META": 15.163,
+     "ORCL": 1.833
+    }
+   },
+   {
+    "anio": 2021,
+    "valor": 127.599,
+    "valor_5_con_oracle": 130.717,
+    "estimado": false,
+    "desglose": {
+     "AMZN": 61.053,
+     "MSFT": 23.216,
+     "GOOGL": 24.64,
+     "META": 18.69,
+     "ORCL": 3.118
+    }
+   },
+   {
+    "anio": 2022,
+    "valor": 151.084,
+    "valor_5_con_oracle": 157.762,
+    "estimado": false,
+    "desglose": {
+     "AMZN": 63.645,
+     "MSFT": 24.768,
+     "GOOGL": 31.485,
+     "META": 31.186,
+     "ORCL": 6.678
+    }
+   },
+   {
+    "anio": 2023,
+    "valor": 147.227,
+    "valor_5_con_oracle": 154.162,
+    "estimado": false,
+    "desglose": {
+     "AMZN": 52.729,
+     "MSFT": 35.202,
+     "GOOGL": 32.251,
+     "META": 27.045,
+     "ORCL": 6.935
+    }
+   },
+   {
+    "anio": 2024,
+    "valor": 228.342,
+    "valor_5_con_oracle": 239.087,
+    "estimado": false,
+    "desglose": {
+     "AMZN": 82.999,
+     "MSFT": 55.552,
+     "GOOGL": 52.535,
+     "META": 37.256,
+     "ORCL": 10.745
+    }
+   },
+   {
+    "anio": 2025,
+    "valor": 376.051,
+    "valor_5_con_oracle": 411.528,
+    "estimado": false,
+    "desglose": {
+     "AMZN": 131.819,
+     "MSFT": 83.094,
+     "GOOGL": 91.447,
+     "META": 69.691,
+     "ORCL": 35.477
+    }
+   },
+   {
+    "anio": 2026,
+    "valor": 735,
+    "valor_min": 735,
+    "valor_max": 750,
+    "estimado": true,
+    "nota": "Suma de guías oficiales de Amazon, Alphabet, Meta y Microsoft a julio de 2026 según Platformonomics ('valor' = piso del rango). Base distinta a la serie histórica: las guías de Meta y Microsoft incluyen arrendamientos financieros. No incluye Oracle. BofA estima más de 860 para el año calendario 2026 (ver proyecciones).",
+    "fuente": "Platformonomics, 'Follow the CAPEX: Q2 2026 Scoreboard' (31-jul-2026), tabla de guías 2026",
+    "url": "https://platformonomics.com/2026/07/follow-the-capex-q2-2026-scoreboard/",
+    "real_primer_semestre_2026_caja": {
+     "valor_4": 294.8,
+     "desglose": {
+      "AMZN": 98.411,
+      "MSFT": 66.678,
+      "GOOGL": 80.598,
+      "META": 49.113,
+      "ORCL": 35.128
+     },
+     "nota": "Oracle: trimestres fiscales terminados en feb y may de 2026."
+    }
+   }
+  ],
+  "definicion": "Pagos en efectivo por compras de propiedades y equipo (estado de flujos de efectivo), en USD miles de millones. Excluye arrendamientos financieros, por lo que es menor que el 'capex' que citan Microsoft y Meta en sus llamadas (p. ej., Microsoft declaró ~41 en abr–jun 2026 frente a 35.8 en efectivo).",
+  "notas": [
+   "Trimestres en calendario según el mes en que termina el periodo.",
+   "Microsoft: año fiscal de julio a junio; su 4T fiscal 2026 (abr–jun 2026) aparece como 2026-Q2.",
+   "Oracle: año fiscal de junio a mayo; sus trimestres terminan en feb, may, ago y nov, y se asignan al trimestre calendario en que cierran (desfase de un mes). Por eso Oracle ya tiene 2026-Q3 (jun–ago 2026) y los demás llegan a 2026-Q2.",
+   "El 4T de cada año fiscal y los trimestres sin dato directo se obtienen restando acumulados reportados.",
+   "Serie anual: año calendario. 'valor' = Amazon + Microsoft + Alphabet + Meta; 'valor_5_con_oracle' añade Oracle. Capex TOTAL de cada empresa, no solo IA (Amazon incluye logística)."
+  ],
+  "fuente": "SEC EDGAR, API XBRL companyfacts (10-K y 10-Q de cada empresa); etiquetas PaymentsToAcquirePropertyPlantAndEquipment y, para Amazon, PaymentsToAcquireProductiveAssets",
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/",
+  "urls_por_empresa": {
+   "AMZN": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
+   "MSFT": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+   "GOOGL": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
+   "META": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
+   "ORCL": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json"
+  },
+  "nivel": "A"
+ },
+ "proyecciones": [
+  {
+   "concepto": "Capex 2026 de Amazon, Alphabet, Meta y Microsoft según sus guías oficiales (suma)",
+   "valor_min": 735,
+   "valor_max": 750,
+   "unidad": "USD miles de millones",
+   "horizonte": "2026",
+   "nota": "A enero de 2026 la suma era de más de 640.",
+   "fuente": "Platformonomics, 'Follow the CAPEX: Q2 2026 Scoreboard' (31-jul-2026), tabla de guías 2026",
+   "url": "https://platformonomics.com/2026/07/follow-the-capex-q2-2026-scoreboard/",
+   "nivel": "B"
+  },
+  {
+   "concepto": "Capex de los cuatro hiperescaladores de EE. UU. (Alphabet, Microsoft, Amazon, Meta), estimación de Bank of America",
+   "valor_min": 860,
+   "unidad": "USD miles de millones",
+   "horizonte": "2026",
+   "nota": "'Por encima de' 860 (~+80% interanual), con una trayectoria hacia 1.2 billones en 2027.",
+   "fuente": "investingLive (4-ago-2026), citando a BofA",
+   "url": "https://investinglive.com/stocks/if-you-think-ai-capex-is-insane-this-year-wait-until-2027-as-bofa-sees-a-nearly-50-rise/",
+   "nivel": "B"
+  },
+  {
+   "concepto": "Capex de los cuatro hiperescaladores de EE. UU., trayectoria según Bank of America",
+   "valor": 1200,
+   "unidad": "USD miles de millones",
+   "horizonte": "2027",
+   "fuente": "investingLive (4-ago-2026), citando a BofA",
+   "url": "https://investinglive.com/stocks/if-you-think-ai-capex-is-insane-this-year-wait-until-2027-as-bofa-sees-a-nearly-50-rise/",
+   "nivel": "B"
+  },
+  {
+   "concepto": "Capex de cinco plataformas (Meta, Amazon, Alphabet, Microsoft y SpaceX), previsión de Morgan Stanley",
+   "valor": 1200,
+   "unidad": "USD miles de millones",
+   "horizonte": "2027",
+   "nota": "Resumen de terceros de una nota de Brian Nowak (14-jul-2026); no es guía de las empresas.",
+   "fuente": "KuCoin News (resumen de la nota de Morgan Stanley)",
+   "url": "https://www.kucoin.com/news/flash/morgan-stanley-raises-ai-capital-expenditure-forecasts-for-meta-amazon-and-google",
+   "nivel": "C"
+  },
+  {
+   "concepto": "Capex de cinco plataformas (Meta, Amazon, Alphabet, Microsoft y SpaceX), previsión de Morgan Stanley",
+   "valor": 1400,
+   "unidad": "USD miles de millones",
+   "horizonte": "2028",
+   "nota": "Misma fuente y salvedad que la fila de 2027.",
+   "fuente": "KuCoin News (resumen de la nota de Morgan Stanley)",
+   "url": "https://www.kucoin.com/news/flash/morgan-stanley-raises-ai-capital-expenditure-forecasts-for-meta-amazon-and-google",
+   "nivel": "C"
+  },
+  {
+   "concepto": "Inversión acumulada necesaria en centros de datos en el mundo (McKinsey): total",
+   "valor": 6700,
+   "unidad": "USD miles de millones",
+   "horizonte": "2030",
+   "nota": "De ese total, 5,200 para centros de datos aptos para IA y 1,500 para TI tradicional. Es una necesidad de inversión bajo un escenario, no un pronóstico de gasto.",
+   "fuente": "DC Post MEA (6-may-2025), sobre el informe de McKinsey 'The cost of compute'",
+   "url": "https://www.dcpostmea.com/2025/05/ai-boom-drive-7-trillion-global-investment-data-centers",
+   "nivel": "B"
+  },
+  {
+   "concepto": "Inversión acumulada necesaria en centros de datos para IA (McKinsey)",
+   "valor": 5200,
+   "unidad": "USD miles de millones",
+   "horizonte": "2030",
+   "fuente": "DC Post MEA (6-may-2025), sobre el informe de McKinsey 'The cost of compute'",
+   "url": "https://www.dcpostmea.com/2025/05/ai-boom-drive-7-trillion-global-investment-data-centers",
+   "nivel": "B"
+  },
+  {
+   "concepto": "Gasto mundial en IA (Gartner; incluye infraestructura, software, servicios y dispositivos con IA)",
+   "valor": 2700,
+   "unidad": "USD miles de millones",
+   "horizonte": "2026",
+   "nota": "+49.5% interanual; previsión del 16-sep-2026 (antes 2,590 en mayo y 2,520 en enero). La nota de prensa de Gartner devolvió error 403 al abrirla: la cifra se tomó del titular y del resumen del buscador, sin poder leer la tabla por segmentos. Verificar antes de publicar.",
+   "fuente": "Gartner, nota de prensa del 16-sep-2026",
+   "url": "https://gartner.com/en/newsroom/press-releases/2026-09-16-gartner-forecasts-worldwide-ai-spending-to-grow-49-point-5-percent-in-2026",
+   "nivel": "C"
+  },
+  {
+   "concepto": "Gasto mundial en IA (IDC)",
+   "valor": 1300,
+   "unidad": "USD miles de millones",
+   "horizonte": "2029",
+   "nota": "Crecimiento anual compuesto de 31.9% entre 2025 y 2029; previsión de fines de agosto de 2025. Metodología distinta a la de Gartner: no comparables.",
+   "fuente": "The Next Platform (8-sep-2025), sobre la previsión de IDC",
+   "url": "https://www.nextplatform.com/2025/09/08/idc-makes-ebullient-ai-spending-forecast-out-to-2029",
+   "nivel": "B"
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1b33"/><stop offset="1" stop-color="#0d366b"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity=".16" stroke="#9ec5f4" stroke-width="1">
+    <path d="M0 500 H1200 M0 420 H1200 M0 340 H1200 M0 260 H1200"/>
+  </g>
+  <g>
+    <rect x="700" y="430" width="56" height="110" rx="6" fill="#256abf"/>
+    <rect x="776" y="390" width="56" height="150" rx="6" fill="#2a78d6"/>
+    <rect x="852" y="330" width="56" height="210" rx="6" fill="#3987e5"/>
+    <rect x="928" y="250" width="56" height="290" rx="6" fill="#6da7ec"/>
+    <rect x="1004" y="150" width="56" height="390" rx="6" fill="#9ec5f4"/>
+    <circle cx="1032" cy="112" r="14" fill="#eda100"/>
+  </g>
+  <text x="72" y="118" font-family="Inter,Helvetica,Arial,sans-serif" font-size="24" font-weight="600" fill="#9ec5f4" letter-spacing="4">IA TOP INVERSIONES · OCTUBRE 2026</text>
+  <text font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="76" fill="#ffffff">
+    <tspan x="72" y="240">¿Cuánto invierte</tspan>
+    <tspan x="72" y="330">el mundo en IA?</tspan>
+  </text>
+  <text font-family="Inter,Helvetica,Arial,sans-serif" font-size="30" fill="#cde2fb">
+    <tspan x="72" y="410">Países, empresas, fondos y universidades.</tspan>
+    <tspan x="72" y="452">Mapa interactivo, simulador y cada cifra con su fuente.</tspan>
+  </text>
+  <text x="72" y="560" font-family="Inter,Helvetica,Arial,sans-serif" font-size="24" fill="#9ec5f4">unimauro.github.io/ia-inversiones</text>
+</svg>

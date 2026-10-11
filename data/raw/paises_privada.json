@@ -1,0 +1,2373 @@
+{
+  "meta": {
+    "bloque": "inversion_privada_pais",
+    "consultado": "2026-10-11",
+    "fuentes_principales": [
+      {
+        "nombre": "Stanford HAI — AI Index Report 2026, Capítulo 4: Economy (PDF)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf"
+      },
+      {
+        "nombre": "AI Index Report 2026 — datos públicos del capítulo 4 (CSV por figura, Google Drive)",
+        "url": "https://drive.google.com/drive/folders/129Zbmsr5pRmmlG4Aceij6bG1EV_Anibn"
+      },
+      {
+        "nombre": "AI Index Report 2026 (página del informe)",
+        "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report"
+      },
+      {
+        "nombre": "OECD.AI — VC investments in AI by country (Preqin), actualización 2026-07-08",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country"
+      },
+      {
+        "nombre": "OECD.AI — nota metodológica Preqin",
+        "url": "https://oecd.ai/en/preqin"
+      },
+      {
+        "nombre": "Crunchbase News — Global Startup Investment Hit Record $510B In H1 2026 (2-jul-2026)",
+        "url": "https://news.crunchbase.com/venture/global-startup-exits-ipo-ma-soar-ai-q2-h1-2026/"
+      }
+    ],
+    "advertencias": [
+      "Hay DOS metodologías en este archivo y no son sumables ni comparables 1:1: (a) AI Index/Quid = inversión privada en empresas de IA con más de USD 1.5 M captados desde 2013; (b) OECD.AI/Preqin = capital de riesgo (VC) en empresas de IA. Cada cifra indica su fuente; el campo 'metodologia' de privada_ultimo_anio distingue ambos casos.",
+      "El AI Index 2026 solo publica el top 15 de países para inversión 2025 (Fig. 4.2.8), acumulado 2013-2025 (Fig. 4.2.12) y número de empresas (Figs. 4.2.9 y 4.2.13). Para el resto de países, privada_ultimo_anio usa OECD.AI/Preqin (VC). Para un ranking homogéneo de todos los países conviene usar el campo vc_ocde.",
+      "Totales globales 2025: AI Index/Quid USD 344.66 mil millones (inversión privada) vs OECD.AI/Preqin USD 276.48 mil millones (VC en IA).",
+      "Las cifras OECD.AI son las de la base viva al 2026-10-11 (última actualización declarada: 2026-07-08) y pueden diferir de las del policy brief de la OCDE de febrero de 2026, que no se pudo abrir (HTTP 403) y por eso no se cita.",
+      "Dato parcial 2026: solo existe en OECD.AI/Preqin (1T y 2T de 2026). El 1T-2026 está dominado por megarrondas; no anualizar ni extrapolar.",
+      "El AI Index advierte que la inversión privada subestima el gasto de China en IA porque no incluye los fondos guía gubernamentales.",
+      "Our World in Data republica la serie del AI Index en USD constantes de 2021; aquí se usan los valores nominales originales del informe.",
+      "Crunchbase (2-jul-2026) reporta USD 510 mil millones de financiamiento global de startups en H1 2026 (todas las industrias, no solo IA) y que más del 70% del capital del 2T fue a empresas de IA; se cita como contexto, no se usa en las series.",
+      "Se excluyeron de la lista de países las jurisdicciones Islas Caimán e Islas Vírgenes Británicas y los agregados (OCDE, UE27, GPAI) presentes en OECD.AI. Umbral de inclusión para países solo-OCDE: VC en IA 2025 ≥ USD 50 millones, más Perú y Argentina como referencia regional.",
+      "No se consultaron Dealroom, PitchBook ni CB Insights (datos tras muro de pago o sin tabla por país verificable)."
+    ]
+  },
+  "paises": [
+    {
+      "iso3": "USA",
+      "nombre_es": "Estados Unidos",
+      "privada_ultimo_anio": {
+        "valor": 285.88,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 757.27,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 1953,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 8909,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 202.518,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 407.409,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": ""
+    },
+    {
+      "iso3": "CHN",
+      "nombre_es": "China",
+      "privada_ultimo_anio": {
+        "valor": 12.41,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 131.83,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 161,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 1766,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 19.102,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 39.056,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "Discrepancia entre fuentes para 2025: AI Index/Quid 12.41 vs OECD.AI/Preqin 19.10 (USD miles de millones); se conserva AI Index como cifra principal."
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "privada_ultimo_anio": {
+        "valor": 5.9,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 34.07,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 172,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 1057,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 14.468,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 15.241,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "Discrepancia entre fuentes para 2025: AI Index/Quid 5.90 vs OECD.AI/Preqin 14.47 (USD miles de millones); se conserva AI Index como cifra principal."
+    },
+    {
+      "iso3": "FRA",
+      "nombre_es": "Francia",
+      "privada_ultimo_anio": {
+        "valor": 4.36,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 15.57,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 84,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 552,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 4.024,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 2.509,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": ""
+    },
+    {
+      "iso3": "CAN",
+      "nombre_es": "Canadá",
+      "privada_ultimo_anio": {
+        "valor": 4.28,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 19.59,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 79,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 560,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 3.247,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 2.426,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": ""
+    },
+    {
+      "iso3": "IND",
+      "nombre_es": "India",
+      "privada_ultimo_anio": {
+        "valor": 4.09,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 15.39,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 108,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 542,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 2.256,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 2.197,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "Discrepancia entre fuentes para 2025: AI Index/Quid 4.09 vs OECD.AI/Preqin 2.26 (USD miles de millones); se conserva AI Index como cifra principal."
+    },
+    {
+      "iso3": "DEU",
+      "nombre_es": "Alemania",
+      "privada_ultimo_anio": {
+        "valor": 3.89,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 17.16,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 92,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 486,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 4.33,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 5.65,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": ""
+    },
+    {
+      "iso3": "ISR",
+      "nombre_es": "Israel",
+      "privada_ultimo_anio": {
+        "valor": 3.58,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 18.54,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 64,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 556,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 3.763,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 1.994,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": ""
+    },
+    {
+      "iso3": "AUS",
+      "nombre_es": "Australia",
+      "privada_ultimo_anio": {
+        "valor": 2.52,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 6.5,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 38,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 216,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 1.823,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 1.607,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": ""
+    },
+    {
+      "iso3": "SAU",
+      "nombre_es": "Arabia Saudita",
+      "privada_ultimo_anio": {
+        "valor": 2.03,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "vc_ocde": {
+        "valor": 0.24,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.098,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "Discrepancia entre fuentes para 2025: AI Index/Quid 2.03 vs OECD.AI/Preqin 0.24 (USD miles de millones); se conserva AI Index como cifra principal. Sin dato de startups 2025: fuera del top 15 de la Figura 4.2.9."
+    },
+    {
+      "iso3": "SGP",
+      "nombre_es": "Singapur",
+      "privada_ultimo_anio": {
+        "valor": 1.82,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 9.09,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 49,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 288,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 1.819,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 6.306,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": ""
+    },
+    {
+      "iso3": "KOR",
+      "nombre_es": "Corea del Sur",
+      "privada_ultimo_anio": {
+        "valor": 1.78,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 10.75,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 59,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 329,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 2.165,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 1.982,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": ""
+    },
+    {
+      "iso3": "BEL",
+      "nombre_es": "Bélgica",
+      "privada_ultimo_anio": {
+        "valor": 1.2,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "vc_ocde": {
+        "valor": 0.265,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.231,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "Discrepancia entre fuentes para 2025: AI Index/Quid 1.20 vs OECD.AI/Preqin 0.27 (USD miles de millones); se conserva AI Index como cifra principal. Sin dato de startups 2025: fuera del top 15 de la Figura 4.2.9."
+    },
+    {
+      "iso3": "JPN",
+      "nombre_es": "Japón",
+      "privada_ultimo_anio": {
+        "valor": 1.11,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 7.0,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 56,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 444,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 1.793,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.666,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "Discrepancia entre fuentes para 2025: AI Index/Quid 1.11 vs OECD.AI/Preqin 1.79 (USD miles de millones); se conserva AI Index como cifra principal."
+    },
+    {
+      "iso3": "SWE",
+      "nombre_es": "Suecia",
+      "privada_ultimo_anio": {
+        "valor": 0.97,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.8",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A",
+        "metodologia": "Quid: inversión privada (VC/PE) en empresas de IA con más de USD 1.5 M captados desde 2013; USD nominales"
+      },
+      "privada_acumulada": {
+        "valor": 8.24,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 1.629,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 2.613,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "Discrepancia entre fuentes para 2025: AI Index/Quid 0.97 vs OECD.AI/Preqin 1.63 (USD miles de millones); se conserva AI Index como cifra principal. Sin dato de startups 2025: fuera del top 15 de la Figura 4.2.9."
+    },
+    {
+      "iso3": "CHE",
+      "nombre_es": "Suiza",
+      "privada_ultimo_anio": {
+        "valor": 1.621,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "privada_acumulada": {
+        "valor": 4.73,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas": {
+        "valor": 34,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 188,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 1.621,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.415,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid. Fuera del top 15 de inversión privada 2025 del AI Index; aparece en otros rankings del informe (acumulado y/o número de empresas)."
+    },
+    {
+      "iso3": "ARE",
+      "nombre_es": "Emiratos Árabes Unidos",
+      "privada_ultimo_anio": {
+        "valor": 0.79,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "privada_acumulada": {
+        "valor": 4.24,
+        "unidad": "USD miles de millones",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.12",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 0.79,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.723,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid. Fuera del top 15 de inversión privada 2025 del AI Index; aparece en otros rankings del informe (acumulado y/o número de empresas)."
+    },
+    {
+      "iso3": "ITA",
+      "nombre_es": "Italia",
+      "privada_ultimo_anio": {
+        "valor": 0.891,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "startups_financiadas": {
+        "valor": 38,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 0.891,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.323,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid. Fuera del top 15 de inversión privada 2025 del AI Index; aparece en otros rankings del informe (acumulado y/o número de empresas)."
+    },
+    {
+      "iso3": "ESP",
+      "nombre_es": "España",
+      "privada_ultimo_anio": {
+        "valor": 1.158,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "startups_financiadas": {
+        "valor": 33,
+        "unidad": "empresas de IA recién financiadas",
+        "anio": 2025,
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.9",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 150,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 1.158,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 1.434,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid. Fuera del top 15 de inversión privada 2025 del AI Index; aparece en otros rankings del informe (acumulado y/o número de empresas)."
+    },
+    {
+      "iso3": "NLD",
+      "nombre_es": "Países Bajos",
+      "privada_ultimo_anio": {
+        "valor": 1.682,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "startups_financiadas_acumulado": {
+        "valor": 141,
+        "unidad": "empresas de IA recién financiadas",
+        "periodo": "2013-2025",
+        "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 Economía (datos Quid), Figura 4.2.13",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+        "nivel": "A"
+      },
+      "vc_ocde": {
+        "valor": 1.682,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 1.078,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid. Fuera del top 15 de inversión privada 2025 del AI Index; aparece en otros rankings del informe (acumulado y/o número de empresas)."
+    },
+    {
+      "iso3": "FIN",
+      "nombre_es": "Finlandia",
+      "privada_ultimo_anio": {
+        "valor": 1.647,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 1.647,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.351,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "BRA",
+      "nombre_es": "Brasil",
+      "privada_ultimo_anio": {
+        "valor": 0.868,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.868,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.369,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "PRT",
+      "nombre_es": "Portugal",
+      "privada_ultimo_anio": {
+        "valor": 0.695,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.695,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.072,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "MEX",
+      "nombre_es": "México",
+      "privada_ultimo_anio": {
+        "valor": 0.606,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.606,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.721,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "DNK",
+      "nombre_es": "Dinamarca",
+      "privada_ultimo_anio": {
+        "valor": 0.448,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.448,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.067,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "IRL",
+      "nombre_es": "Irlanda",
+      "privada_ultimo_anio": {
+        "valor": 0.426,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.426,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.345,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "NOR",
+      "nombre_es": "Noruega",
+      "privada_ultimo_anio": {
+        "valor": 0.197,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.197,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.149,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "EST",
+      "nombre_es": "Estonia",
+      "privada_ultimo_anio": {
+        "valor": 0.192,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.192,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.09,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "AUT",
+      "nombre_es": "Austria",
+      "privada_ultimo_anio": {
+        "valor": 0.159,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.159,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.092,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "NZL",
+      "nombre_es": "Nueva Zelanda",
+      "privada_ultimo_anio": {
+        "valor": 0.136,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.136,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.329,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "ZAF",
+      "nombre_es": "Sudáfrica",
+      "privada_ultimo_anio": {
+        "valor": 0.122,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.122,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.01,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "TWN",
+      "nombre_es": "Taiwán",
+      "privada_ultimo_anio": {
+        "valor": 0.096,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.096,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.0,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "EGY",
+      "nombre_es": "Egipto",
+      "privada_ultimo_anio": {
+        "valor": 0.078,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.078,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.008,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "ROU",
+      "nombre_es": "Rumania",
+      "privada_ultimo_anio": {
+        "valor": 0.077,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.077,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.009,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "POL",
+      "nombre_es": "Polonia",
+      "privada_ultimo_anio": {
+        "valor": 0.073,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.073,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.084,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "TUR",
+      "nombre_es": "Turquía",
+      "privada_ultimo_anio": {
+        "valor": 0.072,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.072,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.016,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "CHL",
+      "nombre_es": "Chile",
+      "privada_ultimo_anio": {
+        "valor": 0.066,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.066,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.02,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "LTU",
+      "nombre_es": "Lituania",
+      "privada_ultimo_anio": {
+        "valor": 0.06,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.06,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.017,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "COL",
+      "nombre_es": "Colombia",
+      "privada_ultimo_anio": {
+        "valor": 0.053,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.053,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.035,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid."
+    },
+    {
+      "iso3": "PER",
+      "nombre_es": "Perú",
+      "notas": "Sin inversión de VC en IA registrada en OECD.AI/Preqin para 2024-2026; últimos registros (USD millones): 2018: 2, 2019: 5, 2020: 20, 2021: 74, 2022: 4, 2023: 1. No aparece en el AI Index."
+    },
+    {
+      "iso3": "ARG",
+      "nombre_es": "Argentina",
+      "privada_ultimo_anio": {
+        "valor": 0.017,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A",
+        "metodologia": "Preqin/OCDE: capital de riesgo (VC) en empresas de IA; NO comparable 1:1 con las cifras Quid del AI Index"
+      },
+      "vc_ocde": {
+        "valor": 0.017,
+        "unidad": "USD miles de millones",
+        "anio": 2025,
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "vc_ocde_2026_parcial": {
+        "valor": 0.006,
+        "unidad": "USD miles de millones",
+        "periodo": "2026 parcial (datos hasta 2T-2026)",
+        "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+        "nivel": "A"
+      },
+      "notas": "No figura en el top 15 del AI Index 2026 (Fig. 4.2.8); la cifra es capital de riesgo en IA según OECD.AI (Preqin), metodología distinta a la de Quid. Incluido como referencia regional; cifra pequeña según OECD.AI/Preqin."
+    }
+  ],
+  "series": {
+    "global": [
+      {
+        "anio": 2013,
+        "valor": 5.17
+      },
+      {
+        "anio": 2014,
+        "valor": 9.56
+      },
+      {
+        "anio": 2015,
+        "valor": 13.35
+      },
+      {
+        "anio": 2016,
+        "valor": 17.13
+      },
+      {
+        "anio": 2017,
+        "valor": 25.72
+      },
+      {
+        "anio": 2018,
+        "valor": 43.1
+      },
+      {
+        "anio": 2019,
+        "valor": 58.18
+      },
+      {
+        "anio": 2020,
+        "valor": 73.79
+      },
+      {
+        "anio": 2021,
+        "valor": 145.4
+      },
+      {
+        "anio": 2022,
+        "valor": 113.01
+      },
+      {
+        "anio": 2023,
+        "valor": 104.34
+      },
+      {
+        "anio": 2024,
+        "valor": 151.48
+      },
+      {
+        "anio": 2025,
+        "valor": 344.66
+      }
+    ],
+    "USA": [
+      {
+        "anio": 2013,
+        "valor": 3.62
+      },
+      {
+        "anio": 2014,
+        "valor": 6.96
+      },
+      {
+        "anio": 2015,
+        "valor": 9.3
+      },
+      {
+        "anio": 2016,
+        "valor": 10.15
+      },
+      {
+        "anio": 2017,
+        "valor": 14.07
+      },
+      {
+        "anio": 2018,
+        "valor": 21.05
+      },
+      {
+        "anio": 2019,
+        "valor": 32.07
+      },
+      {
+        "anio": 2020,
+        "valor": 44.22
+      },
+      {
+        "anio": 2021,
+        "valor": 86.86
+      },
+      {
+        "anio": 2022,
+        "valor": 61.19
+      },
+      {
+        "anio": 2023,
+        "valor": 72.36
+      },
+      {
+        "anio": 2024,
+        "valor": 109.55
+      },
+      {
+        "anio": 2025,
+        "valor": 285.88
+      }
+    ],
+    "CHN": [
+      {
+        "anio": 2013,
+        "valor": 0.62
+      },
+      {
+        "anio": 2014,
+        "valor": 0.67
+      },
+      {
+        "anio": 2015,
+        "valor": 2.09
+      },
+      {
+        "anio": 2016,
+        "valor": 4.52
+      },
+      {
+        "anio": 2017,
+        "valor": 6.62
+      },
+      {
+        "anio": 2018,
+        "valor": 13.97
+      },
+      {
+        "anio": 2019,
+        "valor": 14.05
+      },
+      {
+        "anio": 2020,
+        "valor": 17.07
+      },
+      {
+        "anio": 2021,
+        "valor": 25.89
+      },
+      {
+        "anio": 2022,
+        "valor": 15.07
+      },
+      {
+        "anio": 2023,
+        "valor": 9.47
+      },
+      {
+        "anio": 2024,
+        "valor": 9.39
+      },
+      {
+        "anio": 2025,
+        "valor": 12.41
+      }
+    ],
+    "EUR_UK": [
+      {
+        "anio": 2013,
+        "valor": 0.66
+      },
+      {
+        "anio": 2014,
+        "valor": 1.3
+      },
+      {
+        "anio": 2015,
+        "valor": 0.85
+      },
+      {
+        "anio": 2016,
+        "valor": 1.23
+      },
+      {
+        "anio": 2017,
+        "valor": 2.59
+      },
+      {
+        "anio": 2018,
+        "valor": 3.0
+      },
+      {
+        "anio": 2019,
+        "valor": 6.34
+      },
+      {
+        "anio": 2020,
+        "valor": 6.2
+      },
+      {
+        "anio": 2021,
+        "valor": 14.65
+      },
+      {
+        "anio": 2022,
+        "valor": 14.79
+      },
+      {
+        "anio": 2023,
+        "valor": 12.14
+      },
+      {
+        "anio": 2024,
+        "valor": 19.52
+      },
+      {
+        "anio": 2025,
+        "valor": 20.92
+      }
+    ],
+    "genai_global": [
+      {
+        "anio": 2019,
+        "valor": 0.84
+      },
+      {
+        "anio": 2020,
+        "valor": 2.37
+      },
+      {
+        "anio": 2021,
+        "valor": 5.32
+      },
+      {
+        "anio": 2022,
+        "valor": 3.98
+      },
+      {
+        "anio": 2023,
+        "valor": 28.6
+      },
+      {
+        "anio": 2024,
+        "valor": 50.63
+      },
+      {
+        "anio": 2025,
+        "valor": 170.87
+      }
+    ],
+    "genai_USA": [
+      {
+        "anio": 2019,
+        "valor": 0.59
+      },
+      {
+        "anio": 2020,
+        "valor": 2.29
+      },
+      {
+        "anio": 2021,
+        "valor": 4.26
+      },
+      {
+        "anio": 2022,
+        "valor": 3.0
+      },
+      {
+        "anio": 2023,
+        "valor": 24.43
+      },
+      {
+        "anio": 2024,
+        "valor": 41.75
+      },
+      {
+        "anio": 2025,
+        "valor": 163.64
+      }
+    ],
+    "genai_CHN": [
+      {
+        "anio": 2021,
+        "valor": 0.71
+      },
+      {
+        "anio": 2022,
+        "valor": 0.0
+      },
+      {
+        "anio": 2023,
+        "valor": 1.15
+      },
+      {
+        "anio": 2024,
+        "valor": 3.49
+      },
+      {
+        "anio": 2025,
+        "valor": 1.48
+      }
+    ],
+    "genai_EUR": [
+      {
+        "anio": 2019,
+        "valor": 0.06
+      },
+      {
+        "anio": 2020,
+        "valor": 0.02
+      },
+      {
+        "anio": 2021,
+        "valor": 0.2
+      },
+      {
+        "anio": 2022,
+        "valor": 0.58
+      },
+      {
+        "anio": 2023,
+        "valor": 1.51
+      },
+      {
+        "anio": 2024,
+        "valor": 3.56
+      },
+      {
+        "anio": 2025,
+        "valor": 3.21
+      }
+    ],
+    "startups_global": [
+      {
+        "anio": 2013,
+        "valor": 495
+      },
+      {
+        "anio": 2014,
+        "valor": 568
+      },
+      {
+        "anio": 2015,
+        "valor": 572
+      },
+      {
+        "anio": 2016,
+        "valor": 712
+      },
+      {
+        "anio": 2017,
+        "valor": 983
+      },
+      {
+        "anio": 2018,
+        "valor": 1234
+      },
+      {
+        "anio": 2019,
+        "valor": 1198
+      },
+      {
+        "anio": 2020,
+        "valor": 1406
+      },
+      {
+        "anio": 2021,
+        "valor": 1876
+      },
+      {
+        "anio": 2022,
+        "valor": 1601
+      },
+      {
+        "anio": 2023,
+        "valor": 1891
+      },
+      {
+        "anio": 2024,
+        "valor": 2049
+      },
+      {
+        "anio": 2025,
+        "valor": 3499
+      }
+    ],
+    "unidad": "USD miles de millones (nominales)",
+    "fuente": "Stanford HAI, AI Index Report 2026, cap. 4 (Quid): Figuras 4.2.2, 4.2.3, 4.2.4, 4.2.10 y 4.2.11; valores tomados de los CSV públicos del informe",
+    "url": "https://drive.google.com/drive/folders/129Zbmsr5pRmmlG4Aceij6bG1EV_Anibn",
+    "nivel": "A",
+    "notas": "Serie disponible 2013-2025 (se entrega completa; el pedido era 2015→2025). EUR_UK corresponde a la categoría 'Europe' del AI Index 2026; el capítulo no detalla la lista de países incluidos. El AI Index no publica dato parcial de 2026.",
+    "ocde_vc": {
+      "descripcion": "Serie alternativa: capital de riesgo (VC) en empresas de IA, OECD.AI con datos Preqin. Metodología distinta a Quid; no mezclar con las series anteriores.",
+      "unidad": "USD miles de millones",
+      "fuente": "OECD.AI, VC investments in AI by country (datos Preqin, actualización 2026-07-08)",
+      "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=vc-investments-in-ai-by-country",
+      "nivel": "A",
+      "global": [
+        {
+          "anio": 2012,
+          "valor": 8.5
+        },
+        {
+          "anio": 2013,
+          "valor": 11.112
+        },
+        {
+          "anio": 2014,
+          "valor": 27.684
+        },
+        {
+          "anio": 2015,
+          "valor": 45.1
+        },
+        {
+          "anio": 2016,
+          "valor": 46.639
+        },
+        {
+          "anio": 2017,
+          "valor": 76.599
+        },
+        {
+          "anio": 2018,
+          "valor": 104.118
+        },
+        {
+          "anio": 2019,
+          "valor": 104.582
+        },
+        {
+          "anio": 2020,
+          "valor": 127.467
+        },
+        {
+          "anio": 2021,
+          "valor": 270.499
+        },
+        {
+          "anio": 2022,
+          "valor": 172.679
+        },
+        {
+          "anio": 2023,
+          "valor": 127.501
+        },
+        {
+          "anio": 2024,
+          "valor": 161.876
+        },
+        {
+          "anio": 2025,
+          "valor": 276.483
+        }
+      ],
+      "USA": [
+        {
+          "anio": 2012,
+          "valor": 6.711
+        },
+        {
+          "anio": 2013,
+          "valor": 8.798
+        },
+        {
+          "anio": 2014,
+          "valor": 21.683
+        },
+        {
+          "anio": 2015,
+          "valor": 29.126
+        },
+        {
+          "anio": 2016,
+          "valor": 21.13
+        },
+        {
+          "anio": 2017,
+          "valor": 33.024
+        },
+        {
+          "anio": 2018,
+          "valor": 50.048
+        },
+        {
+          "anio": 2019,
+          "valor": 55.981
+        },
+        {
+          "anio": 2020,
+          "valor": 69.542
+        },
+        {
+          "anio": 2021,
+          "valor": 149.501
+        },
+        {
+          "anio": 2022,
+          "valor": 84.544
+        },
+        {
+          "anio": 2023,
+          "valor": 73.7
+        },
+        {
+          "anio": 2024,
+          "valor": 106.165
+        },
+        {
+          "anio": 2025,
+          "valor": 202.518
+        }
+      ],
+      "CHN": [
+        {
+          "anio": 2012,
+          "valor": 0.224
+        },
+        {
+          "anio": 2013,
+          "valor": 0.591
+        },
+        {
+          "anio": 2014,
+          "valor": 3.082
+        },
+        {
+          "anio": 2015,
+          "valor": 11.318
+        },
+        {
+          "anio": 2016,
+          "valor": 20.029
+        },
+        {
+          "anio": 2017,
+          "valor": 34.066
+        },
+        {
+          "anio": 2018,
+          "valor": 39.394
+        },
+        {
+          "anio": 2019,
+          "valor": 26.505
+        },
+        {
+          "anio": 2020,
+          "valor": 33.817
+        },
+        {
+          "anio": 2021,
+          "valor": 52.775
+        },
+        {
+          "anio": 2022,
+          "valor": 26.097
+        },
+        {
+          "anio": 2023,
+          "valor": 21.471
+        },
+        {
+          "anio": 2024,
+          "valor": 18.14
+        },
+        {
+          "anio": 2025,
+          "valor": 19.102
+        }
+      ],
+      "EU27": [
+        {
+          "anio": 2012,
+          "valor": 0.25
+        },
+        {
+          "anio": 2013,
+          "valor": 0.427
+        },
+        {
+          "anio": 2014,
+          "valor": 0.956
+        },
+        {
+          "anio": 2015,
+          "valor": 1.453
+        },
+        {
+          "anio": 2016,
+          "valor": 1.253
+        },
+        {
+          "anio": 2017,
+          "valor": 2.103
+        },
+        {
+          "anio": 2018,
+          "valor": 3.568
+        },
+        {
+          "anio": 2019,
+          "valor": 6.095
+        },
+        {
+          "anio": 2020,
+          "valor": 6.554
+        },
+        {
+          "anio": 2021,
+          "valor": 18.011
+        },
+        {
+          "anio": 2022,
+          "valor": 21.004
+        },
+        {
+          "anio": 2023,
+          "valor": 10.653
+        },
+        {
+          "anio": 2024,
+          "valor": 11.881
+        },
+        {
+          "anio": 2025,
+          "valor": 17.977
+        }
+      ],
+      "GBR": [
+        {
+          "anio": 2012,
+          "valor": 0.255
+        },
+        {
+          "anio": 2013,
+          "valor": 0.282
+        },
+        {
+          "anio": 2014,
+          "valor": 0.346
+        },
+        {
+          "anio": 2015,
+          "valor": 0.907
+        },
+        {
+          "anio": 2016,
+          "valor": 0.979
+        },
+        {
+          "anio": 2017,
+          "valor": 2.141
+        },
+        {
+          "anio": 2018,
+          "valor": 2.407
+        },
+        {
+          "anio": 2019,
+          "valor": 3.953
+        },
+        {
+          "anio": 2020,
+          "valor": 3.435
+        },
+        {
+          "anio": 2021,
+          "valor": 9.734
+        },
+        {
+          "anio": 2022,
+          "valor": 8.789
+        },
+        {
+          "anio": 2023,
+          "valor": 4.294
+        },
+        {
+          "anio": 2024,
+          "valor": 5.609
+        },
+        {
+          "anio": 2025,
+          "valor": 14.468
+        }
+      ],
+      "parcial_2026": {
+        "periodo": "1T-2026 a 2T-2026 (H1)",
+        "global": 498.152,
+        "USA": 407.409,
+        "CHN": 39.056,
+        "EU27": 15.096,
+        "GBR": 15.241,
+        "global_trimestral": [
+          {
+            "trimestre": "1T2025",
+            "vc_ia": 50.22,
+            "vc_total": 92.418
+          },
+          {
+            "trimestre": "2T2025",
+            "vc_ia": 53.989,
+            "vc_total": 91.666
+          },
+          {
+            "trimestre": "3T2025",
+            "vc_ia": 67.377,
+            "vc_total": 111.801
+          },
+          {
+            "trimestre": "4T2025",
+            "vc_ia": 104.897,
+            "vc_total": 152.205
+          },
+          {
+            "trimestre": "1T2026",
+            "vc_ia": 253.534,
+            "vc_total": 296.361
+          },
+          {
+            "trimestre": "2T2026",
+            "vc_ia": 244.618,
+            "vc_total": 286.441
+          }
+        ],
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=worldwide-vc-investments-in-ai"
+      },
+      "genai_global": [
+        {
+          "anio": 2019,
+          "valor": 2.876
+        },
+        {
+          "anio": 2020,
+          "valor": 2.253
+        },
+        {
+          "anio": 2021,
+          "valor": 6.929
+        },
+        {
+          "anio": 2022,
+          "valor": 2.898
+        },
+        {
+          "anio": 2023,
+          "valor": 15.613
+        },
+        {
+          "anio": 2024,
+          "valor": 26.145
+        },
+        {
+          "anio": 2025,
+          "valor": 58.949
+        }
+      ],
+      "genai_global_parcial_2026": {
+        "periodo": "1T-2026 a 2T-2026 (H1)",
+        "valor": 149.819,
+        "url": "https://oecd.ai/en/data?selectedArea=investments-in-ai-and-data&selectedVisualization=worldwide-vc-investments-in-generative-ai"
+      }
+    }
+  }
+}

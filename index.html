@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA Top Inversiones · ¿Cuánto invierte el mundo en IA? (oct. 2026)</title>
+<meta name="description" content="Informe interactivo sobre la inversión mundial en inteligencia artificial: gasto público y privado por país, capex e I+D de las grandes empresas, laboratorios y startups, megaproyectos de cómputo y ranking de universidades. Datos con fuente, actualizados al 11 de octubre de 2026.">
+<link rel="canonical" href="https://unimauro.github.io/ia-inversiones/">
+<meta name="theme-color" content="#2a78d6">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<meta property="og:title" content="IA Top Inversiones · ¿Cuánto invierte el mundo en IA?">
+<meta property="og:description" content="Mapa mundial interactivo, rankings de países, empresas y universidades. Cada cifra con su fuente. Corte: 11 de octubre de 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unimauro.github.io/ia-inversiones/">
+<meta property="og:site_name" content="IA Top Inversiones · ¿Cuánto invierte el mundo en IA?">
+<meta property="og:locale" content="es_PE">
+<meta property="og:image" content="https://unimauro.github.io/ia-inversiones/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="¿Cuánto invierte el mundo en IA? Países, empresas y universidades.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IA Top Inversiones · ¿Cuánto invierte el mundo en IA?">
+<meta name="twitter:description" content="Mapa mundial interactivo, rankings de países, empresas y universidades. Cada cifra con su fuente.">
+<meta name="twitter:image" content="https://unimauro.github.io/ia-inversiones/assets/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="dot"></span> IA Top Inversiones</a>
+    <nav>
+      <a href="#mapa">Mapa</a>
+      <a href="#paises">Países</a>
+      <a href="#empresas">Empresas</a>
+      <a href="#labs">Labs y startups</a>
+      <a href="#dinero">Quién financia</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#cadena">Energía y chips</a>
+      <a href="#simulador">Simulador</a>
+      <a href="#universidades">Universidades</a>
+      <a href="#latam">LATAM y Perú</a>
+      <a href="#faq">FAQ</a>
+      <a href="#fuentes">Fuentes</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema">◐</button>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <p class="kicker">Informe interactivo · corte al 11 de octubre de 2026</p>
+    <h1>¿Cuánto invierte el mundo en inteligencia artificial?</h1>
+    <p class="lead">Quién pone el dinero, dónde y en qué: países, empresas, laboratorios y universidades. Cada cifra lleva su fuente y un nivel de confianza; lo que no se pudo verificar, no aparece.</p>
+    <div class="kpis" id="kpis"></div>
+  </div>
+</div>
+
+<section id="mapa">
+  <div class="wrap">
+    <h2>El mapa mundial de la IA</h2>
+    <p class="sub">Elige un indicador para colorear el mapa y haz clic en un país para ver su ficha. Los puntos marcan megaproyectos de cómputo y universidades líderes.</p>
+    <div class="filters" id="mapFilters">
+      <div class="seg" id="mapLayers" role="tablist" aria-label="Indicador del mapa"></div>
+      <label class="chk"><input type="checkbox" id="ptProy" checked> <span class="sw sw-proy"></span> Megaproyectos</label>
+      <label class="chk"><input type="checkbox" id="ptUni"> <span class="sw sw-uni"></span> Universidades top</label>
+      <label class="chk"><input type="checkbox" id="ptHub"> <span class="sw sw-hub"></span> Dónde se levanta capital</label>
+      <label class="chk"><input type="checkbox" id="ptFab"> <span class="sw sw-fab"></span> Fábricas de chips</label>
+    </div>
+    <div class="map-grid">
+      <div class="card map-card">
+        <div id="mapChart" class="chart map" role="img" aria-label="Mapa mundial coloreado por el indicador elegido"></div>
+        <p class="note" id="mapNote"></p>
+      </div>
+      <aside class="card ficha" id="ficha" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+
+<section id="paises" class="alt">
+  <div class="wrap">
+    <h2>Países: quién invierte más</h2>
+    <p class="sub">La inversión privada mide capital de riesgo y rondas en empresas de IA; el gasto público, presupuestos y compromisos de los gobiernos. No son sumables entre sí.</p>
+    <div class="filters">
+      <div class="seg" id="bloques" role="tablist" aria-label="Bloque de países"></div>
+    </div>
+    <p class="note top" id="nBloque"></p>
+    <div class="card">
+      <h3>Los bloques, comparados</h3>
+      <div id="cBloques" class="chart"></div>
+      <p class="note" id="nBloques"></p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3 id="tPrivRank">Inversión privada en IA por país</h3>
+        <div id="cPrivRank" class="chart tall"></div>
+        <p class="note" id="nPrivRank"></p>
+      </div>
+      <div class="card">
+        <h3>Inversión privada en IA: evolución</h3>
+        <div id="cPrivSerie" class="chart tall"></div>
+        <p class="note" id="nPrivSerie"></p>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Presupuesto público anual en IA</h3>
+        <div id="cPubRank" class="chart tall"></div>
+        <p class="note" id="nPubRank"></p>
+      </div>
+      <div class="card">
+        <h3>Compromisos y fondos anunciados por gobiernos</h3>
+        <p class="note top">Montos plurianuales, fondos soberanos e infraestructura: son anuncios, no gasto ejecutado.</p>
+        <div class="tablewrap short" id="tCompromisos"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Tabla de países</h3>
+      <div class="filters"><input type="search" id="qPais" placeholder="Buscar país…" aria-label="Buscar país"></div>
+      <div class="tablewrap" id="tPaises"></div>
+    </div>
+  </div>
+</section>
+
+<section id="empresas">
+  <div class="wrap">
+    <h2>Empresas: la carrera del capex</h2>
+    <p class="sub">Inversión de capital (capex) e I+D de las grandes tecnológicas. Ojo: son montos totales de cada empresa, no solo de IA, aunque la IA explica la mayor parte del aumento reciente.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>Capex trimestral de los hiperescaladores</h3>
+        <div id="cCapexQ" class="chart tall"></div>
+        <p class="note" id="nCapexQ"></p>
+      </div>
+      <div class="card">
+        <h3>Capex anual agregado</h3>
+        <div id="cCapexA" class="chart tall"></div>
+        <p class="note" id="nCapexA"></p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Ranking de empresas cotizadas</h3>
+      <div class="filters">
+        <input type="search" id="qEmp" placeholder="Buscar empresa…" aria-label="Buscar empresa">
+        <select id="fEmpPais" aria-label="País"></select>
+      </div>
+      <div class="tablewrap" id="tEmpresas"></div>
+    </div>
+    <div class="card" id="cardProy">
+      <h3>Proyecciones de gasto mundial</h3>
+      <div class="tablewrap short" id="tProyecciones"></div>
+    </div>
+  </div>
+</section>
+
+<section id="labs" class="alt">
+  <div class="wrap">
+    <h2>Laboratorios y startups</h2>
+    <p class="sub">Las empresas de IA más valiosas y financiadas del mundo. Las valoraciones son de la última ronda reportada.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>Valoración más reciente</h3>
+        <div id="cValor" class="chart tall"></div>
+        <p class="note" id="nValor"></p>
+      </div>
+      <div class="card">
+        <h3>Capital de riesgo destinado a IA, por trimestre</h3>
+        <div id="cVC" class="chart tall"></div>
+        <p class="note" id="nVC"></p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Ranking de laboratorios y startups</h3>
+      <div class="filters">
+        <input type="search" id="qLab" placeholder="Buscar empresa…" aria-label="Buscar laboratorio o startup">
+        <select id="fLabPais" aria-label="País"></select>
+      </div>
+      <div class="tablewrap" id="tLabs"></div>
+    </div>
+    <div class="card">
+      <h3>Las rondas más grandes</h3>
+      <div class="tablewrap short" id="tRondas"></div>
+    </div>
+  </div>
+</section>
+
+<section id="dinero">
+  <div class="wrap">
+    <h2>Quién pone el dinero</h2>
+    <p class="sub">Detrás de cada ronda hay tres tipos de bolsillo: fondos de riesgo y gestoras, fondos soberanos, y las propias tecnológicas que financian a los laboratorios. Y un puñado de personas que deciden sobre buena parte de ese capital.</p>
+    <div class="card">
+      <h3>Fondos, gestoras y soberanos</h3>
+      <div class="filters">
+        <input type="search" id="qFondo" placeholder="Buscar fondo o participada…" aria-label="Buscar fondo">
+        <select id="fFondoTipo" aria-label="Tipo de inversor"></select>
+        <select id="fFondoPais" aria-label="País"></select>
+      </div>
+      <div class="tablewrap" id="tFondos"></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Tecnológicas que financian laboratorios</h3>
+        <div id="cCorp" class="chart tall"></div>
+        <p class="note" id="nCorp"></p>
+      </div>
+      <div class="card">
+        <h3>Detalle de participaciones corporativas</h3>
+        <div class="tablewrap short" id="tCorp"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Las personas detrás del capital</h3>
+      <p class="note top">Patrimonio estimado por Forbes o Bloomberg en la fecha indicada; cambia a diario con la bolsa. Las apuestas son las reportadas públicamente.</p>
+      <div class="filters">
+        <input type="search" id="qPers" placeholder="Buscar persona…" aria-label="Buscar persona">
+        <select id="fPersPais" aria-label="País"></select>
+      </div>
+      <div class="tablewrap" id="tPersonas"></div>
+    </div>
+    <div class="card" id="cardFlujos">
+      <h3>Flujos agregados</h3>
+      <div class="tablewrap short" id="tFlujos"></div>
+    </div>
+  </div>
+</section>
+
+<section id="noticias" class="alt">
+  <div class="wrap">
+    <h2>Quién está levantando capital ahora</h2>
+    <p class="sub">Rondas, deuda, salidas a bolsa y compras de 2026, las más recientes primero. Dos familias: la infraestructura que sostiene a la IA (cómputo, chips, energía, datos) y los servicios que se construyen encima.</p>
+    <div class="card">
+      <div class="filters">
+        <div class="seg" id="segNoti" role="tablist" aria-label="Familia"></div>
+        <input type="search" id="qNoti" placeholder="Buscar empresa, inversor, ciudad…" aria-label="Buscar noticia">
+      </div>
+      <div class="feed" id="feed"></div>
+      <p class="note" id="nFeed"></p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Dónde se levanta el capital</h3>
+        <div id="cHubs" class="chart tall"></div>
+        <p class="note" id="nHubs"></p>
+      </div>
+      <div class="card">
+        <h3>Con qué instrumento y en qué bolsa</h3>
+        <div class="tablewrap short" id="tInstr"></div>
+        <div class="tablewrap short" id="tBolsas" style="margin-top:12px"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>¿Hay rentabilidad?</h3>
+      <p class="note top">Ingresos, margen y resultado reportados. Un resultado negativo es pérdida o quema de caja en el periodo indicado.</p>
+      <div class="tablewrap" id="tRent"></div>
+    </div>
+    <div class="card" id="cardRetorno">
+      <h3>Lo que dicen los estudios sobre el retorno</h3>
+      <div class="tablewrap short" id="tRetorno"></div>
+    </div>
+  </div>
+</section>
+
+<section id="infra">
+  <div class="wrap">
+    <h2>Megaproyectos de cómputo</h2>
+    <p class="sub">Centros de datos y acuerdos de infraestructura anunciados. La mayoría son compromisos a varios años; el estado indica cuánto es obra real.</p>
+    <div class="card">
+      <div class="tablewrap" id="tMega"></div>
+    </div>
+  </div>
+</section>
+
+<section id="cadena" class="alt">
+  <div class="wrap">
+    <h2>Energía, centros de datos y chips</h2>
+    <p class="sub">La IA es una industria física: electricidad, edificios, obleas de silicio y memoria. Aquí están los costos que explican por qué se necesita tanto capital.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>Electricidad que consumen los centros de datos</h3>
+        <div id="cTwh" class="chart tall"></div>
+        <p class="note" id="nTwh"></p>
+      </div>
+      <div class="card">
+        <h3 id="tEnPais">Centros de datos por país</h3>
+        <div id="cEnPais" class="chart tall"></div>
+        <p class="note" id="nEnPais"></p>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Acuerdos de energía de las tecnológicas</h3>
+        <div class="tablewrap short" id="tAcuerdos"></div>
+      </div>
+      <div class="card">
+        <h3>Cuánto cuesta un centro de datos de IA</h3>
+        <div class="tablewrap short" id="tDC"></div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Ingresos de centros de datos de Nvidia</h3>
+        <div id="cNvda" class="chart tall"></div>
+        <p class="note" id="nNvda"></p>
+      </div>
+      <div class="card">
+        <h3>Aceleradores: precio y consumo</h3>
+        <div class="tablewrap short" id="tAcel"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Fábricas de chips: inversión y subsidio público</h3>
+      <div class="tablewrap short" id="tFabs"></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Fabricación: obleas, máquinas y cuellos de botella</h3>
+        <div class="tablewrap short" id="tChipDatos"></div>
+      </div>
+      <div class="card">
+        <h3>Memorias (HBM, DRAM, NAND)</h3>
+        <div class="tablewrap short" id="tMem"></div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Costo de entrenar un modelo</h3>
+        <div id="cTrain" class="chart tall"></div>
+        <p class="note" id="nTrain"></p>
+      </div>
+      <div class="card">
+        <h3>Alquiler de GPU y precios de API</h3>
+        <div class="tablewrap short" id="tGpuHora"></div>
+        <div class="tablewrap short" id="tApi" style="margin-top:12px"></div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Los clústeres más grandes</h3>
+        <div class="tablewrap short" id="tClusters"></div>
+      </div>
+      <div class="card">
+        <h3>Otros datos de entrenamiento, inferencia y controles de exportación</h3>
+        <div class="tablewrap short" id="tTrainDatos"></div>
+      </div>
+    </div>
+    <h2 style="margin-top:34px">Cómo se gana dinero en cada capa</h2>
+    <p class="sub">Los esquemas de negocio de la IA, de la oblea al chatbot: cómo cobra cada uno, un precio real de referencia y su riesgo principal.</p>
+    <div class="biz" id="biz"></div>
+  </div>
+</section>
+
+<section id="simulador">
+  <div class="wrap">
+    <h2>Simulador: ¿con qué estrategia entra un país?</h2>
+    <p class="sub">Elige un país, cuánto de su economía dedica a la IA y cómo reparte ese dinero. El simulador traduce el presupuesto a cosas concretas con los costos reales de este informe. Es un orden de magnitud para discutir prioridades, no un pronóstico.</p>
+    <div class="sim-grid">
+      <div class="card sim-in">
+        <label class="fl">País
+          <select id="simPais"></select>
+        </label>
+        <div class="simctx" id="simCtx"></div>
+        <label class="fl">Esfuerzo anual: <b id="simPctV"></b> del PIB
+          <input type="range" id="simPct" min="0" max="100" step="1" value="50">
+        </label>
+        <label class="fl">Horizonte: <b id="simAniosV"></b>
+          <input type="range" id="simAnios" min="1" max="10" step="1" value="5">
+        </label>
+        <div class="fl">Estrategia
+          <div class="seg" id="simPresets"></div>
+        </div>
+        <p class="note" id="simPresetDesc"></p>
+        <div id="simSliders"></div>
+      </div>
+      <div class="sim-out">
+        <div class="kpis" id="simKpis"></div>
+        <div class="card">
+          <h3>Qué compra ese presupuesto</h3>
+          <div class="simres" id="simRes"></div>
+        </div>
+        <div class="card">
+          <h3>Con quién te compara</h3>
+          <div id="cSim" class="chart"></div>
+          <p class="note" id="nSim"></p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Supuestos del simulador</h3>
+      <div class="tablewrap short" id="tSimParams"></div>
+      <p class="note">El modelo es lineal y deliberadamente simple: no considera plazos de obra, disponibilidad de chips ni de red eléctrica, controles de exportación, ni la capacidad real de absorber talento. Las referencias de fondos y supercomputadores nacionales están en las tablas de abajo.</p>
+      <div class="grid2" style="margin-top:14px">
+        <div class="tablewrap short" id="tSimSuper"></div>
+        <div class="tablewrap short" id="tSimFondos"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="universidades" class="alt">
+  <div class="wrap">
+    <h2>Universidades y talento</h2>
+    <p class="sub">Cada ranking mide algo distinto (publicaciones, reputación, citas), por eso se muestran por separado y no se promedian.</p>
+    <div class="card">
+      <h3>Universidades líderes en IA</h3>
+      <div class="filters">
+        <input type="search" id="qUni" placeholder="Buscar universidad…" aria-label="Buscar universidad">
+        <select id="fUniPais" aria-label="País"></select>
+      </div>
+      <div class="tablewrap" id="tUnis"></div>
+      <p class="note" id="nUnis"></p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Producción científica en IA por país</h3>
+        <div id="cPubs" class="chart tall"></div>
+        <p class="note" id="nPubs"></p>
+      </div>
+      <div class="card">
+        <h3 id="tConf">Papers en las grandes conferencias</h3>
+        <div id="cConf" class="chart tall"></div>
+        <p class="note" id="nConf"></p>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Talento</h3>
+        <div class="tablewrap short" id="tTalento"></div>
+      </div>
+      <div class="card">
+        <h3>Grandes apuestas universitarias</h3>
+        <div class="tablewrap short" id="tInvUni"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="latam">
+  <div class="wrap">
+    <h2>América Latina y el Perú</h2>
+    <p class="sub">La región aparece poco en los rankings globales de inversión. Aquí, lo que sí está medido.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3 id="tIlia">Índice Latinoamericano de IA</h3>
+        <div id="cIlia" class="chart tall"></div>
+        <p class="note" id="nIlia"></p>
+      </div>
+      <div class="card">
+        <h3>Universidades latinoamericanas en los rankings</h3>
+        <div class="tablewrap short" id="tUniLatam"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Estrategias y anuncios por país</h3>
+      <div class="tablewrap" id="tLatam"></div>
+    </div>
+    <div class="card peru" id="peruCard"></div>
+  </div>
+</section>
+
+<section id="faq" class="alt">
+  <div class="wrap">
+    <h2>Preguntas frecuentes</h2>
+    <p class="sub">Respuestas cortas armadas con los datos del informe.</p>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<section id="fuentes">
+  <div class="wrap">
+    <h2>Cómo leer este informe</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Niveles de confianza</h3>
+        <ul class="plain">
+          <li><span class="lv lvA">A</span> Fuente primaria u oficial: informe de la empresa, presupuesto público, organismo estadístico.</li>
+          <li><span class="lv lvB">B</span> Fuente secundaria confiable: prensa financiera o especializada que cita el dato.</li>
+          <li><span class="lv lvC">C</span> Estimación de terceros (analistas, consultoras). Úsala como orden de magnitud.</li>
+        </ul>
+        <h3 style="margin-top:20px">Lo que no es comparable</h3>
+        <ul class="plain">
+          <li>Inversión privada (rondas en empresas de IA) y capex corporativo (centros de datos, chips) son cosas distintas: no se suman.</li>
+          <li>Un compromiso plurianual anunciado no es un presupuesto ejecutado.</li>
+          <li>El capex y la I+D de una empresa son totales; ninguna publica cuánto corresponde exactamente a IA.</li>
+          <li>Las cifras de China suelen ser estimaciones externas: hay menos divulgación oficial.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Fuentes principales</h3>
+        <ul class="plain src" id="listaFuentes"></ul>
+        <h3 style="margin-top:20px">Advertencias de los datos</h3>
+        <ul class="plain src" id="listaAdvert"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div style="max-width:44ch">
+        <div class="brand" style="font-size:16px"><span class="dot"></span> ¿Cuánto invierte el mundo en IA?</div>
+        <p>Informe de datos abiertos. Regla dura: no se inventan cifras; cada dato enlaza a su fuente.</p>
+        <p class="apoyo">Datos consultados hasta el 11 de octubre de 2026. Código y datos en <a href="https://github.com/unimauro/ia-inversiones" target="_blank" rel="noopener">GitHub</a>.</p>
+      </div>
+      <div>
+        <p class="apoyo" style="margin:0 0 12px"><strong>¿Te sirve este trabajo? Apóyalo:</strong></p>
+        <div class="support">
+          <span class="sup yape"><b>Yape</b> 940 584 307</span>
+          <span class="sup plin"><b>Plin</b> 940 584 307</span>
+          <a class="sup paypal" href="https://paypal.me/unimauro" target="_blank" rel="noopener"><b>PayPal</b> paypal.me/unimauro</a>
+          <a class="sup coffee" href="https://buymeacoffee.com/unimauro" target="_blank" rel="noopener">☕ <b>Cómprame un café</b></a>
+        </div>
+        <p class="apoyo" style="margin-top:12px;font-size:12px">Yape/Plin y PayPal a nombre de Carlos Cárdenas.</p>
+      </div>
+    </div>
+    <p class="disc">Este informe es divulgativo y no constituye asesoría de inversión. · Desarrollo e investigación de datos: <b>Carlos Cárdenas</b> · <a href="mailto:carlos@cardenas.pe">carlos@cardenas.pe</a></p>
+  </div>
+</footer>
+
+<button class="chatbtn" id="chatbtn" title="Pregúntale a los datos" aria-label="Abrir asistente">
+  <span class="cb-ic">💬</span><span class="cb-tx">Pregúntale a los datos</span>
+</button>
+
+<div class="chatpanel" id="chatPanel" role="dialog" aria-label="Asistente de datos" aria-hidden="true">
+  <div class="chat-head">
+    <div class="chat-id">
+      <span class="chat-av">◆</span>
+      <div><div class="chat-ti">Asistente de datos</div><div class="chat-st">Inversión mundial en IA · oct. 2026</div></div>
+    </div>
+    <button class="chat-x" id="chatClose" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="chat-log" id="chatLog"></div>
+  <form class="chat-in" id="chatForm" autocomplete="off">
+    <input id="chatInput" type="text" placeholder="Escribe tu pregunta…" aria-label="Tu pregunta">
+    <button id="chatSend" type="submit" aria-label="Enviar">➤</button>
+  </form>
+  <div class="chat-foot">Responde con los datos de esta página. No es asesoría de inversión.</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.6.0/echarts.min.js"></script>
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/app2.js"></script>
+<script src="assets/chat.js"></script>
+</body>
+</html>

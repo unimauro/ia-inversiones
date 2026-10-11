@@ -1,0 +1,1600 @@
+{
+"meta": {
+"fuente": "Banco Mundial, World Development Indicators",
+"url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD",
+"consultado": "2026-10-11",
+"nota": "PIB en US$ corrientes, población e I+D como % del PIB; último año disponible por país."
+},
+"paises": {
+"ABW": {
+"pib": 4.17,
+"pib_anio": 2024,
+"pob": 0.109,
+"pob_anio": 2025
+},
+"AFG": {
+"pib": 17.78,
+"pib_anio": 2024,
+"pob": 43.844,
+"pob_anio": 2025
+},
+"AGO": {
+"pib": 122.17,
+"pib_anio": 2025,
+"pob": 39.04,
+"pob_anio": 2025,
+"gerd": 0.03,
+"gerd_anio": 2016
+},
+"ALB": {
+"pib": 30.54,
+"pib_anio": 2025,
+"pob": 2.35,
+"pob_anio": 2025,
+"gerd": 0.2,
+"gerd_anio": 2022
+},
+"AND": {
+"pib": 4.5,
+"pib_anio": 2025,
+"pob": 0.083,
+"pob_anio": 2025,
+"gerd": 0.16,
+"gerd_anio": 2022
+},
+"ARE": {
+"pib": 552.32,
+"pib_anio": 2024,
+"pob": 11.513,
+"pob_anio": 2025,
+"gerd": 1.49,
+"gerd_anio": 2021
+},
+"ARG": {
+"pib": 683.1,
+"pib_anio": 2025,
+"pob": 45.851,
+"pob_anio": 2025,
+"gerd": 0.6,
+"gerd_anio": 2023
+},
+"ARM": {
+"pib": 29.24,
+"pib_anio": 2025,
+"pob": 3.087,
+"pob_anio": 2025,
+"gerd": 0.29,
+"gerd_anio": 2024
+},
+"ASM": {
+"pib": 0.87,
+"pib_anio": 2022,
+"pob": 0.046,
+"pob_anio": 2025,
+"gerd": 0.4,
+"gerd_anio": 2006
+},
+"ATG": {
+"pib": 2.34,
+"pib_anio": 2025,
+"pob": 0.094,
+"pob_anio": 2025
+},
+"AUS": {
+"pib": 1798.52,
+"pib_anio": 2025,
+"pob": 27.614,
+"pob_anio": 2025,
+"gerd": 1.86,
+"gerd_anio": 2021
+},
+"AUT": {
+"pib": 579.47,
+"pib_anio": 2025,
+"pob": 9.208,
+"pob_anio": 2025,
+"gerd": 3.26,
+"gerd_anio": 2023
+},
+"AZE": {
+"pib": 75.94,
+"pib_anio": 2025,
+"pob": 10.247,
+"pob_anio": 2025,
+"gerd": 0.21,
+"gerd_anio": 2024
+},
+"BDI": {
+"pib": 3.36,
+"pib_anio": 2025,
+"pob": 14.39,
+"pob_anio": 2025,
+"gerd": 0.21,
+"gerd_anio": 2018
+},
+"BEL": {
+"pib": 725.47,
+"pib_anio": 2025,
+"pob": 11.942,
+"pob_anio": 2025,
+"gerd": 3.27,
+"gerd_anio": 2023
+},
+"BEN": {
+"pib": 24.57,
+"pib_anio": 2025,
+"pob": 14.814,
+"pob_anio": 2025
+},
+"BFA": {
+"pib": 27.63,
+"pib_anio": 2025,
+"pob": 24.075,
+"pob_anio": 2025,
+"gerd": 0.1,
+"gerd_anio": 2024
+},
+"BGD": {
+"pib": 456.32,
+"pib_anio": 2025,
+"pob": 175.687,
+"pob_anio": 2025
+},
+"BGR": {
+"pib": 130.78,
+"pib_anio": 2025,
+"pob": 6.433,
+"pob_anio": 2025,
+"gerd": 0.79,
+"gerd_anio": 2023
+},
+"BHR": {
+"pib": 48.97,
+"pib_anio": 2025,
+"pob": 1.6,
+"pob_anio": 2025,
+"gerd": 0.19,
+"gerd_anio": 2024
+},
+"BHS": {
+"pib": 15.83,
+"pib_anio": 2024,
+"pob": 0.403,
+"pob_anio": 2025
+},
+"BIH": {
+"pib": 32.6,
+"pib_anio": 2025,
+"pob": 3.14,
+"pob_anio": 2025,
+"gerd": 0.21,
+"gerd_anio": 2024
+},
+"BLR": {
+"pib": 93.4,
+"pib_anio": 2025,
+"pob": 9.086,
+"pob_anio": 2025,
+"gerd": 0.59,
+"gerd_anio": 2024
+},
+"BLZ": {
+"pib": 3.33,
+"pib_anio": 2025,
+"pob": 0.423,
+"pob_anio": 2025
+},
+"BMU": {
+"pib": 9.19,
+"pib_anio": 2024,
+"pob": 0.065,
+"pob_anio": 2025,
+"gerd": 0.23,
+"gerd_anio": 2020
+},
+"BOL": {
+"pib": 64.77,
+"pib_anio": 2025,
+"pob": 12.582,
+"pob_anio": 2025,
+"gerd": 0.06,
+"gerd_anio": 2021
+},
+"BRA": {
+"pib": 2279.92,
+"pib_anio": 2025,
+"pob": 212.812,
+"pob_anio": 2025,
+"gerd": 1.19,
+"gerd_anio": 2023
+},
+"BRB": {
+"pib": 8.02,
+"pib_anio": 2025,
+"pob": 0.283,
+"pob_anio": 2025
+},
+"BRN": {
+"pib": 15.03,
+"pib_anio": 2025,
+"pob": 0.466,
+"pob_anio": 2025,
+"gerd": 0.28,
+"gerd_anio": 2018
+},
+"BTN": {
+"pib": 3.58,
+"pib_anio": 2025,
+"pob": 0.797,
+"pob_anio": 2025,
+"gerd": 0.1,
+"gerd_anio": 2024
+},
+"BWA": {
+"pib": 19.93,
+"pib_anio": 2025,
+"pob": 2.562,
+"pob_anio": 2025,
+"gerd": 0.56,
+"gerd_anio": 2013
+},
+"CAF": {
+"pib": 3.07,
+"pib_anio": 2025,
+"pob": 5.513,
+"pob_anio": 2025
+},
+"CAN": {
+"pib": 2319.9,
+"pib_anio": 2025,
+"pob": 41.652,
+"pob_anio": 2025,
+"gerd": 1.79,
+"gerd_anio": 2024
+},
+"CHE": {
+"pib": 1043.53,
+"pib_anio": 2025,
+"pob": 9.092,
+"pob_anio": 2025,
+"gerd": 3.22,
+"gerd_anio": 2023
+},
+"CHL": {
+"pib": 357.37,
+"pib_anio": 2025,
+"pob": 19.86,
+"pob_anio": 2025,
+"gerd": 0.39,
+"gerd_anio": 2022
+},
+"CHN": {
+"pib": 19498.04,
+"pib_anio": 2025,
+"pob": 1406.585,
+"pob_anio": 2025,
+"gerd": 2.58,
+"gerd_anio": 2023
+},
+"CIV": {
+"pib": 99.77,
+"pib_anio": 2025,
+"pob": 32.712,
+"pob_anio": 2025,
+"gerd": 0.07,
+"gerd_anio": 2016
+},
+"CMR": {
+"pib": 58.93,
+"pib_anio": 2025,
+"pob": 29.879,
+"pob_anio": 2025
+},
+"COD": {
+"pib": 91.03,
+"pib_anio": 2025,
+"pob": 112.832,
+"pob_anio": 2025,
+"gerd": 0.41,
+"gerd_anio": 2015
+},
+"COG": {
+"pib": 16.31,
+"pib_anio": 2025,
+"pob": 6.484,
+"pob_anio": 2025,
+"gerd": 0.38,
+"gerd_anio": 2022
+},
+"COL": {
+"pib": 457.41,
+"pib_anio": 2025,
+"pob": 53.426,
+"pob_anio": 2025,
+"gerd": 0.29,
+"gerd_anio": 2020
+},
+"COM": {
+"pib": 1.81,
+"pib_anio": 2025,
+"pob": 0.883,
+"pob_anio": 2025
+},
+"CPV": {
+"pib": 3.06,
+"pib_anio": 2025,
+"pob": 0.527,
+"pob_anio": 2025,
+"gerd": 0.07,
+"gerd_anio": 2011
+},
+"CRI": {
+"pib": 102.9,
+"pib_anio": 2025,
+"pob": 5.153,
+"pob_anio": 2025,
+"gerd": 0.34,
+"gerd_anio": 2023
+},
+"CUB": {
+"pib": 107.35,
+"pib_anio": 2020,
+"pob": 10.937,
+"pob_anio": 2025,
+"gerd": 0.44,
+"gerd_anio": 2024
+},
+"CUW": {
+"pib": 3.56,
+"pib_anio": 2024,
+"pob": 0.156,
+"pob_anio": 2025
+},
+"CYM": {
+"pib": 7.77,
+"pib_anio": 2024,
+"pob": 0.076,
+"pob_anio": 2025
+},
+"CYP": {
+"pib": 41.23,
+"pib_anio": 2025,
+"pob": 1.371,
+"pob_anio": 2025,
+"gerd": 0.68,
+"gerd_anio": 2023
+},
+"CZE": {
+"pib": 391.03,
+"pib_anio": 2025,
+"pob": 10.887,
+"pob_anio": 2025,
+"gerd": 1.83,
+"gerd_anio": 2023
+},
+"DEU": {
+"pib": 5050.92,
+"pib_anio": 2025,
+"pob": 83.491,
+"pob_anio": 2025,
+"gerd": 3.15,
+"gerd_anio": 2023
+},
+"DJI": {
+"pib": 4.62,
+"pib_anio": 2025,
+"pob": 1.184,
+"pob_anio": 2025
+},
+"DMA": {
+"pib": 0.72,
+"pib_anio": 2025,
+"pob": 0.066,
+"pob_anio": 2025
+},
+"DNK": {
+"pib": 462.53,
+"pib_anio": 2025,
+"pob": 6.009,
+"pob_anio": 2025,
+"gerd": 3.05,
+"gerd_anio": 2023
+},
+"DOM": {
+"pib": 127.41,
+"pib_anio": 2025,
+"pob": 11.52,
+"pob_anio": 2025
+},
+"DZA": {
+"pib": 287.03,
+"pib_anio": 2025,
+"pob": 47.435,
+"pob_anio": 2025,
+"gerd": 0.44,
+"gerd_anio": 2024
+},
+"ECU": {
+"pib": 130.32,
+"pib_anio": 2025,
+"pob": 18.29,
+"pob_anio": 2025,
+"gerd": 0.44,
+"gerd_anio": 2014
+},
+"EGY": {
+"pib": 365.25,
+"pib_anio": 2025,
+"pob": 118.366,
+"pob_anio": 2025,
+"gerd": 1.02,
+"gerd_anio": 2024
+},
+"ERI": {
+"pib": 2.07,
+"pib_anio": 2011,
+"pob": 3.607,
+"pob_anio": 2025
+},
+"ESP": {
+"pib": 1906.45,
+"pib_anio": 2025,
+"pob": 49.355,
+"pob_anio": 2025,
+"gerd": 1.49,
+"gerd_anio": 2023
+},
+"EST": {
+"pib": 47.03,
+"pib_anio": 2025,
+"pob": 1.366,
+"pob_anio": 2025,
+"gerd": 1.84,
+"gerd_anio": 2023
+},
+"ETH": {
+"pib": 126.36,
+"pib_anio": 2025,
+"pob": 135.472,
+"pob_anio": 2025,
+"gerd": 0.27,
+"gerd_anio": 2017
+},
+"FIN": {
+"pib": 317.04,
+"pib_anio": 2025,
+"pob": 5.646,
+"pob_anio": 2025,
+"gerd": 3.09,
+"gerd_anio": 2023
+},
+"FJI": {
+"pib": 6.2,
+"pib_anio": 2025,
+"pob": 0.933,
+"pob_anio": 2025
+},
+"FRA": {
+"pib": 3366.32,
+"pib_anio": 2025,
+"pob": 68.72,
+"pob_anio": 2025,
+"gerd": 2.18,
+"gerd_anio": 2023
+},
+"FRO": {
+"pib": 4.05,
+"pib_anio": 2024,
+"pob": 0.055,
+"pob_anio": 2025,
+"gerd": 0.85,
+"gerd_anio": 2003
+},
+"FSM": {
+"pib": 0.5,
+"pib_anio": 2025,
+"pob": 0.114,
+"pob_anio": 2025
+},
+"GAB": {
+"pib": 21.43,
+"pib_anio": 2025,
+"pob": 2.593,
+"pob_anio": 2025,
+"gerd": 0.58,
+"gerd_anio": 2009
+},
+"GBR": {
+"pib": 4002.59,
+"pib_anio": 2025,
+"pob": 69.487,
+"pob_anio": 2025,
+"gerd": 2.68,
+"gerd_anio": 2023
+},
+"GEO": {
+"pib": 38.14,
+"pib_anio": 2025,
+"pob": 3.936,
+"pob_anio": 2025,
+"gerd": 0.26,
+"gerd_anio": 2024
+},
+"GHA": {
+"pib": 114.21,
+"pib_anio": 2025,
+"pob": 35.064,
+"pob_anio": 2025,
+"gerd": 0.38,
+"gerd_anio": 2010
+},
+"GIN": {
+"pib": 28.35,
+"pib_anio": 2025,
+"pob": 15.1,
+"pob_anio": 2025
+},
+"GMB": {
+"pib": 2.59,
+"pib_anio": 2025,
+"pob": 2.822,
+"pob_anio": 2025,
+"gerd": 0.07,
+"gerd_anio": 2018
+},
+"GNB": {
+"pib": 2.53,
+"pib_anio": 2025,
+"pob": 2.25,
+"pob_anio": 2025
+},
+"GNQ": {
+"pib": 12.82,
+"pib_anio": 2025,
+"pob": 1.938,
+"pob_anio": 2025
+},
+"GRC": {
+"pib": 280.64,
+"pib_anio": 2025,
+"pob": 10.414,
+"pob_anio": 2025,
+"gerd": 1.49,
+"gerd_anio": 2023
+},
+"GRD": {
+"pib": 1.42,
+"pib_anio": 2025,
+"pob": 0.117,
+"pob_anio": 2025
+},
+"GRL": {
+"pib": 3.33,
+"pib_anio": 2023,
+"pob": 0.057,
+"pob_anio": 2025,
+"gerd": 0.65,
+"gerd_anio": 2004
+},
+"GTM": {
+"pib": 123.31,
+"pib_anio": 2025,
+"pob": 18.688,
+"pob_anio": 2025,
+"gerd": 0.01,
+"gerd_anio": 2023
+},
+"GUM": {
+"pib": 6.91,
+"pib_anio": 2022,
+"pob": 0.169,
+"pob_anio": 2025,
+"gerd": 0.26,
+"gerd_anio": 2005
+},
+"GUY": {
+"pib": 27.1,
+"pib_anio": 2025,
+"pob": 0.836,
+"pob_anio": 2025
+},
+"HKG": {
+"pib": 427.31,
+"pib_anio": 2025,
+"pob": 7.499,
+"pob_anio": 2025,
+"gerd": 1.13,
+"gerd_anio": 2024
+},
+"HND": {
+"pib": 39.6,
+"pib_anio": 2025,
+"pob": 11.006,
+"pob_anio": 2025,
+"gerd": 0.06,
+"gerd_anio": 2019
+},
+"HRV": {
+"pib": 105.06,
+"pib_anio": 2025,
+"pob": 3.876,
+"pob_anio": 2025,
+"gerd": 1.39,
+"gerd_anio": 2023
+},
+"HTI": {
+"pib": 32.08,
+"pib_anio": 2025,
+"pob": 11.906,
+"pob_anio": 2025
+},
+"HUN": {
+"pib": 246.49,
+"pib_anio": 2025,
+"pob": 9.514,
+"pob_anio": 2025,
+"gerd": 1.38,
+"gerd_anio": 2023
+},
+"IDN": {
+"pib": 1445.64,
+"pib_anio": 2025,
+"pob": 285.721,
+"pob_anio": 2025,
+"gerd": 0.28,
+"gerd_anio": 2020
+},
+"IMN": {
+"pib": 7.58,
+"pib_anio": 2023,
+"pob": 0.084,
+"pob_anio": 2025
+},
+"IND": {
+"pib": 3956.07,
+"pib_anio": 2025,
+"pob": 1463.866,
+"pob_anio": 2025,
+"gerd": 0.65,
+"gerd_anio": 2020
+},
+"IRL": {
+"pib": 721.7,
+"pib_anio": 2025,
+"pob": 5.484,
+"pob_anio": 2025,
+"gerd": 1.59,
+"gerd_anio": 2023
+},
+"IRN": {
+"pib": 362.68,
+"pib_anio": 2025,
+"pob": 92.418,
+"pob_anio": 2025,
+"gerd": 0.73,
+"gerd_anio": 2021
+},
+"IRQ": {
+"pib": 254.37,
+"pib_anio": 2025,
+"pob": 47.021,
+"pob_anio": 2025,
+"gerd": 0.04,
+"gerd_anio": 2021
+},
+"ISL": {
+"pib": 38.58,
+"pib_anio": 2025,
+"pob": 0.392,
+"pob_anio": 2025,
+"gerd": 2.64,
+"gerd_anio": 2023
+},
+"ISR": {
+"pib": 610.78,
+"pib_anio": 2025,
+"pob": 10.123,
+"pob_anio": 2025,
+"gerd": 6.35,
+"gerd_anio": 2023
+},
+"ITA": {
+"pib": 2551.56,
+"pib_anio": 2025,
+"pob": 58.916,
+"pob_anio": 2025,
+"gerd": 1.38,
+"gerd_anio": 2023
+},
+"JAM": {
+"pib": 22.7,
+"pib_anio": 2025,
+"pob": 2.837,
+"pob_anio": 2025,
+"gerd": 0.06,
+"gerd_anio": 2002
+},
+"JOR": {
+"pib": 61.61,
+"pib_anio": 2025,
+"pob": 11.521,
+"pob_anio": 2025,
+"gerd": 0.7,
+"gerd_anio": 2016
+},
+"JPN": {
+"pib": 4435.16,
+"pib_anio": 2025,
+"pob": 123.367,
+"pob_anio": 2025,
+"gerd": 3.44,
+"gerd_anio": 2023
+},
+"KAZ": {
+"pib": 306.24,
+"pib_anio": 2025,
+"pob": 20.844,
+"pob_anio": 2025,
+"gerd": 0.16,
+"gerd_anio": 2024
+},
+"KEN": {
+"pib": 135.94,
+"pib_anio": 2025,
+"pob": 57.532,
+"pob_anio": 2025,
+"gerd": 0.81,
+"gerd_anio": 2024
+},
+"KGZ": {
+"pib": 22.62,
+"pib_anio": 2025,
+"pob": 7.343,
+"pob_anio": 2025,
+"gerd": 0.05,
+"gerd_anio": 2024
+},
+"KHM": {
+"pib": 51.27,
+"pib_anio": 2025,
+"pob": 17.848,
+"pob_anio": 2025,
+"gerd": 0.09,
+"gerd_anio": 2015
+},
+"KIR": {
+"pib": 0.35,
+"pib_anio": 2025,
+"pob": 0.136,
+"pob_anio": 2025
+},
+"KNA": {
+"pib": 1.18,
+"pib_anio": 2025,
+"pob": 0.047,
+"pob_anio": 2025
+},
+"KOR": {
+"pib": 1872.37,
+"pib_anio": 2025,
+"pob": 51.685,
+"pob_anio": 2025,
+"gerd": 4.94,
+"gerd_anio": 2023
+},
+"KWT": {
+"pib": 157.21,
+"pib_anio": 2025,
+"pob": 4.865,
+"pob_anio": 2025,
+"gerd": 0.09,
+"gerd_anio": 2024
+},
+"LAO": {
+"pib": 18.3,
+"pib_anio": 2025,
+"pob": 7.873,
+"pob_anio": 2025,
+"gerd": 0.04,
+"gerd_anio": 2002
+},
+"LBN": {
+"pib": 25.97,
+"pib_anio": 2024,
+"pob": 5.849,
+"pob_anio": 2025
+},
+"LBR": {
+"pib": 5.25,
+"pib_anio": 2025,
+"pob": 5.731,
+"pob_anio": 2025
+},
+"LBY": {
+"pib": 48.1,
+"pib_anio": 2025,
+"pob": 7.459,
+"pob_anio": 2025
+},
+"LCA": {
+"pib": 2.66,
+"pib_anio": 2025,
+"pob": 0.18,
+"pob_anio": 2025,
+"gerd": 0.27,
+"gerd_anio": 1999
+},
+"LIE": {
+"pib": 8.91,
+"pib_anio": 2024,
+"pob": 0.041,
+"pob_anio": 2025,
+"gerd": 6.01,
+"gerd_anio": 2023
+},
+"LKA": {
+"pib": 108.83,
+"pib_anio": 2025,
+"pob": 21.756,
+"pob_anio": 2025,
+"gerd": 0.11,
+"gerd_anio": 2022
+},
+"LSO": {
+"pib": 2.57,
+"pib_anio": 2025,
+"pob": 2.363,
+"pob_anio": 2025,
+"gerd": 0.09,
+"gerd_anio": 2023
+},
+"LTU": {
+"pib": 95.21,
+"pib_anio": 2025,
+"pob": 2.889,
+"pob_anio": 2025,
+"gerd": 1.05,
+"gerd_anio": 2023
+},
+"LUX": {
+"pib": 101.16,
+"pib_anio": 2025,
+"pob": 0.687,
+"pob_anio": 2025,
+"gerd": 1.07,
+"gerd_anio": 2023
+},
+"LVA": {
+"pib": 48.62,
+"pib_anio": 2025,
+"pob": 1.848,
+"pob_anio": 2025,
+"gerd": 0.82,
+"gerd_anio": 2023
+},
+"MAC": {
+"pib": 52.06,
+"pib_anio": 2025,
+"pob": 0.686,
+"pob_anio": 2025,
+"gerd": 0.31,
+"gerd_anio": 2024
+},
+"MAF": {
+"pib": 0.65,
+"pib_anio": 2021,
+"pob": 0.025,
+"pob_anio": 2025
+},
+"MAR": {
+"pib": 182.37,
+"pib_anio": 2025,
+"pob": 38.431,
+"pob_anio": 2025,
+"gerd": 0.66,
+"gerd_anio": 2010
+},
+"MCO": {
+"pib": 11.13,
+"pib_anio": 2024,
+"pob": 0.038,
+"pob_anio": 2025,
+"gerd": 0.04,
+"gerd_anio": 2005
+},
+"MDA": {
+"pib": 20.35,
+"pib_anio": 2025,
+"pob": 2.361,
+"pob_anio": 2025,
+"gerd": 0.22,
+"gerd_anio": 2024
+},
+"MDG": {
+"pib": 19.62,
+"pib_anio": 2025,
+"pob": 32.741,
+"pob_anio": 2025,
+"gerd": 0.01,
+"gerd_anio": 2017
+},
+"MDV": {
+"pib": 7.74,
+"pib_anio": 2025,
+"pob": 0.53,
+"pob_anio": 2025
+},
+"MEX": {
+"pib": 1832.64,
+"pib_anio": 2025,
+"pob": 131.947,
+"pob_anio": 2025,
+"gerd": 0.25,
+"gerd_anio": 2024
+},
+"MHL": {
+"pib": 0.31,
+"pib_anio": 2025,
+"pob": 0.036,
+"pob_anio": 2025
+},
+"MKD": {
+"pib": 19.1,
+"pib_anio": 2025,
+"pob": 1.821,
+"pob_anio": 2025,
+"gerd": 0.37,
+"gerd_anio": 2024
+},
+"MLI": {
+"pib": 30.07,
+"pib_anio": 2025,
+"pob": 25.199,
+"pob_anio": 2025,
+"gerd": 0.15,
+"gerd_anio": 2023
+},
+"MLT": {
+"pib": 27.77,
+"pib_anio": 2025,
+"pob": 0.58,
+"pob_anio": 2025,
+"gerd": 0.65,
+"gerd_anio": 2023
+},
+"MMR": {
+"pib": 81.67,
+"pib_anio": 2025,
+"pob": 54.851,
+"pob_anio": 2025,
+"gerd": 0.02,
+"gerd_anio": 2023
+},
+"MNE": {
+"pib": 9.23,
+"pib_anio": 2025,
+"pob": 0.623,
+"pob_anio": 2025,
+"gerd": 0.36,
+"gerd_anio": 2019
+},
+"MNG": {
+"pib": 25.37,
+"pib_anio": 2025,
+"pob": 3.569,
+"pob_anio": 2025,
+"gerd": 0.08,
+"gerd_anio": 2022
+},
+"MNP": {
+"pib": 1.1,
+"pib_anio": 2022,
+"pob": 0.044,
+"pob_anio": 2025
+},
+"MOZ": {
+"pib": 22.34,
+"pib_anio": 2025,
+"pob": 35.632,
+"pob_anio": 2025,
+"gerd": 0.31,
+"gerd_anio": 2015
+},
+"MRT": {
+"pib": 11.68,
+"pib_anio": 2025,
+"pob": 5.315,
+"pob_anio": 2025,
+"gerd": 0.01,
+"gerd_anio": 2018
+},
+"MUS": {
+"pib": 16.16,
+"pib_anio": 2025,
+"pob": 1.244,
+"pob_anio": 2025,
+"gerd": 0.26,
+"gerd_anio": 2024
+},
+"MWI": {
+"pib": 14.92,
+"pib_anio": 2025,
+"pob": 22.216,
+"pob_anio": 2025,
+"gerd": 0.18,
+"gerd_anio": 2019
+},
+"MYS": {
+"pib": 472.19,
+"pib_anio": 2025,
+"pob": 35.978,
+"pob_anio": 2025,
+"gerd": 1.01,
+"gerd_anio": 2022
+},
+"NAM": {
+"pib": 15.08,
+"pib_anio": 2025,
+"pob": 3.093,
+"pob_anio": 2025,
+"gerd": 0.65,
+"gerd_anio": 2022
+},
+"NCL": {
+"pib": 8.55,
+"pib_anio": 2024,
+"pob": 0.295,
+"pob_anio": 2025
+},
+"NER": {
+"pib": 21.65,
+"pib_anio": 2025,
+"pob": 27.918,
+"pob_anio": 2025
+},
+"NGA": {
+"pib": 290.79,
+"pib_anio": 2025,
+"pob": 237.528,
+"pob_anio": 2025,
+"gerd": 0.28,
+"gerd_anio": 2019
+},
+"NIC": {
+"pib": 22.24,
+"pib_anio": 2025,
+"pob": 7.008,
+"pob_anio": 2025,
+"gerd": 0.11,
+"gerd_anio": 2015
+},
+"NLD": {
+"pib": 1332.77,
+"pib_anio": 2025,
+"pob": 18.088,
+"pob_anio": 2025,
+"gerd": 2.27,
+"gerd_anio": 2023
+},
+"NOR": {
+"pib": 530.76,
+"pib_anio": 2025,
+"pob": 5.611,
+"pob_anio": 2025,
+"gerd": 1.85,
+"gerd_anio": 2023
+},
+"NPL": {
+"pib": 45.49,
+"pib_anio": 2025,
+"pob": 29.618,
+"pob_anio": 2025,
+"gerd": 0.3,
+"gerd_anio": 2010
+},
+"NRU": {
+"pib": 0.18,
+"pib_anio": 2025,
+"pob": 0.012,
+"pob_anio": 2025
+},
+"NZL": {
+"pib": 264.06,
+"pib_anio": 2025,
+"pob": 5.325,
+"pob_anio": 2025,
+"gerd": 1.55,
+"gerd_anio": 2023
+},
+"OMN": {
+"pib": 109.6,
+"pib_anio": 2025,
+"pob": 5.495,
+"pob_anio": 2025,
+"gerd": 0.39,
+"gerd_anio": 2024
+},
+"PAK": {
+"pib": 407.31,
+"pib_anio": 2025,
+"pob": 255.22,
+"pob_anio": 2025,
+"gerd": 0.16,
+"gerd_anio": 2023
+},
+"PAN": {
+"pib": 90.46,
+"pib_anio": 2025,
+"pob": 4.571,
+"pob_anio": 2025,
+"gerd": 0.2,
+"gerd_anio": 2024
+},
+"PER": {
+"pib": 334.85,
+"pib_anio": 2025,
+"pob": 34.577,
+"pob_anio": 2025,
+"gerd": 0.18,
+"gerd_anio": 2023
+},
+"PHL": {
+"pib": 487.09,
+"pib_anio": 2025,
+"pob": 116.787,
+"pob_anio": 2025,
+"gerd": 0.28,
+"gerd_anio": 2020
+},
+"PLW": {
+"pib": 0.34,
+"pib_anio": 2025,
+"pob": 0.018,
+"pob_anio": 2025
+},
+"PNG": {
+"pib": 32.5,
+"pib_anio": 2025,
+"pob": 10.763,
+"pob_anio": 2025,
+"gerd": 0.03,
+"gerd_anio": 2016
+},
+"POL": {
+"pib": 1035.49,
+"pib_anio": 2025,
+"pob": 36.436,
+"pob_anio": 2025,
+"gerd": 1.56,
+"gerd_anio": 2023
+},
+"PRI": {
+"pib": 129.37,
+"pib_anio": 2025,
+"pob": 3.185,
+"pob_anio": 2025,
+"gerd": 0.43,
+"gerd_anio": 2015
+},
+"PRT": {
+"pib": 346.64,
+"pib_anio": 2025,
+"pob": 10.805,
+"pob_anio": 2025,
+"gerd": 1.69,
+"gerd_anio": 2023
+},
+"PRY": {
+"pib": 49.28,
+"pib_anio": 2025,
+"pob": 7.013,
+"pob_anio": 2025,
+"gerd": 0.14,
+"gerd_anio": 2023
+},
+"PSE": {
+"pib": 17.17,
+"pib_anio": 2025,
+"pob": 5.414,
+"pob_anio": 2025,
+"gerd": 0.45,
+"gerd_anio": 2013
+},
+"PYF": {
+"pib": 6.32,
+"pib_anio": 2024,
+"pob": 0.282,
+"pob_anio": 2025
+},
+"QAT": {
+"pib": 215.56,
+"pib_anio": 2025,
+"pob": 2.972,
+"pob_anio": 2025,
+"gerd": 0.68,
+"gerd_anio": 2021
+},
+"ROU": {
+"pib": 428.68,
+"pib_anio": 2025,
+"pob": 19.02,
+"pob_anio": 2025,
+"gerd": 0.52,
+"gerd_anio": 2023
+},
+"RUS": {
+"pib": 2561.31,
+"pib_anio": 2025,
+"pob": 143.513,
+"pob_anio": 2025,
+"gerd": 0.94,
+"gerd_anio": 2024
+},
+"RWA": {
+"pib": 16.37,
+"pib_anio": 2025,
+"pob": 14.569,
+"pob_anio": 2025,
+"gerd": 0.78,
+"gerd_anio": 2023
+},
+"SAU": {
+"pib": 1276.94,
+"pib_anio": 2025,
+"pob": 36.974,
+"pob_anio": 2025,
+"gerd": 0.64,
+"gerd_anio": 2024
+},
+"SDN": {
+"pib": 60.16,
+"pib_anio": 2025,
+"pob": 51.662,
+"pob_anio": 2025,
+"gerd": 0.23,
+"gerd_anio": 2005
+},
+"SEN": {
+"pib": 37.01,
+"pib_anio": 2025,
+"pob": 18.932,
+"pob_anio": 2025,
+"gerd": 0.58,
+"gerd_anio": 2015
+},
+"SGP": {
+"pib": 603.87,
+"pib_anio": 2025,
+"pob": 6.111,
+"pob_anio": 2025,
+"gerd": 1.81,
+"gerd_anio": 2022
+},
+"SLB": {
+"pib": 1.75,
+"pib_anio": 2025,
+"pob": 0.839,
+"pob_anio": 2025
+},
+"SLE": {
+"pib": 7.46,
+"pib_anio": 2025,
+"pob": 8.82,
+"pob_anio": 2025
+},
+"SLV": {
+"pib": 36.71,
+"pib_anio": 2025,
+"pob": 6.366,
+"pob_anio": 2025,
+"gerd": 0.1,
+"gerd_anio": 2023
+},
+"SMR": {
+"pib": 2.03,
+"pib_anio": 2023,
+"pob": 0.034,
+"pob_anio": 2025
+},
+"SOM": {
+"pib": 13.0,
+"pib_anio": 2025,
+"pob": 19.655,
+"pob_anio": 2025
+},
+"SRB": {
+"pib": 99.95,
+"pib_anio": 2025,
+"pob": 6.549,
+"pob_anio": 2025,
+"gerd": 0.94,
+"gerd_anio": 2024
+},
+"SSD": {
+"pib": 12.0,
+"pib_anio": 2015,
+"pob": 12.189,
+"pob_anio": 2025
+},
+"STP": {
+"pib": 0.98,
+"pib_anio": 2025,
+"pob": 0.24,
+"pob_anio": 2025
+},
+"SUR": {
+"pib": 4.52,
+"pib_anio": 2025,
+"pob": 0.64,
+"pob_anio": 2025
+},
+"SVK": {
+"pib": 154.53,
+"pib_anio": 2025,
+"pob": 5.414,
+"pob_anio": 2025,
+"gerd": 1.03,
+"gerd_anio": 2023
+},
+"SVN": {
+"pib": 79.65,
+"pib_anio": 2025,
+"pob": 2.131,
+"pob_anio": 2025,
+"gerd": 2.13,
+"gerd_anio": 2023
+},
+"SWE": {
+"pib": 669.0,
+"pib_anio": 2025,
+"pob": 10.597,
+"pob_anio": 2025,
+"gerd": 3.6,
+"gerd_anio": 2023
+},
+"SWZ": {
+"pib": 5.16,
+"pib_anio": 2025,
+"pob": 1.256,
+"pob_anio": 2025,
+"gerd": 0.28,
+"gerd_anio": 2015
+},
+"SXM": {
+"pib": 1.89,
+"pib_anio": 2025,
+"pob": 0.044,
+"pob_anio": 2025
+},
+"SYC": {
+"pib": 2.39,
+"pib_anio": 2025,
+"pob": 0.123,
+"pob_anio": 2025,
+"gerd": 0.2,
+"gerd_anio": 2016
+},
+"SYR": {
+"pib": 23.74,
+"pib_anio": 2022,
+"pob": 25.62,
+"pob_anio": 2025,
+"gerd": 0.04,
+"gerd_anio": 2022
+},
+"TCA": {
+"pib": 1.75,
+"pib_anio": 2024,
+"pob": 0.047,
+"pob_anio": 2025
+},
+"TCD": {
+"pib": 21.47,
+"pib_anio": 2025,
+"pob": 21.004,
+"pob_anio": 2025,
+"gerd": 0.23,
+"gerd_anio": 2016
+},
+"TGO": {
+"pib": 11.89,
+"pib_anio": 2025,
+"pob": 8.592,
+"pob_anio": 2025,
+"gerd": 0.22,
+"gerd_anio": 2024
+},
+"THA": {
+"pib": 577.01,
+"pib_anio": 2025,
+"pob": 71.62,
+"pob_anio": 2025,
+"gerd": 0.94,
+"gerd_anio": 2023
+},
+"TJK": {
+"pib": 17.66,
+"pib_anio": 2025,
+"pob": 10.787,
+"pob_anio": 2025,
+"gerd": 0.09,
+"gerd_anio": 2020
+},
+"TKM": {
+"pib": 49.83,
+"pib_anio": 2025,
+"pob": 7.619,
+"pob_anio": 2025,
+"gerd": 0.09,
+"gerd_anio": 2023
+},
+"TLS": {
+"pib": 1.9,
+"pib_anio": 2025,
+"pob": 1.419,
+"pob_anio": 2025
+},
+"TON": {
+"pib": 0.68,
+"pib_anio": 2025,
+"pob": 0.104,
+"pob_anio": 2025
+},
+"TTO": {
+"pib": 25.94,
+"pib_anio": 2025,
+"pob": 1.368,
+"pob_anio": 2025,
+"gerd": 0.05,
+"gerd_anio": 2022
+},
+"TUN": {
+"pib": 57.5,
+"pib_anio": 2025,
+"pob": 12.349,
+"pob_anio": 2025,
+"gerd": 0.75,
+"gerd_anio": 2019
+},
+"TUR": {
+"pib": 1597.29,
+"pib_anio": 2025,
+"pob": 85.879,
+"pob_anio": 2025,
+"gerd": 1.42,
+"gerd_anio": 2023
+},
+"TUV": {
+"pib": 0.06,
+"pib_anio": 2025,
+"pob": 0.009,
+"pob_anio": 2025
+},
+"TZA": {
+"pib": 90.14,
+"pib_anio": 2025,
+"pob": 70.546,
+"pob_anio": 2025,
+"gerd": 0.51,
+"gerd_anio": 2013
+},
+"UGA": {
+"pib": 61.99,
+"pib_anio": 2025,
+"pob": 51.385,
+"pob_anio": 2025,
+"gerd": 0.44,
+"gerd_anio": 2023
+},
+"UKR": {
+"pib": 214.23,
+"pib_anio": 2025,
+"pob": 38.98,
+"pob_anio": 2025,
+"gerd": 0.37,
+"gerd_anio": 2024
+},
+"URY": {
+"pib": 85.35,
+"pib_anio": 2025,
+"pob": 3.385,
+"pob_anio": 2025,
+"gerd": 0.7,
+"gerd_anio": 2023
+},
+"USA": {
+"pib": 30769.7,
+"pib_anio": 2025,
+"pob": 341.785,
+"pob_anio": 2025,
+"gerd": 3.45,
+"gerd_anio": 2023
+},
+"UZB": {
+"pib": 147.04,
+"pib_anio": 2025,
+"pob": 37.053,
+"pob_anio": 2025,
+"gerd": 0.1,
+"gerd_anio": 2024
+},
+"VCT": {
+"pib": 1.26,
+"pib_anio": 2025,
+"pob": 0.1,
+"pob_anio": 2025,
+"gerd": 0.11,
+"gerd_anio": 2002
+},
+"VEN": {
+"pib": 99.66,
+"pib_anio": 2025,
+"pob": 28.517,
+"pob_anio": 2025,
+"gerd": 0.34,
+"gerd_anio": 2014
+},
+"VIR": {
+"pib": 4.67,
+"pib_anio": 2022,
+"pob": 0.104,
+"pob_anio": 2025,
+"gerd": 0.03,
+"gerd_anio": 2007
+},
+"VNM": {
+"pib": 514.7,
+"pib_anio": 2025,
+"pob": 101.599,
+"pob_anio": 2025,
+"gerd": 0.41,
+"gerd_anio": 2023
+},
+"VUT": {
+"pib": 1.35,
+"pib_anio": 2025,
+"pob": 0.335,
+"pob_anio": 2025
+},
+"WSM": {
+"pib": 1.29,
+"pib_anio": 2025,
+"pob": 0.219,
+"pob_anio": 2025
+},
+"XKX": {
+"pib": 12.46,
+"pib_anio": 2025,
+"pob": 1.577,
+"pob_anio": 2025
+},
+"YEM": {
+"pib": 21.61,
+"pib_anio": 2018,
+"pob": 41.774,
+"pob_anio": 2025
+},
+"ZAF": {
+"pib": 427.18,
+"pib_anio": 2025,
+"pob": 64.747,
+"pob_anio": 2025,
+"gerd": 0.61,
+"gerd_anio": 2022
+},
+"ZMB": {
+"pib": 28.88,
+"pib_anio": 2025,
+"pob": 21.914,
+"pob_anio": 2025,
+"gerd": 0.28,
+"gerd_anio": 2008
+},
+"ZWE": {
+"pib": 51.22,
+"pib_anio": 2025,
+"pob": 16.951,
+"pob_anio": 2025
+}
+}
+}

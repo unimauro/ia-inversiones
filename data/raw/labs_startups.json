@@ -1,0 +1,2646 @@
+{
+ "meta": {
+  "bloque": "labs_startups",
+  "consultado": "2026-10-11",
+  "noticia_mas_reciente": "2026-10-08 (Crunchbase News, informe de Europa del 3T-2026)",
+  "fuentes_principales": [
+   "Crunchbase News (informes trimestrales, rankings semanales y anuales)",
+   "Bloomberg (vía Bloomberg Law/Government)",
+   "Reuters (vía The Star, New Straits Times)",
+   "TechCrunch",
+   "Epoch AI (seguimiento de sedes Stargate)",
+   "Orrick y Latham & Watkins (comunicados de asesores legales)",
+   "Yicai Global, The Standard, Asia Financial, Caixin (China)",
+   "Yahoo Finance (folleto de salida a bolsa de SpaceX)"
+  ],
+  "leyenda": {
+   "nivel": "A = primaria o asesor de la operación; B = prensa confiable; C = agregador, prensa secundaria o estimación",
+   "verificacion": "pagina = la cifra se leyó en la página abierta; busqueda = la cifra solo se vio en el extracto del buscador porque la página no pudo abrirse (403/paywall)"
+  },
+  "advertencias": [
+   "Todas las cifras están en USD miles de millones salvo que el campo 'unidad' diga otra cosa. Las rondas son montos anunciados o comprometidos, no necesariamente desembolsados; los megaproyectos son casi siempre anuncios plurianuales.",
+   "El año de fundación solo se incluye cuando apareció en una página abierta (Anthropic, ElevenLabs, Sakana AI); para el resto se omitió en lugar de completarlo de memoria.",
+   "El financiamiento total acumulado se omitió donde no apareció en una fuente abierta (por ejemplo OpenAI, xAI, Databricks, Waymo).",
+   "Las entradas con verificacion='busqueda' no cumplen del todo la regla de página abierta: Project Prometheus (ronda de 12 a 41), Skild AI, Synthesia, Black Forest Labs, valoración de Nscale, acuerdo Groq–Nvidia, Stargate Norway y cuatro megarrondas de 2024 (Databricks 10, OpenAI 6.6, xAI 6 y 6, Waymo 5.6). Conviene revisarlas antes de publicar.",
+   "Varias valoraciones corresponden a negociaciones no cerradas y solo se mencionan en 'nota' (OpenAI ~1.2 billones, Thinking Machines 40+, Perplexity 30+, Cohere 20, Reflection AI 20-25, Lambda 12+, Physical Intelligence 11+, Moonshot 30, DeepSeek 74).",
+   "Harvey, Perplexity, Glean, Cohere y Sierra provienen de prensa secundaria o agregadores (nivel C o B débil).",
+   "Serie trimestral: cifras tal como Crunchbase las publicó por primera vez; Crunchbase revisa los datos después (p. ej. 1T-2026 de 300 a 305 y 2T-2026 de 205 a 212). No se publicó monto o porcentaje de IA para 2T-2023, 4T-2023, 4T-2025 ni el monto del 2T-2026: esos campos van en null. La definición de 'IA' de Crunchbase incluye infraestructura y aplicaciones, no solo laboratorios.",
+   "xAI, Anysphere (Cursor), Hugging Face y World Labs ya no son empresas independientes (fusión o adquisición en 2026); Cerebras, MiniMax y Zhipu cotizan en bolsa. No se verificaron capitalizaciones bursátiles actuales.",
+   "El ranking de megarrondas incluye inversiones corporativas (Microsoft–OpenAI 2023, Amazon–Anthropic 2023, Meta–Scale AI) y una nota convertible (Nscale); excluye salidas a bolsa y adquisiciones.",
+   "Latitud y longitud son aproximaciones al centro de la ciudad o condado, no la ubicación exacta del predio; van en null cuando la fuente no indica una localidad.",
+   "No se encontraron fuentes abiertas con datos verificables para: sedes Stargate en Reino Unido, India, Corea, Japón o Alemania; proyectos de MGX; costo de Colossus; flujo de caja real de Anthropic; ingresos de Mistral, DeepSeek, Scale AI, Figure y Waymo."
+  ]
+ },
+ "empresas": [
+  {
+   "nombre": "OpenAI",
+   "pais_iso3": "USA",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 122,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-03-31",
+    "fuente": "Bloomberg",
+    "url": "https://news.bloomberglaw.com/tech-and-telecom-law/openai-valued-at-852-billion-after-closing-122-billion-round",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Amazon (50), Nvidia (30), SoftBank (30); a16z, D.E. Shaw, MGX, TPG y T. Rowe Price en la extensión",
+    "tipo": "comprometido",
+    "condicion": "USD 35 mil M de Amazon condicionados a salida a bolsa o hito tecnológico"
+   },
+   "valoracion": {
+    "valor": 852,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-03-31",
+    "fuente": "Bloomberg",
+    "url": "https://news.bloomberglaw.com/tech-and-telecom-law/openai-valued-at-852-billion-after-closing-122-billion-round",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "post-money"
+   },
+   "ingresos_anualizados": {
+    "valor": 36,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09-18",
+    "fuente": "Reuters (vía The Star), citando al Financial Times",
+    "url": "https://www.thestar.com.my/tech/tech-news/2026/09/19/openai-forecasts-cash-burn-near-280-billion-by-2030-ft-reports",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "ingresos proyectados para todo 2026 (no es run-rate)"
+   },
+   "nota": "Mayor ronda de la historia (USD 122 mil M, mar-2026); presentó en junio una solicitud confidencial de salida a bolsa y en septiembre negociaba a ~USD 1.2 billones (no cerrado)."
+  },
+  {
+   "nombre": "Anthropic",
+   "pais_iso3": "USA",
+   "fundacion": 2021,
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "financiamiento_total": {
+    "valor": 125,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-28",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/ai/anthropic-nears-1t-valuation-65b-seriesh/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "nota": "aprox., desde su fundación"
+   },
+   "ultima_ronda": {
+    "valor": 65,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-28",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/ai/anthropic-nears-1t-valuation-65b-seriesh/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Altimeter, Dragoneer, Greenoaks, Sequoia; co-líderes Capital Group, Coatue, D1, GIC, Iconiq, XN"
+   },
+   "valoracion": {
+    "valor": 965,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-28",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/ai/anthropic-nears-1t-valuation-65b-seriesh/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "post-money"
+   },
+   "ingresos_anualizados": {
+    "valor": 47,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05",
+    "fuente": "Crunchbase News (dato de la empresa)",
+    "url": "https://news.crunchbase.com/ai/anthropic-nears-1t-valuation-65b-seriesh/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "run-rate, 'por encima de' 47"
+   },
+   "nota": "Tras la Serie H (may-2026) superó a OpenAI como la empresa privada más valiosa según Crunchbase; de los USD 65 mil M, 50 mil M son dinero nuevo y 15 mil M compromisos previos de Amazon (5) y Google (10)."
+  },
+  {
+   "nombre": "xAI",
+   "pais_iso3": "USA",
+   "categoria": "Modelos fundacionales",
+   "estado": "fusionada con SpaceX (SpaceX cotiza en Nasdaq desde jun-2026)",
+   "ultima_ronda": {
+    "valor": 20,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01",
+    "fuente": "City AM",
+    "url": "https://www.cityam.com/musks-spacex-swallows-xai-ahead-of-mega-ipo/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "no indicados en la fuente",
+    "tipo": "Serie E"
+   },
+   "valoracion": {
+    "valor": 250,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-02",
+    "fuente": "City AM",
+    "url": "https://www.cityam.com/musks-spacex-swallows-xai-ahead-of-mega-ipo/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "valor asignado en la fusión con SpaceX; la Serie E la valoró en ~230"
+   },
+   "ingresos_anualizados": {
+    "valor": 3.2,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-12-31",
+    "fuente": "Yahoo Finance, a partir del folleto de salida a bolsa de SpaceX",
+    "url": "https://finance.yahoo.com/sectors/technology/articles/xai-burned-6-4b-last-222608682.html",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "ingresos del año 2025 (no run-rate)"
+   },
+   "salida_bolsa_matriz": {
+    "valor": 75,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-06-12",
+    "fuente": "Arise News / Reuters",
+    "url": "https://www.arise.tv/spacex-smashes-ipo-record-raises-75bn-at-135-a-share/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "nota": "OPV de SpaceX a USD 135 por acción; valoración 1.77 billones"
+   },
+   "nota": "Absorbida por SpaceX en feb-2026 (xAI valorada en USD 250 mil M; grupo en 1.25 billones). SpaceX salió a bolsa el 12-jun-2026 recaudando USD 75 mil M a una valoración de 1.77 billones."
+  },
+  {
+   "nombre": "Databricks",
+   "pais_iso3": "USA",
+   "categoria": "Plataforma de datos e IA",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 5,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-08-13",
+    "fuente": "Reuters (vía The Star)",
+    "url": "https://www.thestar.com.my/tech/tech-news/2026/08/13/databricks-valued-at-190-billion-in-latest-funding-round",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Coatue, Blackstone, MGX, T. Rowe Price; nuevo: Sixth Street Growth"
+   },
+   "valoracion": {
+    "valor": 190,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-08-13",
+    "fuente": "Reuters (vía The Star)",
+    "url": "https://www.thestar.com.my/tech/tech-news/2026/08/13/databricks-valued-at-190-billion-in-latest-funding-round",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "ingresos_anualizados": {
+    "valor": 7,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-08-13",
+    "fuente": "Reuters (vía The Star)",
+    "url": "https://www.thestar.com.my/tech/tech-news/2026/08/13/databricks-valued-at-190-billion-in-latest-funding-round",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "run-rate, 'superó' 7"
+   },
+   "nota": "Superó USD 7 mil M de ingresos anualizados; vista como candidata a salir a bolsa, sin plan anunciado."
+  },
+  {
+   "nombre": "Waymo",
+   "pais_iso3": "USA",
+   "categoria": "Conducción autónoma",
+   "estado": "privada (filial de Alphabet)",
+   "ultima_ronda": {
+    "valor": 16,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-02",
+    "fuente": "Bloomberg",
+    "url": "https://news.bloomberglaw.com/private-equity/waymo-raises-16-billion-from-alphabet-others-to-expand-service",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Sequoia Capital, DST Global, Dragoneer"
+   },
+   "valoracion": {
+    "valor": 126,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-02",
+    "fuente": "Bloomberg",
+    "url": "https://news.bloomberglaw.com/private-equity/waymo-raises-16-billion-from-alphabet-others-to-expand-service",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "Ronda de USD 16 mil M en feb-2026; Alphabet sigue siendo el accionista mayoritario."
+  },
+  {
+   "nombre": "Anduril",
+   "pais_iso3": "USA",
+   "categoria": "Defensa con IA",
+   "estado": "privada",
+   "financiamiento_total": {
+    "valor": 11,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-13",
+    "fuente": "TechCrunch",
+    "url": "https://techcrunch.com/2026/05/13/anduril-raises-5b-doubles-valuation-to-61b/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "nota": "'más de' 11"
+   },
+   "ultima_ronda": {
+    "valor": 5,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-13",
+    "fuente": "TechCrunch",
+    "url": "https://techcrunch.com/2026/05/13/anduril-raises-5b-doubles-valuation-to-61b/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Thrive Capital, Andreessen Horowitz",
+    "tipo": "Serie H"
+   },
+   "valoracion": {
+    "valor": 61,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-13",
+    "fuente": "TechCrunch",
+    "url": "https://techcrunch.com/2026/05/13/anduril-raises-5b-doubles-valuation-to-61b/",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "ingresos_anualizados": {
+    "valor": 2.2,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-12-31",
+    "fuente": "TechCrunch",
+    "url": "https://techcrunch.com/2026/05/13/anduril-raises-5b-doubles-valuation-to-61b/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "ingresos del año 2025 (no run-rate)"
+   },
+   "nota": "Duplicó ingresos en 2025 hasta USD 2.2 mil M; ha recaudado más de USD 11 mil M."
+  },
+  {
+   "nombre": "Anysphere (Cursor)",
+   "pais_iso3": "USA",
+   "categoria": "Programación con IA",
+   "estado": "adquirida por SpaceX (anunciado 16-jun-2026)",
+   "ultima_ronda": {
+    "valor": 2.3,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "no especificado; inversores: Accel, Thrive, a16z, DST, Coatue, Nvidia, Google",
+    "tipo": "Serie D"
+   },
+   "valoracion": {
+    "valor": 60,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-06-16",
+    "fuente": "Techzine",
+    "url": "https://www.techzine.eu/news/devops/142197/spacex-acquires-cursor-for-60-billion/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "precio de adquisición en acciones de SpaceX; la Serie D de nov-2025 fue a 29.3 post-money"
+   },
+   "ingresos_anualizados": {
+    "valor": 2.6,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-06-16",
+    "fuente": "Techzine",
+    "url": "https://www.techzine.eu/news/devops/142197/spacex-acquires-cursor-for-60-billion/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "ingresos anuales B2B aproximados"
+   },
+   "nota": "SpaceX ejerció su opción de compra por USD 60 mil M en acciones; cierre previsto para el 3T-2026 (cierre no verificado en fuente primaria)."
+  },
+  {
+   "nombre": "DeepSeek",
+   "pais_iso3": "CHN",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 7.4,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-06",
+    "fuente": "Yicai Global",
+    "url": "https://www2.yicaiglobal.com/news/chinas-deepseek-restarts-second-funding-round-at-pre-money-valuation-of-usd741-billion-report-says",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Fondo Nacional de Inversión en la Industria de IA, Tencent, CATL, NetEase, JD.com, Monolith, IDG, Loyal Valley, Shixiang",
+    "monto_original": "CNY 50 mil millones"
+   },
+   "valoracion": {
+    "valor": 50,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-06",
+    "fuente": "Crunchbase News (valor 'reportado'); Yicai indica 'más de CNY 350 mil millones'",
+    "url": "https://news.crunchbase.com/venture/data-china-ai-lead-asia-startup-funding-peak-q2-2026/",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "Primera ronda externa de su historia (jun-2026): CNY 50 mil M; en agosto reactivó una segunda ronda por otros CNY 50 mil M a ~CNY 500 mil M pre-money (USD 74.1 mil M), aún no cerrada."
+  },
+  {
+   "nombre": "Cognition (Devin)",
+   "pais_iso3": "USA",
+   "categoria": "Programación con IA",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 2,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09-08",
+    "fuente": "Latham & Watkins (asesor legal de la operación)",
+    "url": "https://www.lw.com/en/news/2026/09/latham-watkins-advises-cognition-on-series-e",
+    "nivel": "A",
+    "verificacion": "pagina",
+    "lideres": "Andreessen Horowitz, Accel",
+    "tipo": "Serie E, 'más de' 2"
+   },
+   "valoracion": {
+    "valor": 48,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09-08",
+    "fuente": "Latham & Watkins",
+    "url": "https://www.lw.com/en/news/2026/09/latham-watkins-advises-cognition-on-series-e",
+    "nivel": "A",
+    "verificacion": "pagina"
+   },
+   "nota": "Casi duplicó su valoración desde mayo de 2026; run-rate reportado de ~USD 900 M (solo en resultado de búsqueda)."
+  },
+  {
+   "nombre": "Project Prometheus",
+   "pais_iso3": "USA",
+   "categoria": "IA para ingeniería y manufactura",
+   "estado": "privada",
+   "financiamiento_total": {
+    "valor": 16,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-04-24",
+    "fuente": "Pulse 2.0 (citando a Bloomberg)",
+    "url": "https://pulse2.com/project-prometheus-reportedly-closes-10-billion-funding-round-at-38-billion-valuation/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "nota": "'más de' 16, incluyendo la ronda de abril"
+   },
+   "ultima_ronda": {
+    "valor": 12,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-06",
+    "fuente": "GeekWire / Axios",
+    "url": "https://www.geekwire.com/2026/bezos-ai-startup-prometheus-raises-12b-at-41b-valuation-and-the-ceos-explain-what-theyre-doing/",
+    "nivel": "B",
+    "verificacion": "busqueda",
+    "lideres": "JPMorgan, BlackRock, Goldman Sachs, DST Global, Arch Venture Partners (participantes)",
+    "tipo": "Serie B"
+   },
+   "valoracion": {
+    "valor": 41,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-06",
+    "fuente": "GeekWire / Axios",
+    "url": "https://www.geekwire.com/2026/bezos-ai-startup-prometheus-raises-12b-at-41b-valuation-and-the-ceos-explain-what-theyre-doing/",
+    "nivel": "B",
+    "verificacion": "busqueda"
+   },
+   "nota": "Laboratorio co-dirigido por Jeff Bezos. Bloomberg reportó en abril USD 10 mil M a ~38 mil M; GeekWire informó en junio un cierre de Serie B de USD 12 mil M a ~41 mil M (esta última cifra solo vista en resultado de búsqueda)."
+  },
+  {
+   "nombre": "Figure",
+   "pais_iso3": "USA",
+   "categoria": "Robótica humanoide",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 1,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-09-16",
+    "fuente": "Bloomberg",
+    "url": "https://news.bloombergtax.com/private-equity/robotics-startup-figure-ai-valued-at-39-billion-in-new-funding",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Parkway Venture Capital",
+    "tipo": "comprometido, 'más de' 1"
+   },
+   "valoracion": {
+    "valor": 39,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-09-16",
+    "fuente": "Bloomberg",
+    "url": "https://news.bloombergtax.com/private-equity/robotics-startup-figure-ai-valued-at-39-billion-in-new-funding",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "Serie C de sep-2025 con 'más de USD 1 mil M' en capital comprometido; no se verificó una ronda con precio en 2026."
+  },
+  {
+   "nombre": "Cerebras",
+   "pais_iso3": "USA",
+   "categoria": "Chips de IA",
+   "estado": "cotiza (Nasdaq: CBRS, desde 14-may-2026)",
+   "ultima_ronda": {
+    "valor": 5.55,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-14",
+    "fuente": "Dealroom",
+    "url": "https://dealroom.co/news/128936-cerebras-raises-5-55b-in-biggest-us-ipo-of-2026/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "OPV"
+   },
+   "valoracion": {
+    "valor": 40,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-14",
+    "fuente": "Dealroom",
+    "url": "https://dealroom.co/news/128936-cerebras-raises-5-55b-in-biggest-us-ipo-of-2026/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "valoración aproximada al precio de salida; última privada: 8.1 (sep-2025)"
+   },
+   "ingresos_anualizados": {
+    "valor": 0.51,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-12-31",
+    "fuente": "Dealroom",
+    "url": "https://dealroom.co/news/128936-cerebras-raises-5-55b-in-biggest-us-ipo-of-2026/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "ingresos del año 2025 (no run-rate)"
+   },
+   "nota": "Mayor salida a bolsa de EE. UU. de 2026 hasta esa fecha: USD 5.55 mil M a USD 185 por acción; ingresos 2025 de USD 510 M."
+  },
+  {
+   "nombre": "Safe Superintelligence (SSI)",
+   "pais_iso3": "USA",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 5,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-07-27",
+    "fuente": "CTech (citando a Reuters)",
+    "url": "https://www.calcalistech.com/ctechnews/article/qy9eg5jw4",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Nvidia",
+    "tipo": "reportado, no confirmado por las empresas"
+   },
+   "valoracion": {
+    "valor": 32,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-04",
+    "fuente": "CTech / Crunchbase News",
+    "url": "https://www.calcalistech.com/ctechnews/article/qy9eg5jw4",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "última valoración reportada (ronda de abr-2025 liderada por Greenoaks)"
+   },
+   "financiamiento_total": {
+    "valor": 7,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-07-27",
+    "fuente": "CTech",
+    "url": "https://www.calcalistech.com/ctechnews/article/qy9eg5jw4",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "nota": "aprox., antes de la inversión de Nvidia"
+   },
+   "nota": "Nvidia invirtió en jul-2026 (USD 5 mil M según Reuters; las empresas no revelaron monto ni valoración). Sin producto público."
+  },
+  {
+   "nombre": "Crusoe",
+   "pais_iso3": "USA",
+   "categoria": "Infraestructura / neocloud",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 3.9,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/q3-2026-north-america-startup-funding-falls-ai-exits-data/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Atreides Management, Valor Equity Partners (según Bloomberg)"
+   },
+   "valoracion": {
+    "valor": 30,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09-03",
+    "fuente": "Bloomberg",
+    "url": "https://news.bgov.com/crypto/crusoe-raises-over-3-billion-in-round-at-30-billion-valuation",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "aproximada, según fuentes"
+   },
+   "nota": "Constructor del campus Stargate de Abilene. Crunchbase registra USD 3.9 mil M en el 3T-2026; Bloomberg (fuentes anónimas) habla de 'más de 3 mil M' a ~30 mil M."
+  },
+  {
+   "nombre": "Scale AI",
+   "pais_iso3": "USA",
+   "categoria": "Datos para IA",
+   "estado": "privada (Meta posee una participación minoritaria)",
+   "ultima_ronda": {
+    "valor": 14.3,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-06-12",
+    "fuente": "Reuters (vía New Straits Times)",
+    "url": "https://www.nst.com.my/amp/business/corporate/2025/06/1229902/meta-finalises-investment-scale-ai-valuing-startup-us29bil",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Meta"
+   },
+   "valoracion": {
+    "valor": 29,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-06-12",
+    "fuente": "Reuters (vía New Straits Times)",
+    "url": "https://www.nst.com.my/amp/business/corporate/2025/06/1229902/meta-finalises-investment-scale-ai-valuing-startup-us29bil",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "'más de' 29"
+   },
+   "nota": "Meta invirtió USD 14.3 mil M en jun-2025; no se verificó una nueva valoración posterior."
+  },
+  {
+   "nombre": "Mistral AI",
+   "pais_iso3": "FRA",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 3.5,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09-08",
+    "fuente": "Orrick (asesor legal) / Crunchbase News",
+    "url": "https://www.orrick.com/en/News/2026/09/Orrick-Advises-Mistral-in-its-3B-Series-D-at-21B-Post-Money-Valuation",
+    "nivel": "A",
+    "verificacion": "pagina",
+    "lideres": "Samsung Electronics; co-líderes Scaleup Europe Fund (EQT) y PSG Equity",
+    "monto_original": "EUR 3 mil millones",
+    "tipo": "Serie D"
+   },
+   "valoracion": {
+    "valor": 21,
+    "unidad": "EUR miles de millones",
+    "fecha": "2026-09-08",
+    "fuente": "Orrick",
+    "url": "https://www.orrick.com/en/News/2026/09/Orrick-Advises-Mistral-in-its-3B-Series-D-at-21B-Post-Money-Valuation",
+    "nivel": "A",
+    "verificacion": "pagina",
+    "tipo": "post-money, 'más de' 21"
+   },
+   "nota": "Mayor ronda de capital de una tecnológica europea: EUR 3 mil M a más de EUR 21 mil M post-money (Crunchbase la registra como USD 3.5 mil M)."
+  },
+  {
+   "nombre": "Moonshot AI (Kimi)",
+   "pais_iso3": "CHN",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 2,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-07",
+    "fuente": "The Standard (Hong Kong)",
+    "url": "https://www.thestandard.com.hk/innovation/article/331387/China-AI-startup-Moonshot-AI-hits-US20-bln-valuation-after-Meituan-led-financing-round",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Meituan (Long-Z Investments); China Mobile, CPE",
+    "tipo": "ronda 'casi cerrada' al publicarse"
+   },
+   "valoracion": {
+    "valor": 20,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-07",
+    "fuente": "The Standard (Hong Kong)",
+    "url": "https://www.thestandard.com.hk/innovation/article/331387/China-AI-startup-Moonshot-AI-hits-US20-bln-valuation-after-Meituan-led-financing-round",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "'más de' 20"
+   },
+   "ingresos_anualizados": {
+    "valor": 0.2,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-04",
+    "fuente": "The Standard (Hong Kong)",
+    "url": "https://www.thestandard.com.hk/innovation/article/331387/China-AI-startup-Moonshot-AI-hits-US20-bln-valuation-after-Meituan-led-financing-round",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "ARR, 'más de' 0.2"
+   },
+   "nota": "Tres rondas en 2026 por más de USD 3.9 mil M en total; en junio buscaba otra a USD 30 mil M (no confirmada). Crunchbase la lista entre las rondas de más de USD 3 mil M del 3T-2026."
+  },
+  {
+   "nombre": "Helsing",
+   "pais_iso3": "DEU",
+   "categoria": "Defensa con IA",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 1.8,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-07-14",
+    "fuente": "Munich Startup",
+    "url": "https://www.munich-startup.de/en/news/helsing-closes-billion-euro-funding-round",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "no indicado; participan Dragoneer, Lightspeed, Iconiq, Goldman Sachs Alternatives, JPMorganChase, CPP Investments, General Catalyst",
+    "monto_original": "EUR 1.6 mil millones",
+    "tipo": "Serie E"
+   },
+   "valoracion": {
+    "valor": 18,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-07-14",
+    "fuente": "Munich Startup",
+    "url": "https://www.munich-startup.de/en/news/helsing-closes-billion-euro-funding-round",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "monto_original": "EUR 16 mil millones"
+   },
+   "nota": "Serie E de EUR 1.6 mil M (USD 1.8 mil M) a EUR 16 mil M (USD 18 mil M), jul-2026."
+  },
+  {
+   "nombre": "Sierra",
+   "pais_iso3": "USA",
+   "categoria": "Agentes de IA (atención al cliente)",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.95,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-04",
+    "fuente": "Idlen",
+    "url": "https://www.idlen.io/news/sierra-950-million-series-e-15-8-billion-valuation-bret-taylor-tiger-global-may-2026",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Tiger Global, GV",
+    "tipo": "Serie E"
+   },
+   "valoracion": {
+    "valor": 15.8,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-04",
+    "fuente": "Idlen",
+    "url": "https://www.idlen.io/news/sierra-950-million-series-e-15-8-billion-valuation-bret-taylor-tiger-global-may-2026",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "post-money"
+   },
+   "ingresos_anualizados": {
+    "valor": 0.15,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02",
+    "fuente": "Idlen",
+    "url": "https://www.idlen.io/news/sierra-950-million-series-e-15-8-billion-valuation-bret-taylor-tiger-global-may-2026",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "ARR"
+   },
+   "nota": "Serie E de USD 950 M en may-2026; USD 150 M de ARR en ocho trimestres."
+  },
+  {
+   "nombre": "Harvey",
+   "pais_iso3": "USA",
+   "categoria": "IA legal",
+   "estado": "privada",
+   "financiamiento_total": {
+    "valor": 1.55,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09-09",
+    "fuente": "EntrepreneurLoop",
+    "url": "https://entrepreneurloop.com/harvey-ai-valuation-15-5b/",
+    "nivel": "C",
+    "verificacion": "pagina",
+    "nota": "'supera' 1.55"
+   },
+   "ultima_ronda": {
+    "valor": 0.55,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09-09",
+    "fuente": "EntrepreneurLoop",
+    "url": "https://entrepreneurloop.com/harvey-ai-valuation-15-5b/",
+    "nivel": "C",
+    "verificacion": "pagina",
+    "lideres": "Diffusion, Lightspeed Venture Partners"
+   },
+   "valoracion": {
+    "valor": 15.5,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09-09",
+    "fuente": "EntrepreneurLoop",
+    "url": "https://entrepreneurloop.com/harvey-ai-valuation-15-5b/",
+    "nivel": "C",
+    "verificacion": "pagina"
+   },
+   "ingresos_anualizados": {
+    "valor": 0.4,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09",
+    "fuente": "EntrepreneurLoop",
+    "url": "https://entrepreneurloop.com/harvey-ai-valuation-15-5b/",
+    "nivel": "C",
+    "verificacion": "pagina",
+    "tipo": "ARR, 'más de' 0.4"
+   },
+   "nota": "USD 550 M en sep-2026; más de USD 400 M de ARR según la misma fuente (prensa secundaria)."
+  },
+  {
+   "nombre": "Skild AI",
+   "pais_iso3": "USA",
+   "categoria": "Robótica (modelos fundacionales)",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 1.4,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01",
+    "fuente": "Dow Jones (vía MarketScreener)",
+    "url": "https://www.marketscreener.com/news/robotics-startup-skild-ai-raises-1-4-billion-at-valuation-over-14-billion-ce7e58d9d98bf423",
+    "nivel": "B",
+    "verificacion": "busqueda",
+    "lideres": "SoftBank Group; NVentures, Macquarie, Bezos Expeditions",
+    "tipo": "Serie C"
+   },
+   "valoracion": {
+    "valor": 14,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01",
+    "fuente": "Dow Jones (vía MarketScreener)",
+    "url": "https://www.marketscreener.com/news/robotics-startup-skild-ai-raises-1-4-billion-at-valuation-over-14-billion-ce7e58d9d98bf423",
+    "nivel": "B",
+    "verificacion": "busqueda",
+    "tipo": "'más de' 14"
+   },
+   "nota": "Serie C de casi USD 1.4 mil M liderada por SoftBank (ene-2026)."
+  },
+  {
+   "nombre": "Lovable",
+   "pais_iso3": "SWE",
+   "categoria": "Creación de apps con IA",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.4,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-08",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/ai/biggest-funding-rounds-databricks-river-ai-data-energy/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "EQT, Menlo Ventures",
+    "tipo": "Serie C"
+   },
+   "valoracion": {
+    "valor": 13.3,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-08",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/ai/biggest-funding-rounds-databricks-river-ai-data-energy/",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "Duplicó su valoración respecto de dic-2025."
+  },
+  {
+   "nombre": "SambaNova",
+   "pais_iso3": "USA",
+   "categoria": "Chips de IA",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 1,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-07",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/ai/biggest-funding-rounds-billion-dollar-cyber-ai-keyfactor-sambanova/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "General Atlantic",
+    "tipo": "Serie F"
+   },
+   "valoracion": {
+    "valor": 11,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-07",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/ai/biggest-funding-rounds-billion-dollar-cyber-ai-keyfactor-sambanova/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "post-money"
+   },
+   "nota": "Serie F de USD 1 mil M en jul-2026 tras fracasar las conversaciones de adquisición con Intel."
+  },
+  {
+   "nombre": "ElevenLabs",
+   "pais_iso3": "GBR",
+   "fundacion": 2022,
+   "categoria": "Voz y audio con IA",
+   "estado": "privada",
+   "financiamiento_total": {
+    "valor": 0.781,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-05",
+    "fuente": "Business Today",
+    "url": "https://www.businesstoday.in/amp/technology/news/story/elevenlabs-bags-500-million-in-funding-valuation-bits-11-billion-514730-2026-02-05",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "ultima_ronda": {
+    "valor": 0.5,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-05",
+    "fuente": "Business Today",
+    "url": "https://www.businesstoday.in/amp/technology/news/story/elevenlabs-bags-500-million-in-funding-valuation-bits-11-billion-514730-2026-02-05",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Sequoia Capital",
+    "tipo": "Serie D"
+   },
+   "valoracion": {
+    "valor": 11,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-05",
+    "fuente": "Business Today",
+    "url": "https://www.businesstoday.in/amp/technology/news/story/elevenlabs-bags-500-million-in-funding-valuation-bits-11-billion-514730-2026-02-05",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "Triplicó su valoración en un año; USD 781 M recaudados en cinco rondas."
+  },
+  {
+   "nombre": "Thinking Machines Lab",
+   "pais_iso3": "USA",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 2,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-07",
+    "fuente": "PYMNTS (citando a The Information)",
+    "url": "https://www.pymnts.com/?p=4153849",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Andreessen Horowitz",
+    "tipo": "ronda semilla"
+   },
+   "valoracion": {
+    "valor": 10,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-07",
+    "fuente": "PYMNTS (citando a The Information)",
+    "url": "https://www.pymnts.com/?p=4153849",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "pre-money de la ronda semilla; negociación en curso a 40 o más"
+   },
+   "nota": "En sep-2026 negociaba al menos USD 1 mil M a una valoración de al menos 40 mil M (no cerrado); última ronda cerrada: semilla de USD 2 mil M (jul-2025)."
+  },
+  {
+   "nombre": "Perplexity",
+   "pais_iso3": "USA",
+   "categoria": "Búsqueda con IA",
+   "estado": "privada",
+   "financiamiento_total": {
+    "valor": 1.7,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-08-25",
+    "fuente": "Silicon Valley Investclub",
+    "url": "https://siliconvalleyinvestclub.com/2026/08/25/perplexity-in-talks-to-raise-a-new-funding-round-at-a-30-billion-valuation/",
+    "nivel": "C",
+    "verificacion": "pagina",
+    "nota": "'más de' 1.7"
+   },
+   "valoracion": {
+    "valor": 23,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01",
+    "fuente": "Silicon Valley Investclub",
+    "url": "https://siliconvalleyinvestclub.com/2026/08/25/perplexity-in-talks-to-raise-a-new-funding-round-at-a-30-billion-valuation/",
+    "nivel": "C",
+    "verificacion": "pagina"
+   },
+   "ingresos_anualizados": {
+    "valor": 0.75,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-08",
+    "fuente": "Silicon Valley Investclub (citando a The Information)",
+    "url": "https://siliconvalleyinvestclub.com/2026/08/25/perplexity-in-talks-to-raise-a-new-funding-round-at-a-30-billion-valuation/",
+    "nivel": "C",
+    "verificacion": "pagina",
+    "tipo": "anualizados, 'por encima de' 0.75"
+   },
+   "nota": "En ago-2026 negociaba una ronda a más de USD 30 mil M con Nvidia (no cerrada)."
+  },
+  {
+   "nombre": "Instinct",
+   "pais_iso3": "USA",
+   "categoria": "Asistentes de IA",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 1,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-02",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-cyber-real-estate-instinct/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Sequoia Capital, Benchmark, Coatue",
+    "tipo": "Serie C"
+   },
+   "valoracion": {
+    "valor": 10,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-02",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-cyber-real-estate-instinct/",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "Ronda más grande de la semana del 26-sep al 2-oct-2026 según Crunchbase."
+  },
+  {
+   "nombre": "Wayve",
+   "pais_iso3": "GBR",
+   "categoria": "Conducción autónoma",
+   "estado": "privada",
+   "financiamiento_total": {
+    "valor": 1.5,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-26",
+    "fuente": "Yahoo Finance",
+    "url": "https://finance.yahoo.com/news/wayve-raises-1-2bn-series-102716530.html",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "ultima_ronda": {
+    "valor": 1.2,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-26",
+    "fuente": "Yahoo Finance",
+    "url": "https://finance.yahoo.com/news/wayve-raises-1-2bn-series-102716530.html",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Eclipse, Balderton, SoftBank Vision Fund 2",
+    "tipo": "Serie D"
+   },
+   "valoracion": {
+    "valor": 8.6,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-26",
+    "fuente": "Yahoo Finance",
+    "url": "https://finance.yahoo.com/news/wayve-raises-1-2bn-series-102716530.html",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "post-money"
+   },
+   "nota": "Serie D de USD 1.2 mil M (hasta 1.5 mil M con un compromiso condicional de Uber, según resultados de búsqueda)."
+  },
+  {
+   "nombre": "Together AI",
+   "pais_iso3": "USA",
+   "categoria": "Infraestructura / neocloud",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.8,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-07-01",
+    "fuente": "The Next Web",
+    "url": "https://thenextweb.com/news/together-ai-800m-series-c-aramco-ventures",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Aramco Ventures",
+    "tipo": "Serie C"
+   },
+   "valoracion": {
+    "valor": 8,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-07-01",
+    "fuente": "The Next Web",
+    "url": "https://thenextweb.com/news/together-ai-800m-series-c-aramco-ventures",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "'más de' 8"
+   },
+   "nota": "Serie C de USD 800 M; dice generar más de USD 1 mil M en contrataciones anuales (bookings, no ingresos)."
+  },
+  {
+   "nombre": "Reflection AI",
+   "pais_iso3": "USA",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 2,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-10",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "no indicado; respaldada por Nvidia"
+   },
+   "valoracion": {
+    "valor": 8,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-10",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "USD 2 mil M a 8 mil M en oct-2025; en mar-2026 la prensa reportó conversaciones a 20-25 mil M, sin cierre verificado."
+  },
+  {
+   "nombre": "Glean",
+   "pais_iso3": "USA",
+   "categoria": "Búsqueda empresarial con IA",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.15,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-06",
+    "fuente": "Sacra",
+    "url": "https://sacra.com/research/glean-at-200m-arr/",
+    "nivel": "C",
+    "verificacion": "pagina",
+    "lideres": "Kleiner Perkins",
+    "tipo": "Serie F"
+   },
+   "valoracion": {
+    "valor": 7.2,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-06",
+    "fuente": "Sacra",
+    "url": "https://sacra.com/research/glean-at-200m-arr/",
+    "nivel": "C",
+    "verificacion": "pagina"
+   },
+   "ingresos_anualizados": {
+    "valor": 0.2,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11",
+    "fuente": "Sacra (estimación)",
+    "url": "https://sacra.com/research/glean-at-200m-arr/",
+    "nivel": "C",
+    "verificacion": "pagina",
+    "tipo": "ARR estimado"
+   },
+   "nota": "Sin ronda nueva en 2026; USD 300 M de ARR anunciados en may-2026 (visto solo en resultado de búsqueda)."
+  },
+  {
+   "nombre": "Cohere",
+   "pais_iso3": "CAN",
+   "categoria": "Modelos fundacionales (empresa)",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.1,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-09",
+    "fuente": "Let's Data Science (citando a PYMNTS)",
+    "url": "https://letsdatascience.com/news/cohere-seeks-3-billion-at-20-billion-valuation-26f6fc08",
+    "nivel": "C",
+    "verificacion": "pagina",
+    "tipo": "segundo cierre; el primero fue de 0.5 en ago-2025 a 6.8"
+   },
+   "valoracion": {
+    "valor": 7,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-09",
+    "fuente": "Let's Data Science (citando a PYMNTS)",
+    "url": "https://letsdatascience.com/news/cohere-seeks-3-billion-at-20-billion-valuation-26f6fc08",
+    "nivel": "C",
+    "verificacion": "pagina"
+   },
+   "nota": "En sep-2026 la prensa reportó conversaciones por USD 2-3 mil M a 20 mil M (no confirmado por la empresa)."
+  },
+  {
+   "nombre": "General Intuition",
+   "pais_iso3": "USA",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.22,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-02",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-cyber-real-estate-instinct/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Valor Equity Partners, Atreides Management"
+   },
+   "valoracion": {
+    "valor": 6.2,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10-02",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-cyber-real-estate-instinct/",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "USD 220 M a una valoración de 6.2 mil M (semana del 26-sep al 2-oct-2026)."
+  },
+  {
+   "nombre": "Physical Intelligence",
+   "pais_iso3": "USA",
+   "categoria": "Robótica (modelos fundacionales)",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.6,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-fintech-lambda/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "CapitalG"
+   },
+   "valoracion": {
+    "valor": 5.6,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11",
+    "fuente": "Bloomberg",
+    "url": "https://news.bgov.com/artificial-intelligence/ai-robotics-lab-in-talks-to-nab-1-billion-at-11-billion-value",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "En mar-2026 negociaba ~USD 1 mil M a más de 11 mil M; cierre no confirmado."
+  },
+  {
+   "nombre": "Runway",
+   "pais_iso3": "USA",
+   "categoria": "Video generativo",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.315,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-10",
+    "fuente": "Bloomberg",
+    "url": "https://news.bgov.com/private-equity/ai-video-startup-runway-valued-at-5-3-billion-with-new-funding",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "General Atlantic"
+   },
+   "valoracion": {
+    "valor": 5.3,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-10",
+    "fuente": "Bloomberg",
+    "url": "https://news.bgov.com/private-equity/ai-video-startup-runway-valued-at-5-3-billion-with-new-funding",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "Serie E de USD 315 M en feb-2026."
+  },
+  {
+   "nombre": "Ineffable Intelligence",
+   "pais_iso3": "GBR",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 1.1,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-04-27",
+    "fuente": "Yahoo Finance (citando a Wired)",
+    "url": "https://finance.yahoo.com/sectors/technology/articles/deepmind-david-silver-just-raised-172421988.html",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Sequoia Capital, Lightspeed Venture Partners",
+    "tipo": "ronda semilla"
+   },
+   "valoracion": {
+    "valor": 5.1,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-04-27",
+    "fuente": "Yahoo Finance",
+    "url": "https://finance.yahoo.com/sectors/technology/articles/deepmind-david-silver-just-raised-172421988.html",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "Laboratorio de David Silver (ex-DeepMind); ronda semilla récord en Europa."
+  },
+  {
+   "nombre": "AMI Labs (Advanced Machine Intelligence)",
+   "pais_iso3": "FRA",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 1.03,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-03",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/foundational-ai-startup-funding-doubled-openai-anthropic-xai-q1-2026/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Bezos Expeditions, Cathay Innovation, Greycroft, Hiro Capital, HV Capital",
+    "tipo": "ronda semilla"
+   },
+   "valoracion": {
+    "valor": 3.5,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-03",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/foundational-ai-startup-funding-doubled-openai-anthropic-xai-q1-2026/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "pre-money según otras fuentes"
+   },
+   "nota": "Laboratorio de Yann LeCun; ronda semilla de USD 1.03 mil M."
+  },
+  {
+   "nombre": "Synthesia",
+   "pais_iso3": "GBR",
+   "categoria": "Video con avatares de IA",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.2,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01-26",
+    "fuente": "Latham & Watkins / UCL",
+    "url": "https://www.lw.com/en/news/latham-watkins-advises-synthesia-on-us200-million-series-e-and-secondary-transaction",
+    "nivel": "B",
+    "verificacion": "busqueda",
+    "lideres": "GV (Google Ventures)",
+    "tipo": "Serie E"
+   },
+   "valoracion": {
+    "valor": 4,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01-26",
+    "fuente": "UCL News",
+    "url": "https://www.ucl.ac.uk/news/2026/jan/ai-video-startup-co-founded-ucl-professor-valued-4-billion",
+    "nivel": "B",
+    "verificacion": "busqueda"
+   },
+   "nota": "Serie E de USD 200 M liderada por GV, con venta secundaria para empleados."
+  },
+  {
+   "nombre": "Black Forest Labs",
+   "pais_iso3": "DEU",
+   "categoria": "Imagen generativa",
+   "estado": "privada",
+   "financiamiento_total": {
+    "valor": 0.576,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-06",
+    "fuente": "Caplight",
+    "url": "https://www.caplight.com/company/blackforestlabs",
+    "nivel": "C",
+    "verificacion": "busqueda"
+   },
+   "ultima_ronda": {
+    "valor": 0.308,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-06-03",
+    "fuente": "Caplight",
+    "url": "https://www.caplight.com/company/blackforestlabs",
+    "nivel": "C",
+    "verificacion": "busqueda"
+   },
+   "valoracion": {
+    "valor": 3.25,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-06",
+    "fuente": "Caplight (estimación)",
+    "url": "https://www.caplight.com/company/blackforestlabs",
+    "nivel": "C",
+    "verificacion": "busqueda"
+   },
+   "nota": "Valoración estimada por un mercado secundario (no anunciada por la empresa)."
+  },
+  {
+   "nombre": "Baichuan AI",
+   "pais_iso3": "CHN",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.6896,
+    "unidad": "USD miles de millones",
+    "fecha": "2024-07-26",
+    "fuente": "Verdict",
+    "url": "https://www.verdict.co.uk/baichuan-ai-secures-700m-funding/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Alibaba, Tencent, Xiaomi; CICC, Shenzhen Capital Group",
+    "monto_original": "aprox. CNY 5 mil millones"
+   },
+   "valoracion": {
+    "valor": 2.7,
+    "unidad": "USD miles de millones",
+    "fecha": "2024-07-26",
+    "fuente": "Verdict",
+    "url": "https://www.verdict.co.uk/baichuan-ai-secures-700m-funding/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "'más de' 2.7"
+   },
+   "nota": "Sin ronda nueva verificada desde 2024; su fundador habló de una salida a bolsa en 2027."
+  },
+  {
+   "nombre": "Sakana AI",
+   "pais_iso3": "JPN",
+   "fundacion": 2023,
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "financiamiento_total": {
+    "valor": 0.379,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11-17",
+    "fuente": "TechCrunch",
+    "url": "https://techcrunch.com/2025/11/17/sakana-ai-raises-135m-series-b-at-a-2-65b-valuation-to-continue-building-ai-models-for-japan",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "nota": "estimación del artículo"
+   },
+   "ultima_ronda": {
+    "valor": 0.135,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11-17",
+    "fuente": "TechCrunch",
+    "url": "https://techcrunch.com/2025/11/17/sakana-ai-raises-135m-series-b-at-a-2-65b-valuation-to-continue-building-ai-models-for-japan",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "no indicado; MUFG, Khosla, Macquarie, NEA, Lux, In-Q-Tel",
+    "monto_original": "JPY 20 mil millones",
+    "tipo": "Serie B"
+   },
+   "valoracion": {
+    "valor": 2.65,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11-17",
+    "fuente": "TechCrunch",
+    "url": "https://techcrunch.com/2025/11/17/sakana-ai-raises-135m-series-b-at-a-2-65b-valuation-to-continue-building-ai-models-for-japan",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "post-money"
+   },
+   "nota": "Serie B de JPY 20 mil M (nov-2025)."
+  },
+  {
+   "nombre": "StepFun",
+   "pais_iso3": "CHN",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 2.5,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-Q2",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/data-china-ai-lead-asia-startup-funding-peak-q2-2026/",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "Serie B+ de más de CNY 5 mil M en ene-2026 y otra ronda de USD 2.5 mil M en el 2T-2026 según Crunchbase; prepara salida a bolsa en Hong Kong."
+  },
+  {
+   "nombre": "Lambda",
+   "pais_iso3": "USA",
+   "categoria": "Infraestructura / neocloud",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 1.5,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-fintech-lambda/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "TWG Global",
+    "tipo": "Serie E"
+   },
+   "nota": "Serie E de más de USD 1.5 mil M (nov-2025); en ago-2026 negociaba hasta 3 mil M a 12 mil M o más antes de una posible OPV en 2027."
+  },
+  {
+   "nombre": "Nscale",
+   "pais_iso3": "GBR",
+   "categoria": "Infraestructura / neocloud",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 3.36,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-Q3",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/q3-2026-europe-strong-quarter-ai-uk-germany-france/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "nota convertible"
+   },
+   "valoracion": {
+    "valor": 14.6,
+    "unidad": "USD miles de millones",
+    "fecha": "2026",
+    "fuente": "Law360",
+    "url": "https://www.law360.co.uk/amp/articles/2450520",
+    "nivel": "B",
+    "verificacion": "busqueda"
+   },
+   "nota": "Nota convertible de USD 3.36 mil M en el 3T-2026 (Crunchbase). Una Serie C de USD 2 mil M a 14.6 mil M figura solo en un titular de Law360."
+  },
+  {
+   "nombre": "MiniMax",
+   "pais_iso3": "CHN",
+   "categoria": "Modelos fundacionales",
+   "estado": "cotiza (Bolsa de Hong Kong, desde 9-ene-2026)",
+   "ultima_ronda": {
+    "valor": 0.62,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01-09",
+    "fuente": "Asia Financial",
+    "url": "https://www.asiafinancial.com/minimax-becomes-latest-china-tech-firm-to-make-bumper-market-debut",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "OPV",
+    "monto_original": "HKD 4.8 mil millones"
+   },
+   "valoracion": {
+    "valor": 13.7,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01-09",
+    "fuente": "Asia Financial",
+    "url": "https://www.asiafinancial.com/minimax-becomes-latest-china-tech-firm-to-make-bumper-market-debut",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "capitalización al cierre del primer día"
+   },
+   "nota": "OPV de HKD 4.8 mil M; subió 109 % el primer día."
+  },
+  {
+   "nombre": "Zhipu AI (Z.ai)",
+   "pais_iso3": "CHN",
+   "categoria": "Modelos fundacionales",
+   "estado": "cotiza (Bolsa de Hong Kong, desde 8-ene-2026)",
+   "ultima_ronda": {
+    "valor": 4.35,
+    "unidad": "HKD miles de millones",
+    "fecha": "2026-01-08",
+    "fuente": "Asia Financial",
+    "url": "https://www.asiafinancial.com/minimax-becomes-latest-china-tech-firm-to-make-bumper-market-debut",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "OPV"
+   },
+   "valoracion": {
+    "valor": 9,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01-09",
+    "fuente": "Asia Financial",
+    "url": "https://www.asiafinancial.com/minimax-becomes-latest-china-tech-firm-to-make-bumper-market-debut",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "capitalización 'cercana a' 9 al día siguiente del debut"
+   },
+   "nota": "OPV de HKD 4.35 mil M; la cotización posterior (fuerte subida en 2026) no fue verificada en una fuente abierta."
+  },
+  {
+   "nombre": "Groq",
+   "pais_iso3": "USA",
+   "categoria": "Chips de IA",
+   "estado": "privada (activos y equipo licenciados a Nvidia)",
+   "ultima_ronda": {
+    "valor": 20,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-12-24",
+    "fuente": "Jang (citando a prensa internacional)",
+    "url": "https://jang.com.pk/en/55720-nvidia-agrees-to-20-billion-groq-asset-deal-its-biggest-ever-news",
+    "nivel": "B",
+    "verificacion": "busqueda",
+    "tipo": "acuerdo de licencia de activos, no ronda de capital"
+   },
+   "nota": "Nvidia pactó en dic-2025 un acuerdo de licencia y contratación de ~USD 20 mil M; Groq sigue como empresa independiente con GroqCloud."
+  },
+  {
+   "nombre": "Krutrim",
+   "pais_iso3": "IND",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 0.05,
+    "unidad": "USD miles de millones",
+    "fecha": "2024-01-26",
+    "fuente": "Gulf News",
+    "url": "https://gulfnews.com/amp/story/technology%2Fola-founders-krutrim-becomes-first-1-billion-indian-ai-startup-1.1706270359431",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "Matrix Partners India (participante)"
+   },
+   "valoracion": {
+    "valor": 1,
+    "unidad": "USD miles de millones",
+    "fecha": "2024-01-26",
+    "fuente": "Gulf News",
+    "url": "https://gulfnews.com/amp/story/technology%2Fola-founders-krutrim-becomes-first-1-billion-indian-ai-startup-1.1706270359431",
+    "nivel": "B",
+    "verificacion": "pagina"
+   },
+   "nota": "Primer unicornio indio de IA (ene-2024); sin ronda nueva verificada."
+  },
+  {
+   "nombre": "AI21 Labs",
+   "pais_iso3": "ISR",
+   "categoria": "Modelos fundacionales",
+   "estado": "privada",
+   "financiamiento_total": {
+    "valor": 0.336,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01-12",
+    "fuente": "Globes",
+    "url": "https://en.globes.co.il/en/article-1001531815",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "nota": "'no más de' 0.336 según Globes; otras fuentes citan cifras mayores"
+   },
+   "nota": "Negó en ene-2026 negociaciones de adquisición con Nvidia; una ronda de USD 300 M acordada no llegó a completarse según Globes."
+  },
+  {
+   "nombre": "World Labs",
+   "pais_iso3": "USA",
+   "categoria": "Modelos de mundo (IA espacial)",
+   "estado": "en proceso de adquisición por AMD",
+   "ultima_ronda": {
+    "valor": 1,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/foundational-ai-startup-funding-doubled-openai-anthropic-xai-q1-2026/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "AMD, Autodesk, Emerson Collective, Fidelity, Nvidia, Sea (inversores)"
+   },
+   "valoracion": {
+    "valor": 8.2,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-10",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/q3-2026-north-america-startup-funding-falls-ai-exits-data/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "precio de adquisición anunciado por AMD"
+   },
+   "nota": "Recaudó USD 1 mil M en feb-2026 y AMD anunció su compra por ~USD 8.2 mil M en acciones (3T-2026)."
+  },
+  {
+   "nombre": "Hugging Face",
+   "pais_iso3": "USA",
+   "categoria": "Plataforma de modelos abiertos",
+   "estado": "adquirida por Nvidia (sep-2026)",
+   "valoracion": {
+    "valor": 12.93,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-09",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/venture/q3-2026-north-america-startup-funding-falls-ai-exits-data/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "tipo": "precio de adquisición"
+   },
+   "nota": "Mayor adquisición del 3T-2026."
+  },
+  {
+   "nombre": "River AI",
+   "pais_iso3": "USA",
+   "categoria": "Aprendizaje por refuerzo",
+   "estado": "privada",
+   "ultima_ronda": {
+    "valor": 1.1,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-08",
+    "fuente": "Crunchbase News",
+    "url": "https://news.crunchbase.com/ai/biggest-funding-rounds-databricks-river-ai-data-energy/",
+    "nivel": "B",
+    "verificacion": "pagina",
+    "lideres": "AMP PBC, General Catalyst; Nvidia y AMD Ventures (estratégicos)"
+   },
+   "nota": "Ronda semilla y Serie A combinadas por USD 1.1 mil M (ago-2026)."
+  }
+ ],
+ "megarondas": [
+  {
+   "empresa": "OpenAI",
+   "valor": 122,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-03-31",
+   "inversores": "Amazon (50), Nvidia (30), SoftBank (30), a16z, D.E. Shaw, MGX, TPG, T. Rowe Price",
+   "fuente": "Bloomberg",
+   "url": "https://news.bloomberglaw.com/tech-and-telecom-law/openai-valued-at-852-billion-after-closing-122-billion-round",
+   "verificacion": "pagina",
+   "nota": "Comprometido; anunciado como 110 el 27-feb-2026 a 840 post-money y ampliado a 122 a 852. Parte de Amazon es condicional."
+  },
+  {
+   "empresa": "Anthropic",
+   "valor": 65,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-05-28",
+   "inversores": "Altimeter, Dragoneer, Greenoaks, Sequoia (líderes)",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/ai/anthropic-nears-1t-valuation-65b-seriesh/",
+   "verificacion": "pagina",
+   "nota": "Serie H a 965 post-money; 50 de dinero nuevo + 15 de compromisos previos de Amazon y Google."
+  },
+  {
+   "empresa": "OpenAI",
+   "valor": 40,
+   "unidad": "USD miles de millones",
+   "fecha": "2025-03-31",
+   "inversores": "SoftBank",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/",
+   "verificacion": "pagina"
+  },
+  {
+   "empresa": "Anthropic",
+   "valor": 30,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-02-12",
+   "inversores": "GIC, Coatue (líderes)",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/foundational-ai-startup-funding-doubled-openai-anthropic-xai-q1-2026/",
+   "verificacion": "pagina",
+   "nota": "Serie G a 380 post-money."
+  },
+  {
+   "empresa": "xAI",
+   "valor": 20,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-01",
+   "inversores": "no indicados en la fuente",
+   "fuente": "City AM",
+   "url": "https://www.cityam.com/musks-spacex-swallows-xai-ahead-of-mega-ipo/",
+   "verificacion": "pagina",
+   "nota": "Serie E a ~230; semanas antes de la fusión con SpaceX."
+  },
+  {
+   "empresa": "Waymo",
+   "valor": 16,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-02-02",
+   "inversores": "Sequoia Capital, DST Global, Dragoneer; Alphabet",
+   "fuente": "Bloomberg",
+   "url": "https://news.bloomberglaw.com/private-equity/waymo-raises-16-billion-from-alphabet-others-to-expand-service",
+   "verificacion": "pagina"
+  },
+  {
+   "empresa": "Scale AI",
+   "valor": 14.3,
+   "unidad": "USD miles de millones",
+   "fecha": "2025-06",
+   "inversores": "Meta",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/",
+   "verificacion": "pagina"
+  },
+  {
+   "empresa": "Anthropic",
+   "valor": 13,
+   "unidad": "USD miles de millones",
+   "fecha": "2025-09",
+   "inversores": "Iconiq Capital; co-líderes Fidelity y Lightspeed",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/",
+   "verificacion": "pagina",
+   "nota": "Serie F a 183."
+  },
+  {
+   "empresa": "Project Prometheus",
+   "valor": 12,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-06",
+   "inversores": "JPMorgan, BlackRock, Goldman Sachs, DST Global, Arch Venture Partners",
+   "fuente": "GeekWire / Axios",
+   "url": "https://www.geekwire.com/2026/bezos-ai-startup-prometheus-raises-12b-at-41b-valuation-and-the-ceos-explain-what-theyre-doing/",
+   "verificacion": "busqueda",
+   "nota": "Serie B a ~41; Bloomberg había reportado 10 a ~38 en abril."
+  },
+  {
+   "empresa": "OpenAI",
+   "valor": 10,
+   "unidad": "USD miles de millones",
+   "fecha": "2023-01",
+   "inversores": "Microsoft",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-openai-stripe-inflection-eoy-2023/",
+   "verificacion": "pagina",
+   "nota": "Monto reportado, no confirmado; inversión plurianual."
+  },
+  {
+   "empresa": "Databricks",
+   "valor": 10,
+   "unidad": "USD miles de millones",
+   "fecha": "2024-12",
+   "inversores": "Thrive Capital",
+   "fuente": "Crunchbase Megadeals Board",
+   "url": "https://news.crunchbase.com/biggest-us-vc-startup-funding-deals-2023/",
+   "verificacion": "busqueda",
+   "nota": "A 62 de valoración."
+  },
+  {
+   "empresa": "DeepSeek",
+   "valor": 7.4,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-06",
+   "inversores": "Fondo Nacional de IA, Tencent, CATL, NetEase, JD.com, IDG y otros",
+   "fuente": "Crunchbase News / Yicai Global",
+   "url": "https://news.crunchbase.com/venture/data-china-ai-lead-asia-startup-funding-peak-q2-2026/",
+   "verificacion": "pagina",
+   "nota": "CNY 50 mil millones; primera ronda externa."
+  },
+  {
+   "empresa": "OpenAI",
+   "valor": 6.6,
+   "unidad": "USD miles de millones",
+   "fecha": "2024-10",
+   "inversores": "Thrive Capital",
+   "fuente": "Crunchbase Megadeals Board",
+   "url": "https://news.crunchbase.com/biggest-us-vc-startup-funding-deals-2023/",
+   "verificacion": "busqueda",
+   "nota": "A 157 post-money."
+  },
+  {
+   "empresa": "Project Prometheus",
+   "valor": 6.2,
+   "unidad": "USD miles de millones",
+   "fecha": "2025-11",
+   "inversores": "Jeff Bezos (principal aportante)",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/",
+   "verificacion": "pagina",
+   "nota": "Financiamiento inicial."
+  },
+  {
+   "empresa": "xAI",
+   "valor": 6,
+   "unidad": "USD miles de millones",
+   "fecha": "2024-05",
+   "inversores": "Valor Equity Partners, Andreessen Horowitz, Sequoia Capital, Fidelity",
+   "fuente": "Crunchbase Megadeals Board",
+   "url": "https://news.crunchbase.com/biggest-us-vc-startup-funding-deals-2023/",
+   "verificacion": "busqueda",
+   "nota": "A 24 post-money."
+  },
+  {
+   "empresa": "xAI",
+   "valor": 6,
+   "unidad": "USD miles de millones",
+   "fecha": "2024-11",
+   "inversores": "no indicados",
+   "fuente": "Crunchbase Megadeals Board",
+   "url": "https://news.crunchbase.com/biggest-us-vc-startup-funding-deals-2023/",
+   "verificacion": "busqueda",
+   "nota": "A 50 de valoración."
+  },
+  {
+   "empresa": "Waymo",
+   "valor": 5.6,
+   "unidad": "USD miles de millones",
+   "fecha": "2024-10",
+   "inversores": "Alphabet",
+   "fuente": "Crunchbase Megadeals Board",
+   "url": "https://news.crunchbase.com/biggest-us-vc-startup-funding-deals-2023/",
+   "verificacion": "busqueda",
+   "nota": "A más de 45 de valoración."
+  },
+  {
+   "empresa": "xAI",
+   "valor": 5.3,
+   "unidad": "USD miles de millones",
+   "fecha": "2025 (verano)",
+   "inversores": "no indicados",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/",
+   "verificacion": "pagina"
+  },
+  {
+   "empresa": "Databricks",
+   "valor": 5,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-08-13",
+   "inversores": "Coatue, Blackstone, MGX, T. Rowe Price, Sixth Street Growth",
+   "fuente": "Reuters (vía The Star)",
+   "url": "https://www.thestar.com.my/tech/tech-news/2026/08/13/databricks-valued-at-190-billion-in-latest-funding-round",
+   "verificacion": "pagina",
+   "nota": "A 190."
+  },
+  {
+   "empresa": "Safe Superintelligence",
+   "valor": 5,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-07-27",
+   "inversores": "Nvidia",
+   "fuente": "CTech (citando a Reuters)",
+   "url": "https://www.calcalistech.com/ctechnews/article/qy9eg5jw4",
+   "verificacion": "pagina",
+   "nota": "Monto reportado por Reuters; no confirmado por las empresas."
+  },
+  {
+   "empresa": "Anduril",
+   "valor": 5,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-05-13",
+   "inversores": "Thrive Capital, Andreessen Horowitz",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/05/13/anduril-raises-5b-doubles-valuation-to-61b/",
+   "verificacion": "pagina",
+   "nota": "Serie H a 61."
+  },
+  {
+   "empresa": "Databricks",
+   "valor": 4,
+   "unidad": "USD miles de millones",
+   "fecha": "2025-12",
+   "inversores": "Insight Partners, Fidelity, J.P. Morgan Asset Management",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/",
+   "verificacion": "pagina",
+   "nota": "Serie L, 'más de' 4, a 134."
+  },
+  {
+   "empresa": "Anthropic",
+   "valor": 4,
+   "unidad": "USD miles de millones",
+   "fecha": "2023-09",
+   "inversores": "Amazon",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-openai-stripe-inflection-eoy-2023/",
+   "verificacion": "pagina",
+   "nota": "'Hasta' 4; 1.25 inmediatos."
+  },
+  {
+   "empresa": "Crusoe",
+   "valor": 3.9,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-09",
+   "inversores": "Atreides Management, Valor Equity Partners",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/q3-2026-north-america-startup-funding-falls-ai-exits-data/",
+   "verificacion": "pagina"
+  },
+  {
+   "empresa": "Mistral AI",
+   "valor": 3.5,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-09-08",
+   "inversores": "Samsung Electronics; Scaleup Europe Fund (EQT), PSG Equity",
+   "fuente": "Crunchbase News / Orrick",
+   "url": "https://news.crunchbase.com/venture/q3-2026-europe-strong-quarter-ai-uk-germany-france/",
+   "verificacion": "pagina",
+   "nota": "EUR 3 mil millones; Serie D a más de EUR 21 mil millones."
+  },
+  {
+   "empresa": "Anthropic",
+   "valor": 3.5,
+   "unidad": "USD miles de millones",
+   "fecha": "2025-03",
+   "inversores": "Lightspeed Venture Partners",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/largest-funding-rounds-genai-defense-eoy-2025/",
+   "verificacion": "pagina",
+   "nota": "A 61.5."
+  },
+  {
+   "empresa": "Nscale",
+   "valor": 3.36,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-Q3",
+   "inversores": "no indicados",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/q3-2026-europe-strong-quarter-ai-uk-germany-france/",
+   "verificacion": "pagina",
+   "nota": "Nota convertible, no capital."
+  }
+ ],
+ "megaproyectos": [
+  {
+   "nombre": "Stargate (programa completo, EE. UU.)",
+   "tipo": "programa",
+   "promotores": "OpenAI, Oracle, SoftBank",
+   "pais_iso3": "USA",
+   "lugar": "varios estados",
+   "lat": null,
+   "lon": null,
+   "monto": {
+    "valor": 500,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-01-21",
+    "condicion": "anunciado"
+   },
+   "capacidad_gw": 9,
+   "capacidad_operativa_gw": 0.3,
+   "estado": "en construcción",
+   "fuente": "Epoch AI",
+   "url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+   "verificacion": "pagina",
+   "nota": "'Más de 9 GW' proyectados en siete sedes; solo 0.3 GW operativos (Abilene) a abr-2026."
+  },
+  {
+   "nombre": "Stargate Abilene",
+   "tipo": "sitio",
+   "promotores": "Crusoe (constructor); OpenAI, Oracle, SoftBank",
+   "pais_iso3": "USA",
+   "lugar": "Abilene, Texas",
+   "lat": 32.45,
+   "lon": -99.73,
+   "capacidad_gw": 1.2,
+   "capacidad_operativa_gw": 0.3,
+   "estado": "operativo (parcial)",
+   "fuente": "Epoch AI",
+   "url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+   "verificacion": "pagina",
+   "nota": "~4 de 8 edificios operativos (abr-2026); obra desde 2T-2024, fin previsto 4T-2026. La ampliación contigua fue abandonada por Oracle/OpenAI según DCD (no abierta)."
+  },
+  {
+   "nombre": "Stargate Shackelford (Frontier)",
+   "tipo": "sitio",
+   "promotores": "Vantage; Oracle (hardware)",
+   "pais_iso3": "USA",
+   "lugar": "Condado de Shackelford, Texas",
+   "lat": 32.72,
+   "lon": -99.3,
+   "capacidad_gw": 2.0,
+   "estado": "en construcción",
+   "fuente": "Epoch AI",
+   "url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+   "verificacion": "pagina",
+   "nota": "Fin previsto 4T-2028."
+  },
+  {
+   "nombre": "Stargate Project Jupiter",
+   "tipo": "sitio",
+   "promotores": "STACK Infrastructure; Oracle (inquilino)",
+   "pais_iso3": "USA",
+   "lugar": "Condado de Doña Ana, Nuevo México",
+   "lat": 31.87,
+   "lon": -106.67,
+   "capacidad_gw": 2.2,
+   "estado": "en construcción",
+   "fuente": "Epoch AI",
+   "url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+   "verificacion": "pagina",
+   "nota": "Cimentación en curso; fin previsto 4T-2028."
+  },
+  {
+   "nombre": "Stargate Milam",
+   "tipo": "sitio",
+   "promotores": "SB Energy (SoftBank)",
+   "pais_iso3": "USA",
+   "lugar": "Condado de Milam, Texas",
+   "lat": 30.85,
+   "lon": -96.98,
+   "capacidad_gw": 1.2,
+   "estado": "en construcción",
+   "fuente": "Epoch AI",
+   "url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+   "verificacion": "pagina",
+   "nota": "Fin previsto 4T-2028."
+  },
+  {
+   "nombre": "Stargate Lighthouse",
+   "tipo": "sitio",
+   "promotores": "Vantage; Oracle (hardware)",
+   "pais_iso3": "USA",
+   "lugar": "Port Washington, Wisconsin",
+   "lat": 43.39,
+   "lon": -87.88,
+   "capacidad_gw": 1.3,
+   "estado": "en construcción",
+   "fuente": "Epoch AI",
+   "url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+   "verificacion": "pagina",
+   "nota": "Obra desde 1T-2026; fin previsto 4T-2028."
+  },
+  {
+   "nombre": "Stargate The Barn",
+   "tipo": "sitio",
+   "promotores": "Related Digital; Oracle (hardware)",
+   "pais_iso3": "USA",
+   "lugar": "Saline Township, Míchigan",
+   "lat": 42.17,
+   "lon": -83.78,
+   "capacidad_gw": 1.4,
+   "estado": "en construcción",
+   "fuente": "Epoch AI",
+   "url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+   "verificacion": "pagina",
+   "nota": "Fin previsto 4T-2028. Una inversión de USD 16 mil M aparece solo en resultados de búsqueda (no verificada)."
+  },
+  {
+   "nombre": "Stargate Lordstown",
+   "tipo": "sitio",
+   "promotores": "SoftBank–Foxconn",
+   "pais_iso3": "USA",
+   "lugar": "Lordstown, Ohio",
+   "lat": 41.17,
+   "lon": -80.86,
+   "capacidad_gw": 0.3,
+   "estado": "anunciado",
+   "fuente": "Epoch AI",
+   "url": "https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand",
+   "verificacion": "pagina",
+   "nota": "'Menos de' 0.3 GW; terreno despejado, sin obra a gran escala; veto local a nuevos centros de datos."
+  },
+  {
+   "nombre": "Stargate UAE",
+   "tipo": "sitio",
+   "promotores": "G42 (Khazna), OpenAI, Oracle, Nvidia, Cisco, SoftBank",
+   "pais_iso3": "ARE",
+   "lugar": "Abu Dabi",
+   "lat": 24.45,
+   "lon": 54.38,
+   "capacidad_gw": 1.0,
+   "estado": "en construcción",
+   "fuente": "Data Center Index",
+   "url": "https://datacenterindex.ai/projects/openai-stargate-uae",
+   "verificacion": "pagina",
+   "nota": "Primera fase de 200 MW prevista para el 3T-2026; forma parte de un campus de 5 GW."
+  },
+  {
+   "nombre": "Stargate Norway",
+   "tipo": "sitio",
+   "promotores": "Nscale, Aker; OpenAI",
+   "pais_iso3": "NOR",
+   "lugar": "Narvik",
+   "lat": 68.44,
+   "lon": 17.43,
+   "capacidad_gw": 0.23,
+   "estado": "en construcción (OpenAI se retiró; Microsoft toma la capacidad)",
+   "fuente": "Seeking Alpha / CNBC",
+   "url": "https://www.cnbc.com/2026/04/15/openai-stargate-norway-project-microsoft.html",
+   "verificacion": "busqueda",
+   "nota": "230 MW iniciales, ampliable a 520 MW; en abr-2026 CNBC informó que OpenAI dio un paso atrás."
+  },
+  {
+   "nombre": "Stargate Argentina",
+   "tipo": "sitio",
+   "promotores": "Sur Energy, OpenAI",
+   "pais_iso3": "ARG",
+   "lugar": "Patagonia (sin sede definida)",
+   "lat": null,
+   "lon": null,
+   "monto": {
+    "valor": 25,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-10-10",
+    "condicion": "anunciado, 'hasta'"
+   },
+   "capacidad_gw": 0.5,
+   "estado": "anunciado (carta de intención)",
+   "fuente": "Wikipedia (Stargate LLC)",
+   "url": "https://en.wikipedia.org/wiki/Stargate_LLC",
+   "verificacion": "pagina",
+   "nota": "Hasta 500 MW; sin avances más allá de la carta de intención a may-2026."
+  },
+  {
+   "nombre": "OpenAI – compromisos de cómputo con proveedores",
+   "tipo": "contratos",
+   "promotores": "OpenAI; Broadcom, Oracle, Microsoft, Nvidia, AMD, AWS, CoreWeave",
+   "pais_iso3": "USA",
+   "lugar": "varios",
+   "lat": null,
+   "lon": null,
+   "monto": {
+    "valor": 1150,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11-03",
+    "condicion": "comprometido (suma de contratos plurianuales 2025-2035)",
+    "desglose": {
+     "Broadcom (estimado, 10 GW)": 350,
+     "Oracle": 300,
+     "Microsoft Azure": 250,
+     "Nvidia (10 GW; Nvidia invierte hasta 100)": 100,
+     "AMD (6 GW)": 90,
+     "AWS": 38,
+     "CoreWeave": 22.4
+    }
+   },
+   "estado": "anunciado",
+   "fuente": "Tomasz Tunguz (compilación, 3-nov-2025)",
+   "url": "https://tomtunguz.com/openai-hardware-spending-2025-2035/",
+   "verificacion": "pagina",
+   "nota": "Los valores de Broadcom y AMD son estimaciones del autor, no cifras de contrato. No son desembolsos."
+  },
+  {
+   "nombre": "Anthropic – Microsoft / Nvidia",
+   "tipo": "contratos",
+   "promotores": "Anthropic, Microsoft, Nvidia",
+   "pais_iso3": "USA",
+   "lugar": "Azure (varias regiones)",
+   "lat": null,
+   "lon": null,
+   "monto": {
+    "valor": 30,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11-18",
+    "condicion": "comprometido (compra de cómputo en Azure)"
+   },
+   "capacidad_gw": 1.0,
+   "estado": "anunciado",
+   "fuente": "W.Media",
+   "url": "https://w.media/anthropic-strikes-us-45-billion-ai-compute-deal-with-nscale-reports/",
+   "verificacion": "pagina",
+   "nota": "Hasta 1 GW adicional; Nvidia invierte hasta USD 10 mil M y Microsoft hasta 5 mil M en Anthropic."
+  },
+  {
+   "nombre": "Anthropic – Google / Broadcom (TPU)",
+   "tipo": "contratos",
+   "promotores": "Anthropic, Google, Broadcom",
+   "pais_iso3": "USA",
+   "lugar": "varios",
+   "lat": null,
+   "lon": null,
+   "capacidad_gw": 3.5,
+   "estado": "anunciado",
+   "fuente": "The Next Web",
+   "url": "https://thenextweb.com/news/anthropic-google-broadcom-compute-deal",
+   "verificacion": "pagina",
+   "nota": "~3.5 GW de capacidad TPU desde 2027, sobre 1 GW suministrado en 2026 (anunciado 6-abr-2026). Sin monto divulgado."
+  },
+  {
+   "nombre": "Anthropic – Fluidstack (centros de datos propios)",
+   "tipo": "programa",
+   "promotores": "Anthropic, Fluidstack",
+   "pais_iso3": "USA",
+   "lugar": "Texas y Nueva York",
+   "lat": null,
+   "lon": null,
+   "monto": {
+    "valor": 50,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-11",
+    "condicion": "anunciado"
+   },
+   "estado": "en construcción",
+   "fuente": "The Next Web",
+   "url": "https://thenextweb.com/news/anthropic-google-broadcom-compute-deal",
+   "verificacion": "pagina",
+   "nota": "Sedes entrando en operación durante 2026."
+  },
+  {
+   "nombre": "Anthropic – AMD",
+   "tipo": "contratos",
+   "promotores": "Anthropic, AMD",
+   "pais_iso3": "USA",
+   "lugar": "varios",
+   "lat": null,
+   "lon": null,
+   "capacidad_gw": 2.0,
+   "estado": "anunciado",
+   "fuente": "W.Media",
+   "url": "https://w.media/anthropic-strikes-us-45-billion-ai-compute-deal-with-nscale-reports/",
+   "verificacion": "pagina",
+   "nota": "Hasta 2 GW de GPU Instinct MI450 (primer GW en 1S-2027); AMD invierte hasta USD 5 mil M en Anthropic (jul-2026)."
+  },
+  {
+   "nombre": "Anthropic – Nscale",
+   "tipo": "contratos",
+   "promotores": "Anthropic, Nscale",
+   "pais_iso3": "USA",
+   "lugar": "Virginia Occidental",
+   "lat": null,
+   "lon": null,
+   "monto": {
+    "valor": 45,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-08-26",
+    "condicion": "reportado"
+   },
+   "capacidad_gw": 0.46,
+   "estado": "anunciado (reportado, sin confirmación oficial)",
+   "fuente": "W.Media (citando a Bloomberg y CNBC)",
+   "url": "https://w.media/anthropic-strikes-us-45-billion-ai-compute-deal-with-nscale-reports/",
+   "verificacion": "pagina",
+   "nota": "Alquiler de ~400-460 MW; operación prevista en 2027."
+  },
+  {
+   "nombre": "Anthropic – SpaceX (Colossus)",
+   "tipo": "contratos",
+   "promotores": "Anthropic, SpaceX/xAI",
+   "pais_iso3": "USA",
+   "lugar": "Memphis, Tennessee",
+   "lat": 35.06,
+   "lon": -90.16,
+   "monto": {
+    "valor": 1.25,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-05-21",
+    "condicion": "contratado: USD 1.25 mil M mensuales hasta may-2029",
+    "unidad_nota": "por mes"
+   },
+   "capacidad_gw": 0.3,
+   "estado": "operativo",
+   "fuente": "Yahoo Finance (folleto de SpaceX)",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/anthropic-nears-first-quarterly-profit-120712552.html",
+   "verificacion": "pagina",
+   "nota": "Colossus 1: más de 300 MW y más de 220,000 GPU Nvidia; salida mutua con 90 días de aviso."
+  },
+  {
+   "nombre": "Amazon Project Rainier (para Anthropic)",
+   "tipo": "sitio",
+   "promotores": "Amazon (AWS), Anthropic",
+   "pais_iso3": "USA",
+   "lugar": "Indiana",
+   "lat": null,
+   "lon": null,
+   "estado": "operativo",
+   "fuente": "The Next Web",
+   "url": "https://thenextweb.com/news/anthropic-google-broadcom-compute-deal",
+   "verificacion": "pagina",
+   "nota": "~500,000 chips Trainium 2; Amazon ha invertido USD 8 mil M en Anthropic. Sin monto ni GW del campus en la fuente."
+  },
+  {
+   "nombre": "Meta Hyperion",
+   "tipo": "sitio",
+   "promotores": "Meta; Blue Owl Capital (empresa conjunta)",
+   "pais_iso3": "USA",
+   "lugar": "Parroquia de Richland, Luisiana",
+   "lat": 32.47,
+   "lon": -91.65,
+   "monto": {
+    "valor": 50,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-07-13",
+    "condicion": "anunciado, 'más de' 50 (antes 27 en oct-2025 y ~10 en dic-2024)"
+   },
+   "capacidad_gw": 5.0,
+   "estado": "en construcción",
+   "fuente": "Techeconomy",
+   "url": "https://techeconomy.ng/meta-hyperion-data-centre-50-billion-investment",
+   "verificacion": "pagina",
+   "nota": "Hasta 5 GW; ~2 GW previstos para 2030. En obra desde dic-2024."
+  },
+  {
+   "nombre": "Meta Prometheus",
+   "tipo": "sitio",
+   "promotores": "Meta",
+   "pais_iso3": "USA",
+   "lugar": "New Albany, Ohio",
+   "lat": 40.08,
+   "lon": -82.81,
+   "capacidad_gw": 1.0,
+   "estado": "en construcción",
+   "fuente": "Associated Press (vía NY1)",
+   "url": "https://ny1.com/nyc/all-boroughs/ap-top-news/2026/01/09/meta-signs-three-nuclear-power-deals-to-help-support-its-ai-data-centers",
+   "verificacion": "pagina",
+   "nota": "Clúster de 1 GW previsto para entrar en operación en 2026; puesta en marcha completa no verificada."
+  },
+  {
+   "nombre": "xAI Colossus I y II",
+   "tipo": "sitio",
+   "promotores": "xAI (SpaceX)",
+   "pais_iso3": "USA",
+   "lugar": "Memphis, Tennessee",
+   "lat": 35.06,
+   "lon": -90.16,
+   "capacidad_gw": 1.0,
+   "capacidad_operativa_gw": 1.0,
+   "estado": "operativo",
+   "fuente": "Yahoo Finance (folleto de SpaceX)",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/xai-burned-6-4b-last-222608682.html",
+   "verificacion": "pagina",
+   "nota": "'Alrededor de 1 GW' entre ambos; construidos en 122 y 91 días."
+  },
+  {
+   "nombre": "xAI Southaven (ampliación de Colossus)",
+   "tipo": "sitio",
+   "promotores": "xAI (SpaceX)",
+   "pais_iso3": "USA",
+   "lugar": "Southaven, Misisipi",
+   "lat": 34.99,
+   "lon": -90.01,
+   "monto": {
+    "valor": 20,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-01-08",
+    "condicion": "anunciado, 'más de' 20"
+   },
+   "capacidad_gw": 2.0,
+   "estado": "en construcción",
+   "fuente": "Converge Digest",
+   "url": "https://convergedigest.com/xai-commits-20b-to-2-gw-ai-data-center-in-mississippi/",
+   "verificacion": "pagina",
+   "nota": "'Casi 2 GW' de capacidad total del campus Memphis–Southaven al completarse."
+  },
+  {
+   "nombre": "Humain (primeros centros de datos)",
+   "tipo": "sitio",
+   "promotores": "Humain (Fondo de Inversión Pública saudí); Nvidia, AMD",
+   "pais_iso3": "SAU",
+   "lugar": "Riad y Dammam",
+   "lat": 24.71,
+   "lon": 46.68,
+   "capacidad_gw": 1.9,
+   "estado": "en construcción",
+   "fuente": "Capacity",
+   "url": "https://capacityglobal.com/news/humain-data-centre-construction-saudi-arabia/",
+   "verificacion": "pagina",
+   "nota": "Hasta 100 MW iniciales por sede (lanzamiento previsto 2T-2026) y 1.9 GW a 2030; acuerdo de USD 10 mil M con AMD. Estado 2026 no verificado."
+  },
+  {
+   "nombre": "Google AI Hub Visakhapatnam",
+   "tipo": "sitio",
+   "promotores": "Google; AdaniConneX, Bharti Airtel",
+   "pais_iso3": "IND",
+   "lugar": "Visakhapatnam, Andhra Pradesh",
+   "lat": 17.69,
+   "lon": 83.22,
+   "monto": {
+    "valor": 15,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-04-27",
+    "condicion": "anunciado, ~15 en cinco años"
+   },
+   "capacidad_gw": 1.0,
+   "estado": "en construcción",
+   "fuente": "Business Today",
+   "url": "https://www.businesstoday.in/amp/technology/story/googles-big-india-bet-15-billion-vizag-ai-data-centre-foundation-to-be-laid-on-april-28-527498-2026-04-27",
+   "verificacion": "pagina",
+   "nota": "1 GW inicial con meta de 5 GW; primera piedra el 28-abr-2026; fin previsto jul-2028."
+  },
+  {
+   "nombre": "Reliance Jio – centros de datos de IA",
+   "tipo": "sitio",
+   "promotores": "Reliance Industries, Jio",
+   "pais_iso3": "IND",
+   "lugar": "Jamnagar, Gujarat",
+   "lat": 22.47,
+   "lon": 70.06,
+   "monto": {
+    "valor": 110,
+    "unidad": "USD miles de millones",
+    "fecha": "2026-02-19",
+    "condicion": "anunciado, ~110 (INR 10 billones) en siete años"
+   },
+   "estado": "en construcción",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/19/reliance-unveils-110b-ai-investment-plan-as-india-ramps-up-tech-ambitions",
+   "verificacion": "pagina",
+   "nota": "Escala de varios GW; más de 120 MW previstos para el 2S-2026. La misma nota cita ~USD 100 mil M de Adani y ~100 MW de OpenAI con Tata."
+  },
+  {
+   "nombre": "SoftBank–OpenAI Sakai",
+   "tipo": "sitio",
+   "promotores": "SoftBank, OpenAI (SB OpenAI Japan)",
+   "pais_iso3": "JPN",
+   "lugar": "Sakai, Osaka",
+   "lat": 34.57,
+   "lon": 135.48,
+   "monto": {
+    "valor": 0.676,
+    "unidad": "USD miles de millones",
+    "fecha": "2025-03-14",
+    "condicion": "desembolsado (compra de la planta de Sharp, JPY 100 mil millones)"
+   },
+   "capacidad_gw": 0.15,
+   "estado": "en construcción",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2025/03/14/softbank-buys-676m-old-sharp-plant-for-its-openai-collab-in-japan",
+   "verificacion": "pagina",
+   "nota": "150 MW iniciales, más de 240 MW a futuro; operación prevista en 2026 (no verificada)."
+  }
+ ],
+ "series": {
+  "vc_ia_trimestral": [
+   {
+    "periodo": "2023-Q1",
+    "valor": null,
+    "pct_vc_total": 19,
+    "vc_total": 76,
+    "url": "https://news.crunchbase.com/venture/global-vc-funding-falls-q1-2023/",
+    "nota": "Solo se publicó el porcentaje."
+   },
+   {
+    "periodo": "2023-Q2",
+    "valor": null,
+    "pct_vc_total": null,
+    "vc_total": 65,
+    "url": "https://news.crunchbase.com/venture/vc-funding-falling-report-data-q2-2023-global/",
+    "nota": "Solo dato semestral: IA USD 25 mil M = 18 % en el 1S-2023."
+   },
+   {
+    "periodo": "2023-Q3",
+    "valor": 10,
+    "pct_vc_total": null,
+    "vc_total": 73,
+    "url": "https://news.crunchbase.com/venture/global-venture-funding-instacart-klaviyo-q3-2023/",
+    "nota": "'Más de' 10; porcentaje no publicado."
+   },
+   {
+    "periodo": "2023-Q4",
+    "valor": null,
+    "pct_vc_total": null,
+    "vc_total": 58,
+    "url": "https://news.crunchbase.com/venture/global-funding-data-analysis-ai-eoy-2023/",
+    "nota": "IA en todo 2023: cerca de USD 50 mil M; total anual 285."
+   },
+   {
+    "periodo": "2024-Q1",
+    "valor": 11.4,
+    "pct_vc_total": 17,
+    "vc_total": 66,
+    "url": "https://news.crunchbase.com/venture/global-funding-recap-q1-2024/"
+   },
+   {
+    "periodo": "2024-Q2",
+    "valor": 24,
+    "pct_vc_total": 30,
+    "vc_total": 79,
+    "url": "https://news.crunchbase.com/data/global-funding-ai-biotech-h-2024/"
+   },
+   {
+    "periodo": "2024-Q3",
+    "valor": 19,
+    "pct_vc_total": 28,
+    "vc_total": 66.5,
+    "url": "https://news.crunchbase.com/venture/global-startup-funding-recap-q3-2024/",
+    "nota": "'Cerca de' 19."
+   },
+   {
+    "periodo": "2024-Q4",
+    "valor": 42,
+    "pct_vc_total": null,
+    "vc_total": 93,
+    "url": "https://news.crunchbase.com/ai/venture-funding-shattered-quarterly-records-q4-2024/",
+    "nota": "'Más de' 42; porcentaje trimestral no publicado. Año 2024: IA 'más de 100', cerca de un tercio del total (~314)."
+   },
+   {
+    "periodo": "2025-Q1",
+    "valor": 59.6,
+    "pct_vc_total": 53,
+    "vc_total": 113,
+    "url": "https://news.crunchbase.com/venture/global-funding-strong-q1-2025-ai-data/"
+   },
+   {
+    "periodo": "2025-Q2",
+    "valor": 40,
+    "pct_vc_total": 45,
+    "vc_total": 91,
+    "url": "https://news.crunchbase.com/venture/global-funding-climbs-q2-2025-ai-ma-data/"
+   },
+   {
+    "periodo": "2025-Q3",
+    "valor": 45,
+    "pct_vc_total": 46,
+    "vc_total": 97,
+    "url": "https://news.crunchbase.com/venture/global-vc-funding-biggest-deals-q3-2025-ai-ma-data/"
+   },
+   {
+    "periodo": "2025-Q4",
+    "valor": null,
+    "pct_vc_total": null,
+    "vc_total": 113,
+    "url": "https://news.crunchbase.com/venture/funding-data-third-largest-year-2025/",
+    "nota": "'Más de' 113; IA trimestral no publicada. Año 2025: IA USD 211 mil M, ~50 % del total (425)."
+   },
+   {
+    "periodo": "2026-Q1",
+    "valor": 242,
+    "pct_vc_total": 80,
+    "vc_total": 300,
+    "url": "https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/",
+    "nota": "Total revisado luego a 305."
+   },
+   {
+    "periodo": "2026-Q2",
+    "valor": null,
+    "pct_vc_total": 70,
+    "vc_total": 205,
+    "url": "https://news.crunchbase.com/venture/global-startup-exits-ipo-ma-soar-ai-q2-h1-2026/",
+    "nota": "'Más de' 70 %; monto de IA no publicado. Total revisado luego a 212."
+   },
+   {
+    "periodo": "2026-Q3",
+    "valor": 102,
+    "pct_vc_total": 64,
+    "vc_total": 159,
+    "url": "https://news.crunchbase.com/venture/q3-2026-global-startup-funding-ai-billion-dollar-rounds-exits-data/",
+    "nota": "Preliminar (datos al 2-oct-2026)."
+   }
+  ],
+  "unidad": "USD miles de millones",
+  "fuente": "Crunchbase News (informes trimestrales de financiamiento global de riesgo)",
+  "url": "https://news.crunchbase.com/venture/"
+ },
+ "gasto_perdidas": [
+  {
+   "empresa": "OpenAI",
+   "concepto": "Flujo de caja libre negativo proyectado 2026-2030",
+   "valor": 278,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-09-18",
+   "tipo": "proyección interna reportada",
+   "fuente": "Reuters (vía The Star), citando al Financial Times",
+   "url": "https://www.thestar.com.my/tech/tech-news/2026/09/19/openai-forecasts-cash-burn-near-280-billion-by-2030-ft-reports",
+   "nivel": "B"
+  },
+  {
+   "empresa": "OpenAI",
+   "concepto": "Gasto proyectado en cómputo e infraestructura hasta fines de 2030",
+   "valor": 856,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-09-18",
+   "tipo": "proyección interna reportada",
+   "fuente": "Reuters (vía The Star), citando al Financial Times",
+   "url": "https://www.thestar.com.my/tech/tech-news/2026/09/19/openai-forecasts-cash-burn-near-280-billion-by-2030-ft-reports",
+   "nivel": "B"
+  },
+  {
+   "empresa": "OpenAI",
+   "concepto": "Ingresos proyectados para 2030 (2026: 36; acumulado de la década: 840)",
+   "valor": 350,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-09-18",
+   "tipo": "proyección interna reportada",
+   "fuente": "Reuters (vía The Star), citando al Financial Times",
+   "url": "https://www.thestar.com.my/tech/tech-news/2026/09/19/openai-forecasts-cash-burn-near-280-billion-by-2030-ft-reports",
+   "nivel": "B"
+  },
+  {
+   "empresa": "xAI",
+   "concepto": "Pérdida operativa de 2025 (ingresos: 3.2)",
+   "valor": 6.4,
+   "unidad": "USD miles de millones",
+   "fecha": "2025-12-31",
+   "tipo": "declarado en el folleto de salida a bolsa de SpaceX",
+   "fuente": "Yahoo Finance",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/xai-burned-6-4b-last-222608682.html",
+   "nivel": "B"
+  },
+  {
+   "empresa": "xAI",
+   "concepto": "Pérdida de 2024 (ingresos: 2.62)",
+   "valor": 1.56,
+   "unidad": "USD miles de millones",
+   "fecha": "2024-12-31",
+   "tipo": "declarado en el folleto de salida a bolsa de SpaceX",
+   "fuente": "Yahoo Finance",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/xai-burned-6-4b-last-222608682.html",
+   "nivel": "B"
+  },
+  {
+   "empresa": "xAI (segmento de IA de SpaceX)",
+   "concepto": "Inversión de capital (capex) de 2025",
+   "valor": 12.7,
+   "unidad": "USD miles de millones",
+   "fecha": "2025-12-31",
+   "tipo": "declarado en el folleto de salida a bolsa de SpaceX",
+   "fuente": "Yahoo Finance",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/xai-burned-6-4b-last-222608682.html",
+   "nivel": "B"
+  },
+  {
+   "empresa": "xAI (segmento de IA de SpaceX)",
+   "concepto": "Inversión de capital (capex) del 1T-2026",
+   "valor": 7.7,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-03-31",
+   "tipo": "declarado en el folleto de salida a bolsa de SpaceX",
+   "fuente": "Yahoo Finance",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/xai-burned-6-4b-last-222608682.html",
+   "nivel": "B"
+  },
+  {
+   "empresa": "Anthropic",
+   "concepto": "Ingresos del 1T-2026",
+   "valor": 4.8,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-03-31",
+   "tipo": "reportado por prensa",
+   "fuente": "Yahoo Finance (citando a WSJ, Reuters y CNBC)",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/anthropic-nears-first-quarterly-profit-120712552.html",
+   "nivel": "B"
+  },
+  {
+   "empresa": "Anthropic",
+   "concepto": "Ingresos proyectados del 2T-2026",
+   "valor": 10.9,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-05-21",
+   "tipo": "proyección comunicada a inversores",
+   "fuente": "Yahoo Finance (citando a WSJ)",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/anthropic-nears-first-quarterly-profit-120712552.html",
+   "nivel": "B"
+  },
+  {
+   "empresa": "Anthropic",
+   "concepto": "Utilidad operativa proyectada del 2T-2026 (sería su primer trimestre con ganancia operativa)",
+   "valor": 0.559,
+   "unidad": "USD miles de millones",
+   "fecha": "2026-05-21",
+   "tipo": "proyección comunicada a inversores",
+   "fuente": "Yahoo Finance (citando a Reuters)",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/anthropic-nears-first-quarterly-profit-120712552.html",
+   "nivel": "B"
+  },
+  {
+   "empresa": "Anthropic",
+   "concepto": "Costo de cómputo por cada dólar de ingreso: 0.71 en el 1T-2026 y 0.56 proyectado para el 2T-2026",
+   "valor": 0.71,
+   "unidad": "USD por dólar de ingreso",
+   "fecha": "2026-03-31",
+   "tipo": "reportado por prensa",
+   "fuente": "Yahoo Finance (citando a WSJ)",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/anthropic-nears-first-quarterly-profit-120712552.html",
+   "nivel": "B"
+  },
+  {
+   "empresa": "Anthropic",
+   "concepto": "Pago mensual a SpaceX por cómputo en Colossus, hasta may-2029",
+   "valor": 1.25,
+   "unidad": "USD miles de millones por mes",
+   "fecha": "2026-05-21",
+   "tipo": "contratado (folleto de SpaceX)",
+   "fuente": "Yahoo Finance",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/anthropic-nears-first-quarterly-profit-120712552.html",
+   "nivel": "B"
+  }
+ ]
+}
