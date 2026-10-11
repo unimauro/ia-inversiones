@@ -50,10 +50,13 @@
 
   // ---- NOTICIAS ------------------------------------------------------------
   var fam = "";
-  function fecha(s) {
+  // prec: dia (fecha real del anuncio) | semana | mes | trimestre (fecha de cierre del periodo)
+  function fecha(s, prec) {
     var m = /^(\d{4})-(\d{2})(?:-(\d{2}))?/.exec(String(s || "")); if (!m) return esc(s || "");
     var ms = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
-    return (m[3] ? +m[3] + " " : "") + ms[+m[2] - 1] + " " + m[1];
+    if (prec === "trimestre") return "T" + Math.ceil(+m[2] / 3) + " " + m[1];
+    if (prec === "mes" || !m[3]) return ms[+m[2] - 1] + " " + m[1];
+    return (prec === "semana" ? "sem. " : "") + +m[3] + " " + ms[+m[2] - 1] + " " + m[1];
   }
   function feed() {
     var q = norm($("qNoti").value);
@@ -61,10 +64,10 @@
       return (!fam || n.familia === fam) && (!q || norm([n.empresa, n.inversores, n.ciudad, n.subcategoria, n.titular, nombre(n.pais_iso3)].join(" ")).indexOf(q) >= 0);
     }).sort(function (a, b) { return String(b.fecha).localeCompare(String(a.fecha)); });
     $("feed").innerHTML = ns.map(function (n) {
-      return '<div class="nw"><div class="dt">' + fecha(n.fecha) + '</div><div><div class="hd">' + link(n.titular || n.empresa, n.url) + '</div><div class="mt">' +
+      return '<div class="nw"><div class="dt">' + fecha(n.fecha, n.fecha_precision) + '</div><div><div class="hd">' + link(n.titular || n.empresa, n.url) + '</div><div class="mt">' +
         '<span class="tag t-' + esc(n.familia || "") + '">' + esc(n.familia || "") + (n.subcategoria ? " · " + esc(n.subcategoria) : "") + "</span> " +
         "<b>" + esc(n.empresa || "") + "</b> · " + esc((n.ciudad ? n.ciudad + ", " : "") + nombre(n.pais_iso3)) + (n.operacion ? " · " + esc(n.operacion) : "") +
-        (n.inversores ? '<br>Inversores: ' + esc(n.inversores) : "") + (n.fuente ? ' <span class="mut">· ' + esc(n.fuente) + "</span>" : "") + "</div></div>" +
+        (n.inversores ? '<br>Inversores: ' + esc(n.inversores) : "") + (n.nota ? '<br><span class="mut" style="color:var(--muted)">' + esc(n.nota) + "</span>" : "") + (n.fuente ? ' <span class="mut">· ' + esc(n.fuente) + "</span>" : "") + "</div></div>" +
         '<div class="amt">' + (num(n.monto) != null ? esc(money(num(n.monto), unitOf(n.monto))) : "") + (num(n.valoracion) != null ? "<small>valoración " + esc(money(num(n.valoracion), unitOf(n.valoracion))) + "</small>" : "") + "</div></div>";
     }).join("") || '<p class="empty">Sin resultados.</p>';
     var tot = 0; ns.forEach(function (n) { if (num(n.monto) != null && isUsd(n.monto)) tot += toBn(n.monto); });
@@ -84,7 +87,7 @@
     datosTable("tInstr", arr(N.instrumentos));
     if (arr(N.bolsas).length) table("tBolsas", [
       { t: "Salida a bolsa", v: function (r) { return r.empresa; }, h: function (r) { return "<b>" + link(r.empresa, r.url) + "</b>"; }, asc: true },
-      { t: "Bolsa", v: function (r) { return r.bolsa || ""; }, h: function (r) { return esc(r.bolsa || ""); }, asc: true },
+      { t: "Bolsa", v: function (r) { return r.bolsa || ""; }, h: function (r) { return esc(r.bolsa || "") + (r.estado ? ' <span class="tag">' + esc(r.estado) + "</span>" : ""); }, asc: true },
       { t: "Fecha", v: function (r) { return String(r.fecha || ""); }, h: function (r) { return fecha(r.fecha); } },
       { t: "Recaudado", num: true, v: function (r) { return toBn(r.recaudado); }, h: function (r) { return num(r.recaudado) != null ? "<b>" + esc(money(num(r.recaudado), unitOf(r.recaudado))) + "</b>" : MUT; } },
       { t: "Valoración", num: true, v: function (r) { return toBn(r.valoracion_salida); }, h: function (r) { return num(r.valoracion_salida) != null ? esc(money(num(r.valoracion_salida), unitOf(r.valoracion_salida))) : MUT; } }

@@ -47,7 +47,7 @@
   }
   // moneda declarada en la unidad y conversión a US$ con el tipo de cambio del día de corte
   var FX = (D.fx || {}).unidades_por_usd || {};
-  function cur(u) { var m = /^(CNY|KRW|EUR|JPY|INR|TWD|GBP|CAD|BRL|MXN|COP|SEK|PLN|CHF|SGD|AUD|RUB|ILS)\b/.exec(String(u || "").trim()); return m ? m[1] : null; }
+  function cur(u) { var m = /^(CNY|KRW|EUR|JPY|INR|TWD|HKD|GBP|CAD|BRL|MXN|COP|SEK|PLN|CHF|SGD|AUD|RUB|ILS)\b/.exec(String(u || "").trim()); return m ? m[1] : null; }
   function scale(u) { u = norm(u); return /10\^12|billones/.test(u) ? 1e12 : /miles de millones|billion|\bbn\b/.test(u) ? 1e9 : /crore/.test(u) ? 1e7 : /millones|million|\bmm\b/.test(u) ? 1e6 : 1; }
   function rango(o) {
     if (!o || typeof o !== "object" || o.valor != null) return "";
