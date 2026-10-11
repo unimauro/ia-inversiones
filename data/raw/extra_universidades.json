@@ -1,15 +1,19 @@
 {
   "meta": {
     "consultado": "2026-10-11",
-    "estado": "PARCIAL: conferencias, modelos_notables_pais, modelos_notables_org y citas_pais quedaron vacíos porque el disco se llenó (ENOSPC) y no se pudo ejecutar el conteo sobre los archivos ya descargados.",
     "tipo_de_cambio": "No se declaró ninguno: monto_usd_mm solo se llena cuando la propia fuente da la cifra en USD; en los demás casos queda null y el monto va en monto_original.",
     "niveles": "A = cifra o fecha textual en la página abierta; B = dato inferido de la redacción de la fuente o tomado de una fuente secundaria/agregador.",
     "advertencias": [
-      "conferencias: VACÍO. Se localizó una fuente homogénea y se descargó, pero no se pudo procesar por falta de espacio en disco. Fuente propuesta: los JSON oficiales del sitio virtual de cada conferencia, que traen la institución de cada autor (https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json con 6 002 registros; https://icml.cc/static/virtual/data/icml-2026-orals-posters.json con 6 797; https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json con 5 691). Método previsto: contar papers con al menos un autor de la institución (un paper cuenta una vez por institución), normalizando nombres. No se publica ninguna cifra porque el conteo no se ejecutó.",
-      "conferencias: el repositorio papercopilot/paperlists (GitHub) trae afiliaciones normalizadas para NeurIPS 2025 (5 812 aceptados entre pista principal, Datasets & Benchmarks y Position; 5 275 en pista principal), pero sus archivos de ICML 2026 e ICLR 2026 vienen SIN afiliaciones, así que no sirve para un conteo homogéneo de las tres. La API pública de OpenReview (api2.openreview.net) responde 403 'Challenge verification required'; no se intentó eludir.",
-      "modelos_notables_pais y modelos_notables_org: VACÍOS. El CSV de Epoch AI (https://epoch.ai/data/notable_ai_models.csv) es accesible y trae las columnas 'Organization', 'Country (of organization)' y 'Publication date', pero pesa ~2.2 MB y no se pudo contar sin Bash. El PDF del capítulo 1 del AI Index 2026 no es legible por WebFetch (flujos comprimidos); requiere pdftotext.",
-      "citas_pais: VACÍO. No se pudo abrir el texto del AI Index 2026 cap. 1 ni se consultó OECD.AI; sigue vigente lo que ya dice universidades.json (solo China y EE. UU.).",
-      "inversiones_universitarias: 16 entradas nuevas (objetivo 20-30 no alcanzado). No se repiten Empire AI ni Isambard-AI, que ya están en universidades.json. Mezcla tres naturalezas distintas que no deben sumarse: donaciones privadas a una universidad, programas públicos nacionales cuyo beneficiario son universidades y centros (Canadá, Singapur, India, NSF) y alianzas empresa-universidad.",
+      "conferencias: CONTEO PROPIO, no un ranking publicado por terceros. Fuente única y homogénea para las tres: el JSON oficial del sitio virtual de cada conferencia, que trae la institución declarada por cada autor en su perfil. Universo: NeurIPS 2025: 5858 papers únicos; ICML 2026: 6644 papers únicos; ICLR 2026: 5353 papers únicos. NeurIPS 2025 incluye pista principal, Datasets & Benchmarks y Position; en ICLR 2026 se excluyeron los pósteres de Blog Track y Journal Track. Se deduplicaron orales/pósteres por título.",
+      "conferencias: método = papers únicos con al menos un autor de la institución (no es conteo fraccionado; los totales de instituciones suman más que el número de papers). Los nombres se normalizaron con una lista de ~120 alias por expresión regular; las cadenas no mapeadas más frecuentes (p. ej. 'Northeastern University', ambigua entre EE. UU. y China, 47-62 papers) quedan por debajo del umbral del top 30 (≥ 113 papers), así que no alteran la lista, pero los valores pueden estar levemente subestimados por variantes de nombre no capturadas.",
+      "conferencias: decisiones de agrupación que afectan la comparación: CUHK incluye CUHK-Shenzhen; HKUST incluye HKUST-Guangzhou; 'Chinese Academy of Sciences' agrupa sus institutos y la UCAS; Google incluye Google DeepMind; Meta incluye FAIR/Facebook; Alibaba incluye DAMO Academy pero no Ant Group; Université de Montréal se agrupa con Mila. La afiliación es la del perfil del autor al momento de la descarga (11-oct-2026), no necesariamente la impresa en el paper.",
+      "conferencias: no mezclar con las tres cifras autodeclaradas de universidades.json (Google 'más de 175', Microsoft 'más de 150'): este conteo da 335 y 164 para NeurIPS 2025 porque cuenta cualquier coautor afiliado.",
+      "conferencias: alternativas descartadas: papercopilot/paperlists trae afiliaciones para NeurIPS 2025 pero no para ICML 2026 ni ICLR 2026; la API pública de OpenReview responde 403 'Challenge verification required' y no se intentó eludir.",
+      "modelos_notables: tres series distintas, identificadas por el campo 'periodo', que no deben sumarse: (1) 2025 según el AI Index 2026 (corte de Epoch del 22-abr-2026); (2) acumulado 2014–2025 por organización, del mismo informe; (3) 2026 parcial, conteo propio sobre el CSV de Epoch AI descargado hoy. El AI Index solo lista 8 áreas geográficas para 2025 (no hay 15 países con modelos notables). Un modelo con autores de varios países u organizaciones cuenta para cada uno.",
+      "modelos_notables: en la serie 2025 por organización solo se incluyen las 16 con 2 o más modelos; el gráfico muestra además cuatro con 1 modelo, pero es un corte alfabético parcial. La base de Epoch sigue añadiendo modelos de años pasados: el CSV de hoy da 107 modelos para 2025 (EE. UU. 64) frente a los 59 de EE. UU. del AI Index.",
+      "citas_pais: el AI Index 2026 NO publica cuota de citas por país más allá de China (20.6%), Europa (19.5%, región) y EE. UU. (12.6%). Lo que sí da por país es el número de publicaciones en el top 100 más citado, 2021–2024, para 10 áreas (Fig. 1.6.11); los valores salen de las etiquetas de datos de la capa de texto del PDF. Coinciden con los 2024 ya guardados en universidades.json (allí con nivel B) y añaden Hong Kong y los años 2021–2023. OECD.AI no se consultó.",
+      "Contexto regional (no incluido como fila): América Latina y el Caribe aporta 1.21% de las publicaciones de IA en ciencias de la computación en 2024, según el gráfico por región del AI Index 2026, cap. 1, sección 1.6 (37.33% sin región identificada).",
+      "inversiones_universitarias: 18 entradas nuevas (objetivo de 20-30 no alcanzado). No se repiten Empire AI ni Isambard-AI, que ya están en universidades.json. Mezcla tres naturalezas que no deben sumarse: donaciones privadas a una universidad, programas públicos nacionales cuyos beneficiarios son universidades y centros (Canadá, Singapur, India, NSF) y alianzas empresa-universidad. Ninguna entrada es de una universidad peruana: no se halló ninguna inversión en IA con monto publicado.",
       "inversiones_universitarias: no se verificaron (página no abierta, 403/404 o sin monto fechado en 2023-2026) MIT Schwarzman (2018), Harvard Kempner (2021), Stanford HAI, Princeton, UC Berkeley, Cambridge, TUM, Tsinghua, U. de Tokio/SoftBank (2019), NUS/NTU como receptoras directas, MBZUAI, KAUST, Mila/Vector/Amii con monto propio, Tec de Monterrey, UNAM, Unicamp/CPQD ni ninguna universidad peruana. RIT (USD 24 M, jun-2026) y Motorola-USP (R$ 5.5 M) aparecieron solo en resultados de búsqueda y se omiten.",
       "KAIST–NVIDIA: IBTimes Singapore da USD 300 M a cinco años; el agregador Ground News cita ~420 000 millones de wones (ddaily.co.kr, no abierto). Se guarda la cifra en USD de la fuente abierta.",
       "Oxford–EIT: mínimo GBP 130 M en total; solo GBP 31 M son específicamente de IA (centro de doctorado). Los GBP 100 M de investigación conjunta cubren también salud, alimentación y clima.",
@@ -20,14 +24,1008 @@
       "UNI: la carrera se llama 'Ingeniería de Inteligencia Artificial' en El Peruano y 'Ingeniería en Inteligencia Artificial' en ProActivo. El Peruano (oct-2023) preveía el inicio en el segundo semestre de 2024; las primeras 30 vacantes recién se ofrecieron en el examen de febrero de 2026."
     ]
   },
-  "conferencias": [],
+  "conferencias": [
+    {
+      "institucion": "Tsinghua University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 404,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 1 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 1
+    },
+    {
+      "institucion": "Google (incl. Google DeepMind)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 335,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 2 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 2
+    },
+    {
+      "institucion": "Peking University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 267,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 3 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 3
+    },
+    {
+      "institucion": "The Chinese University of Hong Kong (incl. Shenzhen)",
+      "tipo": "universidad",
+      "pais_iso3": "HKG",
+      "papers": 251,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 4 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 4
+    },
+    {
+      "institucion": "Chinese Academy of Sciences (institutos y UCAS)",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 237,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 5 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 5
+    },
+    {
+      "institucion": "Shanghai Jiao Tong University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 227,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 6 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 6
+    },
+    {
+      "institucion": "National University of Singapore",
+      "tipo": "universidad",
+      "pais_iso3": "SGP",
+      "papers": 221,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 7 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 7
+    },
+    {
+      "institucion": "The Hong Kong University of Science and Technology (incl. Guangzhou)",
+      "tipo": "universidad",
+      "pais_iso3": "HKG",
+      "papers": 218,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 8 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 8
+    },
+    {
+      "institucion": "Stanford University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 218,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 9 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 9
+    },
+    {
+      "institucion": "Massachusetts Institute of Technology (MIT)",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 212,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 10 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 10
+    },
+    {
+      "institucion": "Zhejiang University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 210,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 11 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 11
+    },
+    {
+      "institucion": "Carnegie Mellon University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 207,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 12 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 12
+    },
+    {
+      "institucion": "Nanyang Technological University",
+      "tipo": "universidad",
+      "pais_iso3": "SGP",
+      "papers": 193,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 13 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 13
+    },
+    {
+      "institucion": "University of Science and Technology of China (USTC)",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 182,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 14 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 14
+    },
+    {
+      "institucion": "University of California, Berkeley",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 172,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 15 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 15
+    },
+    {
+      "institucion": "Meta (incl. FAIR / Facebook)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 166,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 16 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 16
+    },
+    {
+      "institucion": "Fudan University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 165,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 17 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 17
+    },
+    {
+      "institucion": "Microsoft (incl. Microsoft Research)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 164,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 18 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 18
+    },
+    {
+      "institucion": "Alibaba Group (incl. DAMO Academy)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 146,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 19 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 19
+    },
+    {
+      "institucion": "University of Illinois Urbana-Champaign",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 146,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 20 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 20
+    },
+    {
+      "institucion": "ByteDance (incl. TikTok)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 136,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 21 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 21
+    },
+    {
+      "institucion": "Nanjing University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 132,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 22 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 22
+    },
+    {
+      "institucion": "Tencent",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 130,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 23 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 23
+    },
+    {
+      "institucion": "University of Oxford",
+      "tipo": "universidad",
+      "pais_iso3": "GBR",
+      "papers": 123,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 24 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 24
+    },
+    {
+      "institucion": "Shanghai AI Laboratory",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 122,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 25 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 25
+    },
+    {
+      "institucion": "KAIST",
+      "tipo": "universidad",
+      "pais_iso3": "KOR",
+      "papers": 122,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 26 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 26
+    },
+    {
+      "institucion": "The University of Hong Kong",
+      "tipo": "universidad",
+      "pais_iso3": "HKG",
+      "papers": 121,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 27 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 27
+    },
+    {
+      "institucion": "Huawei (incl. Noah's Ark Lab)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 120,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 28 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 28
+    },
+    {
+      "institucion": "ETH Zurich",
+      "tipo": "universidad",
+      "pais_iso3": "CHE",
+      "papers": 120,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 29 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 29
+    },
+    {
+      "institucion": "Harbin Institute of Technology",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 118,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de NeurIPS 2025 (campo 'institution' de cada autor)",
+      "url": "https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json",
+      "nota": "Puesto 30 del conteo. Papers únicos con al menos un autor de la institución, sobre 5858 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 30
+    },
+    {
+      "institucion": "Tsinghua University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 414,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 1 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 1
+    },
+    {
+      "institucion": "Peking University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 320,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 2 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 2
+    },
+    {
+      "institucion": "Chinese Academy of Sciences (institutos y UCAS)",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 309,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 3 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 3
+    },
+    {
+      "institucion": "Google (incl. Google DeepMind)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 298,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 4 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 4
+    },
+    {
+      "institucion": "Zhejiang University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 292,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 5 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 5
+    },
+    {
+      "institucion": "Shanghai Jiao Tong University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 284,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 6 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 6
+    },
+    {
+      "institucion": "The Hong Kong University of Science and Technology (incl. Guangzhou)",
+      "tipo": "universidad",
+      "pais_iso3": "HKG",
+      "papers": 255,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 7 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 7
+    },
+    {
+      "institucion": "The Chinese University of Hong Kong (incl. Shenzhen)",
+      "tipo": "universidad",
+      "pais_iso3": "HKG",
+      "papers": 236,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 8 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 8
+    },
+    {
+      "institucion": "National University of Singapore",
+      "tipo": "universidad",
+      "pais_iso3": "SGP",
+      "papers": 228,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 9 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 9
+    },
+    {
+      "institucion": "Massachusetts Institute of Technology (MIT)",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 217,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 10 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 10
+    },
+    {
+      "institucion": "University of Science and Technology of China (USTC)",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 212,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 11 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 11
+    },
+    {
+      "institucion": "Nanyang Technological University",
+      "tipo": "universidad",
+      "pais_iso3": "SGP",
+      "papers": 207,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 12 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 12
+    },
+    {
+      "institucion": "Fudan University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 203,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 13 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 13
+    },
+    {
+      "institucion": "Carnegie Mellon University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 201,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 14 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 14
+    },
+    {
+      "institucion": "Stanford University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 183,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 15 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 15
+    },
+    {
+      "institucion": "Alibaba Group (incl. DAMO Academy)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 173,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 16 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 16
+    },
+    {
+      "institucion": "University of California, Berkeley",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 172,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 17 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 17
+    },
+    {
+      "institucion": "ByteDance (incl. TikTok)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 167,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 18 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 18
+    },
+    {
+      "institucion": "Microsoft (incl. Microsoft Research)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 166,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 19 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 19
+    },
+    {
+      "institucion": "Nanjing University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 158,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 20 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 20
+    },
+    {
+      "institucion": "Meta (incl. FAIR / Facebook)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 146,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 21 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 21
+    },
+    {
+      "institucion": "University of Oxford",
+      "tipo": "universidad",
+      "pais_iso3": "GBR",
+      "papers": 138,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 22 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 22
+    },
+    {
+      "institucion": "Tencent",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 130,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 23 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 23
+    },
+    {
+      "institucion": "Harbin Institute of Technology",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 127,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 24 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 24
+    },
+    {
+      "institucion": "Huawei (incl. Noah's Ark Lab)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 119,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 25 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 25
+    },
+    {
+      "institucion": "KAIST",
+      "tipo": "universidad",
+      "pais_iso3": "KOR",
+      "papers": 119,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 26 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 26
+    },
+    {
+      "institucion": "Harvard University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 117,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 27 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 27
+    },
+    {
+      "institucion": "University of Illinois Urbana-Champaign",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 116,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 28 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 28
+    },
+    {
+      "institucion": "The University of Hong Kong",
+      "tipo": "universidad",
+      "pais_iso3": "HKG",
+      "papers": 114,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 29 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 29
+    },
+    {
+      "institucion": "ETH Zurich",
+      "tipo": "universidad",
+      "pais_iso3": "CHE",
+      "papers": 114,
+      "conferencia": "ICML 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICML 2026 (campo 'institution' de cada autor)",
+      "url": "https://icml.cc/static/virtual/data/icml-2026-orals-posters.json",
+      "nota": "Puesto 30 del conteo. Papers únicos con al menos un autor de la institución, sobre 6644 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 30
+    },
+    {
+      "institucion": "Tsinghua University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 440,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 1 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 1
+    },
+    {
+      "institucion": "Peking University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 303,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 2 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 2
+    },
+    {
+      "institucion": "Shanghai Jiao Tong University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 292,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 3 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 3
+    },
+    {
+      "institucion": "The Hong Kong University of Science and Technology (incl. Guangzhou)",
+      "tipo": "universidad",
+      "pais_iso3": "HKG",
+      "papers": 271,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 4 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 4
+    },
+    {
+      "institucion": "Zhejiang University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 261,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 5 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 5
+    },
+    {
+      "institucion": "Chinese Academy of Sciences (institutos y UCAS)",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 258,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 6 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 6
+    },
+    {
+      "institucion": "The Chinese University of Hong Kong (incl. Shenzhen)",
+      "tipo": "universidad",
+      "pais_iso3": "HKG",
+      "papers": 250,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 7 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 7
+    },
+    {
+      "institucion": "Google (incl. Google DeepMind)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 244,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 8 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 8
+    },
+    {
+      "institucion": "Massachusetts Institute of Technology (MIT)",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 238,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 9 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 9
+    },
+    {
+      "institucion": "National University of Singapore",
+      "tipo": "universidad",
+      "pais_iso3": "SGP",
+      "papers": 224,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 10 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 10
+    },
+    {
+      "institucion": "Alibaba Group (incl. DAMO Academy)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 218,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 11 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 11
+    },
+    {
+      "institucion": "Microsoft (incl. Microsoft Research)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 214,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 12 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 12
+    },
+    {
+      "institucion": "Stanford University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 209,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 13 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 13
+    },
+    {
+      "institucion": "University of Science and Technology of China (USTC)",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 204,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 14 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 14
+    },
+    {
+      "institucion": "Carnegie Mellon University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 203,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 15 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 15
+    },
+    {
+      "institucion": "Fudan University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 184,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 16 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 16
+    },
+    {
+      "institucion": "Nanyang Technological University",
+      "tipo": "universidad",
+      "pais_iso3": "SGP",
+      "papers": 181,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 17 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 17
+    },
+    {
+      "institucion": "Tencent",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 169,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 18 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 18
+    },
+    {
+      "institucion": "Meta (incl. FAIR / Facebook)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 167,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 19 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 19
+    },
+    {
+      "institucion": "ByteDance (incl. TikTok)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 167,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 20 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 20
+    },
+    {
+      "institucion": "University of California, Berkeley",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 151,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 21 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 21
+    },
+    {
+      "institucion": "Shanghai AI Laboratory",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 148,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 22 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 22
+    },
+    {
+      "institucion": "KAIST",
+      "tipo": "universidad",
+      "pais_iso3": "KOR",
+      "papers": 141,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 23 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 23
+    },
+    {
+      "institucion": "Huawei (incl. Noah's Ark Lab)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "papers": 139,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 24 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 24
+    },
+    {
+      "institucion": "The University of Hong Kong",
+      "tipo": "universidad",
+      "pais_iso3": "HKG",
+      "papers": 128,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 25 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 25
+    },
+    {
+      "institucion": "Amazon (incl. AWS)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 126,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 26 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 26
+    },
+    {
+      "institucion": "NVIDIA",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 122,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 27 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 27
+    },
+    {
+      "institucion": "University of Illinois Urbana-Champaign",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 120,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 28 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 28
+    },
+    {
+      "institucion": "New York University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "papers": 119,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 29 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 29
+    },
+    {
+      "institucion": "Nanjing University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "papers": 119,
+      "conferencia": "ICLR 2026",
+      "fuente": "Conteo propio sobre el JSON oficial del sitio virtual de ICLR 2026 (campo 'institution' de cada autor)",
+      "url": "https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json",
+      "nota": "Puesto 30 del conteo. Papers únicos con al menos un autor de la institución, sobre 5353 papers aceptados; un paper cuenta una vez por institución y suma a todas las instituciones de sus autores.",
+      "puesto_en_conteo": 30
+    }
+  ],
   "inversiones_universitarias": [
     {
       "universidad": "University of Southern California (USC)",
       "pais_iso3": "USA",
       "concepto": "Donación de Mark y Mary Stevens para investigación en IA en toda la universidad; da nombre a la USC Mark and Mary Stevens School of Computing and Artificial Intelligence",
       "monto_usd_mm": 200,
-      "monto_original": {"valor": 200, "unidad": "millones USD"},
+      "monto_original": {
+        "valor": 200,
+        "unidad": "millones USD"
+      },
       "anio": 2026,
       "fuente": "USC Viterbi School of Engineering, 5-may-2026",
       "url": "https://viterbischool.usc.edu/mediacoverage/mark-and-mary-stevens-give-200-million-to-power-ai-research-across-usc/",
@@ -38,7 +1036,10 @@
       "pais_iso3": "USA",
       "concepto": "Compromisos de donación privada (grupo 'Catalyst Collective': A. Konwinski, J. y T. Morgridge, S. Ostby, J. Tangney, S. Cook y Epic) para el nuevo College of Computing and Artificial Intelligence, que abre el 1-jul-2026",
       "monto_usd_mm": 100,
-      "monto_original": {"valor": 100, "unidad": "millones USD"},
+      "monto_original": {
+        "valor": 100,
+        "unidad": "millones USD"
+      },
       "anio": 2026,
       "fuente": "UW–Madison, Office of Strategic Communication (Clipsheet), 28-abr-2026",
       "url": "https://clipsheet.strategiccommunication.wisc.edu/?p=256904",
@@ -49,7 +1050,10 @@
       "pais_iso3": "USA",
       "concepto": "Donación de Anuradha y Vikas Sinha para crear el College of Artificial Intelligence and Advanced Analytics (seis fondos permanentes)",
       "monto_usd_mm": 20,
-      "monto_original": {"valor": 20, "unidad": "millones USD"},
+      "monto_original": {
+        "valor": 20,
+        "unidad": "millones USD"
+      },
       "anio": 2026,
       "fuente": "FOX 4 News (Dallas), 9-sep-2026; anuncio del 2-sep-2026",
       "url": "https://www.fox4news.com/news/university-north-texas-launches-college-ai-advanced-analytics-following-20m-donation",
@@ -60,7 +1064,10 @@
       "pais_iso3": "USA",
       "concepto": "NSF: siete nuevos National Artificial Intelligence Research Institutes",
       "monto_usd_mm": 140,
-      "monto_original": {"valor": 140, "unidad": "millones USD"},
+      "monto_original": {
+        "valor": 140,
+        "unidad": "millones USD"
+      },
       "anio": 2023,
       "fuente": "U.S. National Science Foundation, 4-may-2023",
       "url": "https://www.nsf.gov/news/nsf-announces-7-new-national-artificial-intelligence",
@@ -71,7 +1078,10 @@
       "pais_iso3": "USA",
       "concepto": "NSF, con Capital One e Intel: inversión en cinco National AI Research Institutes y un nodo de coordinación de la red",
       "monto_usd_mm": 100,
-      "monto_original": {"valor": 100, "unidad": "millones USD"},
+      "monto_original": {
+        "valor": 100,
+        "unidad": "millones USD"
+      },
       "anio": 2025,
       "fuente": "Campus Technology, 5-ago-2025 (fuente secundaria; la nota de NSF no fue accesible)",
       "url": "https://campustechnology.com/articles/2025/08/05/nsf-invests-100-million-in-national-ai-research-institutes.aspx",
@@ -82,7 +1092,10 @@
       "pais_iso3": "USA",
       "concepto": "Amazon AI PhD Fellowship: becas doctorales y créditos de cómputo AWS en nueve universidades (2025-2027)",
       "monto_usd_mm": 68,
-      "monto_original": {"valor": 68, "unidad": "millones USD"},
+      "monto_original": {
+        "valor": 68,
+        "unidad": "millones USD"
+      },
       "anio": 2025,
       "fuente": "EdTech Innovation Hub, 29-oct (programa 2025-2027)",
       "url": "https://www.edtechinnovationhub.com/news/amazon-launches-68-million-ai-phd-fellowship-program-across-nine-us-universities",
@@ -93,7 +1106,10 @@
       "pais_iso3": "USA",
       "concepto": "Alianza a cinco años con BNY para investigación en IA; crea el BNY AI Lab en el campus de Pittsburgh",
       "monto_usd_mm": 10,
-      "monto_original": {"valor": 10, "unidad": "millones USD"},
+      "monto_original": {
+        "valor": 10,
+        "unidad": "millones USD"
+      },
       "anio": 2025,
       "fuente": "EdTech Innovation Hub, 15-sep-2025",
       "url": "https://www.edtechinnovationhub.com/news/bny-and-carnegie-mellon-university-announce-five-year-10-million-partnership-supporting-ai-research",
@@ -104,7 +1120,10 @@
       "pais_iso3": "GBR",
       "concepto": "Alianza estratégica con el Ellison Institute of Technology (EIT): mínimo GBP 130 M, de los cuales al menos GBP 100 M van a programas conjuntos de investigación y GBP 31 M a un centro de doctorado en fundamentos de IA (100 becas; primer ingreso oct-2025)",
       "monto_usd_mm": null,
-      "monto_original": {"valor": 130, "unidad": "millones GBP"},
+      "monto_original": {
+        "valor": 130,
+        "unidad": "millones GBP"
+      },
       "anio": 2024,
       "fuente": "Oxford University Innovation, 3-dic-2024",
       "url": "https://innovation.ox.ac.uk/news/university-oxford-and-ellison-institute-technology-eit-form-strategic-alliance",
@@ -115,7 +1134,10 @@
       "pais_iso3": "CHE",
       "concepto": "Swiss AI Initiative, iniciada en dic-2023: subvención del ETH Domain más de 10 millones de horas-GPU en la supercomputadora Alps (CSCS)",
       "monto_usd_mm": null,
-      "monto_original": {"valor": 20, "unidad": "millones CHF"},
+      "monto_original": {
+        "valor": 20,
+        "unidad": "millones CHF"
+      },
       "anio": 2023,
       "fuente": "Swiss AI Initiative (sitio oficial)",
       "url": "https://swiss-ai.org/",
@@ -126,7 +1148,10 @@
       "pais_iso3": "CAN",
       "concepto": "Paquete de IA del Presupuesto 2024: CAD 2 400 M en total, de los cuales CAD 2 000 M son para capacidad de cómputo e infraestructura (AI Compute Access Fund y Canadian AI Sovereign Compute Strategy) y CAD 50 M para el Canadian AI Safety Institute. La fuente no asigna montos a Mila, Vector ni Amii",
       "monto_usd_mm": null,
-      "monto_original": {"valor": 2400, "unidad": "millones CAD"},
+      "monto_original": {
+        "valor": 2400,
+        "unidad": "millones CAD"
+      },
       "anio": 2024,
       "fuente": "Oficina del Primer Ministro de Canadá, 7-abr-2024",
       "url": "https://www.pm.gc.ca/en/news/news-releases/2024/04/07/securing-canadas-ai-advantage",
@@ -137,7 +1162,10 @@
       "pais_iso3": "KOR",
       "concepto": "Laboratorio conjunto de investigación en IA NVIDIA–KAIST (IA agéntica y modelos en coreano), valorado en USD 300 M a cinco años; NVIDIA aporta cómputo y financia al menos 10 investigadores por año",
       "monto_usd_mm": 300,
-      "monto_original": {"valor": 300, "unidad": "millones USD"},
+      "monto_original": {
+        "valor": 300,
+        "unidad": "millones USD"
+      },
       "anio": 2026,
       "fuente": "International Business Times Singapore, 25-jul-2026 (anuncio del 23-jul-2026)",
       "url": "https://www.ibtimes.sg/nvidia-backs-south-koreas-bid-become-ai-powerhouse-new-kaist-partnership-90617",
@@ -148,7 +1176,10 @@
       "pais_iso3": "SGP",
       "concepto": "National AI Research and Development (NAIRD) Plan: inversión adicional de más de SGD 1 000 M en cinco años (2025-2030) para centros de excelencia en investigación fundamental, IA aplicada y talento",
       "monto_usd_mm": null,
-      "monto_original": {"valor": 1000, "unidad": "millones SGD (más de)"},
+      "monto_original": {
+        "valor": 1000,
+        "unidad": "millones SGD (más de)"
+      },
       "anio": 2026,
       "fuente": "Ministry of Digital Development and Information (MDDI) de Singapur, 24-ene-2026",
       "url": "https://www.mddi.gov.sg/newsroom/singapore-invests-over-s-1-billion-in-national-ai-research-and-development-plan-to-strengthen-ai-research-capabilities-and-our-position-as-global-ai-hub/",
@@ -159,7 +1190,10 @@
       "pais_iso3": "IND",
       "concepto": "Presupuesto de la Unión 2025: tres Centros de Excelencia en IA para educación",
       "monto_usd_mm": null,
-      "monto_original": {"valor": 500, "unidad": "crore INR (5 000 millones de rupias)"},
+      "monto_original": {
+        "valor": 500,
+        "unidad": "crore INR (5 000 millones de rupias)"
+      },
       "anio": 2025,
       "fuente": "IANS, 1-feb-2025",
       "url": "https://ianslive.in/india-bets-big-on-ai-allocates-rs-500-crore-for-3-centres-of-excellence--20250201144204",
@@ -170,7 +1204,10 @@
       "pais_iso3": "IND",
       "concepto": "Google: USD 8 M para cuatro Centros de Excelencia en IA (salud, gobernanza urbana, educación y agricultura). Aparte, USD 2 M como aporte fundacional al Indic Language Technologies Research Hub de IIT Bombay",
       "monto_usd_mm": 8,
-      "monto_original": {"valor": 8, "unidad": "millones USD"},
+      "monto_original": {
+        "valor": 8,
+        "unidad": "millones USD"
+      },
       "anio": 2025,
       "fuente": "CXO Digital Pulse, 17-dic-2025",
       "url": "https://www.cxodigitalpulse.com/google-commits-8-million-to-ai-centres-of-excellence-expands-research-and-healthcare-partnerships-in-india/",
@@ -181,7 +1218,10 @@
       "pais_iso3": "BRA",
       "concepto": "Centro de Pesquisa Aplicada en 5G e IA generativa de Claro, FAPESP y USP (con nueve instituciones asociadas): más de BRL 40 M en cinco años",
       "monto_usd_mm": null,
-      "monto_original": {"valor": 40, "unidad": "millones BRL (más de)"},
+      "monto_original": {
+        "valor": 40,
+        "unidad": "millones BRL (más de)"
+      },
       "anio": 2025,
       "fuente": "Agência FAPESP, anuncio del 30-abr-2025 en Web Summit Rio",
       "url": "https://agencia.fapesp.br/54627",
@@ -192,10 +1232,42 @@
       "pais_iso3": "CHL",
       "concepto": "Laboratorio de Supercómputo para Inteligencia Artificial (SCAI-Lab), financiado por Corfo: USD 7 M para la primera etapa",
       "monto_usd_mm": 7,
-      "monto_original": {"valor": 7, "unidad": "millones USD"},
+      "monto_original": {
+        "valor": 7,
+        "unidad": "millones USD"
+      },
       "anio": 2025,
       "fuente": "Centro de Modelamiento Matemático (CMM), Universidad de Chile, 12-jun-2025",
       "url": "https://www.cmm.uchile.cl/?p=62216",
+      "nivel": "A"
+    },
+    {
+      "universidad": "Georgia Institute of Technology (y socios)",
+      "pais_iso3": "USA",
+      "concepto": "NSF: supercomputadora nacional de IA para investigación científica, a construir por Georgia Tech y sus socios",
+      "monto_usd_mm": 20,
+      "monto_original": {
+        "valor": 20,
+        "unidad": "millones USD"
+      },
+      "anio": 2025,
+      "fuente": "Georgia Tech News, 15-jul-2025",
+      "url": "https://www.gatech.edu/news/2025/07/15/georgia-tech-build-20m-national-ai-supercomputer",
+      "nivel": "B",
+      "nota": "Dato leído en el listado de noticias de gatech.edu (https://www.gatech.edu/news/keywords/hpc), que enlaza a esta nota."
+    },
+    {
+      "universidad": "Tecnológico de Monterrey (campus Guadalajara)",
+      "pais_iso3": "MEX",
+      "concepto": "Laboratorio de IA con Wizeline en Guadalajara; la empresa destina USD 1 M a becas. No se publica el aporte del Tec",
+      "monto_usd_mm": 1,
+      "monto_original": {
+        "valor": 1,
+        "unidad": "millones USD"
+      },
+      "anio": 2023,
+      "fuente": "Expansión (México), 11-oct-2023",
+      "url": "https://expansion.mx/tecnologia/2023/10/11/wizeline-y-tec-de-monterrey-laboratorio-ia-guadalajara",
       "nivel": "A"
     }
   ],
@@ -275,26 +1347,1206 @@
     "url": "https://edurank.org/cs/ai/pe/",
     "nivel": "A",
     "filas": [
-      {"universidad": "Pontificia Universidad Católica del Perú (PUCP)", "puesto_peru": 1, "puesto_latam": 76, "puesto_mundo": 2043},
-      {"universidad": "Universidad Nacional Mayor de San Marcos (UNMSM)", "puesto_peru": 2, "puesto_latam": 142, "puesto_mundo": 3119},
-      {"universidad": "Universidad Peruana de Ciencias Aplicadas (UPC)", "puesto_peru": 3, "puesto_latam": 150, "puesto_mundo": 3293},
-      {"universidad": "Universidad Nacional de Ingeniería (UNI)", "puesto_peru": 4, "puesto_latam": 167, "puesto_mundo": 3530},
-      {"universidad": "Universidad Peruana Cayetano Heredia (UPCH)", "puesto_peru": 5, "puesto_latam": 189, "puesto_mundo": 3868},
-      {"universidad": "Universidad de Lima", "puesto_peru": 6, "puesto_latam": 231, "puesto_mundo": 4318},
-      {"universidad": "Universidad César Vallejo", "puesto_peru": 7, "puesto_latam": 233, "puesto_mundo": 4333},
-      {"universidad": "Universidad Privada del Norte", "puesto_peru": 8, "puesto_latam": 243, "puesto_mundo": 4466},
-      {"universidad": "Universidad de Piura", "puesto_peru": 9, "puesto_latam": 260, "puesto_mundo": 4673},
-      {"universidad": "Universidad del Pacífico", "puesto_peru": 10, "puesto_latam": 290, "puesto_mundo": 4987},
-      {"universidad": "Universidad Nacional Agraria La Molina", "puesto_peru": 11, "puesto_latam": 303, "puesto_mundo": 5202},
-      {"universidad": "Universidad Científica del Sur", "puesto_peru": 12, "puesto_latam": 304, "puesto_mundo": 5217},
-      {"universidad": "Universidad San Ignacio de Loyola (USIL)", "puesto_peru": 13, "puesto_latam": 310, "puesto_mundo": 5269},
-      {"universidad": "Universidad Nacional Federico Villarreal", "puesto_peru": 14, "puesto_latam": 311, "puesto_mundo": 5276},
-      {"universidad": "Universidad de San Martín de Porres", "puesto_peru": 15, "puesto_latam": 319, "puesto_mundo": 5339},
-      {"universidad": "Universidad ESAN", "puesto_peru": 16, "puesto_latam": 332, "puesto_mundo": 5443},
-      {"universidad": "Universidad Privada San Juan Bautista", "puesto_peru": 17, "puesto_latam": 373, "puesto_mundo": 5953}
+      {
+        "universidad": "Pontificia Universidad Católica del Perú (PUCP)",
+        "puesto_peru": 1,
+        "puesto_latam": 76,
+        "puesto_mundo": 2043
+      },
+      {
+        "universidad": "Universidad Nacional Mayor de San Marcos (UNMSM)",
+        "puesto_peru": 2,
+        "puesto_latam": 142,
+        "puesto_mundo": 3119
+      },
+      {
+        "universidad": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+        "puesto_peru": 3,
+        "puesto_latam": 150,
+        "puesto_mundo": 3293
+      },
+      {
+        "universidad": "Universidad Nacional de Ingeniería (UNI)",
+        "puesto_peru": 4,
+        "puesto_latam": 167,
+        "puesto_mundo": 3530
+      },
+      {
+        "universidad": "Universidad Peruana Cayetano Heredia (UPCH)",
+        "puesto_peru": 5,
+        "puesto_latam": 189,
+        "puesto_mundo": 3868
+      },
+      {
+        "universidad": "Universidad de Lima",
+        "puesto_peru": 6,
+        "puesto_latam": 231,
+        "puesto_mundo": 4318
+      },
+      {
+        "universidad": "Universidad César Vallejo",
+        "puesto_peru": 7,
+        "puesto_latam": 233,
+        "puesto_mundo": 4333
+      },
+      {
+        "universidad": "Universidad Privada del Norte",
+        "puesto_peru": 8,
+        "puesto_latam": 243,
+        "puesto_mundo": 4466
+      },
+      {
+        "universidad": "Universidad de Piura",
+        "puesto_peru": 9,
+        "puesto_latam": 260,
+        "puesto_mundo": 4673
+      },
+      {
+        "universidad": "Universidad del Pacífico",
+        "puesto_peru": 10,
+        "puesto_latam": 290,
+        "puesto_mundo": 4987
+      },
+      {
+        "universidad": "Universidad Nacional Agraria La Molina",
+        "puesto_peru": 11,
+        "puesto_latam": 303,
+        "puesto_mundo": 5202
+      },
+      {
+        "universidad": "Universidad Científica del Sur",
+        "puesto_peru": 12,
+        "puesto_latam": 304,
+        "puesto_mundo": 5217
+      },
+      {
+        "universidad": "Universidad San Ignacio de Loyola (USIL)",
+        "puesto_peru": 13,
+        "puesto_latam": 310,
+        "puesto_mundo": 5269
+      },
+      {
+        "universidad": "Universidad Nacional Federico Villarreal",
+        "puesto_peru": 14,
+        "puesto_latam": 311,
+        "puesto_mundo": 5276
+      },
+      {
+        "universidad": "Universidad de San Martín de Porres",
+        "puesto_peru": 15,
+        "puesto_latam": 319,
+        "puesto_mundo": 5339
+      },
+      {
+        "universidad": "Universidad ESAN",
+        "puesto_peru": 16,
+        "puesto_latam": 332,
+        "puesto_mundo": 5443
+      },
+      {
+        "universidad": "Universidad Privada San Juan Bautista",
+        "puesto_peru": 17,
+        "puesto_latam": 373,
+        "puesto_mundo": 5953
+      }
     ]
   },
-  "modelos_notables_pais": [],
-  "modelos_notables_org": [],
-  "citas_pais": []
+  "modelos_notables_pais": [
+    {
+      "iso3": "USA",
+      "nombre_es": "Estados Unidos",
+      "modelos": 59,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.1 (datos de Epoch AI, corte 22-abr-2026)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CHN",
+      "nombre_es": "China",
+      "modelos": 35,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.1 (datos de Epoch AI, corte 22-abr-2026)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "KOR",
+      "nombre_es": "Corea del Sur",
+      "modelos": 8,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.1 (datos de Epoch AI, corte 22-abr-2026)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CAN",
+      "nombre_es": "Canadá",
+      "modelos": 1,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.1 (datos de Epoch AI, corte 22-abr-2026)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "FRA",
+      "nombre_es": "Francia",
+      "modelos": 1,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.1 (datos de Epoch AI, corte 22-abr-2026)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "HKG",
+      "nombre_es": "Hong Kong",
+      "modelos": 1,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.1 (datos de Epoch AI, corte 22-abr-2026)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "SGP",
+      "nombre_es": "Singapur",
+      "modelos": 1,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.1 (datos de Epoch AI, corte 22-abr-2026)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "modelos": 1,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.1 (datos de Epoch AI, corte 22-abr-2026)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "USA",
+      "nombre_es": "Estados Unidos",
+      "modelos": 49,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CHN",
+      "nombre_es": "China",
+      "modelos": 29,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "iso3": "KOR",
+      "nombre_es": "Corea del Sur",
+      "modelos": 5,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "iso3": "SGP",
+      "nombre_es": "Singapur",
+      "modelos": 1,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    }
+  ],
+  "modelos_notables_org": [
+    {
+      "organizacion": "OpenAI",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 20,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Google (incl. DeepMind)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 14,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Alibaba",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 11,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Anthropic",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 7,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "xAI",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 5,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "DeepSeek",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 4,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "LG AI Research",
+      "tipo": "empresa",
+      "pais_iso3": "KOR",
+      "modelos": 4,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Meta",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 4,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Tsinghua University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "modelos": 4,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "ByteDance",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 3,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Moonshot",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 3,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Nvidia",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 3,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "University of Illinois",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "modelos": 3,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Z.ai (Zhipu AI)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 3,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "MiniMax",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 2,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Shanghai AI Lab",
+      "tipo": "instituto de investigación",
+      "pais_iso3": "CHN",
+      "modelos": 2,
+      "anio": 2025,
+      "periodo": "2025",
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.1.6 (datos de Epoch AI, corte 22-abr-2026; DeepMind se cuenta dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Google (incl. DeepMind)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 193,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Meta",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 87,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "OpenAI",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 60,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Microsoft",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 42,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Nvidia",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 30,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Stanford University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "modelos": 26,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Tsinghua University",
+      "tipo": "universidad",
+      "pais_iso3": "CHN",
+      "modelos": 26,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Alibaba",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 25,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Carnegie Mellon University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "modelos": 25,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "UC Berkeley",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "modelos": 20,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "University of Washington",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "modelos": 19,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "University of Oxford",
+      "tipo": "universidad",
+      "pais_iso3": "GBR",
+      "modelos": 17,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "MIT",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "modelos": 15,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Allen Institute for AI (Ai2)",
+      "tipo": "sin fines de lucro",
+      "pais_iso3": "USA",
+      "modelos": 13,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Anthropic",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 13,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Baidu",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 13,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Salesforce",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 12,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "New York University",
+      "tipo": "universidad",
+      "pais_iso3": "USA",
+      "modelos": 11,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "ByteDance",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 10,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Chinese University of Hong Kong",
+      "tipo": "universidad",
+      "pais_iso3": "HKG",
+      "modelos": 10,
+      "anio": 2025,
+      "periodo": "acumulado 2014–2025",
+      "fuente": "AI Index 2026, cap. 1, gráfico 'Number of notable AI models by organization, 2014–25 (sum)' (datos de Epoch AI; DeepMind dentro de Google)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "OpenAI",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 18,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Alibaba",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 10,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Anthropic",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 9,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Google DeepMind",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 6,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Z.ai (Zhipu AI)",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 4,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "DeepSeek",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 3,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Meta AI",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 3,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Tencent",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 3,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Moonshot",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 3,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "xAI",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 2,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "LG AI Research",
+      "tipo": "empresa",
+      "pais_iso3": "KOR",
+      "modelos": 2,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Thinking Machines",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 2,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Nvidia",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 2,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Microsoft",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 2,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Cursor",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "modelos": 2,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    },
+    {
+      "organizacion": "Xiaomi Corp",
+      "tipo": "empresa",
+      "pais_iso3": "CHN",
+      "modelos": 2,
+      "anio": 2026,
+      "periodo": "2026 parcial (ene–sep)",
+      "fuente": "Conteo propio sobre la base 'Notable AI Models' de Epoch AI (CSV descargado el 11-oct-2026; 84 modelos con fecha de publicación entre 1-ene y 30-sep-2026); etiquetas de organización tal como las da Epoch (Google DeepMind y Google Research van separados)",
+      "url": "https://epoch.ai/data/notable_ai_models.csv",
+      "nivel": "A"
+    }
+  ],
+  "citas_pais": [
+    {
+      "iso3": "USA",
+      "nombre_es": "Estados Unidos",
+      "valor": 46,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "USA",
+      "nombre_es": "Estados Unidos",
+      "valor": 50,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "USA",
+      "nombre_es": "Estados Unidos",
+      "valor": 58,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "USA",
+      "nombre_es": "Estados Unidos",
+      "valor": 64,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2021,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CHN",
+      "nombre_es": "China",
+      "valor": 41,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CHN",
+      "nombre_es": "China",
+      "valor": 34,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CHN",
+      "nombre_es": "China",
+      "valor": 34,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CHN",
+      "nombre_es": "China",
+      "valor": 33,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2021,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "HKG",
+      "nombre_es": "Hong Kong",
+      "valor": 15,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "HKG",
+      "nombre_es": "Hong Kong",
+      "valor": 7,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "HKG",
+      "nombre_es": "Hong Kong",
+      "valor": 5,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "HKG",
+      "nombre_es": "Hong Kong",
+      "valor": 8,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2021,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "AUS",
+      "nombre_es": "Australia",
+      "valor": 14,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "AUS",
+      "nombre_es": "Australia",
+      "valor": 2,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "AUS",
+      "nombre_es": "Australia",
+      "valor": 6,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "AUS",
+      "nombre_es": "Australia",
+      "valor": 6,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2021,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "valor": 9,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "valor": 5,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "valor": 6,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "valor": 7,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2021,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "DEU",
+      "nombre_es": "Alemania",
+      "valor": 8,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "DEU",
+      "nombre_es": "Alemania",
+      "valor": 7,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "DEU",
+      "nombre_es": "Alemania",
+      "valor": 7,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "DEU",
+      "nombre_es": "Alemania",
+      "valor": 10,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2021,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CHE",
+      "nombre_es": "Suiza",
+      "valor": 7,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CHE",
+      "nombre_es": "Suiza",
+      "valor": 2,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CHE",
+      "nombre_es": "Suiza",
+      "valor": 2,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CHE",
+      "nombre_es": "Suiza",
+      "valor": 4,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2021,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "SGP",
+      "nombre_es": "Singapur",
+      "valor": 6,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "SGP",
+      "nombre_es": "Singapur",
+      "valor": 4,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "SGP",
+      "nombre_es": "Singapur",
+      "valor": 4,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "SGP",
+      "nombre_es": "Singapur",
+      "valor": 7,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2021,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CAN",
+      "nombre_es": "Canadá",
+      "valor": 5,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CAN",
+      "nombre_es": "Canadá",
+      "valor": 6,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CAN",
+      "nombre_es": "Canadá",
+      "valor": 3,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "CAN",
+      "nombre_es": "Canadá",
+      "valor": 4,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2021,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "IND",
+      "nombre_es": "India",
+      "valor": 4,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "IND",
+      "nombre_es": "India",
+      "valor": 2,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "IND",
+      "nombre_es": "India",
+      "valor": 3,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "iso3": "IND",
+      "nombre_es": "India",
+      "valor": 1,
+      "unidad": "publicaciones en el top 100 de IA más citadas",
+      "anio": 2021,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 de IA más citadas de cada año, OpenAlex; un paper cuenta para cada país de sus autores)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    }
+  ]
 }

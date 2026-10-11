@@ -70,9 +70,9 @@
         '<span class="tag t-' + esc(n.familia || "") + '">' + esc(n.familia || "") + (n.subcategoria ? " · " + esc(n.subcategoria) : "") + "</span> " +
         "<b>" + esc(n.empresa || "") + "</b> · " + esc((n.ciudad ? n.ciudad + ", " : "") + nombre(n.pais_iso3)) + (n.operacion ? " · " + esc(n.operacion) : "") +
         (n.inversores ? '<br>Inversores: ' + esc(n.inversores) : "") + (n.nota ? '<br><span class="mut" style="color:var(--muted)">' + esc(n.nota) + "</span>" : "") + (n.fuente ? ' <span class="mut">· ' + esc(n.fuente) + "</span>" : "") + "</div></div>" +
-        '<div class="amt">' + (num(n.monto) != null ? esc(money(num(n.monto), unitOf(n.monto))) : "") + (num(n.valoracion) != null ? "<small>valoración " + esc(money(num(n.valoracion), unitOf(n.valoracion))) + "</small>" : "") + "</div></div>";
+        '<div class="amt">' + (num(n.monto) != null ? (IA.cur(unitOf(n.monto)) && toBn(n.monto) != null ? "≈ " + esc(money(toBn(n.monto), "USD miles de millones")) : esc(money(num(n.monto), unitOf(n.monto)))) : "") + (num(n.valoracion) != null ? "<small>valoración " + esc(money(num(n.valoracion), unitOf(n.valoracion))) + "</small>" : "") + "</div></div>";
     }).join("") || '<p class="empty">Sin resultados.</p>';
-    var tot = 0; ns.forEach(function (n) { if (num(n.monto) != null && isUsd(n.monto)) tot += toBn(n.monto); });
+    var tot = 0; ns.forEach(function (n) { if (num(n.monto) != null && toBn(n.monto) != null) tot += toBn(n.monto); });
     note("nFeed", ns.length + " operaciones" + (tot ? " · " + esc(money(tot, "USD miles de millones")) + " en montos reportados (incluye deuda y adquisiciones)" : "") + ".");
   }
   function noticias() {
@@ -83,9 +83,14 @@
     seg.onclick = function (e) { var b = e.target.closest("button"); if (!b) return; fam = b.getAttribute("data-id"); Array.prototype.forEach.call(seg.children, function (x) { x.setAttribute("aria-selected", x === b ? "true" : "false"); }); feed(); };
     $("qNoti").oninput = feed; feed();
 
-    var hs = arr(N.hubs).filter(function (h) { return num(h.monto) != null; }).sort(function (a, b) { return toBn(b.monto) - toBn(a.monto); });
+    // solo se grafican juntos los hubs de una misma fuente (Dealroom); el resto va en la nota y en el mapa
+    var hAll = arr(N.hubs).filter(function (h) { return num(h.monto) != null; });
+    var hs = hAll.filter(function (h) { return /dealroom/i.test(h.monto.fuente || ""); }).sort(function (a, b) { return toBn(b.monto) - toBn(a.monto); });
+    var hOtros = hAll.filter(function (h) { return hs.indexOf(h) < 0; });
+    if (!hs.length) { hs = hAll.sort(function (a, b) { return toBn(b.monto) - toBn(a.monto); }); hOtros = []; }
     hbar("cHubs", hs.slice(0, 15).map(function (h) { return { name: h.ciudad, value: toBn(h.monto), extra: nombre(h.pais_iso3) + " · " + when(h.monto) + (num(h.pct_mundial) != null ? " · " + fmt(num(h.pct_mundial)) + "% del mundo" : "") }; }), { color: 3, fmt: function (v) { return money(v, "USD miles de millones"); }, short: function (v) { return fmt(v); } });
-    note("nHubs", hs.length ? "Capital levantado por empresas de IA con sede en cada ciudad, miles de millones de US$. " + IA.srcNote(hs[0].monto, "Actívalo también en el mapa («Dónde se levanta capital»).") : "");
+    note("nHubs", hs.length ? "Capital levantado por empresas de IA con sede en cada ciudad, miles de millones de US$. " + IA.srcNote(hs[0].monto, "Actívalo también en el mapa («Dónde se levanta capital»).") +
+      (hOtros.length ? " Con otras fuentes, no comparables con las barras: " + hOtros.map(function (h) { return esc(h.ciudad) + " " + (IA.cur(unitOf(h.monto)) && toBn(h.monto) != null ? "≈ " + esc(money(toBn(h.monto), "USD miles de millones")) : esc(money(num(h.monto), unitOf(h.monto)))) + " (" + esc(when(h.monto)) + ")"; }).join("; ") + "." : "") : "");
     datosTable("tInstr", arr(N.instrumentos));
     if (arr(N.bolsas).length) table("tBolsas", [
       { t: "Salida a bolsa", v: function (r) { return r.empresa; }, h: function (r) { return "<b>" + link(r.empresa, r.url) + "</b>"; }, asc: true },

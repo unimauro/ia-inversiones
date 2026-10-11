@@ -1,0 +1,2060 @@
+{
+ "meta": {
+  "consultado": "2026-10-11",
+  "advertencias": [
+   "Complemento de noticias.json: no repite sus ítems. Cada cifra proviene de una página abierta el 2026-10-11; los campos sin dato en la fuente se omiten (incluido pais_iso3 cuando la fuente no fija la sede).",
+   "LatamList y Contxto: 'fecha' es la de publicación de la nota (precisión 'dia'), no necesariamente la del cierre de la ronda.",
+   "Ítems con fuente 'tech.eu (base de datos de rondas, sector IA)': montos normalizados a euros por tech.eu, sin inversores ni descripción del producto. En las 15 filas españolas pequeñas la familia ('servicios') y la subcategoría son un valor por defecto, no un dato de la fuente; en las europeas grandes las asignó el investigador.",
+   "Posibles solapes con noticias.json: Moonshot AI 3T (distinta de la ronda de mayo), Anthropic Serie G de febrero (distinta de la Serie H de mayo), Arena Serie A de enero (distinta de la Serie B de octubre), PaleBlueDot Serie B de enero (distinta de la Serie C de octubre), ElevenLabs de mayo (distinta de febrero y septiembre). HappyRobot (Madrid según tech.eu, € 130 M, Serie C, 4-ago) y Volta (Londres según tech.eu, € 260 M, 5-ago) ya están en noticias.json como USA: no se repiten, pero convendría revisar su país.",
+   "Operaciones no cerradas o solo reportadas: Multiverse Computing (compromisos, ronda abierta), Sarvam AI y Physical Intelligence (en negociación), Groq ('por anunciarse'), Chattigo (monto estimado por fuentes).",
+   "Montos registrados como piso o techo: Moonshot AI 3T y Kling AI ('más de US$ 3.000 M'), Cifrato ('más de US$ 1 M'), Sarvam AI (techo del rango 200-250).",
+   "Nivel C = agregador, ficha de analista (Sacra) o medio secundario, sin verificar en el comunicado original: Fireworks AI, Together AI, Etched, Sierra, Synthesia, Heidi Health, Chattigo.",
+   "Sin operación de 2026 hallada en una página abierta: Modal (solo conversaciones a valoración de US$ 2.500 M, desmentidas por su CEO, sin monto), Fluidstack (reporte de conversaciones por US$ 1.000 M a US$ 18.000 M visto solo en resultados de búsqueda; la página dio 404), Tenstorrent, d-Matrix, Lightmatter, Celestial AI, Oklo, Scale AI, LangChain, Pinecone, Abridge, Perplexity (ronda), Figure. Fervo y X-energy ya tienen su IPO en noticias.json.",
+   "Sin ítems de Perú, Israel, Corea ni Japón: no se halló ninguna ronda de IA de 2026 en las páginas abiertas. Argentina solo aparece por fundadores (Rexi, Bianca), sin país asignado.",
+   "Hubs: solo cuatro. Singapur (EY-Parthenon/EnterpriseSG, en SGD) y Emiratos (MAGNiTT, dato de país) usan metodologías distintas de Dealroom y no deben compararse con los hubs de noticias.json ni sumarse. Berlín y Múnich son sumas propias de rondas listadas por tech.eu y subestiman el total. Lat/lon aproximadas.",
+   "Hubs sin dato verificable: São Paulo, Ciudad de México, Bangalore, Estocolmo, Hangzhou y Shenzhen; Shanghái, Toronto y Seúl no tienen cifra anual 2025 en Dealroom (solo las de noticias.json). Estocolmo: la base de tech.eu suma apenas € 47 M en 2025 porque no clasifica a Lovable ni Legora como 'AI'; se descartó por engañosa. Bangalore: Inc42 solo da totales acumulados por empresa.",
+   "Rentabilidad: salvo Google Cloud (comunicado oficial) y Moonshot/Replit (prensa), son estimaciones de terceros no auditadas. Lambda no tiene cifra de ingresos: su cartera va en 'nota'. La cartera de Google Cloud (US$ 514.000 M) también va en 'nota' porque noticias.json no tiene un campo para ella y proviene de una fuente secundaria.",
+   "Fireworks AI, Together AI y Sierra van sin pais_iso3 en rentabilidad porque la fuente no lo indica."
+  ]
+ },
+ "noticias": [
+  {
+   "fecha": "2026-09-23",
+   "fecha_precision": "dia",
+   "empresa": "Nuvia",
+   "pais_iso3": "BRA",
+   "familia": "servicios",
+   "subcategoria": "agentes de ventas y atención",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 1.8,
+    "unidad": "USD millones"
+   },
+   "inversores": "Amador Capital y Nascent (líderes); NXTP, Crivo Ventures, Delusional Capital, Spectra Investimentos",
+   "titular": "La brasileña Nuvia capta US$ 1,8 M para expandir sus agentes de IA de ventas en América Latina",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/nuvia-raises-1-8m-to-expand-ai-sales-agents-across-latin-america/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-09-15",
+   "fecha_precision": "dia",
+   "empresa": "Emilia AI",
+   "familia": "servicios",
+   "subcategoria": "visión por computadora para restaurantes",
+   "operacion": "Pre-semilla",
+   "monto": {
+    "valor": 1.5,
+    "unidad": "USD millones"
+   },
+   "inversores": "Prosus (líder, US$ 1 M)",
+   "titular": "Emilia AI levanta US$ 1,5 M en pre-semilla liderada por Prosus",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/emilia-ai-raises-1-5m-pre-seed-round-led-by-prosus/",
+   "nivel": "B",
+   "nota": "Fundadores colombianos; la fuente no indica la sede, por eso se omite el país."
+  },
+  {
+   "fecha": "2026-09-14",
+   "fecha_precision": "dia",
+   "empresa": "Primero",
+   "pais_iso3": "MEX",
+   "ciudad": "Ciudad de México",
+   "familia": "infraestructura",
+   "subcategoria": "capa de datos y gobierno para agentes empresariales",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 12,
+    "unidad": "USD millones"
+   },
+   "inversores": "Kaszek y General Catalyst (líderes); Definition Capital, Conviction, 8VC, ángeles",
+   "titular": "La mexicano-colombiana Primero capta US$ 12 M en semilla coliderada por Kaszek y General Catalyst",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/primero-raises-12m-seed-round-led-by-kaszek-and-general-catalyst/",
+   "nivel": "B",
+   "nota": "Sede en Ciudad de México; oficinas en Bogotá y Madrid."
+  },
+  {
+   "fecha": "2026-09-11",
+   "fecha_precision": "dia",
+   "empresa": "Kapital",
+   "pais_iso3": "MEX",
+   "familia": "servicios",
+   "subcategoria": "banca empresarial con IA",
+   "operacion": "Extensión Serie C (capital + deuda)",
+   "monto": {
+    "valor": 125,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 1.3,
+    "unidad": "USD miles de millones"
+   },
+   "titular": "Kapital, el banco mexicano para empresas construido sobre IA, capta US$ 125 M en capital y deuda",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/kapital-raises-125m/",
+   "nivel": "B",
+   "nota": "Extensión de la Serie C cerrada en 2025; valoración 'superior a US$ 1.300 M'. Inversores no nombrados."
+  },
+  {
+   "fecha": "2026-09-08",
+   "fecha_precision": "dia",
+   "empresa": "Magnar",
+   "pais_iso3": "CHL",
+   "familia": "servicios",
+   "subcategoria": "legaltech",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 8,
+    "unidad": "USD millones"
+   },
+   "inversores": "6 Degrees Capital y Hi Ventures (líderes); FEN Ventures, Platanus Ventures, Nascent Ventures, Beccar Varela",
+   "titular": "La legaltech chilena Magnar levanta US$ 8 M en Serie A",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/magnar-raises-8m-series-a/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-08-28",
+   "fecha_precision": "dia",
+   "empresa": "Roma AI",
+   "familia": "infraestructura",
+   "subcategoria": "plataforma de agentes empresariales",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 1.2,
+    "unidad": "USD millones"
+   },
+   "inversores": "Invexor Venture Partners (líder)",
+   "titular": "La uruguayo-chilena Roma AI capta US$ 1,2 M en ronda semilla",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/roma-ai-raises-1-2m-seed-round/",
+   "nivel": "B",
+   "nota": "Descrita como startup uruguayo-chilena; la fuente no fija una sede, se omite el país."
+  },
+  {
+   "fecha": "2026-08-27",
+   "fecha_precision": "dia",
+   "empresa": "Chattigo",
+   "pais_iso3": "CHL",
+   "familia": "servicios",
+   "subcategoria": "atención al cliente",
+   "operacion": "Adquisición (por Capacity, EE.UU.)",
+   "monto": {
+    "valor": 60,
+    "unidad": "USD millones"
+   },
+   "titular": "La estadounidense Capacity compra la chilena Chattigo, plataforma de IA para atención al cliente",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/capacity-acquires-chilean-ai-customer-support-startup-chattigo/",
+   "nivel": "C",
+   "nota": "Términos no divulgados; el monto (~US$ 60 M) es una estimación de fuentes cercanas a la operación citada por LatamList. Chattigo superaba US$ 10 M de ingresos recurrentes anuales."
+  },
+  {
+   "fecha": "2026-08-10",
+   "fecha_precision": "dia",
+   "empresa": "hiSofi",
+   "pais_iso3": "URY",
+   "familia": "servicios",
+   "subcategoria": "cobranza automatizada",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 1,
+    "unidad": "USD millones"
+   },
+   "inversores": "SaaSholic; ANII (US$ 250.000 en fondos de contrapartida)",
+   "titular": "La uruguaya hiSofi capta US$ 1 M para automatizar la cobranza con IA",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/hisofi-raises-1m-to-build-regional-ai-hub/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-08-04",
+   "fecha_precision": "dia",
+   "empresa": "Decade",
+   "pais_iso3": "BRA",
+   "familia": "servicios",
+   "subcategoria": "asesoría patrimonial",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 85,
+    "unidad": "USD millones"
+   },
+   "inversores": "Greenoaks, Benchmark y Diffusion (líderes)",
+   "titular": "La brasileña Decade levanta US$ 85 M en semilla para su plataforma de asesoría patrimonial con IA",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/decade-raises-85m-seed-round-to-launch-ai-powered-wealth-advisory-platform/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-08-04",
+   "fecha_precision": "dia",
+   "empresa": "Jusfy",
+   "pais_iso3": "BRA",
+   "familia": "servicios",
+   "subcategoria": "legaltech",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 15,
+    "unidad": "USD millones"
+   },
+   "inversores": "Quona Capital (líder); Spectra E Investments, The LegalTech Fund, FJ Labs, MAYA Capital, Thomson Reuters Ventures",
+   "titular": "La legaltech brasileña Jusfy capta US$ 15 M en Serie A liderada por Quona Capital",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/jusfy-raises-15m-series-a-led-by-quona-capital/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-08-04",
+   "fecha_precision": "dia",
+   "empresa": "Strattum",
+   "pais_iso3": "BRA",
+   "familia": "infraestructura",
+   "subcategoria": "infraestructura de datos para IA",
+   "operacion": "Pre-semilla",
+   "monto": {
+    "valor": 3.2,
+    "unidad": "USD millones"
+   },
+   "inversores": "Maya Capital y ONEVC (líderes); Norte Ventures, tres ángeles",
+   "titular": "La brasileña Strattum sale al exterior tras captar US$ 3,2 M en pre-semilla",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/strattum-expands-internationally-after-raising-3-2m-pre-seed-round/",
+   "nivel": "B",
+   "nota": "La ronda se cerró en junio de 2026; la fecha es la de publicación."
+  },
+  {
+   "fecha": "2026-08-04",
+   "fecha_precision": "dia",
+   "empresa": "Einship",
+   "pais_iso3": "BRA",
+   "familia": "servicios",
+   "subcategoria": "comercio exterior",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 1,
+    "unidad": "USD millones"
+   },
+   "inversores": "Parceiro Ventures (líder)",
+   "titular": "La brasileña Einship levanta US$ 1 M en semilla para su plataforma de comercio exterior nativa en IA",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/einship-raises-1m-seed-round-led-by-parceiro-ventures/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-07-30",
+   "fecha_precision": "dia",
+   "empresa": "Inspira",
+   "pais_iso3": "BRA",
+   "familia": "servicios",
+   "subcategoria": "legaltech",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 2.8,
+    "unidad": "USD millones"
+   },
+   "inversores": "Cloud9 Capital (líder); Vivo Ventures",
+   "titular": "La brasileña Inspira capta US$ 2,8 M en Serie A para su asistente de IA para abogados",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/inspira-raises-2-8m-series-a-led-by-cloud9-capital/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-06-30",
+   "fecha_precision": "dia",
+   "empresa": "Bianca",
+   "familia": "servicios",
+   "subcategoria": "inteligencia comercial para consumo masivo",
+   "operacion": "Pre-semilla",
+   "monto": {
+    "valor": 0.5,
+    "unidad": "USD millones"
+   },
+   "inversores": "Magma Partners y Matterscale Ventures (líderes); dos ángeles",
+   "titular": "Bianca levanta US$ 500.000 en pre-semilla para su plataforma de inteligencia comercial con IA",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/bianca-raises-500k-pre-seed-round/",
+   "nivel": "B",
+   "nota": "La página la etiqueta bajo Argentina pero el texto no confirma la sede; se omite el país."
+  },
+  {
+   "fecha": "2026-06-18",
+   "fecha_precision": "dia",
+   "empresa": "Telepatia",
+   "familia": "servicios",
+   "subcategoria": "salud: asistente clínico",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 33,
+    "unidad": "USD millones"
+   },
+   "inversores": "Andreessen Horowitz (líder); Shyam Sankar, Simón Borrero, David Vélez",
+   "titular": "Telepatia capta US$ 33 M en Serie A liderada por Andreessen Horowitz",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/telepatia-raises-33m-series-a-led-by-andreessen-horowitz/",
+   "nivel": "B",
+   "nota": "La fuente no indica país ni sede."
+  },
+  {
+   "fecha": "2026-06-16",
+   "fecha_precision": "dia",
+   "empresa": "Braven",
+   "familia": "infraestructura",
+   "subcategoria": "infraestructura de IA para seguros",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 4.6,
+    "unidad": "USD millones"
+   },
+   "inversores": "Collide Capital (líder); Fiat Ventures, MGV, Carao Ventures, Angeles VC, Broom Ventures",
+   "titular": "Braven capta US$ 4,6 M en semilla para su infraestructura de IA para aseguradoras",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/braven-raises-4-6m-seed-round-to-expand-ai-insurance-infrastructure-platform/",
+   "nivel": "B",
+   "nota": "Fundada por un equipo colombiano; la fuente no indica la sede, se omite el país."
+  },
+  {
+   "fecha": "2026-05-29",
+   "fecha_precision": "dia",
+   "empresa": "Pax",
+   "pais_iso3": "BRA",
+   "familia": "servicios",
+   "subcategoria": "análisis de video para investigación",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 40,
+    "unidad": "USD millones"
+   },
+   "inversores": "Greenoaks y Benchmark (líderes)",
+   "titular": "La brasileña Pax levanta US$ 40 M en semilla liderada por Greenoaks y Benchmark",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/pax-raises-40m-seed-round/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-05-20",
+   "fecha_precision": "dia",
+   "empresa": "Draiven",
+   "pais_iso3": "BRA",
+   "familia": "servicios",
+   "subcategoria": "analítica de datos corporativos",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 0.6,
+    "unidad": "USD millones"
+   },
+   "inversores": "Asterismus Capital (líder)",
+   "titular": "La brasileña Draiven capta US$ 600.000 y compra Rabt Automation",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/draiven-raises-600k-and-acquires-rabt-automation/",
+   "nivel": "B",
+   "nota": "La página enlaza una nota de Startupi cuyo URL menciona 'R$ 3 milhões'; LatamList da US$ 600.000."
+  },
+  {
+   "fecha": "2026-04-17",
+   "fecha_precision": "dia",
+   "empresa": "BOND",
+   "pais_iso3": "BRA",
+   "familia": "servicios",
+   "subcategoria": "contabilidad para pymes",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 2,
+    "unidad": "USD millones"
+   },
+   "inversores": "Propel Venture Partners (líder); Kiara Capital, Norte Ventures, Hypersphere, Patrick Sigrist",
+   "titular": "La brasileña BOND capta US$ 2 M para automatizar la contabilidad de pymes con IA",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/bond-raises-2m-to-automate-sme-accounting-in-brazil-with-ai/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-04-09",
+   "fecha_precision": "dia",
+   "empresa": "Inner AI",
+   "pais_iso3": "BRA",
+   "familia": "servicios",
+   "subcategoria": "espacio de trabajo multimodelo y agentes",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 6,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 0.1,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Canary y ONEVC (líderes); Norte, Crivo Ventures, Phenomen VC",
+   "titular": "La brasileña Inner AI levanta US$ 6 M en semilla con valoración de US$ 100 M",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/inner-ai-raises-6m-seed-round/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-04-09",
+   "fecha_precision": "dia",
+   "empresa": "Maggu AI",
+   "pais_iso3": "BRA",
+   "familia": "servicios",
+   "subcategoria": "retail farmacéutico",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 3.7,
+    "unidad": "USD millones"
+   },
+   "inversores": "DGF Capital (líder); Norte Ventures, Latitud, Airborne Ventures",
+   "titular": "La brasileña Maggu AI capta US$ 3,7 M para su plataforma de IA para farmacias",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/maggu-ai-raises-3-7m-to-scale-its-ai-platform-for-pharmacies/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-03-26",
+   "fecha_precision": "dia",
+   "empresa": "Cifrato",
+   "pais_iso3": "COL",
+   "familia": "servicios",
+   "subcategoria": "contabilidad automatizada",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 1,
+    "unidad": "USD millones"
+   },
+   "inversores": "Y Combinator, Fen Ventures, Decelera Ventures, Kuiper",
+   "titular": "La colombiana Cifrato capta más de US$ 1 M para automatizar procesos contables con IA",
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/cifrato-raises-over-1m-to-automate-accounting-processes-with-ai/",
+   "nivel": "B",
+   "nota": "Monto 'superior a US$ 1 M'; se registra el piso."
+  },
+  {
+   "fecha": "2026-04-20",
+   "fecha_precision": "dia",
+   "empresa": "Rexi",
+   "familia": "infraestructura",
+   "subcategoria": "conciliación financiera",
+   "operacion": "Pre-semilla",
+   "monto": {
+    "valor": 1.2,
+    "unidad": "USD millones"
+   },
+   "inversores": "Underscore, Flybridge, Pear, NFX, Textbook, Carao Ventures",
+   "titular": "Rexi levanta US$ 1,2 M en pre-semilla para su infraestructura operativa basada en IA",
+   "fuente": "Contxto",
+   "url": "https://contxto.com/en/funding/rexi-raises-1-2-million-in-a-pre-seed-round-and-will-strengthen-its-ai-operational-infrastructure/",
+   "nivel": "B",
+   "nota": "Fundadores argentinos; base comercial en Nueva York y desarrollo en Buenos Aires. La fuente no fija la sede, se omite el país."
+  },
+  {
+   "fecha": "2026-02-03",
+   "fecha_precision": "dia",
+   "empresa": "Leracom AI",
+   "pais_iso3": "MEX",
+   "familia": "servicios",
+   "subcategoria": "centros de contacto",
+   "operacion": "Pre-semilla",
+   "monto": {
+    "valor": 1,
+    "unidad": "USD millones"
+   },
+   "inversores": "WeBoost (líder); 99 Startups, Ganas Ventures, Semilla Ventures, Blue Zone Ventures, Angel Hub, ALINA VC",
+   "titular": "La mexicana Leracom AI capta US$ 1 M para su plataforma de IA para centros de contacto",
+   "fuente": "Contxto",
+   "url": "https://contxto.com/en/funding/mexican-company-leracom-ai-raises-1-million-to-boost-the-development-of-its-product-through-ai/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-21",
+   "fecha_precision": "dia",
+   "empresa": "Fracttal",
+   "familia": "servicios",
+   "subcategoria": "mantenimiento y gestión de activos",
+   "operacion": "Capital de crecimiento",
+   "monto": {
+    "valor": 35,
+    "unidad": "USD millones"
+   },
+   "inversores": "Riverwood Capital (líder); Seaya Ventures, Kayyak, GoHub, Amador",
+   "titular": "Fracttal capta US$ 35 M en una ronda liderada por Riverwood Capital",
+   "fuente": "Contxto",
+   "url": "https://contxto.com/en/funding/fracttal-raises-35-million-in-a-round-led-by-riverwood-capital/",
+   "nivel": "B",
+   "nota": "La fuente no indica país ni sede."
+  },
+  {
+   "fecha": "2026-07-27",
+   "fecha_precision": "dia",
+   "empresa": "Multiverse Computing",
+   "pais_iso3": "ESP",
+   "familia": "infraestructura",
+   "subcategoria": "compresión de modelos",
+   "operacion": "Ronda de financiamiento (compromisos, aún abierta)",
+   "monto": {
+    "valor": 570,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 1.7,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Forgepoint Capital International, BNPP SIVF y Bullhound Capital (colíderes); Santander Alternative Investments, Tikehau Capital, Orange Ventures, Scania Invest",
+   "titular": "La española Multiverse Computing apunta a hasta US$ 570 M en su última ronda",
+   "fuente": "tech.eu",
+   "url": "https://tech.eu/2026/07/27/multiverse-computing-says-has-funding-commitments-up-to-570m-in-latest-round/",
+   "nivel": "B",
+   "nota": "'Hasta US$ 570 M' en compromisos; la ronda seguía abierta. El financiamiento total llegaría a ~US$ 800 M."
+  },
+  {
+   "fecha": "2026-06-11",
+   "fecha_precision": "dia",
+   "empresa": "Theker",
+   "pais_iso3": "ESP",
+   "ciudad": "Barcelona",
+   "familia": "servicios",
+   "subcategoria": "robótica industrial",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 85,
+    "unidad": "USD millones"
+   },
+   "inversores": "CRV (líder); Samsung, LVMH, Cathay Innovation, 20VC, Henkel Ventures, Inditex, Kibo Ventures",
+   "titular": "La barcelonesa Theker, de robótica con IA, levanta US$ 85 M",
+   "fuente": "tech.eu",
+   "url": "https://tech.eu/2026/06/11/barcelona-based-ai-robotics-outfit-theker-raises-85m/",
+   "nivel": "B",
+   "nota": "Según la empresa, la mayor Serie A de robótica en Europa."
+  },
+  {
+   "fecha": "2026-02-28",
+   "fecha_precision": "mes",
+   "empresa": "Biorce",
+   "pais_iso3": "ESP",
+   "familia": "servicios",
+   "subcategoria": "ensayos clínicos",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 52,
+    "unidad": "USD millones"
+   },
+   "titular": "Biorce (plataforma Aika de IA para ensayos clínicos) levanta US$ 52 M en Serie A",
+   "fuente": "tech.eu",
+   "url": "https://tech.eu/2026/09/10/spains-top-funded-tech-companies-in-h1-2026/",
+   "nivel": "B",
+   "nota": "Del ranking de tech.eu de las empresas españolas más financiadas en el 1S 2026; mes tomado de la nota enlazada (febrero de 2026)."
+  },
+  {
+   "fecha": "2026-09-24",
+   "fecha_precision": "dia",
+   "empresa": "Reply Next",
+   "pais_iso3": "ESP",
+   "ciudad": "Madrid",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Pre-semilla",
+   "monto": {
+    "valor": 0.4,
+    "unidad": "EUR millones"
+   },
+   "titular": "Reply Next (Madrid) capta € 0,4 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-09-10",
+   "fecha_precision": "dia",
+   "empresa": "HeyDiga",
+   "pais_iso3": "ESP",
+   "ciudad": "Barcelona",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 5.5,
+    "unidad": "EUR millones"
+   },
+   "titular": "HeyDiga (Barcelona) capta € 5,5 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-07-30",
+   "fecha_precision": "dia",
+   "empresa": "ELEVA AI",
+   "pais_iso3": "ESP",
+   "ciudad": "Montgat",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Pre-semilla",
+   "monto": {
+    "valor": 0.5,
+    "unidad": "EUR millones"
+   },
+   "titular": "ELEVA AI (Montgat) capta € 0,5 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-07-23",
+   "fecha_precision": "dia",
+   "empresa": "PageMind",
+   "pais_iso3": "ESP",
+   "ciudad": "Barcelona",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 1.2,
+    "unidad": "EUR millones"
+   },
+   "titular": "PageMind (Barcelona) capta € 1,2 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-07-06",
+   "fecha_precision": "dia",
+   "empresa": "Sherpa.ai",
+   "pais_iso3": "ESP",
+   "ciudad": "Bilbao",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 16,
+    "unidad": "EUR millones"
+   },
+   "titular": "Sherpa.ai (Bilbao) capta € 16 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-07-02",
+   "fecha_precision": "dia",
+   "empresa": "Flyboard",
+   "pais_iso3": "ESP",
+   "ciudad": "Barcelona",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 1.9,
+    "unidad": "EUR millones"
+   },
+   "titular": "Flyboard (Barcelona) capta € 1,9 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-06-30",
+   "fecha_precision": "dia",
+   "empresa": "Substrate AI",
+   "pais_iso3": "ESP",
+   "ciudad": "Valencia",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 19,
+    "unidad": "EUR millones"
+   },
+   "titular": "Substrate AI (Valencia) capta € 19 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-06-05",
+   "fecha_precision": "dia",
+   "empresa": "Opereit",
+   "pais_iso3": "ESP",
+   "ciudad": "Barcelona",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 2.1,
+    "unidad": "EUR millones"
+   },
+   "titular": "Opereit (Barcelona) capta € 2,1 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-06-03",
+   "fecha_precision": "dia",
+   "empresa": "Modelia",
+   "pais_iso3": "ESP",
+   "ciudad": "Madrid",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 1.0,
+    "unidad": "EUR millones"
+   },
+   "titular": "Modelia (Madrid) capta € 1 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-05-29",
+   "fecha_precision": "dia",
+   "empresa": "Mafer AI",
+   "pais_iso3": "ESP",
+   "ciudad": "Barcelona",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Pre-semilla",
+   "monto": {
+    "valor": 2.0,
+    "unidad": "EUR millones"
+   },
+   "titular": "Mafer AI (Barcelona) capta € 2 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-05-08",
+   "fecha_precision": "dia",
+   "empresa": "Hirevoice",
+   "pais_iso3": "ESP",
+   "ciudad": "Barcelona",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 0.9,
+    "unidad": "EUR millones"
+   },
+   "titular": "Hirevoice (Barcelona) capta € 0,9 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-04-14",
+   "fecha_precision": "dia",
+   "empresa": "Modern Relay",
+   "pais_iso3": "ESP",
+   "ciudad": "Madrid",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 2.5,
+    "unidad": "EUR millones"
+   },
+   "titular": "Modern Relay (Madrid) capta € 2,5 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-03-25",
+   "fecha_precision": "dia",
+   "empresa": "Galtea",
+   "pais_iso3": "ESP",
+   "ciudad": "Barcelona",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 2.8,
+    "unidad": "EUR millones"
+   },
+   "titular": "Galtea (Barcelona) capta € 2,8 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-02-18",
+   "fecha_precision": "dia",
+   "empresa": "Pharmacelera",
+   "pais_iso3": "ESP",
+   "ciudad": "Barcelona",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 6.0,
+    "unidad": "EUR millones"
+   },
+   "titular": "Pharmacelera (Barcelona) capta € 6 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-01-14",
+   "fecha_precision": "dia",
+   "empresa": "Ringr",
+   "pais_iso3": "ESP",
+   "ciudad": "Madrid",
+   "familia": "servicios",
+   "subcategoria": "IA (sin detalle en la fuente)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 3.0,
+    "unidad": "EUR millones"
+   },
+   "titular": "Ringr (Madrid) capta € 3 M",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu. La base solo etiqueta el sector ('AI'); familia y subcategoría asignadas por defecto, sin descripción del producto en la fuente."
+  },
+  {
+   "fecha": "2026-04-07",
+   "fecha_precision": "dia",
+   "empresa": "Xoople",
+   "pais_iso3": "ESP",
+   "ciudad": "Madrid",
+   "familia": "infraestructura",
+   "subcategoria": "datos de observación terrestre para IA",
+   "operacion": "Serie B",
+   "monto": {
+    "valor": 112,
+    "unidad": "EUR millones"
+   },
+   "titular": "La madrileña Xoople capta € 112 M en Serie B",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&country=Spain",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; su ranking del 1S 2026 lo reporta como US$ 130 M y describe a la empresa como 'datos de la Tierra para sistemas de IA'."
+  },
+  {
+   "fecha": "2026-04-27",
+   "fecha_precision": "dia",
+   "empresa": "Ineffable Intelligence",
+   "pais_iso3": "GBR",
+   "ciudad": "Londres",
+   "familia": "modelos",
+   "subcategoria": "laboratorio de IA",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 936,
+    "unidad": "EUR millones"
+   },
+   "titular": "Ineffable Intelligence (Londres) capta € 936 M en semilla",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-03-10",
+   "fecha_precision": "dia",
+   "empresa": "Advanced Machine Intelligence (AMI)",
+   "pais_iso3": "FRA",
+   "ciudad": "París",
+   "familia": "modelos",
+   "subcategoria": "laboratorio de IA física",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 885,
+    "unidad": "EUR millones"
+   },
+   "titular": "Advanced Machine Intelligence (AMI) (París) capta € 885 M en semilla",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-05-13",
+   "fecha_precision": "dia",
+   "empresa": "Recursive Superintelligence",
+   "pais_iso3": "GBR",
+   "ciudad": "Londres",
+   "familia": "modelos",
+   "subcategoria": "laboratorio de IA",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 555,
+    "unidad": "EUR millones"
+   },
+   "titular": "Recursive Superintelligence (Londres) capta € 555 M en ronda de financiamiento",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-09-02",
+   "fecha_precision": "dia",
+   "empresa": "Wonderful",
+   "pais_iso3": "NLD",
+   "ciudad": "Ámsterdam",
+   "familia": "servicios",
+   "subcategoria": "despliegue de agentes empresariales",
+   "operacion": "Serie C",
+   "monto": {
+    "valor": 475,
+    "unidad": "EUR millones"
+   },
+   "titular": "Wonderful (Ámsterdam) capta € 475 M en serie c",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-03-13",
+   "fecha_precision": "dia",
+   "empresa": "Wonderful",
+   "pais_iso3": "NLD",
+   "ciudad": "Ámsterdam",
+   "familia": "servicios",
+   "subcategoria": "despliegue de agentes empresariales",
+   "operacion": "Serie B",
+   "monto": {
+    "valor": 131,
+    "unidad": "EUR millones"
+   },
+   "titular": "Wonderful (Ámsterdam) capta € 131 M en serie b",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-05-05",
+   "fecha_precision": "dia",
+   "empresa": "ElevenLabs",
+   "pais_iso3": "GBR",
+   "ciudad": "Londres",
+   "familia": "servicios",
+   "subcategoria": "voz sintética",
+   "operacion": "Serie D o posterior",
+   "monto": {
+    "valor": 471,
+    "unidad": "EUR millones"
+   },
+   "titular": "ElevenLabs (Londres) capta € 471 M en serie d o posterior",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador. tech.eu la ubica en Londres; noticias.json la registra como USA."
+  },
+  {
+   "fecha": "2026-09-23",
+   "fecha_precision": "dia",
+   "empresa": "Bird",
+   "pais_iso3": "NLD",
+   "ciudad": "Ámsterdam",
+   "familia": "servicios",
+   "subcategoria": "comunicaciones empresariales",
+   "operacion": "Deuda",
+   "monto": {
+    "valor": 394,
+    "unidad": "EUR millones"
+   },
+   "titular": "Bird (Ámsterdam) capta € 394 M en deuda",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-01-15",
+   "fecha_precision": "dia",
+   "empresa": "Parloa",
+   "pais_iso3": "DEU",
+   "ciudad": "Berlín",
+   "familia": "servicios",
+   "subcategoria": "agentes de voz para atención al cliente",
+   "operacion": "Serie D o posterior",
+   "monto": {
+    "valor": 301,
+    "unidad": "EUR millones"
+   },
+   "titular": "Parloa (Berlín) capta € 301 M en serie d o posterior",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-06-08",
+   "fecha_precision": "dia",
+   "empresa": "PhysicsX",
+   "pais_iso3": "GBR",
+   "ciudad": "Londres",
+   "familia": "servicios",
+   "subcategoria": "IA para ingeniería",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 260,
+    "unidad": "EUR millones"
+   },
+   "titular": "PhysicsX (Londres) capta € 260 M en ronda de financiamiento",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-09-15",
+   "fecha_precision": "dia",
+   "empresa": "Euclyd",
+   "pais_iso3": "NLD",
+   "ciudad": "Eindhoven",
+   "familia": "infraestructura",
+   "subcategoria": "semiconductores para IA",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 200,
+    "unidad": "EUR millones"
+   },
+   "titular": "Euclyd (Eindhoven) capta € 200 M en serie a",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-05-13",
+   "fecha_precision": "dia",
+   "empresa": "Fractile",
+   "pais_iso3": "GBR",
+   "ciudad": "Londres",
+   "familia": "infraestructura",
+   "subcategoria": "chips de inferencia",
+   "operacion": "Serie B",
+   "monto": {
+    "valor": 188,
+    "unidad": "EUR millones"
+   },
+   "titular": "Fractile (Londres) capta € 188 M en serie b",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-06-25",
+   "fecha_precision": "dia",
+   "empresa": "Taktile",
+   "pais_iso3": "DEU",
+   "ciudad": "Berlín",
+   "familia": "servicios",
+   "subcategoria": "decisiones automatizadas para finanzas",
+   "operacion": "Serie C",
+   "monto": {
+    "valor": 97,
+    "unidad": "EUR millones"
+   },
+   "titular": "Taktile (Berlín) capta € 97 M en serie c",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-08-20",
+   "fecha_precision": "dia",
+   "empresa": "Callosum",
+   "pais_iso3": "GBR",
+   "ciudad": "Londres",
+   "familia": "infraestructura",
+   "subcategoria": "inferencia gestionada",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 86,
+    "unidad": "EUR millones"
+   },
+   "titular": "Callosum (Londres) capta € 86 M en semilla",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-08-25",
+   "fecha_precision": "dia",
+   "empresa": "Stability AI",
+   "pais_iso3": "GBR",
+   "ciudad": "Londres",
+   "familia": "modelos",
+   "subcategoria": "modelos generativos de imagen",
+   "operacion": "Serie B",
+   "monto": {
+    "valor": 65,
+    "unidad": "EUR millones"
+   },
+   "titular": "Stability AI (Londres) capta € 65 M en serie b",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-08-06",
+   "fecha_precision": "dia",
+   "empresa": "Omilia",
+   "pais_iso3": "CYP",
+   "ciudad": "Limasol",
+   "familia": "servicios",
+   "subcategoria": "IA conversacional",
+   "operacion": "Serie B",
+   "monto": {
+    "valor": 58,
+    "unidad": "EUR millones"
+   },
+   "titular": "Omilia (Limasol) capta € 58 M en serie b",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-02-27",
+   "fecha_precision": "dia",
+   "empresa": "Encord",
+   "pais_iso3": "GBR",
+   "ciudad": "Londres",
+   "familia": "infraestructura",
+   "subcategoria": "datos para entrenamiento",
+   "operacion": "Serie C",
+   "monto": {
+    "valor": 50,
+    "unidad": "EUR millones"
+   },
+   "titular": "Encord (Londres) capta € 50 M en serie c",
+   "fuente": "tech.eu (base de datos de rondas, sector IA)",
+   "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2026&yearTo=2026&sort=amount_desc&minAmount=50000000",
+   "nivel": "B",
+   "nota": "Monto normalizado a euros por tech.eu; la base no nombra inversores. Familia y subcategoría asignadas por el investigador."
+  },
+  {
+   "fecha": "2026-01-26",
+   "fecha_precision": "dia",
+   "empresa": "Synthesia",
+   "pais_iso3": "GBR",
+   "familia": "servicios",
+   "subcategoria": "video con avatares",
+   "operacion": "Serie E (incluye venta secundaria de empleados)",
+   "monto": {
+    "valor": 200,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 4,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "GV (líder); NVentures (Nvidia), Accel",
+   "titular": "La británica Synthesia capta US$ 200 M y alcanza una valoración de US$ 4.000 M",
+   "fuente": "Let's Data Science (recopilación de prensa)",
+   "url": "https://letsdatascience.com/news/synthesia-secures-200m-funding-and-4b-valuation-a4efc106",
+   "nivel": "C",
+   "nota": "Fecha = publicación de la nota. Ingresos recurrentes anuales de US$ 150 M, con expectativa de superar US$ 200 M en 2026."
+  },
+  {
+   "fecha": "2026-05-07",
+   "fecha_precision": "dia",
+   "empresa": "Moonshot AI",
+   "pais_iso3": "CHN",
+   "ciudad": "Pekín",
+   "familia": "modelos",
+   "subcategoria": "modelos de lenguaje (Kimi)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 2000,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 20,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Long-Z Investments (Meituan, líder); Tsinghua Capital, China Mobile, CPE Yuanfeng",
+   "titular": "La china Moonshot AI capta US$ 2.000 M con valoración de US$ 20.000 M",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/05/07/chinas-moonshot-ai-raises-2b-at-20b-valuation-as-demand-for-open-source-ai-skyrockets",
+   "nivel": "B",
+   "nota": "Monto 'cerca de US$ 2.000 M'. A inicios de 2026 valía US$ 10.000 M tras captar US$ 700 M; ingresos recurrentes anuales sobre US$ 200 M en abril."
+  },
+  {
+   "fecha": "2026-09-30",
+   "fecha_precision": "trimestre",
+   "empresa": "Moonshot AI",
+   "pais_iso3": "CHN",
+   "familia": "modelos",
+   "subcategoria": "modelos de lenguaje (Kimi)",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 3000,
+    "unidad": "USD millones"
+   },
+   "titular": "Moonshot AI vuelve a captar más de US$ 3.000 M en el tercer trimestre",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/q3-2026-global-startup-funding-ai-billion-dollar-rounds-exits-data/",
+   "nivel": "B",
+   "nota": "Crunchbase solo indica 'más de US$ 3.000 M' en el 3T 2026; se registra el piso. El agregador aifunding.me la cifra en US$ 3.500 M a valoración de US$ 23.300 M (29-jul), sin verificar."
+  },
+  {
+   "fecha": "2026-09-30",
+   "fecha_precision": "trimestre",
+   "empresa": "Kling AI",
+   "familia": "modelos",
+   "subcategoria": "generación de video",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 3000,
+    "unidad": "USD millones"
+   },
+   "titular": "Kling AI capta más de US$ 3.000 M en el tercer trimestre",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/q3-2026-global-startup-funding-ai-billion-dollar-rounds-exits-data/",
+   "nivel": "B",
+   "nota": "Crunchbase solo indica 'más de US$ 3.000 M' en el 3T 2026 y no da país, inversores ni valoración; se registra el piso."
+  },
+  {
+   "fecha": "2026-09-30",
+   "fecha_precision": "trimestre",
+   "empresa": "Safe Superintelligence",
+   "familia": "modelos",
+   "subcategoria": "laboratorio de IA",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 5000,
+    "unidad": "USD millones"
+   },
+   "titular": "Safe Superintelligence capta US$ 5.000 M en el tercer trimestre",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/q3-2026-global-startup-funding-ai-billion-dollar-rounds-exits-data/",
+   "nivel": "B",
+   "nota": "La fuente no da país, inversores ni valoración."
+  },
+  {
+   "fecha": "2026-06-30",
+   "fecha_precision": "trimestre",
+   "empresa": "StepFun",
+   "pais_iso3": "CHN",
+   "familia": "modelos",
+   "subcategoria": "modelos fundacionales",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 2500,
+    "unidad": "USD millones"
+   },
+   "titular": "La china StepFun capta US$ 2.500 M en el segundo trimestre",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/data-china-ai-lead-asia-startup-funding-peak-q2-2026/",
+   "nivel": "B",
+   "nota": "Sin mes, inversores ni valoración en la fuente. El mismo informe cifra la ronda de DayOne (Singapur) en US$ 2.500 M."
+  },
+  {
+   "fecha": "2026-09-23",
+   "fecha_precision": "trimestre",
+   "empresa": "Xpeng Robotics",
+   "pais_iso3": "CHN",
+   "familia": "servicios",
+   "subcategoria": "robots humanoides",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 900,
+    "unidad": "USD millones"
+   },
+   "titular": "La china Xpeng Robotics levanta una Serie A de US$ 900 M",
+   "fuente": "Crunchbase News",
+   "url": "https://news.crunchbase.com/venture/megaround-seriesa-ai-chips-robotics-2026/",
+   "nivel": "B",
+   "nota": "La fuente no fecha la ronda: 'fecha' es la de publicación del artículo (23-sep-2026), no la del anuncio."
+  },
+  {
+   "fecha": "2026-03-24",
+   "fecha_precision": "dia",
+   "empresa": "Sarvam AI",
+   "pais_iso3": "IND",
+   "ciudad": "Bangalore",
+   "familia": "modelos",
+   "subcategoria": "modelos de lenguaje para India",
+   "operacion": "Ronda de financiamiento (en negociación, reportada)",
+   "monto": {
+    "valor": 250,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 1.5,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Nvidia, Accel, HCLTech",
+   "titular": "Sarvam AI negocia captar hasta US$ 250 M de Nvidia, Accel y HCLTech con valoración de US$ 1.500 M",
+   "fuente": "Outlook Business (cita a MoneyControl)",
+   "url": "https://www.outlookbusiness.com/corporate/sarvam-ai-to-raise-250mn-from-nvidia-accel-hcltech-at-15bn-valuation",
+   "nivel": "B",
+   "nota": "Rango reportado: US$ 200-250 M; se registra el techo. Conversaciones 'avanzadas', sin confirmación de las partes."
+  },
+  {
+   "fecha": "2026-09-22",
+   "fecha_precision": "dia",
+   "empresa": "Heidi Health",
+   "familia": "servicios",
+   "subcategoria": "salud: escriba clínico",
+   "operacion": "Serie C + inversión de crecimiento",
+   "monto": {
+    "valor": 340,
+    "unidad": "USD millones"
+   },
+   "inversores": "Blackbird (líder de la Serie C), General Catalyst",
+   "titular": "Heidi Health capta US$ 340 M (Serie C de US$ 100 M más US$ 240 M de crecimiento)",
+   "fuente": "aifunding.me (agregador)",
+   "url": "https://aifunding.me/insights/ai-startup-funding-rounds-september-2026",
+   "nivel": "C",
+   "nota": "No verificado en el artículo original; el agregador no indica el país."
+  },
+  {
+   "fecha": "2026-02-12",
+   "fecha_precision": "dia",
+   "empresa": "Simile",
+   "pais_iso3": "USA",
+   "familia": "modelos",
+   "subcategoria": "simulación de decisiones humanas",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 100,
+    "unidad": "USD millones"
+   },
+   "inversores": "Index Ventures (líder); Hanabi Capital, Bain Capital Ventures",
+   "titular": "Simile levanta US$ 100 M en Serie A",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-02-12",
+   "fecha_precision": "dia",
+   "empresa": "Anthropic",
+   "pais_iso3": "USA",
+   "familia": "modelos",
+   "subcategoria": "laboratorio de IA",
+   "operacion": "Serie G",
+   "monto": {
+    "valor": 30000,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 380,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Más de 30 inversores, entre ellos Founders Fund, Coatue y Nvidia",
+   "titular": "Anthropic capta US$ 30.000 M en Serie G con valoración de US$ 380.000 M",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-02-10",
+   "fecha_precision": "dia",
+   "empresa": "Runway",
+   "pais_iso3": "USA",
+   "familia": "servicios",
+   "subcategoria": "generación de video",
+   "operacion": "Serie E",
+   "monto": {
+    "valor": 315,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 5.3,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "General Atlantic (líder); Nvidia, Fidelity, Felicis",
+   "titular": "Runway capta US$ 315 M en Serie E con valoración de US$ 5.300 M",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-02-05",
+   "fecha_precision": "dia",
+   "empresa": "Goodfire",
+   "pais_iso3": "USA",
+   "familia": "modelos",
+   "subcategoria": "interpretabilidad de modelos",
+   "operacion": "Serie B",
+   "monto": {
+    "valor": 150,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 1.25,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "B Capital (líder); Juniper Ventures, Lightspeed, Menlo Ventures",
+   "titular": "Goodfire levanta US$ 150 M en Serie B",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-02-05",
+   "fecha_precision": "dia",
+   "empresa": "Fundamental",
+   "pais_iso3": "USA",
+   "familia": "modelos",
+   "subcategoria": "modelos para datos tabulares",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 255,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 1.4,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Oak HC/FT, Salesforce Ventures, Valor Equity Partners, QP Ventures",
+   "titular": "Fundamental levanta US$ 255 M en Serie A",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-28",
+   "fecha_precision": "dia",
+   "empresa": "PaleBlueDot AI",
+   "pais_iso3": "USA",
+   "familia": "infraestructura",
+   "subcategoria": "plataforma de cómputo",
+   "operacion": "Serie B",
+   "monto": {
+    "valor": 150,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 1,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "B Capital (líder)",
+   "titular": "PaleBlueDot AI capta US$ 150 M en Serie B y llega a US$ 1.000 M de valoración",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-28",
+   "fecha_precision": "dia",
+   "empresa": "Decagon",
+   "pais_iso3": "USA",
+   "familia": "servicios",
+   "subcategoria": "agentes de atención al cliente",
+   "operacion": "Serie D",
+   "monto": {
+    "valor": 250,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 4.5,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Coatue e Index Ventures (colíderes)",
+   "titular": "Decagon capta US$ 250 M en Serie D con valoración de US$ 4.500 M",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-28",
+   "fecha_precision": "dia",
+   "empresa": "Flapping Airplanes",
+   "pais_iso3": "USA",
+   "familia": "modelos",
+   "subcategoria": "laboratorio de IA",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 180,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 1.5,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Google Ventures, Sequoia, Index Ventures",
+   "titular": "Flapping Airplanes levanta una semilla de US$ 180 M",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-23",
+   "fecha_precision": "dia",
+   "empresa": "Baseten",
+   "pais_iso3": "USA",
+   "familia": "infraestructura",
+   "subcategoria": "inferencia",
+   "operacion": "Serie E",
+   "monto": {
+    "valor": 300,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 5,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "IVP y CapitalG (líderes)",
+   "titular": "Baseten capta US$ 300 M en Serie E con valoración de US$ 5.000 M",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-22",
+   "fecha_precision": "dia",
+   "empresa": "Inferact",
+   "pais_iso3": "USA",
+   "familia": "infraestructura",
+   "subcategoria": "inferencia (vLLM)",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 150,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 0.8,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Andreessen Horowitz y Lightspeed (colíderes)",
+   "titular": "Inferact, que comercializa vLLM, levanta una semilla de US$ 150 M",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-21",
+   "fecha_precision": "dia",
+   "empresa": "OpenEvidence",
+   "pais_iso3": "USA",
+   "familia": "servicios",
+   "subcategoria": "salud: asistente médico",
+   "operacion": "Serie D",
+   "monto": {
+    "valor": 250,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 12,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Thrive y DST Global (colíderes)",
+   "titular": "OpenEvidence capta US$ 250 M en Serie D con valoración de US$ 12.000 M",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B",
+   "nota": "Con sede en Cambridge, Massachusetts."
+  },
+  {
+   "fecha": "2026-01-20",
+   "fecha_precision": "dia",
+   "empresa": "humans&",
+   "pais_iso3": "USA",
+   "familia": "modelos",
+   "subcategoria": "laboratorio de IA",
+   "operacion": "Semilla",
+   "monto": {
+    "valor": 480,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 4.48,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Nvidia, Jeff Bezos, GV",
+   "titular": "humans& levanta una semilla de US$ 480 M",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-14",
+   "fecha_precision": "dia",
+   "empresa": "Skild AI",
+   "pais_iso3": "USA",
+   "familia": "modelos",
+   "subcategoria": "modelos para robots",
+   "operacion": "Serie C",
+   "monto": {
+    "valor": 1400,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 14,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "SoftBank y Nvidia (líderes)",
+   "titular": "Skild AI capta US$ 1.400 M en Serie C con valoración de US$ 14.000 M",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-13",
+   "fecha_precision": "dia",
+   "empresa": "Deepgram",
+   "pais_iso3": "USA",
+   "familia": "servicios",
+   "subcategoria": "voz",
+   "operacion": "Serie C",
+   "monto": {
+    "valor": 130,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 1.3,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "AVP (líder); Tiger Global, ServiceNow Ventures, Madrona",
+   "titular": "Deepgram capta US$ 130 M en Serie C",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-06",
+   "fecha_precision": "dia",
+   "empresa": "Arena",
+   "pais_iso3": "USA",
+   "familia": "infraestructura",
+   "subcategoria": "evaluación de modelos",
+   "operacion": "Serie A",
+   "monto": {
+    "valor": 150,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 1.7,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Felicis y UC Investments (colíderes)",
+   "titular": "Arena levanta US$ 150 M en Serie A",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B"
+  },
+  {
+   "fecha": "2026-01-06",
+   "fecha_precision": "dia",
+   "empresa": "xAI",
+   "pais_iso3": "USA",
+   "familia": "modelos",
+   "subcategoria": "laboratorio de IA",
+   "operacion": "Serie E",
+   "monto": {
+    "valor": 20000,
+    "unidad": "USD millones"
+   },
+   "inversores": "Valor Equity Partners, Fidelity, Qatar Investment Authority",
+   "titular": "xAI capta US$ 20.000 M en Serie E",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/",
+   "nivel": "B",
+   "nota": "Después fue absorbida por SpaceX (ver IPO de SpaceX en noticias.json)."
+  },
+  {
+   "fecha": "2026-07-31",
+   "fecha_precision": "mes",
+   "empresa": "Fireworks AI",
+   "familia": "infraestructura",
+   "subcategoria": "inferencia",
+   "operacion": "Serie D",
+   "monto": {
+    "valor": 1505,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 17.5,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Atreides Management, Index Ventures y TCV (líderes); Evantic, Lightspeed, Nvidia, Bessemer, Insight Partners, Lone Pine, Menlo Ventures, Ontario Teachers'",
+   "titular": "Fireworks AI capta US$ 1.505 M en Serie D con valoración de US$ 17.500 M",
+   "fuente": "Sacra",
+   "url": "https://sacra.com/c/fireworks-ai/",
+   "nivel": "C",
+   "nota": "Ficha de analista, no comunicado; solo indica julio de 2026. La fuente no indica el país."
+  },
+  {
+   "fecha": "2026-07-31",
+   "fecha_precision": "mes",
+   "empresa": "Together AI",
+   "familia": "infraestructura",
+   "subcategoria": "nube de inferencia y entrenamiento",
+   "operacion": "Serie C",
+   "monto": {
+    "valor": 800,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 8.3,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Aramco Ventures (líder); Vista Equity Partners, General Catalyst, Emergence Capital, Nvidia, Salesforce Ventures, March Capital, Pegatron, S Ventures, Schneider Electric, Lux Capital",
+   "titular": "Together AI capta US$ 800 M en Serie C con valoración de US$ 8.300 M",
+   "fuente": "Sacra",
+   "url": "https://sacra.com/c/together-ai/",
+   "nivel": "C",
+   "nota": "Ficha de analista; solo indica julio de 2026 (un titular de Las Vegas Sun no abierto lo fecha el 1-jul). También obtuvo compromisos por más de 500 MW de capacidad, financiados aparte. La fuente no indica el país."
+  },
+  {
+   "fecha": "2026-08-17",
+   "fecha_precision": "dia",
+   "empresa": "Groq",
+   "familia": "infraestructura",
+   "subcategoria": "chips y nube de inferencia",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 350,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 3.5,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Disruptive (líder); Nvidia también invertiría",
+   "titular": "Groq capta US$ 350 M a una valoración de US$ 3.500 M, la mitad que un año antes",
+   "fuente": "Bloomberg Government",
+   "url": "https://news.bgov.com/private-equity/groq-valued-at-3-5-billion-in-funding-round-after-nvidia-deal",
+   "nivel": "B",
+   "nota": "Ronda a la baja: en 2025 valía US$ 6.900 M. La nota la da como 'por anunciarse' ese lunes; no confirma el cierre ni indica el país."
+  },
+  {
+   "fecha": "2026-08-18",
+   "fecha_precision": "dia",
+   "empresa": "Etched",
+   "familia": "infraestructura",
+   "subcategoria": "chips ASIC para transformers",
+   "operacion": "Ronda de financiamiento",
+   "monto": {
+    "valor": 700,
+    "unidad": "USD millones"
+   },
+   "inversores": "Jane Street (líder)",
+   "titular": "Etched capta US$ 700 M y duplica su valoración a unos US$ 20.000 M",
+   "fuente": "KuCoin News (republica a Coinrise)",
+   "url": "https://www.kucoin.com/news/flash/ai-chip-startup-etched-doubles-valuation-to-20b-after-700m-raise",
+   "nivel": "C",
+   "nota": "Fuente secundaria. La valoración difiere según el medio citado (~US$ 20.000 M o US$ 21.000 M), por eso se omite el campo; la habría duplicado en cerca de un mes."
+  },
+  {
+   "fecha": "2026-05-31",
+   "fecha_precision": "mes",
+   "empresa": "Sierra",
+   "familia": "servicios",
+   "subcategoria": "agentes de atención al cliente",
+   "operacion": "Serie E",
+   "monto": {
+    "valor": 950,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 15,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Tiger Global y GV (líderes)",
+   "titular": "Sierra capta US$ 950 M en Serie E y supera los US$ 15.000 M de valoración",
+   "fuente": "AI2Work (cita a TechCrunch, CNBC y Sierra)",
+   "url": "https://ai2.work/blog/sierra-hits-15b-valuation-as-the-enterprise-ai-agent-race-heats-up",
+   "nivel": "C",
+   "nota": "Blog secundario; solo indica mayo de 2026. Valoración 'superior a US$ 15.000 M'. Más de US$ 150 M de ingresos recurrentes anuales."
+  },
+  {
+   "fecha": "2026-03-12",
+   "fecha_precision": "dia",
+   "empresa": "Replit",
+   "pais_iso3": "USA",
+   "familia": "servicios",
+   "subcategoria": "programación asistida",
+   "operacion": "Serie D",
+   "monto": {
+    "valor": 400,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 9,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Georgian, G Squared y Prysm Capital (líderes); 1789 Capital, Y Combinator, Coatue, Andreessen Horowitz, Craft Ventures, Qatar Investment Authority",
+   "titular": "Replit capta US$ 400 M y triplica su valoración a US$ 9.000 M en seis meses",
+   "fuente": "Trending Topics",
+   "url": "https://www.trendingtopics.eu/replit-raises-400m-tripling-its-valuation-to-9-billion-in-six-months/",
+   "nivel": "B",
+   "nota": "Fecha = publicación de la nota. Ingresos recurrentes anuales de ~US$ 265 M a fines de 2025; meta de US$ 1.000 M para fines de 2026."
+  },
+  {
+   "fecha": "2026-03-30",
+   "fecha_precision": "dia",
+   "empresa": "Physical Intelligence",
+   "pais_iso3": "USA",
+   "ciudad": "San Francisco",
+   "familia": "modelos",
+   "subcategoria": "modelos para robots",
+   "operacion": "Ronda de financiamiento (en negociación, reportada)",
+   "monto": {
+    "valor": 1000,
+    "unidad": "USD millones"
+   },
+   "valoracion": {
+    "valor": 11,
+    "unidad": "USD miles de millones"
+   },
+   "inversores": "Founders Fund, Lightspeed (en conversaciones), Thrive Capital, Lux Capital",
+   "titular": "Physical Intelligence busca captar unos US$ 1.000 M a una valoración superior a US$ 11.000 M",
+   "fuente": "Dealroom News (cita a Bloomberg y TechCrunch)",
+   "url": "https://dealroom.co/news/127095-robot-ai-startup-physical-intelligence-seeks-1b-at-11b-valuation/",
+   "nivel": "B",
+   "nota": "Operación en etapa temprana, sin cierre confirmado; duplicaría la valoración previa de US$ 5.600 M."
+  }
+ ],
+ "hubs": [
+  {
+   "ciudad": "Singapur",
+   "pais_iso3": "SGP",
+   "lat": 1.35,
+   "lon": 103.82,
+   "monto": {
+    "valor": 1.8,
+    "unidad": "SGD miles de millones",
+    "anio": 2025,
+    "fuente": "Enterprise Singapore y EY-Parthenon, Singapore Venture Funding Landscape Report 2025",
+    "url": "https://www.enterprisesg.gov.sg/-/media/esg/files/media-centre/media-releases/2026/may/mr02726_singapores-venture-funding-shows-resilience-amid-sea-slowdown.pdf",
+    "nivel": "A"
+   },
+   "nota": "Cifra en dólares de Singapur ('supera S$ 1.800 M'), no convertida; +30% interanual. La IA fue 30% del valor total de operaciones (S$ 5.900 M, 472 operaciones) y 42,8% del número. Metodología distinta de Dealroom: no comparable con los hubs de noticias.json ni se calculó pct_mundial."
+  },
+  {
+   "ciudad": "Dubái / Abu Dabi (total Emiratos Árabes Unidos)",
+   "pais_iso3": "ARE",
+   "lat": 25.2,
+   "lon": 55.27,
+   "monto": {
+    "valor": 0.519,
+    "unidad": "USD miles de millones",
+    "anio": 2025,
+    "fuente": "Enterprise (cita a MAGNiTT, FY 2025 State of Venture Capital of AI in MENA)",
+    "url": "https://enterpriseam.com/uae/2026/02/13/mena-ai-funding-hits-usd-858-mn-in-2025-led-by-the-uae-and-saudi-arabia/",
+    "nivel": "B"
+   },
+   "nota": "Dato de país, no de ciudad: la fuente no separa Dubái de Abu Dabi (lat/lon de Dubái). US$ 519 M, +267% interanual, 60% del total de MENA (US$ 858 M); US$ 392 M fueron a startups nativas de IA."
+  },
+  {
+   "ciudad": "Múnich",
+   "pais_iso3": "DEU",
+   "lat": 48.14,
+   "lon": 11.58,
+   "monto": {
+    "valor": 671.7,
+    "unidad": "EUR millones",
+    "anio": 2025,
+    "fuente": "tech.eu (base de datos de rondas, sector IA); suma propia",
+    "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2025&yearTo=2025&country=Germany&sort=amount_desc&minAmount=1000000",
+    "nivel": "C"
+   },
+   "nota": "Suma propia de las 3 rondas de 2025 de € 1 M o más etiquetadas 'AI' con sede en Múnich: Helsing (€ 600 M), Aily Labs (€ 69 M), Pactos (€ 2,7 M). Helsing explica el 89%. Subestima: la base clasifica en otros sectores a muchas empresas de IA. No comparable con Dealroom."
+  },
+  {
+   "ciudad": "Berlín",
+   "pais_iso3": "DEU",
+   "lat": 52.52,
+   "lon": 13.4,
+   "monto": {
+    "valor": 432.4,
+    "unidad": "EUR millones",
+    "anio": 2025,
+    "fuente": "tech.eu (base de datos de rondas, sector IA); suma propia",
+    "url": "https://funding.tech.eu/rounds?sector=AI&yearFrom=2025&yearTo=2025&country=Germany&sort=amount_desc&minAmount=1000000",
+    "nivel": "C"
+   },
+   "nota": "Suma propia de las 12 rondas de 2025 de € 1 M o más etiquetadas 'AI' con sede en Berlín (n8n € 155 M y € 55 M, Parloa € 105 M, Taktile € 52 M, Mirelo € 35 M, entre otras). Subestima: la base clasifica en otros sectores a muchas empresas de IA. No comparable con Dealroom."
+  }
+ ],
+ "rentabilidad": [
+  {
+   "empresa": "Google Cloud (Alphabet)",
+   "pais_iso3": "USA",
+   "periodo": "2026-T2",
+   "ingresos": {
+    "valor": 24.768,
+    "unidad": "USD miles de millones",
+    "tipo": "trimestre"
+   },
+   "resultado": {
+    "valor": 8.814,
+    "unidad": "USD miles de millones",
+    "tipo": "operativo"
+   },
+   "rentable": true,
+   "nota": "Ingresos +82% interanual (US$ 13.624 M en 2T 2025); resultado operativo de US$ 2.826 M un año antes. Cartera contratada (backlog) de US$ 514.000 M según FourWeekMBA (https://fourweekmba.com/ai-google-cloud-514-billion-backlog-ai-demand-q2-2026/), fuente secundaria: el comunicado no la publica. Alphabet: ingresos US$ 119.796 M, compras de propiedad y equipo US$ 44.924 M en el trimestre.",
+   "fuente": "Alphabet, comunicado de resultados 2T 2026 (SEC, anexo 99.1)",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000066/googexhibit991q22026.htm",
+   "nivel": "A"
+  },
+  {
+   "empresa": "Mistral AI",
+   "pais_iso3": "FRA",
+   "periodo": "2026 (enero)",
+   "ingresos": {
+    "valor": 0.4,
+    "unidad": "USD miles de millones",
+    "tipo": "anualizado"
+   },
+   "nota": "Estimación de Sacra: ~US$ 400 M de ingresos recurrentes anuales en enero de 2026 (US$ 312 M en diciembre de 2025, ~US$ 16 M a fines de 2024). Meta pública de más de US$ 1.000 M en 2026; Europa aporta ~60%. Sin dato de rentabilidad.",
+   "fuente": "Sacra",
+   "url": "https://sacra.com/c/mistral/",
+   "nivel": "C"
+  },
+  {
+   "empresa": "Scale AI",
+   "pais_iso3": "USA",
+   "periodo": "2025",
+   "ingresos": {
+    "valor": 2,
+    "unidad": "USD miles de millones",
+    "tipo": "ejercicio"
+   },
+   "nota": "Estimación de Sacra (~US$ 2.000 M en 2025; US$ 870 M en 2024). Margen bruto 'superior a 50%'; el negocio de datos habría sido rentable en 2025, sin dato para toda la empresa. Sin operación de capital en 2026: la última es la compra del 49% por Meta (US$ 14.300 M, junio de 2025).",
+   "fuente": "Sacra",
+   "url": "https://sacra.com/c/scale-ai/",
+   "nivel": "C"
+  },
+  {
+   "empresa": "Perplexity",
+   "pais_iso3": "USA",
+   "periodo": "2026 (marzo)",
+   "ingresos": {
+    "valor": 0.45,
+    "unidad": "USD miles de millones",
+    "tipo": "anualizado"
+   },
+   "nota": "Ingresos recurrentes anuales estimados 'sobre US$ 450 M' en marzo de 2026, +50% en un mes tras lanzar su producto de agentes y cobrar por uso. Cifra atribuida al Financial Times, tomada de una recopilación. Sin dato de rentabilidad. País asignado por conocimiento general.",
+   "fuente": "Let's Data Science (cita a Financial Times y Reuters)",
+   "url": "https://letsdatascience.com/news/perplexity-shifts-to-ai-agents-boosts-revenue-a76bce31",
+   "nivel": "C"
+  },
+  {
+   "empresa": "Midjourney",
+   "pais_iso3": "USA",
+   "periodo": "2023",
+   "ingresos": {
+    "valor": 0.2,
+    "unidad": "USD miles de millones",
+    "tipo": "anualizado"
+   },
+   "nota": "Dato antiguo: estimación de Sacra de US$ 200 M de ingresos recurrentes anuales en 2023, con ~40-45 empleados y sin capital externo ('utilidades reinvertidas'). No se halló cifra de 2025-2026 en una página abierta. País asignado por conocimiento general.",
+   "fuente": "Sacra",
+   "url": "https://sacra.com/c/midjourney/",
+   "nivel": "C"
+  },
+  {
+   "empresa": "Lambda",
+   "pais_iso3": "USA",
+   "periodo": "2026 (septiembre)",
+   "nota": "Sin cifra de ingresos ni de resultado. Cartera de pedidos de ~US$ 15.000 M en junio y ~US$ 50.000 M en septiembre de 2026, según una carta a inversores revisada por el Wall Street Journal; cubre unos seis años. País asignado por conocimiento general.",
+   "fuente": "Tech Funding News (cita a Wall Street Journal)",
+   "url": "https://techfundingnews.com/nvidia-backed-lambda-eyes-4b-at-14-5b-valuation-from-blackstone-and-coatue-before-2027-ipo-report/",
+   "nivel": "C"
+  },
+  {
+   "empresa": "Fireworks AI",
+   "periodo": "2026 (julio)",
+   "ingresos": {
+    "valor": 1,
+    "unidad": "USD miles de millones",
+    "tipo": "anualizado"
+   },
+   "nota": "Estimación de Sacra: 'más de US$ 1.000 M' anualizados en julio de 2026, US$ 800 M en mayo y ~US$ 305 M a fines de 2025. El salto de mayo a julio no está explicado en la fuente: tomar con cautela.",
+   "fuente": "Sacra",
+   "url": "https://sacra.com/c/fireworks-ai/",
+   "nivel": "C"
+  },
+  {
+   "empresa": "Together AI",
+   "periodo": "2026 (febrero)",
+   "ingresos": {
+    "valor": 1,
+    "unidad": "USD miles de millones",
+    "tipo": "anualizado"
+   },
+   "nota": "Estimación de Sacra: US$ 1.000 M anualizados en febrero de 2026 (~US$ 618 M a fines de 2025). Reservas anuales sobre US$ 1.150 M al 2T 2026 (compromisos contratados, no ingresos reconocidos).",
+   "fuente": "Sacra",
+   "url": "https://sacra.com/c/together-ai/",
+   "nivel": "C"
+  },
+  {
+   "empresa": "Moonshot AI",
+   "pais_iso3": "CHN",
+   "periodo": "2026 (abril)",
+   "ingresos": {
+    "valor": 0.2,
+    "unidad": "USD miles de millones",
+    "tipo": "anualizado"
+   },
+   "nota": "Ingresos recurrentes anuales 'sobre US$ 200 M' en abril de 2026, por suscripciones de pago y uso de API.",
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2026/05/07/chinas-moonshot-ai-raises-2b-at-20b-valuation-as-demand-for-open-source-ai-skyrockets",
+   "nivel": "B"
+  },
+  {
+   "empresa": "Replit",
+   "pais_iso3": "USA",
+   "periodo": "2025 (cierre)",
+   "ingresos": {
+    "valor": 0.265,
+    "unidad": "USD miles de millones",
+    "tipo": "anualizado"
+   },
+   "nota": "~US$ 265 M de ingresos recurrentes anuales a fines de 2025; meta de US$ 1.000 M para fines de 2026; más de 50 millones de usuarios registrados.",
+   "fuente": "Trending Topics",
+   "url": "https://www.trendingtopics.eu/replit-raises-400m-tripling-its-valuation-to-9-billion-in-six-months/",
+   "nivel": "B"
+  },
+  {
+   "empresa": "Synthesia",
+   "pais_iso3": "GBR",
+   "periodo": "2026 (enero)",
+   "ingresos": {
+    "valor": 0.15,
+    "unidad": "USD miles de millones",
+    "tipo": "anualizado"
+   },
+   "nota": "US$ 150 M de ingresos recurrentes anuales; espera superar US$ 200 M en 2026.",
+   "fuente": "Let's Data Science (recopilación de prensa)",
+   "url": "https://letsdatascience.com/news/synthesia-secures-200m-funding-and-4b-valuation-a4efc106",
+   "nivel": "C"
+  },
+  {
+   "empresa": "Sierra",
+   "periodo": "2026 (mayo)",
+   "ingresos": {
+    "valor": 0.15,
+    "unidad": "USD miles de millones",
+    "tipo": "anualizado"
+   },
+   "nota": "Superó US$ 150 M de ingresos recurrentes anuales en unos ocho trimestres; más del 40% de las Fortune 50 son clientes. Blog secundario que cita a CMSWire y a Sierra.",
+   "fuente": "AI2Work",
+   "url": "https://ai2.work/blog/sierra-hits-15b-valuation-as-the-enterprise-ai-agent-race-heats-up",
+   "nivel": "C"
+  }
+ ]
+}
