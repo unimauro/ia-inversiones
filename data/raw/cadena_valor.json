@@ -1,0 +1,3491 @@
+{
+ "meta": {
+  "bloque": "cadena_valor",
+  "consultado": "2026-10-11",
+  "fuentes_principales": [
+   {
+    "nombre": "AIE, Key Questions on Energy and AI (abril 2026)",
+    "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai"
+   },
+   {
+    "nombre": "AIE, Energy and AI (abril 2025)",
+    "url": "https://www.iea.org/reports/energy-and-ai"
+   },
+   {
+    "nombre": "Epoch AI, bases de datos (centros de datos, hardware, modelos)",
+    "url": "https://epoch.ai/data"
+   },
+   {
+    "nombre": "Nvidia, notas de resultados trimestrales",
+    "url": "https://nvidianews.nvidia.com/"
+   },
+   {
+    "nombre": "BIS, Departamento de Comercio de EE.UU.",
+    "url": "https://www.bis.gov/news-updates"
+   },
+   {
+    "nombre": "TrendForce, centro de prensa",
+    "url": "https://www.trendforce.com/presscenter/news"
+   },
+   {
+    "nombre": "GlobalPetrolPrices, precios de electricidad",
+    "url": "https://www.globalpetrolprices.com/electricity_prices/"
+   },
+   {
+    "nombre": "Páginas de precios de OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Lambda, CoreWeave, RunPod y Together AI",
+    "url": "https://developers.openai.com/api/docs/pricing"
+   }
+  ],
+  "advertencias": [
+   "El cupo de búsqueda web de la sesión se agotó tras 5 consultas; el resto se obtuvo abriendo directamente páginas primarias conocidas. Varias secciones quedaron incompletas por eso.",
+   "energia.serie_twh solo trae 2024, 2025, 2030 y 2035: la AIE publica 2020-2023 solo en gráfico (no en texto abierto); no se leyeron valores del gráfico.",
+   "energia.por_pais: NO se obtuvo capacidad instalada (MW) por país; n_centros solo para EE.UU. (Data Center Map devolvió HTTP 429, Cloudscene no muestra conteos). Consumo en TWh solo para EE.UU. e Irlanda; para China, Europa y Japón la AIE da participación mundial e incremento a 2030, no nivel absoluto.",
+   "precio_kwh: tarifa para EMPRESAS de GlobalPetrolPrices (promedio 2023-2026 según la página), no tarifa industrial de alta tensión ni PPA; sin dato para Irlanda ni Suecia.",
+   "Los montos en moneda local (GBP, EUR, CHF, MXN, CAD, INR, BRL, KRW, JPY) NO se convirtieron a USD: aplicar tipo de cambio en la capa de presentación.",
+   "kw_por_gpu y gpus_por_mw son DERIVADOS (división de dos cifras publicadas), no datos directos de la fuente; nivel C.",
+   "salario_investigador_latam, _europa e _india corresponden a ingenieros de software en general (Levels.fyi), no a investigadores de IA; sin dato para Perú, Chile, Colombia ni Argentina.",
+   "beca_doctorado_anual es la beca NSF GRFP de EE.UU.; no se verificó beca típica en LATAM ni Europa.",
+   "costo_afinar_modelo_abierto es precio unitario por millón de tokens, no un costo total de proyecto.",
+   "Costos de entrenamiento de Epoch están en USD de 2023 y cubren solo el cómputo de la corrida final.",
+   "Precios de chips: Nvidia no publica precios de lista; son estimaciones de Epoch AI y Bernstein. Sin precio verificado para B200, Trainium, Ascend 910C ni AMD MI400 (MI400 sin ningún dato).",
+   "Precios de obleas de TSMC son estimaciones de analistas vía agregador (nivel C); A16 sin cifra verificada (solo rumor de USD 45,000 no abierto en fuente).",
+   "Fábricas: datos de Wikipedia (nivel C). Sin verificar: monto final CHIPS de Samsung, SK hynix Indiana, Tata Dholera/India, nodo y estado de Intel Ohio, subsidio de ESMC Dresde. Solo TSMC Arizona tiene coordenadas de la fuente; el resto va sin lat/lon.",
+   "Memorias: NO se obtuvo cuota de mercado de HBM por proveedor (SK hynix/Samsung/Micron) ni tamaño de mercado; TrendForce solo publicó en abierto los rangos de 4T-2026 y la proyección 2027.",
+   "CoWoS: única cifra abierta es el objetivo 2025 (75,000 obleas/mes), de prensa taiwanesa citada por TrendForce.",
+   "Controles de exportación: la prohibición del H20 de abril de 2025 y el arancel/participación del 25% sobre H200 no aparecieron en las páginas abiertas y se omiten.",
+   "No se pudo abrir: McKinsey 'cost of compute' (timeout), informe LBNL (403), precios de ChatGPT (403). Sin esquema de publicidad ni de consultoría/integradores en modelos_negocio por falta de fuente abierta.",
+   "No se obtuvo la evolución histórica del precio de alquiler de GPU; solo precios vigentes a octubre de 2026.",
+   "Supercomputadores: sin dato verificado de ABCI 3.0 ni Santos Dumont; número de GPU de JUPITER y Alps no verificado.",
+   "Fondos nacionales: los de India, Brasil y Corea son programas completos de IA, no fondos exclusivos de startups; sin dato verificado para Francia, Arabia Saudita ni Chile.",
+   "Wikipedia (Nvidia) mencionaba adquisiciones reportadas en 2026 que no se usaron por no ser pertinentes ni estar corroboradas."
+  ]
+ },
+ "energia": {
+  "serie_twh": [
+   {
+    "anio": 2024,
+    "valor": 415,
+    "proyeccion": false
+   },
+   {
+    "anio": 2025,
+    "valor": 485,
+    "proyeccion": false
+   },
+   {
+    "anio": 2030,
+    "valor": 950,
+    "proyeccion": true
+   },
+   {
+    "anio": 2035,
+    "valor": 1200,
+    "proyeccion": true,
+    "min": 700,
+    "max": 1700,
+    "nota": "Caso base del informe 2025; rango entre casos Headwinds y Lift-Off."
+   }
+  ],
+  "serie_fuente": "AIE, Key Questions on Energy and AI (2026) para 2024-2030; AIE, Energy and AI (2025) para 2035",
+  "serie_url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+  "por_pais": [
+   {
+    "iso3": "USA",
+    "nombre_es": "Estados Unidos",
+    "precio_kwh": {
+     "valor": 0.15,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    },
+    "consumo_twh": {
+     "valor": 183,
+     "unidad": "TWh",
+     "anio": "2024",
+     "fuente": "AIE, citado por Pew Research Center (24-oct-2025)",
+     "url": "https://www.pewresearch.org/short-reads/2025/10/24/what-we-know-about-energy-use-at-us-data-centers-amid-the-ai-boom/",
+     "nivel": "A",
+     "nota": "Proyección AIE 2030: 426 TWh (+133%)."
+    },
+    "consumo_twh_2030": {
+     "valor": 426,
+     "unidad": "TWh",
+     "anio": "2030 (proyección)",
+     "fuente": "AIE, citado por Pew Research Center",
+     "url": "https://www.pewresearch.org/short-reads/2025/10/24/what-we-know-about-energy-use-at-us-data-centers-amid-the-ai-boom/",
+     "nivel": "A"
+    },
+    "pct_demanda": {
+     "valor": 4,
+     "unidad": "% de la electricidad nacional",
+     "anio": "2024",
+     "fuente": "AIE, citado por Pew Research Center",
+     "url": "https://www.pewresearch.org/short-reads/2025/10/24/what-we-know-about-energy-use-at-us-data-centers-amid-the-ai-boom/",
+     "nivel": "A",
+     "nota": "La fuente dice 'más de 4%'."
+    },
+    "pct_mundial": {
+     "valor": 45,
+     "unidad": "% del consumo mundial de centros de datos",
+     "anio": "2024",
+     "fuente": "AIE, Energy and AI (2025), resumen ejecutivo",
+     "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+     "nivel": "A"
+    },
+    "incremento_2030_twh": {
+     "valor": 240,
+     "unidad": "TWh adicionales 2024-2030",
+     "anio": "2030",
+     "fuente": "AIE, Energy and AI (2025)",
+     "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+     "nivel": "A",
+     "nota": "+130% frente a 2024 (caso base)."
+    },
+    "n_centros": {
+     "valor": 5427,
+     "unidad": "centros de datos",
+     "anio": "2026",
+     "fuente": "Stanford HAI, AI Index Report 2026",
+     "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+     "nivel": "A",
+     "nota": "'Más de 10 veces cualquier otro país'. Pew/Data Center Map contaba 'más de 4,000' al 20-oct-2025 (incluye planeados)."
+    },
+    "mezcla_electrica": "2024 (AIE vía Pew): gas natural >40%, renovables ~24%, nuclear ~20%, carbón ~15%."
+   },
+   {
+    "iso3": "CHN",
+    "nombre_es": "China",
+    "precio_kwh": {
+     "valor": 0.109,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    },
+    "pct_mundial": {
+     "valor": 25,
+     "unidad": "% del consumo mundial de centros de datos",
+     "anio": "2024",
+     "fuente": "AIE, Energy and AI (2025), resumen ejecutivo",
+     "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+     "nivel": "A"
+    },
+    "incremento_2030_twh": {
+     "valor": 175,
+     "unidad": "TWh adicionales 2024-2030",
+     "anio": "2030",
+     "fuente": "AIE, Energy and AI (2025)",
+     "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+     "nivel": "A",
+     "nota": "+170% frente a 2024."
+    }
+   },
+   {
+    "iso3": "DEU",
+    "nombre_es": "Alemania",
+    "precio_kwh": {
+     "valor": 0.284,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "FRA",
+    "nombre_es": "Francia",
+    "precio_kwh": {
+     "valor": 0.186,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "GBR",
+    "nombre_es": "Reino Unido",
+    "precio_kwh": {
+     "valor": 0.444,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "JPN",
+    "nombre_es": "Japón",
+    "precio_kwh": {
+     "valor": 0.2,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    },
+    "incremento_2030_twh": {
+     "valor": 15,
+     "unidad": "TWh adicionales 2024-2030",
+     "anio": "2030",
+     "fuente": "AIE, Energy and AI (2025)",
+     "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+     "nivel": "A",
+     "nota": "+80% frente a 2024."
+    }
+   },
+   {
+    "iso3": "KOR",
+    "nombre_es": "Corea del Sur",
+    "precio_kwh": {
+     "valor": 0.119,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "IND",
+    "nombre_es": "India",
+    "precio_kwh": {
+     "valor": 0.122,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "CAN",
+    "nombre_es": "Canadá",
+    "precio_kwh": {
+     "valor": 0.11,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "BRA",
+    "nombre_es": "Brasil",
+    "precio_kwh": {
+     "valor": 0.134,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "CHL",
+    "nombre_es": "Chile",
+    "precio_kwh": {
+     "valor": 0.172,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "MEX",
+    "nombre_es": "México",
+    "precio_kwh": {
+     "valor": 0.212,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "PER",
+    "nombre_es": "Perú",
+    "precio_kwh": {
+     "valor": 0.162,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "COL",
+    "nombre_es": "Colombia",
+    "precio_kwh": {
+     "valor": 0.208,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "ARG",
+    "nombre_es": "Argentina",
+    "precio_kwh": {
+     "valor": 0.098,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "SAU",
+    "nombre_es": "Arabia Saudita",
+    "precio_kwh": {
+     "valor": 0.07,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "ARE",
+    "nombre_es": "Emiratos Árabes Unidos",
+    "precio_kwh": {
+     "valor": 0.11,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "SGP",
+    "nombre_es": "Singapur",
+    "precio_kwh": {
+     "valor": 0.261,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "ESP",
+    "nombre_es": "España",
+    "precio_kwh": {
+     "valor": 0.134,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "NLD",
+    "nombre_es": "Países Bajos",
+    "precio_kwh": {
+     "valor": 0.221,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "NOR",
+    "nombre_es": "Noruega",
+    "precio_kwh": {
+     "valor": 0.117,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "AUS",
+    "nombre_es": "Australia",
+    "precio_kwh": {
+     "valor": 0.244,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "TWN",
+    "nombre_es": "Taiwán",
+    "precio_kwh": {
+     "valor": 0.191,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "MYS",
+    "nombre_es": "Malasia",
+    "precio_kwh": {
+     "valor": 0.129,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "IDN",
+    "nombre_es": "Indonesia",
+    "precio_kwh": {
+     "valor": 0.069,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "ZAF",
+    "nombre_es": "Sudáfrica",
+    "precio_kwh": {
+     "valor": 0.108,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "PRY",
+    "nombre_es": "Paraguay",
+    "precio_kwh": {
+     "valor": 0.047,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "URY",
+    "nombre_es": "Uruguay",
+    "precio_kwh": {
+     "valor": 0.126,
+     "unidad": "USD/kWh",
+     "anio": "2023-2026 (promedio publicado; actualización T3-2026)",
+     "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+     "url": "https://www.globalpetrolprices.com/electricity_prices/",
+     "nivel": "B",
+     "nota": "Tarifa para empresas, no específica de gran industria ni de contratos PPA de centros de datos."
+    }
+   },
+   {
+    "iso3": "EUR",
+    "nombre_es": "Europa (región)",
+    "pct_mundial": {
+     "valor": 15,
+     "unidad": "% del consumo mundial de centros de datos",
+     "anio": "2024",
+     "fuente": "AIE, Energy and AI (2025), resumen ejecutivo",
+     "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+     "nivel": "A"
+    },
+    "incremento_2030_twh": {
+     "valor": 45,
+     "unidad": "TWh adicionales 2024-2030",
+     "anio": "2030",
+     "fuente": "AIE, Energy and AI (2025)",
+     "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai",
+     "nivel": "A",
+     "nota": "'Más de 45 TWh' (+70%)."
+    }
+   },
+   {
+    "iso3": "IRL",
+    "nombre_es": "Irlanda",
+    "consumo_twh": {
+     "valor": 6.969,
+     "unidad": "TWh",
+     "anio": "2024",
+     "fuente": "CSO Irlanda, Data Centres Metered Electricity Consumption 2024",
+     "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2024/keyfindings/",
+     "nivel": "A",
+     "nota": "6,969 GWh; 6,335 GWh en 2023 (+10%); 1,238 GWh en 2015."
+    },
+    "pct_demanda": {
+     "valor": 22,
+     "unidad": "% de la electricidad medida nacional",
+     "anio": "2024",
+     "fuente": "CSO Irlanda",
+     "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2024/keyfindings/",
+     "nivel": "A",
+     "nota": "21% en 2023; 5% en 2015."
+    }
+   }
+  ],
+  "acuerdos": [
+   {
+    "comprador": "Microsoft",
+    "proveedor": "Constellation (Crane Clean Energy Center, ex Three Mile Island 1)",
+    "tipo": "nuclear (reinicio)",
+    "capacidad_mw": 835,
+    "fecha": "2024-09",
+    "nota": "PPA a 20 años; planta prevista en línea en 2028. Monto no divulgado.",
+    "fuente": "Constellation, nota de prensa",
+    "url": "https://www.constellationenergy.com/news/2024/Constellation-to-Launch-Crane-Clean-Energy-Center-Restoring-Jobs-and-Carbon-Free-Power-to-The-Grid.html"
+   },
+   {
+    "comprador": "Meta",
+    "proveedor": "Constellation (Clinton Clean Energy Center, Illinois)",
+    "tipo": "nuclear (existente)",
+    "capacidad_mw": 1121,
+    "fecha": "2025-06",
+    "nota": "PPA a 20 años desde junio de 2027; +30 MW por repotenciación. Monto no divulgado.",
+    "fuente": "Constellation, nota de prensa",
+    "url": "https://www.constellationenergy.com/news/2025/constellation-meta-sign-20-year-deal-for-clean-reliable-nuclear-energy-in-illinois.html"
+   },
+   {
+    "comprador": "Meta",
+    "proveedor": "Vistra (Perry, Davis-Besse, Beaver Valley)",
+    "tipo": "nuclear (existente + repotenciación)",
+    "capacidad_mw": 2100,
+    "fecha": "2026-01",
+    "nota": "Contratos a 20 años por 'más de 2.1 GW'; repotenciaciones suman 433 MW a inicios de los 2030.",
+    "fuente": "Meta Newsroom",
+    "url": "https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/"
+   },
+   {
+    "comprador": "Meta",
+    "proveedor": "TerraPower (Natrium)",
+    "tipo": "nuclear avanzada",
+    "capacidad_mw": 2800,
+    "fecha": "2026-01",
+    "nota": "Financia 2 unidades (hasta 690 MW, desde 2032) y derechos sobre 6 más (2.1 GW) a 2035; hasta 8 unidades = 2.8 GW + 1.2 GW de almacenamiento.",
+    "fuente": "Meta Newsroom",
+    "url": "https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/"
+   },
+   {
+    "comprador": "Meta",
+    "proveedor": "Oklo (campus en Pike County, Ohio)",
+    "tipo": "nuclear SMR",
+    "capacidad_mw": 1200,
+    "fecha": "2026-01",
+    "nota": "Hasta 1.2 GW, desde 2030 como pronto. Los tres acuerdos de Meta suman hasta 6.6 GW a 2035.",
+    "fuente": "Meta Newsroom",
+    "url": "https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/"
+   },
+   {
+    "comprador": "Google",
+    "proveedor": "Kairos Power",
+    "tipo": "nuclear SMR",
+    "capacidad_mw": 500,
+    "fecha": "2024-10",
+    "nota": "Hasta 500 MW con varios SMR; primer reactor en 2030, resto hacia 2035.",
+    "fuente": "Google, blog oficial",
+    "url": "https://blog.google/outreach-initiatives/sustainability/google-kairos-power-nuclear-energy-agreement/"
+   },
+   {
+    "comprador": "Amazon",
+    "proveedor": "Energy Northwest (SMR de X-energy, Washington)",
+    "tipo": "nuclear SMR",
+    "capacidad_mw": 320,
+    "fecha": "2024-10",
+    "nota": "~320 MW en fase 1 (4 SMR), ampliable a 960 MW; energía desde inicios de los 2030.",
+    "fuente": "About Amazon",
+    "url": "https://www.aboutamazon.com/news/sustainability/amazon-nuclear-small-modular-reactor-net-carbon-zero"
+   },
+   {
+    "comprador": "Amazon",
+    "proveedor": "X-energy",
+    "tipo": "nuclear SMR (inversión en el desarrollador)",
+    "capacidad_mw": 5000,
+    "fecha": "2024-10",
+    "nota": "Más de 5 GW de proyectos planeados con su tecnología.",
+    "fuente": "About Amazon",
+    "url": "https://www.aboutamazon.com/news/sustainability/amazon-nuclear-small-modular-reactor-net-carbon-zero"
+   },
+   {
+    "comprador": "Amazon",
+    "proveedor": "Dominion Energy (North Anna, Virginia)",
+    "tipo": "nuclear SMR (exploración)",
+    "capacidad_mw": 300,
+    "fecha": "2024-10",
+    "nota": "Al menos 300 MW.",
+    "fuente": "About Amazon",
+    "url": "https://www.aboutamazon.com/news/sustainability/amazon-nuclear-small-modular-reactor-net-carbon-zero"
+   },
+   {
+    "comprador": "Meta (Hyperion, Luisiana)",
+    "proveedor": "Entergy",
+    "tipo": "gas (ciclo combinado)",
+    "capacidad_mw": 3800,
+    "fecha": "2024-2026",
+    "nota": "Entergy planea producir al menos 3.8 GW para el campus; tres plantas de gas en construcción.",
+    "fuente": "Wikipedia, Hyperion (data center)",
+    "url": "https://en.wikipedia.org/wiki/Hyperion_(data_center)"
+   },
+   {
+    "comprador": "OpenAI",
+    "proveedor": "Cerebras",
+    "tipo": "cómputo (contrato por potencia)",
+    "capacidad_mw": 750,
+    "monto": {
+     "valor": 10,
+     "unidad": "USD miles de millones",
+     "anio": "2026-01",
+     "fuente": "Wikipedia, Cerebras",
+     "url": "https://en.wikipedia.org/wiki/Cerebras",
+     "nivel": "C"
+    },
+    "fecha": "2026-01",
+    "nota": "750 MW de cómputo hasta 2028; no es un contrato eléctrico sino de capacidad de cómputo.",
+    "fuente": "Wikipedia, Cerebras",
+    "url": "https://en.wikipedia.org/wiki/Cerebras"
+   },
+   {
+    "comprador": "Google",
+    "proveedor": "Ormat Technologies",
+    "tipo": "geotermia",
+    "capacidad_mw": 150,
+    "fecha": "2026",
+    "nota": "PPA por hasta 150 MW de nueva geotermia. Meta y Sage Geosystems: PPA por hasta 150 MW.",
+    "fuente": "AIE, Key Questions on Energy and AI (2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf"
+   }
+  ],
+  "datos": [
+   {
+    "concepto": "Crecimiento del consumo eléctrico de centros de datos en 2025",
+    "valor": 17,
+    "unidad": "% interanual",
+    "anio": "2025",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+    "nivel": "A",
+    "nota": "Demanda eléctrica mundial total: +3%. Centros enfocados en IA: +50%."
+   },
+   {
+    "concepto": "Consumo de centros de datos enfocados en IA en 2030 (caso base)",
+    "valor": 465,
+    "unidad": "TWh",
+    "anio": "2030 (proyección)",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "Más del triple que en 2025."
+   },
+   {
+    "concepto": "Consumo de centros de datos como % de la electricidad mundial",
+    "valor": 1.5,
+    "unidad": "%",
+    "anio": "2025",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "'Algo más de 1.5%'; ~3% en 2030."
+   },
+   {
+    "concepto": "Rango de escenarios AIE para 2035",
+    "valor": 1200,
+    "unidad": "TWh",
+    "anio": "2035 (proyección)",
+    "fuente": "AIE, Energy and AI (2025)",
+    "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+    "nivel": "A",
+    "min": 700,
+    "max": 1700,
+    "nota": "Base ~1,200; Headwinds ~700; Lift-Off >1,700."
+   },
+   {
+    "concepto": "Consumo de cuatro grandes hiperescaladores",
+    "valor": 110,
+    "unidad": "TWh",
+    "anio": "2024",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "+20% en 2024."
+   },
+   {
+    "concepto": "Capex de cinco grandes tecnológicas",
+    "valor": 400,
+    "unidad": "USD miles de millones",
+    "anio": "2025",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+    "nivel": "A",
+    "nota": "'Más de 400'; se espera +75% en 2026; supera la inversión mundial en producción de petróleo y gas."
+   },
+   {
+    "concepto": "Inversión acumulada en centros de datos implícita 2026-2030",
+    "valor": 3.9,
+    "unidad": "USD billones (trillion)",
+    "anio": "2026-2030",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A"
+   },
+   {
+    "concepto": "Capacidad SMR anunciada/condicional para centros de datos",
+    "valor": 45,
+    "unidad": "GW",
+    "anio": "2026-01",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "25 GW a fin de 2024 + 20 GW en enero de 2026. Primeros SMR comerciales hacia 2030."
+   },
+   {
+    "concepto": "Gas natural in situ planeado para centros de datos (mundial)",
+    "valor": 100,
+    "unidad": "GW",
+    "anio": "2026",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "'Más de 100 GW' anunciados o en construcción, mayoría en EE.UU.; AIE espera que solo 15-27 GW operen en 2030."
+   },
+   {
+    "concepto": "PPA renovables firmados para centros de datos",
+    "valor": 40,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "'Más de 40 TWh'; ~40% en EE.UU. Tecnológicas ≈40% de los PPA corporativos renovables de 2025."
+   },
+   {
+    "concepto": "Generación para centros de datos en 2030 por fuente",
+    "valor": 360,
+    "unidad": "TWh renovables",
+    "anio": "2030 (proyección)",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "Gas ~340 TWh (~30%); nuclear de ~75 TWh hoy a ~120 TWh; carbón ~20% (sobre todo China)."
+   },
+   {
+    "concepto": "Baterías instaladas en centros de datos",
+    "valor": 5,
+    "unidad": "GW",
+    "anio": "2026",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "Proyección 20-25 GW en 2030."
+   },
+   {
+    "concepto": "Solicitudes de interconexión de centros de datos en ERCOT (Texas)",
+    "valor": 160,
+    "unidad": "GW",
+    "anio": "2026",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "El doble de la capacidad mundial existente de hiperescala y colocation (≈80 GW implícitos); muchas solicitudes son especulativas."
+   },
+   {
+    "concepto": "Participación de EE.UU. en la capacidad instalada mundial de centros de datos",
+    "valor": 50,
+    "unidad": "%",
+    "anio": "2026",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "'Alrededor de la mitad'."
+   },
+   {
+    "concepto": "Plazos de entrega de equipos críticos",
+    "valor": 2.5,
+    "unidad": "años (transformadores)",
+    "anio": "2026",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "min": 2,
+    "max": 3,
+    "nota": "Turbinas de gas: ~5 años. Líneas de transmisión: 4-8 años en economías avanzadas (AIE 2025)."
+   },
+   {
+    "concepto": "Agua consumida directamente por centros de datos de EE.UU.",
+    "valor": 17,
+    "unidad": "miles de millones de galones",
+    "anio": "2023",
+    "fuente": "Berkeley Lab (2024), citado por Pew Research Center",
+    "url": "https://www.pewresearch.org/short-reads/2025/10/24/what-we-know-about-energy-use-at-us-data-centers-amid-the-ai-boom/",
+    "nivel": "A",
+    "nota": "Hiperescala proyectada a 2028: 16-33 mil millones de galones/año."
+   },
+   {
+    "concepto": "Virginia: participación de centros de datos en el suministro eléctrico del estado",
+    "valor": 26,
+    "unidad": "%",
+    "anio": "2023",
+    "fuente": "EPRI, citado por Pew Research Center",
+    "url": "https://www.pewresearch.org/short-reads/2025/10/24/what-we-know-about-energy-use-at-us-data-centers-amid-the-ai-boom/",
+    "nivel": "A",
+    "nota": "Dakota del Norte 15%, Nebraska 12%, Iowa 11%, Oregón 11%."
+   },
+   {
+    "concepto": "Precio promedio mundial de electricidad para empresas",
+    "valor": 0.172,
+    "unidad": "USD/kWh",
+    "anio": "T3-2026",
+    "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+    "url": "https://www.globalpetrolprices.com/electricity_prices/",
+    "nivel": "B"
+   },
+   {
+    "concepto": "Emisiones de centros de datos",
+    "valor": 180,
+    "unidad": "Mt CO2",
+    "anio": "2024",
+    "fuente": "AIE, Energy and AI (2025)",
+    "url": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+    "nivel": "A",
+    "nota": "~300 Mt en 2035 (base), hasta 500 Mt (Lift-Off)."
+   }
+  ]
+ },
+ "centros_datos": [
+  {
+   "concepto": "Capex total por GW de capacidad TI (centro de IA con GB200 NVL72)",
+   "valor": 38,
+   "unidad": "USD miles de millones por GW",
+   "anio": "2026-05",
+   "fuente": "Epoch AI, AI datacenter cost breakdown",
+   "url": "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown",
+   "nivel": "B",
+   "nota": "Servidores con GPU 21.2 (56%), instalación con refrigeración 11.4 (30%), red 4.9 (13%), terreno 0.17, subestaciones 0.16. Opex anual 0.9; TCO ~8.5/año."
+  },
+  {
+   "concepto": "Costo por GW según Bernstein (ciclo Blackwell, nov-2025)",
+   "valor": 35,
+   "unidad": "USD miles de millones por GW",
+   "anio": "2025-11",
+   "fuente": "Bernstein, citado por Investing.com",
+   "url": "https://www.investing.com/news/stock-market-news/how-much-does-a-gw-of-data-center-capacity-actually-cost-4314046",
+   "nivel": "B",
+   "nota": "GPU 39%, red ~13%, mecánico-eléctrico ~1/3, refrigeración ~4%, CPU ~3%. Rack GB200 NVL72 ≈ USD 5.9 M (3.4 cómputo + 2.5 infraestructura física)."
+  },
+  {
+   "concepto": "Costo por GW citado por Nvidia (llamada de resultados FY2026-Q2)",
+   "valor": 55,
+   "unidad": "USD miles de millones por GW",
+   "anio": "2025-08",
+   "fuente": "Nvidia, citado por Investing.com",
+   "url": "https://www.investing.com/news/stock-market-news/how-much-does-a-gw-of-data-center-capacity-actually-cost-4314046",
+   "nivel": "B",
+   "min": 50,
+   "max": 60
+  },
+  {
+   "concepto": "Costo por GW según Bernstein (ciclo Vera Rubin, jun-2026)",
+   "valor": 47.3,
+   "unidad": "USD miles de millones por GW",
+   "anio": "2026-06",
+   "fuente": "Bernstein, citado por Tiger Brokers",
+   "url": "https://www.itiger.com/news/1113387068",
+   "nivel": "B",
+   "nota": "Racks 32.3 + infraestructura física ~15. Ciclo Blackwell: 40.5. ~3,557 racks por GW. Depreciación ~7.9/año a 6 años; electricidad ~1.3/año a 0.15 USD/kWh."
+  },
+  {
+   "concepto": "Costo de capital de centros de datos de IA de punta, con equipos TI",
+   "valor": 45000,
+   "unidad": "USD por kW",
+   "anio": "2026",
+   "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+   "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+   "nivel": "A",
+   "min": 40000,
+   "max": 50000,
+   "nota": "5-10 veces una central nuclear por kW."
+  },
+  {
+   "concepto": "PUE supuesto para un centro de IA de hiperescala",
+   "valor": 1.14,
+   "unidad": "PUE",
+   "anio": "2026",
+   "fuente": "Epoch AI",
+   "url": "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown",
+   "nivel": "B"
+  },
+  {
+   "concepto": "PUE de la flota de Google (12 meses)",
+   "valor": 1.09,
+   "unidad": "PUE",
+   "anio": "2026",
+   "fuente": "Google Data Centers",
+   "url": "https://datacenters.google/efficiency/",
+   "nivel": "A",
+   "nota": "T2-2026: 1.10."
+  },
+  {
+   "concepto": "PUE promedio de la industria",
+   "valor": 1.54,
+   "unidad": "PUE",
+   "anio": "2025",
+   "fuente": "Uptime Institute Global Data Center Survey 2025, citado por Google",
+   "url": "https://datacenters.google/efficiency/",
+   "nivel": "B",
+   "nota": "AIE: 1.1-1.2 en hiperescala de punta; 1.5-1.7 en sitios antiguos o empresariales."
+  },
+  {
+   "concepto": "Mayor centro de IA en operación (potencia actual)",
+   "valor": 946,
+   "unidad": "MW",
+   "anio": "2026-10",
+   "fuente": "Epoch AI, Frontier Data Centers",
+   "url": "https://epoch.ai/data/data-centers",
+   "nivel": "B",
+   "nota": "Colossus 2 (Memphis). Epoch cubre 93 sitios, 13.8 GW TI / 17.9 GW de instalación, ~43% del cómputo de IA mundial (IC 90%: 23-81%)."
+  },
+  {
+   "concepto": "Mayor campus planeado en la base de Epoch (potencia total proyectada)",
+   "valor": 2715,
+   "unidad": "MW",
+   "anio": "2028 (proyección)",
+   "fuente": "Epoch AI, cronologías de centros de datos",
+   "url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
+   "nivel": "B",
+   "nota": "Microsoft Fairwater Wisconsin; costo de capital estimado USD 85.7 mil M (obra 26.6 + cómputo 59.1)."
+  },
+  {
+   "concepto": "Meta Hyperion (Luisiana): capacidad planeada",
+   "valor": 5,
+   "unidad": "GW",
+   "anio": "2024-2032",
+   "fuente": "Wikipedia, Hyperion (data center)",
+   "url": "https://en.wikipedia.org/wiki/Hyperion_(data_center)",
+   "nivel": "C",
+   "nota": "~2 GW hacia 2030; costo 'sobre USD 50 mil M' (jul-2026); JV 80:20 con Blue Owl por al menos USD 27 mil M."
+  },
+  {
+   "concepto": "Tamaño de 21 grandes centros de IA en construcción en EE.UU.",
+   "valor": 0.6,
+   "unidad": "GW (mínimo)",
+   "anio": "2026",
+   "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+   "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+   "nivel": "A",
+   "min": 0.6,
+   "max": 5,
+   "nota": "19 de 21 a menos de 65 km de una ciudad de 100,000+ habitantes; triplicaron superficie y capacidad en 18 meses."
+  },
+  {
+   "concepto": "Plazo de construcción observado (desmonte a operación) de un edificio de hiperescala",
+   "valor": 14,
+   "unidad": "meses",
+   "anio": "2026",
+   "fuente": "Epoch AI, cronología QTS Eagle Mountain",
+   "url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
+   "nivel": "B",
+   "nota": "Un solo caso documentado, no un promedio."
+  },
+  {
+   "concepto": "Capacidad en construcción en las Américas",
+   "valor": 37.7,
+   "unidad": "GW",
+   "anio": "S1-2026",
+   "fuente": "Cushman & Wakefield, Global Data Center Market Comparison 2026",
+   "url": "https://www.cushmanwakefield.com/en/insights/global-data-center-market-comparison",
+   "nivel": "B",
+   "nota": "Mercados secundarios destacados incluyen Santiago (8.º) y Querétaro (9.º)."
+  },
+  {
+   "concepto": "Sobredimensionamiento de generación in situ para un centro de 1 GW",
+   "valor": 1.5,
+   "unidad": "GW",
+   "anio": "2026",
+   "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+   "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+   "nivel": "A",
+   "min": 1.3,
+   "max": 1.7
+  }
+ ],
+ "chips": {
+  "aceleradores": [
+   {
+    "nombre": "Nvidia H100 SXM5 80GB",
+    "fabricante": "Nvidia",
+    "lanzamiento": "2022",
+    "nota": "Sin precio oficial; DGX de 8 H100 vendido a USD 269 mil (may-2023).",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 33600,
+     "unidad": "USD por chip",
+     "anio": "2022",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    },
+    "potencia_kw": 0.7
+   },
+   {
+    "nombre": "Nvidia H200 SXM",
+    "fabricante": "Nvidia",
+    "lanzamiento": "2024",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 30000,
+     "unidad": "USD por chip",
+     "anio": "2024",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    },
+    "potencia_kw": 0.7
+   },
+   {
+    "nombre": "Nvidia H20 (versión para China)",
+    "fabricante": "Nvidia",
+    "lanzamiento": "2023",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 12000,
+     "unidad": "USD por chip",
+     "anio": "2023",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    },
+    "potencia_kw": 0.4
+   },
+   {
+    "nombre": "Nvidia B200",
+    "fabricante": "Nvidia",
+    "lanzamiento": "2024",
+    "nota": "Precio no publicado en la fuente.",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "potencia_kw": 1.0
+   },
+   {
+    "nombre": "Nvidia GB200 (Blackwell)",
+    "fabricante": "Nvidia",
+    "lanzamiento": "2025",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 37000,
+     "unidad": "USD por chip",
+     "anio": "2025",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    },
+    "potencia_kw": 1.2
+   },
+   {
+    "nombre": "Nvidia GB300 (Blackwell Ultra)",
+    "fabricante": "Nvidia",
+    "lanzamiento": "2025",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 43000,
+     "unidad": "USD por chip",
+     "anio": "2025",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    },
+    "potencia_kw": 1.4
+   },
+   {
+    "nombre": "Nvidia GB200 NVL72 (rack de 72 GPU)",
+    "fabricante": "Nvidia",
+    "lanzamiento": "2025",
+    "nota": "Bernstein: 3.4 M cómputo + 2.5 M infraestructura física.",
+    "fuente": "Bernstein, citado por Investing.com",
+    "url": "https://www.investing.com/news/stock-market-news/how-much-does-a-gw-of-data-center-capacity-actually-cost-4314046",
+    "precio": {
+     "valor": 5900000,
+     "unidad": "USD por rack",
+     "anio": "2025",
+     "fuente": "Bernstein, citado por Investing.com",
+     "url": "https://www.investing.com/news/stock-market-news/how-much-does-a-gw-of-data-center-capacity-actually-cost-4314046",
+     "nivel": "B"
+    }
+   },
+   {
+    "nombre": "Nvidia Rubin (GPU)",
+    "fabricante": "Nvidia",
+    "lanzamiento": "2026",
+    "nota": "Estimación bottom-up de Bernstein (72 GPU ≈ USD 3.96 M por rack).",
+    "fuente": "Bernstein, citado por Tiger Brokers",
+    "url": "https://www.itiger.com/news/1113387068",
+    "precio": {
+     "valor": 55000,
+     "unidad": "USD por chip",
+     "anio": "2026",
+     "fuente": "Bernstein, citado por Tiger Brokers",
+     "url": "https://www.itiger.com/news/1113387068",
+     "nivel": "B"
+    }
+   },
+   {
+    "nombre": "Nvidia Vera Rubin NVL72 (rack de 72 GPU)",
+    "fabricante": "Nvidia",
+    "lanzamiento": "2026",
+    "nota": "Potencia nominal del rack: 220 kW. Memoria y almacenamiento ~USD 3.2 M (HBM4 ~1.09 M); red ~1.27 M.",
+    "fuente": "Bernstein, citado por Tiger Brokers",
+    "url": "https://www.itiger.com/news/1113387068",
+    "precio": {
+     "valor": 9100000,
+     "unidad": "USD por rack",
+     "anio": "2026",
+     "fuente": "Bernstein, citado por Tiger Brokers",
+     "url": "https://www.itiger.com/news/1113387068",
+     "nivel": "B"
+    },
+    "potencia_kw": 220
+   },
+   {
+    "nombre": "AMD Instinct MI300X",
+    "fabricante": "AMD",
+    "lanzamiento": "2023",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 15000,
+     "unidad": "USD por chip",
+     "anio": "2023",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    },
+    "potencia_kw": 0.75
+   },
+   {
+    "nombre": "AMD Instinct MI350X",
+    "fabricante": "AMD",
+    "lanzamiento": "2025",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 25000,
+     "unidad": "USD por chip",
+     "anio": "2025",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    },
+    "potencia_kw": 1.0
+   },
+   {
+    "nombre": "AMD Instinct MI355X",
+    "fabricante": "AMD",
+    "lanzamiento": "2025",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 30000,
+     "unidad": "USD por chip",
+     "anio": "2025",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    },
+    "potencia_kw": 1.4
+   },
+   {
+    "nombre": "Google TPU v7 Ironwood",
+    "fabricante": "Google",
+    "lanzamiento": "2025",
+    "nota": "Costo estimado por Epoch (chip no se vende suelto).",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 12000,
+     "unidad": "USD por chip",
+     "anio": "2025",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    },
+    "potencia_kw": 0.96
+   },
+   {
+    "nombre": "Google TPU v8i",
+    "fabricante": "Google",
+    "lanzamiento": "2026",
+    "nota": "Costo estimado por Epoch.",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 17500,
+     "unidad": "USD por chip",
+     "anio": "2026",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    }
+   },
+   {
+    "nombre": "AWS Trainium2",
+    "fabricante": "Amazon",
+    "lanzamiento": "2024",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "potencia_kw": 0.5
+   },
+   {
+    "nombre": "AWS Trainium3",
+    "fabricante": "Amazon",
+    "lanzamiento": "2025",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "potencia_kw": 0.7
+   },
+   {
+    "nombre": "Microsoft Maia 200",
+    "fabricante": "Microsoft",
+    "lanzamiento": "2026",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "potencia_kw": 0.75
+   },
+   {
+    "nombre": "Meta MTIA 300",
+    "fabricante": "Meta",
+    "lanzamiento": "2026",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "potencia_kw": 0.8
+   },
+   {
+    "nombre": "Huawei Ascend 910B",
+    "fabricante": "Huawei",
+    "lanzamiento": "2022",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "precio": {
+     "valor": 16854,
+     "unidad": "USD por chip",
+     "anio": "2022",
+     "fuente": "Epoch AI, ML Hardware",
+     "url": "https://epoch.ai/data/ml_hardware.csv",
+     "nivel": "B"
+    },
+    "potencia_kw": 0.4
+   },
+   {
+    "nombre": "Huawei Ascend 910C",
+    "fabricante": "Huawei",
+    "lanzamiento": "2024",
+    "nota": "",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "potencia_kw": 0.7
+   },
+   {
+    "nombre": "Cerebras (nodo CS, WSE-3)",
+    "fabricante": "Cerebras",
+    "lanzamiento": "2024",
+    "nota": "'Hasta USD 3 M por nodo' y 25 kW; cifra genérica de sistemas Cerebras, no específica del CS-3.",
+    "fuente": "Wikipedia, Cerebras",
+    "url": "https://en.wikipedia.org/wiki/Cerebras",
+    "precio": {
+     "valor": 3000000,
+     "unidad": "USD por nodo",
+     "anio": "2024",
+     "fuente": "Wikipedia, Cerebras",
+     "url": "https://en.wikipedia.org/wiki/Cerebras",
+     "nivel": "C"
+    },
+    "potencia_kw": 25
+   }
+  ],
+  "nvidia_dc_trimestral": [
+   {
+    "periodo": "FY2024-Q1",
+    "cierre": "2023-04",
+    "valor": 4.28
+   },
+   {
+    "periodo": "FY2024-Q2",
+    "cierre": "2023-07",
+    "valor": 10.32
+   },
+   {
+    "periodo": "FY2024-Q3",
+    "cierre": "2023-10",
+    "valor": 14.51
+   },
+   {
+    "periodo": "FY2024-Q4",
+    "cierre": "2024-01",
+    "valor": 18.4
+   },
+   {
+    "periodo": "FY2025-Q1",
+    "cierre": "2024-04",
+    "valor": 22.6
+   },
+   {
+    "periodo": "FY2025-Q2",
+    "cierre": "2024-07",
+    "valor": 26.3
+   },
+   {
+    "periodo": "FY2025-Q3",
+    "cierre": "2024-10",
+    "valor": 30.8
+   },
+   {
+    "periodo": "FY2025-Q4",
+    "cierre": "2025-01",
+    "valor": 35.6
+   },
+   {
+    "periodo": "FY2026-Q1",
+    "cierre": "2025-04",
+    "valor": 39.1
+   },
+   {
+    "periodo": "FY2026-Q2",
+    "cierre": "2025-07",
+    "valor": 41.1
+   },
+   {
+    "periodo": "FY2026-Q3",
+    "cierre": "2025-10",
+    "valor": 51.2
+   },
+   {
+    "periodo": "FY2026-Q4",
+    "cierre": "2026-01",
+    "valor": 62.3
+   },
+   {
+    "periodo": "FY2027-Q1",
+    "cierre": "2026-04",
+    "valor": 75.2
+   },
+   {
+    "periodo": "FY2027-Q2",
+    "cierre": "2026-07",
+    "valor": 89.0
+   }
+  ],
+  "nvidia_unidad": "USD miles de millones (ingresos del segmento Data Center)",
+  "nvidia_fuente": "Nvidia, notas de resultados trimestrales FY2024-Q1 a FY2027-Q2 (14 comunicados)",
+  "nvidia_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027",
+  "obleas": [
+   {
+    "nodo": "N5",
+    "precio": {
+     "valor": 16500,
+     "unidad": "USD por oblea",
+     "anio": "2020",
+     "fuente": "Silicon Analysts (recopila Tom's Hardware/Morgan Stanley/DigiTimes)",
+     "url": "https://siliconanalysts.com/market-data/wafer-price-tsmc",
+     "nivel": "C",
+     "min": 16000,
+     "max": 17000
+    }
+   },
+   {
+    "nodo": "N4",
+    "precio": {
+     "valor": 19000,
+     "unidad": "USD por oblea",
+     "anio": "2023",
+     "fuente": "Silicon Analysts (recopila Tom's Hardware/Morgan Stanley/DigiTimes)",
+     "url": "https://siliconanalysts.com/market-data/wafer-price-tsmc",
+     "nivel": "C",
+     "min": 18000,
+     "max": 20000
+    }
+   },
+   {
+    "nodo": "N3",
+    "precio": {
+     "valor": 20000,
+     "unidad": "USD por oblea",
+     "anio": "2024",
+     "fuente": "Silicon Analysts (recopila Tom's Hardware/Morgan Stanley/DigiTimes)",
+     "url": "https://siliconanalysts.com/market-data/wafer-price-tsmc",
+     "nivel": "C",
+     "min": 19500,
+     "max": 21000
+    }
+   },
+   {
+    "nodo": "N2",
+    "precio": {
+     "valor": 29000,
+     "unidad": "USD por oblea",
+     "anio": "s/f (esperado)",
+     "fuente": "Silicon Analysts (recopila Tom's Hardware/Morgan Stanley/DigiTimes)",
+     "url": "https://siliconanalysts.com/market-data/wafer-price-tsmc",
+     "nivel": "C",
+     "min": 28000,
+     "max": 30000,
+     "nota": "TSMC no publica precios; estimaciones de analistas a precio de lista (descuentos por volumen de 15-30%)."
+    }
+   }
+  ],
+  "fabricas": [
+   {
+    "nombre": "TSMC Arizona",
+    "empresa": "TSMC",
+    "pais_iso3": "USA",
+    "lugar": "Phoenix, Arizona",
+    "lat": 33.78,
+    "lon": -112.17,
+    "inversion": {
+     "valor": 165,
+     "unidad": "USD miles de millones",
+     "anio": "2025-03",
+     "fuente": "Wikipedia, TSMC Arizona",
+     "url": "https://en.wikipedia.org/wiki/TSMC_Arizona",
+     "nivel": "C",
+     "nota": "Subió de 65 a 165; de 3 a 6 fábricas + 2 plantas de empaquetado + centro de I+D."
+    },
+    "subsidio": {
+     "valor": 6.6,
+     "unidad": "USD miles de millones",
+     "anio": "2024-11",
+     "fuente": "Wikipedia, TSMC Arizona / CHIPS Act",
+     "url": "https://en.wikipedia.org/wiki/TSMC_Arizona",
+     "nivel": "C",
+     "nota": "Más hasta USD 5 mil M en préstamos."
+    },
+    "nodo": "N4 (Fab 1) / N3 (Fab 2) / N2-A16 (Fab 3)",
+    "estado": "Fab 1 en producción desde inicios de 2025; Fab 2 producción en volumen 2.º semestre de 2027; Fab 3 hacia 2029.",
+    "fuente": "Wikipedia, TSMC Arizona",
+    "url": "https://en.wikipedia.org/wiki/TSMC_Arizona"
+   },
+   {
+    "nombre": "Intel Ohio (New Albany) y Arizona",
+    "empresa": "Intel",
+    "pais_iso3": "USA",
+    "lugar": "New Albany, Ohio",
+    "inversion": {
+     "valor": 100,
+     "unidad": "USD miles de millones",
+     "anio": "2022-01",
+     "fuente": "Wikipedia, CHIPS and Science Act",
+     "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act",
+     "nivel": "C",
+     "nota": "'Hasta 100' prometidos para Ohio."
+    },
+    "subsidio": {
+     "valor": 7.86,
+     "unidad": "USD miles de millones",
+     "anio": "2024-11",
+     "fuente": "Wikipedia, CHIPS and Science Act",
+     "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act",
+     "nivel": "C",
+     "nota": "Premio final a Intel (todas sus sedes). En ago-2025 el gobierno de EE.UU. tomó 9.9% de Intel pagado con USD 11.1 mil M de fondos CHIPS."
+    },
+    "nodo": "no verificado",
+    "estado": "Estado y fecha de apertura no verificados en página abierta.",
+    "fuente": "Wikipedia, CHIPS and Science Act",
+    "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act"
+   },
+   {
+    "nombre": "Samsung Taylor",
+    "empresa": "Samsung Electronics",
+    "pais_iso3": "USA",
+    "lugar": "Taylor, Texas",
+    "inversion": {
+     "valor": 17,
+     "unidad": "USD miles de millones",
+     "anio": "2021-11",
+     "fuente": "Wikipedia, CHIPS and Science Act",
+     "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act",
+     "nivel": "C",
+     "nota": "Cifra del anuncio original; ampliaciones posteriores no verificadas."
+    },
+    "subsidio": {
+     "valor": 6.4,
+     "unidad": "USD miles de millones",
+     "anio": "2024-04",
+     "fuente": "Wikipedia, CHIPS and Science Act",
+     "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act",
+     "nivel": "C",
+     "nota": "Términos preliminares; el monto final no se verificó."
+    },
+    "nodo": "no verificado",
+    "estado": "no verificado",
+    "fuente": "Wikipedia, CHIPS and Science Act",
+    "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act"
+   },
+   {
+    "nombre": "Micron Clay (Nueva York) y Boise",
+    "empresa": "Micron",
+    "pais_iso3": "USA",
+    "lugar": "Clay, Nueva York",
+    "inversion": {
+     "valor": 20,
+     "unidad": "USD miles de millones",
+     "anio": "2022-10",
+     "fuente": "Wikipedia, CHIPS and Science Act",
+     "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act",
+     "nivel": "C",
+     "nota": "Planta de Clay; hasta 100 prometidos a largo plazo."
+    },
+    "subsidio": {
+     "valor": 6.1,
+     "unidad": "USD miles de millones",
+     "anio": "2024-04",
+     "fuente": "Wikipedia, CHIPS and Science Act",
+     "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act",
+     "nivel": "C",
+     "nota": "'Hasta 6.1' preliminar."
+    },
+    "nodo": "memoria DRAM",
+    "estado": "no verificado",
+    "fuente": "Wikipedia, CHIPS and Science Act",
+    "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act"
+   },
+   {
+    "nombre": "Rapidus IIM",
+    "empresa": "Rapidus",
+    "pais_iso3": "JPN",
+    "lugar": "Chitose, Hokkaido",
+    "inversion": {
+     "valor": 37,
+     "unidad": "USD miles de millones",
+     "anio": "s/f",
+     "fuente": "Wikipedia, Rapidus",
+     "url": "https://en.wikipedia.org/wiki/Rapidus",
+     "nivel": "C",
+     "nota": "Financiamiento total necesario antes de producir."
+    },
+    "subsidio": {
+     "valor": 1000,
+     "unidad": "JPY miles de millones",
+     "anio": "2024-04",
+     "fuente": "Wikipedia, Rapidus",
+     "url": "https://en.wikipedia.org/wiki/Rapidus",
+     "nivel": "C",
+     "nota": "'Casi 1 billón de yenes' decididos a abr-2024 (70+260+590); además 802.5 mil M asignados FY2025 y 631.5 mil M en abr-2026."
+    },
+    "nodo": "2 nm",
+    "estado": "Línea piloto desde 1-abr-2025; producción en masa prevista a fines de 2027.",
+    "fuente": "Wikipedia, Rapidus",
+    "url": "https://en.wikipedia.org/wiki/Rapidus"
+   },
+   {
+    "nombre": "JASM (TSMC Fab 23)",
+    "empresa": "TSMC / Sony / Denso / Toyota",
+    "pais_iso3": "JPN",
+    "lugar": "Kikuyo, Kumamoto",
+    "inversion": {
+     "valor": 23,
+     "unidad": "USD miles de millones",
+     "anio": "s/f",
+     "fuente": "Wikipedia, JASM",
+     "url": "https://en.wikipedia.org/wiki/Japan_Advanced_Semiconductor_Manufacturing",
+     "nivel": "C",
+     "nota": "La misma página dice 'más de 20' en otra sección."
+    },
+    "subsidio": {
+     "valor": 476,
+     "unidad": "JPY miles de millones",
+     "anio": "s/f",
+     "fuente": "Wikipedia, JASM",
+     "url": "https://en.wikipedia.org/wiki/Japan_Advanced_Semiconductor_Manufacturing",
+     "nivel": "C"
+    },
+    "nodo": "12/16 y 22/28 nm (fase 1); 6 nm y 3 nm (fase 2)",
+    "estado": "Fase 1 en producción desde dic-2024; fase 2 prevista 2027, 3 nm en 2028.",
+    "fuente": "Wikipedia, JASM",
+    "url": "https://en.wikipedia.org/wiki/Japan_Advanced_Semiconductor_Manufacturing"
+   },
+   {
+    "nombre": "ESMC Dresden",
+    "empresa": "TSMC / Bosch / Infineon / NXP",
+    "pais_iso3": "DEU",
+    "lugar": "Dresde",
+    "inversion": {
+     "valor": 11,
+     "unidad": "USD miles de millones",
+     "anio": "2024",
+     "fuente": "Wikipedia, European Chips Act",
+     "url": "https://en.wikipedia.org/wiki/European_Chips_Act",
+     "nivel": "C"
+    },
+    "nodo": "no verificado",
+    "estado": "Ayuda estatal alemana aprobada por la Comisión en ago-2024 (monto no verificado).",
+    "fuente": "Wikipedia, European Chips Act",
+    "url": "https://en.wikipedia.org/wiki/European_Chips_Act"
+   },
+   {
+    "nombre": "Intel Magdeburgo (cancelada)",
+    "empresa": "Intel",
+    "pais_iso3": "DEU",
+    "lugar": "Magdeburgo",
+    "inversion": {
+     "valor": 30,
+     "unidad": "EUR miles de millones",
+     "anio": "2025-07",
+     "fuente": "Wikipedia, European Chips Act",
+     "url": "https://en.wikipedia.org/wiki/European_Chips_Act",
+     "nivel": "C"
+    },
+    "nodo": "-",
+    "estado": "Cancelada en julio de 2025 por falta de compromisos de clientes.",
+    "fuente": "Wikipedia, European Chips Act",
+    "url": "https://en.wikipedia.org/wiki/European_Chips_Act"
+   }
+  ],
+  "datos": [
+   {
+    "concepto": "Ingresos de centro de datos de Nvidia, año fiscal 2026",
+    "valor": 193.7,
+    "unidad": "USD miles de millones",
+    "anio": "FY2026 (cierre ene-2026)",
+    "fuente": "Nvidia, nota de resultados",
+    "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026",
+    "nivel": "A",
+    "nota": "FY2025: 115.2; FY2024: 47.5."
+   },
+   {
+    "concepto": "Margen bruto de Nvidia",
+    "valor": 75.0,
+    "unidad": "%",
+    "anio": "FY2027-Q2 (jul-2026)",
+    "fuente": "Nvidia, nota de resultados",
+    "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027",
+    "nivel": "A",
+    "nota": "Guía FY2027-Q3: ingresos USD 108 mil M ±2%, sin ingresos de cómputo de centro de datos desde China."
+   },
+   {
+    "concepto": "Cuota de Nvidia en GPU para entrenar y desplegar modelos de IA",
+    "valor": 80,
+    "unidad": "%",
+    "anio": "2025",
+    "fuente": "Wikipedia, Nvidia",
+    "url": "https://en.wikipedia.org/wiki/Nvidia",
+    "nivel": "C",
+    "nota": "'Más de 80%'."
+   },
+   {
+    "concepto": "Máquina EUV de baja apertura de ASML (NXE:3600D)",
+    "valor": 200,
+    "unidad": "USD millones",
+    "anio": "2022",
+    "fuente": "Wikipedia, ASML Holding (cita a CNBC)",
+    "url": "https://en.wikipedia.org/wiki/ASML_Holding",
+    "nivel": "C",
+    "nota": "'Hasta 200'. Otra página de Wikipedia (EUV lithography) da ~180."
+   },
+   {
+    "concepto": "Máquina EUV High-NA de ASML",
+    "valor": 370,
+    "unidad": "USD millones",
+    "anio": "2022-2025",
+    "fuente": "Wikipedia, ASML Holding",
+    "url": "https://en.wikipedia.org/wiki/ASML_Holding",
+    "nivel": "C",
+    "nota": "Aproximado; primer envío a Intel en dic-2023."
+   },
+   {
+    "concepto": "Cuota de ASML en ventas mundiales de litografía",
+    "valor": 83,
+    "unidad": "%",
+    "anio": "2025",
+    "fuente": "Wikipedia, ASML Holding",
+    "url": "https://en.wikipedia.org/wiki/ASML_Holding",
+    "nivel": "C",
+    "nota": "Único fabricante de EUV."
+   },
+   {
+    "concepto": "Consumo eléctrico de un escáner EUV NXE:3400C",
+    "valor": 1.31,
+    "unidad": "MW",
+    "anio": "2020",
+    "fuente": "Wikipedia, Extreme ultraviolet lithography",
+    "url": "https://en.wikipedia.org/wiki/Extreme_ultraviolet_lithography",
+    "nivel": "C",
+    "nota": "Frente a 0.13 MW de un equipo DUV de inmersión."
+   },
+   {
+    "concepto": "Capacidad CoWoS de TSMC",
+    "valor": 75000,
+    "unidad": "obleas por mes",
+    "anio": "2025 (objetivo)",
+    "fuente": "TrendForce News, citando a Economic Daily News",
+    "url": "https://www.trendforce.com/news/2025/01/02/news-tsmc-set-to-expand-cowos-capacity-to-record-75000-wafers-in-2025-doubling-2024-output/",
+    "nivel": "C",
+    "nota": "'Casi el doble' de 2024. Sin cifra 2026 verificada; AIE (2026) lista el empaquetado avanzado y la memoria entre los cuellos de botella."
+   },
+   {
+    "concepto": "Techo de servidores de IA que soporta la producción actual de HBM",
+    "valor": 25,
+    "unidad": "GW por año",
+    "anio": "hasta 2027",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://iea.blob.core.windows.net/assets/3179f7f8-01f6-4dd6-bffa-c9f7b73f1dc9/KeyQuestionsonEnergyandAI.pdf",
+    "nivel": "A",
+    "nota": "La escasez de memoria para IA podría durar al menos hasta fines de 2027."
+   },
+   {
+    "concepto": "CHIPS and Science Act: fondos apropiados",
+    "valor": 52.7,
+    "unidad": "USD miles de millones",
+    "anio": "2022",
+    "fuente": "Wikipedia, CHIPS and Science Act",
+    "url": "https://en.wikipedia.org/wiki/CHIPS_and_Science_Act",
+    "nivel": "C",
+    "nota": "39 para subsidios de manufactura. En oct-2025 se añadió +10 puntos al crédito fiscal de manufactura avanzada."
+   },
+   {
+    "concepto": "Ley Europea de Chips: inversión pública mínima",
+    "valor": 43,
+    "unidad": "EUR miles de millones",
+    "anio": "2023",
+    "fuente": "Wikipedia, European Chips Act",
+    "url": "https://en.wikipedia.org/wiki/European_Chips_Act",
+    "nivel": "C",
+    "nota": "~4.5 controlados por la Comisión; meta de 20% de cuota mundial a 2030 (pronóstico de la Comisión: 11.7%). Propuesta de Chips Act 2.0 adoptada el 3-jun-2026."
+   },
+   {
+    "concepto": "TSMC: ingresos y margen bruto trimestral",
+    "valor": 40.2,
+    "unidad": "USD miles de millones",
+    "anio": "2T-2026",
+    "fuente": "TSMC Investor Relations",
+    "url": "https://investor.tsmc.com/english/quarterly-results/2026/q2",
+    "nivel": "A",
+    "nota": "Margen bruto 67.7%, margen operativo 60.3%. Guía 3T-2026: 44.6-45.8."
+   }
+  ],
+  "controles": [
+   {
+    "fecha": "2022-10-07",
+    "resumen": "BIS emite los controles base sobre chips avanzados, supercomputación y equipos de fabricación hacia China (umbral lógico 16/14 nm o menor).",
+    "fuente": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/United_States_New_Export_Controls_on_Advanced_Computing_and_Semiconductors_to_China"
+   },
+   {
+    "fecha": "2025-03-25",
+    "resumen": "BIS añade 80 entidades a la Entity List para restringir capacidades chinas de IA y cómputo avanzado.",
+    "fuente": "BIS, Departamento de Comercio de EE.UU.",
+    "url": "https://www.bis.gov/press-release/commerce-further-restricts-chinas-artificial-intelligence-advanced-computing-capabilities"
+   },
+   {
+    "fecha": "2025-05-13",
+    "resumen": "Se rescinde la regla de Difusión de IA (emitida el 15-ene-2025; iba a regir el 15-may-2025) y se emiten guías sobre riesgos de chips Huawei Ascend, desvío y uso de chips de EE.UU. para modelos chinos.",
+    "fuente": "BIS, Departamento de Comercio de EE.UU.",
+    "url": "https://www.bis.gov/press-release/department-commerce-announces-rescission-biden-era-artificial-intelligence-diffusion-rule-strengthens"
+   },
+   {
+    "fecha": "2025-08",
+    "resumen": "Nvidia y AMD acuerdan pagar 15% de los ingresos de ciertas ventas de chips a China a cambio de licencias (para Nvidia, solo H20).",
+    "fuente": "Wikipedia, Nvidia",
+    "url": "https://en.wikipedia.org/wiki/Nvidia"
+   },
+   {
+    "fecha": "2025-08-29",
+    "resumen": "BIS termina el programa de Usuario Final Validado para fábricas de propiedad extranjera en China.",
+    "fuente": "BIS, Departamento de Comercio de EE.UU.",
+    "url": "https://www.bis.gov/press-release/department-commerce-closes-export-controls-loophole-foreign-owned-semiconductor-fabs-china"
+   },
+   {
+    "fecha": "2025-09-17",
+    "resumen": "La Administración del Ciberespacio de China ordena a empresas como ByteDance y Alibaba no comprar el chip RTX Pro 6000D de Nvidia.",
+    "fuente": "Wikipedia, Nvidia",
+    "url": "https://en.wikipedia.org/wiki/Nvidia"
+   },
+   {
+    "fecha": "2025-09-29",
+    "resumen": "Regla de afiliadas: las entidades con 50% o más de propiedad de listadas quedan cubiertas automáticamente por la Entity List.",
+    "fuente": "BIS, Departamento de Comercio de EE.UU.",
+    "url": "https://www.bis.gov/press-release/department-commerce-expands-entity-list-cover-affiliates-listed-entities"
+   },
+   {
+    "fecha": "2026-01-13",
+    "resumen": "Comercio pasa a revisión caso por caso las licencias de Nvidia H200, AMD MI325X y similares a China (anuncio presidencial del 8-dic-2025), con condiciones: no reducir oferta para clientes de EE.UU., cumplimiento del comprador y pruebas independientes en EE.UU.",
+    "fuente": "BIS, Departamento de Comercio de EE.UU.",
+    "url": "https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china"
+   },
+   {
+    "fecha": "2026-07-10",
+    "resumen": "EAU pasa al Grupo de País A:5; su gobierno y empresas aprobadas pueden recibir chips y servidores de IA sin licencia.",
+    "fuente": "BIS, Departamento de Comercio de EE.UU.",
+    "url": "https://www.bis.gov/press-release/department-commerce-eases-export-controls-uae"
+   },
+   {
+    "fecha": "2026-08",
+    "resumen": "Nvidia reporta que los envíos de H200 a China bajo licencia fueron menos de 1% de sus ingresos de centro de datos; su guía excluye ingresos de cómputo desde China.",
+    "fuente": "Nvidia, nota de resultados FY2027-Q2",
+    "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027"
+   },
+   {
+    "fecha": "2023-2025",
+    "resumen": "Países Bajos: restricciones a exportar equipos de litografía de ASML (mar-2023, licencias sep-2023, ampliaciones ene-2024, sep-2024 y ene-2025).",
+    "fuente": "Wikipedia, ASML Holding",
+    "url": "https://en.wikipedia.org/wiki/ASML_Holding"
+   }
+  ]
+ },
+ "memorias": [
+  {
+   "concepto": "Precio de contrato de DRAM convencional, 4T-2026",
+   "valor": 12.5,
+   "unidad": "% intertrimestral",
+   "anio": "4T-2026 (proyección)",
+   "fuente": "TrendForce",
+   "url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+   "nivel": "B",
+   "min": 10,
+   "max": 15,
+   "nota": "Sostenido por la demanda de servidores de IA; presión en el lado de consumo."
+  },
+  {
+   "concepto": "Precio de contrato de NAND Flash (total), 4T-2026",
+   "valor": 17.5,
+   "unidad": "% intertrimestral",
+   "anio": "4T-2026 (proyección)",
+   "fuente": "TrendForce",
+   "url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+   "nivel": "B",
+   "min": 15,
+   "max": 20,
+   "nota": "SSD empresarial es la única categoría que acelera."
+  },
+  {
+   "concepto": "Precio promedio (ASP combinado) de HBM en 2027",
+   "valor": 121,
+   "unidad": "% interanual",
+   "anio": "2027 (proyección)",
+   "fuente": "TrendForce",
+   "url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+   "nivel": "B",
+   "nota": "Productos 8-Hi con prima de ~10-20% por Gb sobre 12-Hi en 2027."
+  },
+  {
+   "concepto": "Precio de HBM4",
+   "valor": 16.6,
+   "unidad": "USD por GB",
+   "anio": "2026-06",
+   "fuente": "Bernstein, citado por Tiger Brokers",
+   "url": "https://www.itiger.com/news/1113387068",
+   "nivel": "B",
+   "nota": "Se espera ~USD 53/GB en 2027. HBM4 ≈ USD 1.09 M por rack Vera Rubin NVL72."
+  },
+  {
+   "concepto": "Alza acumulada de DRAM/NAND desde inicios de 2025",
+   "valor": 200,
+   "unidad": "% (algunos productos superan)",
+   "anio": "inicios de 2026",
+   "fuente": "Wikipedia, High Bandwidth Memory",
+   "url": "https://en.wikipedia.org/wiki/High_Bandwidth_Memory",
+   "nivel": "C",
+   "nota": "HBM desplaza DRAM convencional: relación 3 a 1 de capacidad de obleas HBM vs DDR5 (Micron)."
+  },
+  {
+   "concepto": "Peso de memoria y almacenamiento en un rack Vera Rubin NVL72",
+   "valor": 3.2,
+   "unidad": "USD millones por rack",
+   "anio": "2026-06",
+   "fuente": "Bernstein, citado por Tiger Brokers",
+   "url": "https://www.itiger.com/news/1113387068",
+   "nivel": "B",
+   "nota": "Frente a ~2 M a precios históricos; rack total ~9.1 M."
+  }
+ ],
+ "entrenamiento": {
+  "costos_modelos": [
+   {
+    "modelo": "GPT-3 175B",
+    "organizacion": "OpenAI",
+    "anio": 2020,
+    "costo": {
+     "valor": 2.12,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2020",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 3.14e+23,
+    "hardware": "10,000 Nvidia V100; 5.1 MW"
+   },
+   {
+    "modelo": "PaLM 540B",
+    "organizacion": "Google",
+    "anio": 2022,
+    "costo": {
+     "valor": 3.06,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2022",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 2.53e+24,
+    "hardware": "6,144 TPU v4; 4.2 MW"
+   },
+   {
+    "modelo": "GPT-4",
+    "organizacion": "OpenAI",
+    "anio": 2023,
+    "costo": {
+     "valor": 37.3,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2023",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 2.1e+25,
+    "hardware": "25,000 Nvidia A100; 19.9 MW"
+   },
+   {
+    "modelo": "Gemini 1.0 Ultra",
+    "organizacion": "Google DeepMind",
+    "anio": 2023,
+    "costo": {
+     "valor": 30.7,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2023",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 5e+25,
+    "hardware": "57,000 TPU v4; 38.4 MW"
+   },
+   {
+    "modelo": "Claude 2",
+    "organizacion": "Anthropic",
+    "anio": 2023,
+    "costo": {
+     "valor": 4.9,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2023",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 3.87e+24
+   },
+   {
+    "modelo": "Llama 3.1-405B",
+    "organizacion": "Meta",
+    "anio": 2024,
+    "costo": {
+     "valor": 52.9,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2024",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 3.8e+25,
+    "hardware": "16,384 Nvidia H100; 22.6 MW"
+   },
+   {
+    "modelo": "Claude 3.5 Sonnet",
+    "organizacion": "Anthropic",
+    "anio": 2024,
+    "costo": {
+     "valor": 25.9,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2024",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 2.7e+25
+   },
+   {
+    "modelo": "Grok-2",
+    "organizacion": "xAI",
+    "anio": 2024,
+    "costo": {
+     "valor": 31.6,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2024",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 2.96e+25
+   },
+   {
+    "modelo": "DeepSeek-V3",
+    "organizacion": "DeepSeek",
+    "anio": 2024,
+    "costo": {
+     "valor": 5.39,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2024",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 3.3e+24,
+    "hardware": "2,048 Nvidia H800; 2.8 MW"
+   },
+   {
+    "modelo": "Grok 3",
+    "organizacion": "xAI",
+    "anio": 2025,
+    "costo": {
+     "valor": 217.8,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2025",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 3.5e+26,
+    "hardware": "80,000 Nvidia H100; 110 MW"
+   },
+   {
+    "modelo": "GPT-4.5",
+    "organizacion": "OpenAI",
+    "anio": 2025,
+    "costo": {
+     "valor": 366.0,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2025",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 3.8e+26
+   },
+   {
+    "modelo": "Grok 4",
+    "organizacion": "xAI",
+    "anio": 2025,
+    "costo": {
+     "valor": 387.8,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2025",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 5e+26,
+    "hardware": "200,000 GPU"
+   },
+   {
+    "modelo": "A.X K1",
+    "organizacion": "SK Telecom",
+    "anio": 2025,
+    "costo": {
+     "valor": 9.64,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2025",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "hardware": "1,536 Nvidia H200"
+   },
+   {
+    "modelo": "A.X K2",
+    "organizacion": "SK Telecom",
+    "anio": 2026,
+    "costo": {
+     "valor": 12.4,
+     "unidad": "USD millones (de 2023)",
+     "anio": "2026",
+     "fuente": "Epoch AI, Notable AI Models",
+     "url": "https://epoch.ai/data/notable_ai_models.csv",
+     "nivel": "B"
+    },
+    "nota": "Solo costo de cómputo de la corrida final (hardware amortizado + energía); excluye salarios y experimentos.",
+    "computo_flop": 1.8e+24
+   }
+  ],
+  "clusteres": [
+   {
+    "nombre": "Colossus 2 (Memphis)",
+    "operador": "SpaceXAI / xAI",
+    "pais_iso3": "USA",
+    "gpus": 1111673,
+    "potencia_mw": 946,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "Anthropic-Amazon New Carlisle (Project Rainier)",
+    "operador": "Amazon",
+    "pais_iso3": "USA",
+    "gpus": 685912,
+    "potencia_mw": 910,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "Microsoft Fairwater Atlanta",
+    "operador": "Microsoft",
+    "pais_iso3": "USA",
+    "gpus": 768769,
+    "potencia_mw": 636,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "DayOne Nusajaya (Johor)",
+    "operador": "DayOne",
+    "pais_iso3": "MYS",
+    "gpus": 583837,
+    "potencia_mw": 473,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "Meta Prometheus (Ohio)",
+    "operador": "Meta",
+    "pais_iso3": "USA",
+    "gpus": 536343,
+    "potencia_mw": 471,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "OpenAI Stargate Abilene",
+    "operador": "Oracle / OpenAI",
+    "pais_iso3": "USA",
+    "gpus": 509348,
+    "potencia_mw": 421,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "DayOne Kempas (Johor)",
+    "operador": "DayOne",
+    "pais_iso3": "MYS",
+    "gpus": 480639,
+    "potencia_mw": 422,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "Microsoft Fairwater Wisconsin",
+    "operador": "Microsoft",
+    "pais_iso3": "USA",
+    "gpus": 445680,
+    "potencia_mw": 369,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "Google Pryor North (Oklahoma)",
+    "operador": "Google",
+    "pais_iso3": "USA",
+    "gpus": 636685,
+    "potencia_mw": 368,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "Colossus 1 (Memphis)",
+    "operador": "SpaceXAI / xAI",
+    "pais_iso3": "USA",
+    "gpus": 275796,
+    "potencia_mw": 340,
+    "nota": "Conteo físico citado por Epoch: 230,000 GPU (150k H100, 50k H200, 30k GB200); 352 MW en la base de clústeres.",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "VNET Bayin Ulanqab",
+    "operador": "VNET",
+    "pais_iso3": "CHN",
+    "gpus": 122789,
+    "potencia_mw": 221,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "Huawei Horinger",
+    "operador": "Huawei",
+    "pais_iso3": "CHN",
+    "gpus": 89439,
+    "potencia_mw": 184,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "Google Waltham Cross",
+    "operador": "Google",
+    "pais_iso3": "GBR",
+    "gpus": 123800,
+    "potencia_mw": 88,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "Nebius Mäntsälä",
+    "operador": "Nebius",
+    "pais_iso3": "FIN",
+    "gpus": 48528,
+    "potencia_mw": 75,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   },
+   {
+    "nombre": "Oracle Batam",
+    "operador": "Oracle",
+    "pais_iso3": "IDN",
+    "gpus": 84386,
+    "potencia_mw": 72,
+    "nota": "gpus = equivalentes H100 estimados por Epoch (no conteo físico).",
+    "fuente": "Epoch AI, Frontier Data Centers",
+    "url": "https://epoch.ai/data/data_centers/data_centers.csv"
+   }
+  ],
+  "alquiler_gpu": [
+   {
+    "gpu": "H100",
+    "proveedor": "Lambda",
+    "precio_hora": {
+     "valor": 3.99,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "Lambda, página de precios",
+     "url": "https://lambda.ai/pricing",
+     "nivel": "A",
+     "max": 4.29,
+     "nota": "Bajo demanda; H100 PCIe 3.29."
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "B200",
+    "proveedor": "Lambda",
+    "precio_hora": {
+     "valor": 6.69,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "Lambda, página de precios",
+     "url": "https://lambda.ai/pricing",
+     "nivel": "A",
+     "max": 6.99,
+     "nota": "Clústeres 1-Click: 8.87-9.86."
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "H100",
+    "proveedor": "CoreWeave",
+    "precio_hora": {
+     "valor": 6.16,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "CoreWeave, página de precios",
+     "url": "https://www.coreweave.com/pricing",
+     "nivel": "A",
+     "nota": "Instancia de 8 GPU a USD 49.24/h."
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "H200",
+    "proveedor": "CoreWeave",
+    "precio_hora": {
+     "valor": 6.31,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "CoreWeave, página de precios",
+     "url": "https://www.coreweave.com/pricing",
+     "nivel": "A"
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "B200",
+    "proveedor": "CoreWeave",
+    "precio_hora": {
+     "valor": 8.6,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "CoreWeave, página de precios",
+     "url": "https://www.coreweave.com/pricing",
+     "nivel": "A"
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "GB200",
+    "proveedor": "CoreWeave",
+    "precio_hora": {
+     "valor": 10.5,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "CoreWeave, página de precios",
+     "url": "https://www.coreweave.com/pricing",
+     "nivel": "A",
+     "nota": "Instancia de 4 GPU a USD 42/h."
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "H100",
+    "proveedor": "RunPod",
+    "precio_hora": {
+     "valor": 3.99,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "RunPod, página de precios",
+     "url": "https://www.runpod.io/pricing",
+     "nivel": "A",
+     "min": 2.89,
+     "nota": "SXM 3.99, NVL 3.19, PCIe 2.89; los datos estructurados de la página muestran 2.69 (comunidad)."
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "H200",
+    "proveedor": "RunPod",
+    "precio_hora": {
+     "valor": 5.29,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "RunPod, página de precios",
+     "url": "https://www.runpod.io/pricing",
+     "nivel": "A"
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "B200",
+    "proveedor": "RunPod",
+    "precio_hora": {
+     "valor": 7.99,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "RunPod, página de precios",
+     "url": "https://www.runpod.io/pricing",
+     "nivel": "A"
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "B300",
+    "proveedor": "RunPod",
+    "precio_hora": {
+     "valor": 8.99,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "RunPod, página de precios",
+     "url": "https://www.runpod.io/pricing",
+     "nivel": "A"
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "H100",
+    "proveedor": "Together AI",
+    "precio_hora": {
+     "valor": 3.99,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "Together AI, página de precios",
+     "url": "https://www.together.ai/pricing",
+     "nivel": "A",
+     "min": 3.19,
+     "nota": "Reservado 3.19-3.69."
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "H200",
+    "proveedor": "Together AI",
+    "precio_hora": {
+     "valor": 5.99,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "Together AI, página de precios",
+     "url": "https://www.together.ai/pricing",
+     "nivel": "A"
+    },
+    "fecha": "2026-10"
+   },
+   {
+    "gpu": "B200",
+    "proveedor": "Together AI",
+    "precio_hora": {
+     "valor": 8.19,
+     "unidad": "USD/hora por GPU",
+     "anio": "2026-10",
+     "fuente": "Together AI, página de precios",
+     "url": "https://www.together.ai/pricing",
+     "nivel": "A",
+     "min": 6.79,
+     "nota": "Reservado 6.79-7.99."
+    },
+    "fecha": "2026-10"
+   }
+  ],
+  "precios_api": [
+   {
+    "modelo": "gpt-6-astra",
+    "proveedor": "OpenAI",
+    "entrada": 10,
+    "salida": 50,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://developers.openai.com/api/docs/pricing"
+   },
+   {
+    "modelo": "gpt-6.1-sol",
+    "proveedor": "OpenAI",
+    "entrada": 2,
+    "salida": 10,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://developers.openai.com/api/docs/pricing"
+   },
+   {
+    "modelo": "gpt-6-luna",
+    "proveedor": "OpenAI",
+    "entrada": 0.1,
+    "salida": 0.5,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://developers.openai.com/api/docs/pricing"
+   },
+   {
+    "modelo": "gpt-5.5",
+    "proveedor": "OpenAI",
+    "entrada": 5,
+    "salida": 30,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://developers.openai.com/api/docs/pricing"
+   },
+   {
+    "modelo": "gpt-5",
+    "proveedor": "OpenAI",
+    "entrada": 1.25,
+    "salida": 10,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://developers.openai.com/api/docs/pricing"
+   },
+   {
+    "modelo": "gpt-5-nano",
+    "proveedor": "OpenAI",
+    "entrada": 0.05,
+    "salida": 0.4,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://developers.openai.com/api/docs/pricing"
+   },
+   {
+    "modelo": "gpt-4o",
+    "proveedor": "OpenAI",
+    "entrada": 2.5,
+    "salida": 10,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://developers.openai.com/api/docs/pricing"
+   },
+   {
+    "modelo": "gpt-4-0613 (heredado)",
+    "proveedor": "OpenAI",
+    "entrada": 30,
+    "salida": 60,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://developers.openai.com/api/docs/pricing"
+   },
+   {
+    "modelo": "Claude Fable 5.1",
+    "proveedor": "Anthropic",
+    "entrada": 10,
+    "salida": 50,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+   },
+   {
+    "modelo": "Claude Opus 5.5",
+    "proveedor": "Anthropic",
+    "entrada": 4,
+    "salida": 20,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+   },
+   {
+    "modelo": "Claude Sonnet 5.5",
+    "proveedor": "Anthropic",
+    "entrada": 2,
+    "salida": 10,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+   },
+   {
+    "modelo": "Claude Haiku 5.5",
+    "proveedor": "Anthropic",
+    "entrada": 0.1,
+    "salida": 0.5,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "nota": "Prompts de hasta 100,000 tokens; sobre eso 0.50/2.50."
+   },
+   {
+    "modelo": "Claude Haiku 4.5",
+    "proveedor": "Anthropic",
+    "entrada": 1,
+    "salida": 5,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+   },
+   {
+    "modelo": "Gemini 3.1 Pro Preview",
+    "proveedor": "Google",
+    "entrada": 2,
+    "salida": 12,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "nota": "Hasta 200k tokens; sobre eso 4/18."
+   },
+   {
+    "modelo": "Gemini 3.8 Flash",
+    "proveedor": "Google",
+    "entrada": 0.75,
+    "salida": 3.75,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "nota": "Precio vigente hasta 31-dic-2026."
+   },
+   {
+    "modelo": "Gemini 2.5 Pro",
+    "proveedor": "Google",
+    "entrada": 1.25,
+    "salida": 10,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://ai.google.dev/gemini-api/docs/pricing"
+   },
+   {
+    "modelo": "Gemini 2.5 Flash-Lite",
+    "proveedor": "Google",
+    "entrada": 0.1,
+    "salida": 0.4,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://ai.google.dev/gemini-api/docs/pricing"
+   },
+   {
+    "modelo": "grok-4.7",
+    "proveedor": "xAI",
+    "entrada": 2,
+    "salida": 6,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://docs.x.ai/docs/models",
+    "nota": "Menos de 200k tokens; sobre eso 4/12."
+   },
+   {
+    "modelo": "grok-4.3",
+    "proveedor": "xAI",
+    "entrada": 1.25,
+    "salida": 2.5,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://docs.x.ai/docs/models"
+   },
+   {
+    "modelo": "deepseek-v4-pro",
+    "proveedor": "DeepSeek",
+    "entrada": 1.32,
+    "salida": 3.96,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://api-docs.deepseek.com/quick_start/pricing",
+    "nota": "Hora punta; fuera de punta 0.66/1.98."
+   },
+   {
+    "modelo": "deepseek-flash (V4.1)",
+    "proveedor": "DeepSeek",
+    "entrada": 0.3,
+    "salida": 1.2,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://api-docs.deepseek.com/quick_start/pricing",
+    "nota": "Hora punta; fuera de punta 0.15/0.60."
+   },
+   {
+    "modelo": "Mistral Large",
+    "proveedor": "Mistral",
+    "entrada": 0.5,
+    "salida": 1.5,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://mistral.ai/pricing"
+   },
+   {
+    "modelo": "Llama 3.3 70B (alojado)",
+    "proveedor": "Together AI",
+    "entrada": 1.04,
+    "salida": 1.04,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://www.together.ai/pricing"
+   },
+   {
+    "modelo": "Qwen3.8 Flash (alojado)",
+    "proveedor": "Together AI",
+    "entrada": 0.15,
+    "salida": 0.47,
+    "unidad": "USD por millón de tokens",
+    "fecha": "2026-10",
+    "url": "https://www.together.ai/pricing"
+   }
+  ],
+  "datos": [
+   {
+    "concepto": "Crecimiento anual del costo de entrenar modelos frontera",
+    "valor": 2.4,
+    "unidad": "veces por año",
+    "anio": "2016-2024",
+    "fuente": "Epoch AI, How much does it cost to train frontier AI models?",
+    "url": "https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models",
+    "nivel": "B",
+    "min": 2.0,
+    "max": 3.1,
+    "nota": "Las mayores corridas superarían USD 1,000 M hacia 2027. Reparto del costo de desarrollo: hardware 47-67%, personal de I+D 29-49%, energía 2-6%."
+   },
+   {
+    "concepto": "Caída del precio de inferencia a desempeño constante",
+    "valor": 40,
+    "unidad": "veces por año (nivel GPT-4 en GPQA)",
+    "anio": "2023-2025",
+    "fuente": "Epoch AI, LLM inference price trends",
+    "url": "https://epoch.ai/data-insights/llm-inference-price-trends",
+    "nivel": "B",
+    "min": 9,
+    "max": 900,
+    "nota": "Nivel GPT-4 en MMLU: de USD 37.50 (mar-2023) a 0.18 (feb-2025) por millón de tokens."
+   },
+   {
+    "concepto": "'LLMflation': caída del costo de inferencia",
+    "valor": 10,
+    "unidad": "veces por año",
+    "anio": "2021-2024",
+    "fuente": "a16z, LLMflation",
+    "url": "https://a16z.com/llmflation-llm-inference-cost/",
+    "nivel": "B",
+    "nota": "De USD 60 por millón de tokens (GPT-3, nov-2021) a 0.06 (Llama 3.2 3B) a igual puntaje MMLU: 1,000x en 3 años."
+   },
+   {
+    "concepto": "Caída anual de la energía por tarea de IA",
+    "valor": 10,
+    "unidad": "veces por año (al menos)",
+    "anio": "años recientes",
+    "fuente": "AIE, Key Questions on Energy and AI (abr-2026)",
+    "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+    "nivel": "A",
+    "nota": "Tareas de razonamiento, video y agentes usan cientos a miles de veces más energía por consulta que el texto simple."
+   },
+   {
+    "concepto": "Cobertura de la base de centros de IA de Epoch",
+    "valor": 14.4,
+    "unidad": "millones de equivalentes H100",
+    "anio": "2026-10",
+    "fuente": "Epoch AI",
+    "url": "https://epoch.ai/data/data-centers",
+    "nivel": "B",
+    "nota": "93 sitios; 77 en EE.UU., 4 en China."
+   }
+  ]
+ },
+ "modelos_negocio": [
+  {
+   "esquema": "API por token",
+   "capa": "modelos",
+   "como_cobra": "Por millón de tokens de entrada y de salida",
+   "ejemplos": [
+    "OpenAI",
+    "Anthropic",
+    "Google",
+    "xAI",
+    "DeepSeek",
+    "Mistral"
+   ],
+   "precio_referencia": {
+    "valor": 10,
+    "unidad": "USD por millón de tokens de salida (gpt-6.1-sol; entrada 2)",
+    "anio": "2026-10",
+    "fuente": "OpenAI, precios de API",
+    "url": "https://developers.openai.com/api/docs/pricing",
+    "nivel": "A",
+    "min": 0.4,
+    "max": 50
+   },
+   "riesgo": "Deflación de precios de ~10x por año a igual desempeño y competencia de modelos abiertos."
+  },
+  {
+   "esquema": "Suscripción de consumidor",
+   "capa": "aplicaciones",
+   "como_cobra": "Cuota mensual fija por usuario",
+   "ejemplos": [
+    "Claude Pro/Max",
+    "Le Chat Pro",
+    "ChatGPT Plus"
+   ],
+   "precio_referencia": {
+    "valor": 20,
+    "unidad": "USD por mes (Claude Pro; 17 con pago anual; Max desde 100)",
+    "anio": "2026-10",
+    "fuente": "Anthropic, claude.com/pricing",
+    "url": "https://claude.com/pricing",
+    "nivel": "A",
+    "nota": "Mistral Pro: USD 14.99/mes."
+   },
+   "riesgo": "Los usuarios intensivos consumen más cómputo que lo que pagan; baja conversión de gratuitos."
+  },
+  {
+   "esquema": "Licencias empresariales por asiento",
+   "capa": "aplicaciones",
+   "como_cobra": "Por usuario al mes, contrato anual",
+   "ejemplos": [
+    "Microsoft 365 Copilot",
+    "Claude Team/Enterprise",
+    "Mistral Team"
+   ],
+   "precio_referencia": {
+    "valor": 25.2,
+    "unidad": "USD por usuario al mes (M365 Copilot Business mensual; 21 anual)",
+    "anio": "2026-10",
+    "fuente": "Microsoft, precios de Microsoft 365 Copilot",
+    "url": "https://www.microsoft.com/en-us/microsoft-365-copilot/pricing",
+    "nivel": "A",
+    "nota": "Claude Team: 25 (20 anual); Mistral Team: 24.99."
+   },
+   "riesgo": "Adopción real por asiento por debajo de lo licenciado; presión a la baja de precios."
+  },
+  {
+   "esquema": "Agentes cobrados por resultado",
+   "capa": "aplicaciones",
+   "como_cobra": "Por conversación o resolución lograda",
+   "ejemplos": [
+    "Intercom Fin",
+    "Salesforce Agentforce"
+   ],
+   "precio_referencia": {
+    "valor": 0.99,
+    "unidad": "USD por resultado (Intercom Fin)",
+    "anio": "2026-10",
+    "fuente": "Intercom, precios",
+    "url": "https://www.intercom.com/pricing",
+    "nivel": "A",
+    "nota": "Salesforce Agentforce: USD 2 por conversación o USD 500 por 100,000 Flex Credits (20 créditos por acción)."
+   },
+   "riesgo": "Definir y auditar qué cuenta como 'resultado'; el proveedor asume el costo de los intentos fallidos."
+  },
+  {
+   "esquema": "Alquiler de GPU por hora (neocloud)",
+   "capa": "cómputo",
+   "como_cobra": "Por GPU-hora bajo demanda o reservada",
+   "ejemplos": [
+    "CoreWeave",
+    "Lambda",
+    "RunPod",
+    "Together AI",
+    "Nebius"
+   ],
+   "precio_referencia": {
+    "valor": 3.99,
+    "unidad": "USD por hora por H100 (Lambda; CoreWeave 6.16)",
+    "anio": "2026-10",
+    "fuente": "Lambda, precios",
+    "url": "https://lambda.ai/pricing",
+    "nivel": "A",
+    "min": 2.89,
+    "max": 6.16
+   },
+   "riesgo": "Depreciación acelerada del hardware y deuda elevada (CoreWeave: ~USD 35.1 mil M a jun-2026)."
+  },
+  {
+   "esquema": "Contratos take-or-pay de cómputo",
+   "capa": "cómputo",
+   "como_cobra": "Compromiso plurianual de capacidad, se use o no",
+   "ejemplos": [
+    "CoreWeave-OpenAI",
+    "CoreWeave-Meta",
+    "Cerebras-OpenAI"
+   ],
+   "precio_referencia": {
+    "valor": 11.9,
+    "unidad": "USD miles de millones a 5 años (CoreWeave-OpenAI, mar-2025)",
+    "anio": "2025-03",
+    "fuente": "Wikipedia, CoreWeave",
+    "url": "https://en.wikipedia.org/wiki/CoreWeave",
+    "nivel": "C",
+    "nota": "Cartera de CoreWeave: 'casi USD 100 mil M' (1T-2026); Meta amplió por 21 mil M (abr-2026); Cerebras-OpenAI 10 mil M por 750 MW."
+   },
+   "riesgo": "Concentración en pocos clientes (Microsoft fue >60% de los ingresos 2024 de CoreWeave) y riesgo de contraparte."
+  },
+  {
+   "esquema": "Venta de chips aceleradores",
+   "capa": "chips",
+   "como_cobra": "Por chip, servidor o rack completo",
+   "ejemplos": [
+    "Nvidia",
+    "AMD",
+    "Broadcom",
+    "Huawei"
+   ],
+   "precio_referencia": {
+    "valor": 43000,
+    "unidad": "USD por GPU GB300 (rack Vera Rubin NVL72 ≈ 9.1 M)",
+    "anio": "2025-2026",
+    "fuente": "Epoch AI, ML Hardware",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "nivel": "B"
+   },
+   "riesgo": "Controles de exportación y chips propios de los hiperescaladores (TPU, Trainium, Maia).",
+   "margen_bruto": {
+    "valor": 75.0,
+    "unidad": "%",
+    "anio": "FY2027-Q2",
+    "fuente": "Nvidia, nota de resultados",
+    "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027",
+    "nivel": "A"
+   }
+  },
+  {
+   "esquema": "Fundición (foundry) por oblea",
+   "capa": "chips",
+   "como_cobra": "Por oblea procesada según nodo",
+   "ejemplos": [
+    "TSMC",
+    "Samsung Foundry",
+    "Intel Foundry",
+    "Rapidus"
+   ],
+   "precio_referencia": {
+    "valor": 20000,
+    "unidad": "USD por oblea N3 (N2 esperado 28,000-30,000)",
+    "anio": "2024",
+    "fuente": "Silicon Analysts (recopila Tom's Hardware/Morgan Stanley/DigiTimes)",
+    "url": "https://siliconanalysts.com/market-data/wafer-price-tsmc",
+    "nivel": "C"
+   },
+   "riesgo": "Capex gigantesco por fábrica y concentración geográfica en Taiwán.",
+   "margen_bruto": {
+    "valor": 67.7,
+    "unidad": "%",
+    "anio": "2T-2026",
+    "fuente": "TSMC Investor Relations",
+    "url": "https://investor.tsmc.com/english/quarterly-results/2026/q2",
+    "nivel": "A"
+   }
+  },
+  {
+   "esquema": "Memoria (HBM, DRAM, NAND)",
+   "capa": "memoria",
+   "como_cobra": "Por GB bajo contratos trimestrales o anuales",
+   "ejemplos": [
+    "SK hynix",
+    "Samsung",
+    "Micron"
+   ],
+   "precio_referencia": {
+    "valor": 16.6,
+    "unidad": "USD por GB de HBM4",
+    "anio": "2026-06",
+    "fuente": "Bernstein, citado por Tiger Brokers",
+    "url": "https://www.itiger.com/news/1113387068",
+    "nivel": "B",
+    "nota": "TrendForce: ASP combinado de HBM +121% interanual en 2027."
+   },
+   "riesgo": "Industria cíclica: las alzas actuales pueden revertirse cuando entre nueva capacidad."
+  },
+  {
+   "esquema": "Licencias de propiedad intelectual",
+   "capa": "chips",
+   "como_cobra": "Licencia inicial más regalía por chip vendido",
+   "ejemplos": [
+    "Arm"
+   ],
+   "precio_referencia": {
+    "valor": 4.92,
+    "unidad": "USD miles de millones de ingresos anuales de Arm (no es precio unitario)",
+    "anio": "FY2026",
+    "fuente": "Wikipedia, Arm Holdings",
+    "url": "https://en.wikipedia.org/wiki/Arm_Holdings",
+    "nivel": "C",
+    "nota": "Tasa de regalía por chip no verificada."
+   },
+   "riesgo": "Clientes que migran a arquitecturas abiertas (RISC-V) o renegocian regalías."
+  },
+  {
+   "esquema": "Modelos abiertos alojados y afinamiento",
+   "capa": "modelos",
+   "como_cobra": "Por millón de tokens de inferencia o de entrenamiento",
+   "ejemplos": [
+    "Together AI",
+    "Mistral",
+    "DeepSeek"
+   ],
+   "precio_referencia": {
+    "valor": 2.03,
+    "unidad": "USD por millón de tokens de afinamiento (Llama 3.3 70B)",
+    "anio": "2026-10",
+    "fuente": "Together AI, precios",
+    "url": "https://www.together.ai/pricing",
+    "nivel": "A",
+    "min": 0.34,
+    "max": 7.0
+   },
+   "riesgo": "Sin exclusividad sobre el modelo: compite solo en precio y latencia."
+  },
+  {
+   "esquema": "Arrendamiento de centros de datos (colocation / a medida)",
+   "capa": "centros de datos",
+   "como_cobra": "Arriendo de largo plazo por kW o por edificio",
+   "ejemplos": [
+    "Blue Owl-Meta (Hyperion)",
+    "Digital Realty",
+    "Equinix",
+    "QTS"
+   ],
+   "precio_referencia": {
+    "valor": 27,
+    "unidad": "USD miles de millones (JV Blue Owl-Meta, al menos; Blue Owl 80%)",
+    "anio": "2025-10",
+    "fuente": "Wikipedia, Hyperion (data center)",
+    "url": "https://en.wikipedia.org/wiki/Hyperion_(data_center)",
+    "nivel": "C",
+    "nota": "Arriendo inicial de 4 años desde 2029. Precio por kW-mes de colocation no verificado."
+   },
+   "riesgo": "Arriendos cortos frente a activos de 14+ años; riesgo de quedar sin inquilino."
+  },
+  {
+   "esquema": "IA soberana (el Estado compra cómputo)",
+   "capa": "cómputo",
+   "como_cobra": "Presupuesto público para supercomputadores o acceso a GPU",
+   "ejemplos": [
+    "Canadá",
+    "Reino Unido",
+    "India",
+    "Corea del Sur",
+    "México"
+   ],
+   "precio_referencia": {
+    "valor": 2,
+    "unidad": "CAD miles de millones (Estrategia Canadiense de Cómputo Soberano de IA)",
+    "anio": "2024-25 en adelante",
+    "fuente": "ISED Canadá",
+    "url": "https://ised-isde.canada.ca/site/ised/en/canadian-sovereign-ai-compute-strategy",
+    "nivel": "A",
+    "nota": "Reino Unido: hasta GBP 2 mil M a 2030."
+   },
+   "riesgo": "Obsolescencia del hardware en 3-5 años y baja ejecución presupuestal (India gastó 32% del estimado 2025-26)."
+  }
+ ],
+ "simulador": {
+  "parametros": [
+   {
+    "clave": "capex_por_mw",
+    "nombre": "Capex por MW de centro de datos de IA (todo incluido)",
+    "valor": 38000000,
+    "unidad": "USD por MW de TI",
+    "anio": "2026-05",
+    "fuente": "Epoch AI, AI datacenter cost breakdown",
+    "url": "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown",
+    "nivel": "B",
+    "min": 35000000,
+    "max": 60000000,
+    "nota": "Mínimo: Bernstein nov-2025 (35). Máximo: Nvidia (50-60). Otros: Bernstein jun-2026 47.3; AIE 40-50 mil USD/kW."
+   },
+   {
+    "clave": "capex_obra_por_mw",
+    "nombre": "Capex por MW solo instalación (edificio, energía, refrigeración)",
+    "valor": 11400000,
+    "unidad": "USD por MW de TI",
+    "anio": "2026-05",
+    "fuente": "Epoch AI, AI datacenter cost breakdown",
+    "url": "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown",
+    "nivel": "B",
+    "min": 11400000,
+    "max": 15000000,
+    "nota": "Epoch: 'Facility' con refrigeración (30% del total); terreno y subestaciones suman ~0.34 M adicionales. Máximo: Bernstein jun-2026, ~USD 15 mil M por GW de infraestructura física."
+   },
+   {
+    "clave": "precio_gpu",
+    "nombre": "Precio de una GPU de gama alta",
+    "valor": 43000,
+    "unidad": "USD por GPU",
+    "anio": "2025",
+    "fuente": "Epoch AI, ML Hardware (GB300)",
+    "url": "https://epoch.ai/data/ml_hardware.csv",
+    "nivel": "B",
+    "min": 30000,
+    "max": 55000,
+    "nota": "Mínimo H200 (30,000); GB200 37,000; H100 33,600; máximo Rubin ~55,000 (Bernstein)."
+   },
+   {
+    "clave": "kw_por_gpu",
+    "nombre": "Consumo por GPU incluyendo servidor y red",
+    "valor": 1.53,
+    "unidad": "kW por GPU",
+    "anio": "2025",
+    "fuente": "Epoch AI, GPU Clusters (Colossus 1: 352 MW / 230,000 GPU)",
+    "url": "https://epoch.ai/data/gpu_clusters.csv",
+    "nivel": "C",
+    "min": 1.2,
+    "max": 3.06,
+    "nota": "DERIVADO por división de cifras publicadas, no dato directo. Mínimo: TDP del chip GB200 (1.2 kW, sin sobrecarga). Máximo: rack Vera Rubin NVL72 de 220 kW / 72 GPU."
+   },
+   {
+    "clave": "gpus_por_mw",
+    "nombre": "GPU por MW",
+    "valor": 256,
+    "unidad": "GPU por MW",
+    "anio": "2026-06",
+    "fuente": "Bernstein, citado por Tiger Brokers",
+    "url": "https://www.itiger.com/news/1113387068",
+    "nivel": "C",
+    "min": 256,
+    "max": 653,
+    "nota": "DERIVADO: ~3,557 racks Vera Rubin por GW × 72 GPU. Máximo: Colossus 1 (230,000 GPU / 352 MW, generación H100)."
+   },
+   {
+    "clave": "pue",
+    "nombre": "PUE (eficiencia de uso de energía)",
+    "valor": 1.14,
+    "unidad": "PUE",
+    "anio": "2026",
+    "fuente": "Epoch AI",
+    "url": "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown",
+    "nivel": "B",
+    "min": 1.09,
+    "max": 1.54,
+    "nota": "Mínimo: flota de Google. Máximo: promedio de industria (Uptime 2025)."
+   },
+   {
+    "clave": "alquiler_gpu_hora",
+    "nombre": "Precio de alquiler GPU-hora (H100 bajo demanda)",
+    "valor": 3.99,
+    "unidad": "USD por GPU-hora",
+    "anio": "2026-10",
+    "fuente": "Lambda / Together AI / RunPod, páginas de precios",
+    "url": "https://lambda.ai/pricing",
+    "nivel": "A",
+    "min": 2.89,
+    "max": 6.16,
+    "nota": "B200: 6.69-8.60; GB200: 10.50 (CoreWeave)."
+   },
+   {
+    "clave": "vida_util_gpu_anios",
+    "nombre": "Vida útil / depreciación de GPU",
+    "valor": 5,
+    "unidad": "años",
+    "anio": "2026",
+    "fuente": "Epoch AI, AI datacenter cost breakdown",
+    "url": "https://epoch.ai/data-insights/ai-datacenter-cost-breakdown",
+    "nivel": "B",
+    "min": 3,
+    "max": 7,
+    "nota": "Supuesto de Epoch (sensibilidad 3-7 años); Bernstein usa 6 años; instalación: 14 años."
+   },
+   {
+    "clave": "salario_investigador_usa",
+    "nombre": "Costo anual de un ingeniero de ML/IA en EE.UU.",
+    "valor": 250000,
+    "unidad": "USD por año (compensación total mediana)",
+    "anio": "2026",
+    "fuente": "Levels.fyi",
+    "url": "https://www.levels.fyi/t/software-engineer/focus/ml-ai",
+    "nivel": "B",
+    "min": 140300,
+    "max": 250000,
+    "nota": "Mínimo: mediana salarial BLS de 'computer and information research scientists' (mayo 2025)."
+   },
+   {
+    "clave": "salario_investigador_europa",
+    "nombre": "Compensación mediana de ingeniero de software en Europa",
+    "valor": 100532,
+    "unidad": "USD por año",
+    "anio": "2026",
+    "fuente": "Levels.fyi (Alemania)",
+    "url": "https://www.levels.fyi/t/software-engineer/focus/ml-ai/locations/germany",
+    "nivel": "B",
+    "min": 100532,
+    "max": 139444,
+    "nota": "Ingenieros de software en general, no solo IA. Máximo: Reino Unido."
+   },
+   {
+    "clave": "salario_investigador_india",
+    "nombre": "Compensación mediana de ingeniero de software en India",
+    "valor": 29913,
+    "unidad": "USD por año",
+    "anio": "2026",
+    "fuente": "Levels.fyi (India)",
+    "url": "https://www.levels.fyi/t/software-engineer/focus/ml-ai/locations/india",
+    "nivel": "B",
+    "nota": "Ingenieros de software en general."
+   },
+   {
+    "clave": "salario_investigador_latam",
+    "nombre": "Compensación mediana de ingeniero de software en LATAM",
+    "valor": 43762,
+    "unidad": "USD por año",
+    "anio": "2026",
+    "fuente": "Levels.fyi (Brasil)",
+    "url": "https://www.levels.fyi/t/software-engineer/focus/ml-ai/locations/brazil",
+    "nivel": "B",
+    "min": 43762,
+    "max": 63009,
+    "nota": "Ingenieros de software en general, no investigadores de IA; muestra sesgada a empresas tecnológicas. Máximo: México. Sin dato para Perú."
+   },
+   {
+    "clave": "beca_doctorado_anual",
+    "nombre": "Beca anual de doctorado (referencia EE.UU.)",
+    "valor": 37000,
+    "unidad": "USD por año",
+    "anio": "2026",
+    "fuente": "NSF Graduate Research Fellowship Program",
+    "url": "https://www.nsf.gov/funding/opportunities/grfp-nsf-graduate-research-fellowship-program",
+    "nivel": "A",
+    "nota": "Más USD 16,000 anuales a la universidad por costo de educación; 3 años de apoyo. Sin dato verificado para LATAM."
+   },
+   {
+    "clave": "costo_entrenar_frontera",
+    "nombre": "Costo de cómputo de entrenar un modelo frontera",
+    "valor": 388000000,
+    "unidad": "USD (de 2023)",
+    "anio": "2025",
+    "fuente": "Epoch AI, Notable AI Models (Grok 4)",
+    "url": "https://epoch.ai/data/notable_ai_models.csv",
+    "nivel": "B",
+    "min": 218000000,
+    "max": 388000000,
+    "nota": "Solo la corrida final de entrenamiento; mínimo Grok 3, GPT-4.5 366 M. Excluye salarios, experimentos e inferencia."
+   },
+   {
+    "clave": "costo_entrenar_mediano",
+    "nombre": "Costo de cómputo de entrenar un modelo mediano",
+    "valor": 12400000,
+    "unidad": "USD (de 2023)",
+    "anio": "2026",
+    "fuente": "Epoch AI, Notable AI Models (A.X K2, SK Telecom)",
+    "url": "https://epoch.ai/data/notable_ai_models.csv",
+    "nivel": "B",
+    "min": 5390000,
+    "max": 12400000,
+    "nota": "Mínimo: DeepSeek-V3 (5.39 M)."
+   },
+   {
+    "clave": "costo_afinar_modelo_abierto",
+    "nombre": "Costo de afinar un modelo abierto",
+    "valor": 2.03,
+    "unidad": "USD por millón de tokens de entrenamiento",
+    "anio": "2026-10",
+    "fuente": "Together AI, precios (Llama 3.3 70B)",
+    "url": "https://www.together.ai/pricing",
+    "nivel": "A",
+    "min": 0.34,
+    "max": 7.0,
+    "nota": "PRECIO UNITARIO, no costo total: multiplicar por los tokens del conjunto de datos. Mínimo: modelos de 8B; máximo: DeepSeek-V3.1."
+   },
+   {
+    "clave": "precio_kwh_mundial",
+    "nombre": "Precio promedio mundial de electricidad para empresas",
+    "valor": 0.172,
+    "unidad": "USD/kWh",
+    "anio": "T3-2026",
+    "fuente": "GlobalPetrolPrices.com, precios de electricidad para empresas",
+    "url": "https://www.globalpetrolprices.com/electricity_prices/",
+    "nivel": "B",
+    "min": 0.047,
+    "max": 0.444,
+    "nota": "Usar energia.por_pais[].precio_kwh por país. Epoch supone 0.0834 para hiperescala en EE.UU."
+   }
+  ],
+  "claves_esperadas": [
+   "capex_por_mw",
+   "capex_obra_por_mw",
+   "precio_gpu",
+   "kw_por_gpu",
+   "pue",
+   "alquiler_gpu_hora",
+   "vida_util_gpu_anios",
+   "salario_investigador_usa",
+   "salario_investigador_latam",
+   "beca_doctorado_anual",
+   "costo_entrenar_frontera",
+   "costo_afinar_modelo_abierto"
+  ],
+  "supercomputadores": [
+   {
+    "nombre": "Isambard-AI",
+    "pais_iso3": "GBR",
+    "gpus": 5448,
+    "monto": {
+     "valor": 225,
+     "unidad": "GBP millones",
+     "anio": "2023",
+     "fuente": "Universidad de Bristol",
+     "url": "https://www.bristol.ac.uk/news/2023/november/supercomputer-announcement.html",
+     "nivel": "A"
+    },
+    "anio": 2025,
+    "nota": "5,448 superchips Nvidia GH200; construido por HPE.",
+    "fuente": "Universidad de Bristol",
+    "url": "https://www.bristol.ac.uk/news/2023/november/supercomputer-announcement.html"
+   },
+   {
+    "nombre": "JUPITER",
+    "pais_iso3": "DEU",
+    "monto": {
+     "valor": 500,
+     "unidad": "EUR millones",
+     "anio": "2025",
+     "fuente": "Forschungszentrum Jülich",
+     "url": "https://www.fz-juelich.de/en/ias/jsc/jupiter",
+     "nivel": "A",
+     "nota": "EuroHPC 250 + ministerio federal 125 + Renania del Norte-Westfalia 125."
+    },
+    "anio": 2025,
+    "nota": "N.º 5 del TOP500 de junio de 2026 (1,000 PFlop/s, 15.8 MW, Nvidia GH200). Número de GPU no verificado.",
+    "fuente": "Forschungszentrum Jülich / TOP500",
+    "url": "https://top500.org/lists/top500/2026/06/"
+   },
+   {
+    "nombre": "Alps",
+    "pais_iso3": "CHE",
+    "monto": {
+     "valor": 100,
+     "unidad": "CHF millones",
+     "anio": "2024",
+     "fuente": "SWI swissinfo.ch",
+     "url": "https://www.swissinfo.ch/eng/archive-science/how-switzerlands-alps-supercomputer-aims-to-advance-ai/87659724",
+     "nivel": "B",
+     "nota": "USD 118 M según la fuente; presupuesto operativo anual CHF 37 M."
+    },
+    "anio": 2024,
+    "nota": "N.º 10 del TOP500 de junio de 2026 (434.9 PFlop/s, 7.1 MW). Número de GPU no verificado.",
+    "fuente": "SWI swissinfo.ch",
+    "url": "https://www.swissinfo.ch/eng/archive-science/how-switzerlands-alps-supercomputer-aims-to-advance-ai/87659724"
+   },
+   {
+    "nombre": "Coatlicue",
+    "pais_iso3": "MEX",
+    "gpus": 15000,
+    "monto": {
+     "valor": 6000,
+     "unidad": "MXN millones",
+     "anio": "2025",
+     "fuente": "Excélsior",
+     "url": "https://www.excelsior.com.mx/nacional/presentan-a-coatlicue-la-supercomputadora-publica-mexicana-costara-6-mil-mdp/1753963",
+     "nivel": "B"
+    },
+    "anio": 2025,
+    "nota": "Anunciado el 26-nov-2025; ~15,000 GPU, 314 petaflops. Fecha de operación no indicada.",
+    "fuente": "Excélsior",
+    "url": "https://www.excelsior.com.mx/nacional/presentan-a-coatlicue-la-supercomputadora-publica-mexicana-costara-6-mil-mdp/1753963"
+   },
+   {
+    "nombre": "Supercomputador nacional de Edimburgo (EPCC)",
+    "pais_iso3": "GBR",
+    "monto": {
+     "valor": 750,
+     "unidad": "GBP millones",
+     "anio": "2025",
+     "fuente": "Gobierno del Reino Unido, UK Compute Roadmap",
+     "url": "https://www.gov.uk/government/publications/uk-compute-roadmap/uk-compute-roadmap",
+     "nivel": "A",
+     "nota": "'Hasta 750'."
+    },
+    "anio": 2027,
+    "nota": "Reemplaza a ARCHER2; previsto para 2027.",
+    "fuente": "UK Compute Roadmap",
+    "url": "https://www.gov.uk/government/publications/uk-compute-roadmap/uk-compute-roadmap"
+   }
+  ],
+  "fondos_nacionales": [
+   {
+    "pais_iso3": "CAN",
+    "nombre": "Estrategia Canadiense de Cómputo Soberano de IA",
+    "monto": {
+     "valor": 2,
+     "unidad": "CAD miles de millones",
+     "anio": "2024",
+     "fuente": "ISED Canadá",
+     "url": "https://ised-isde.canada.ca/site/ised/en/canadian-sovereign-ai-compute-strategy",
+     "nivel": "A",
+     "nota": "Hasta 700 M para centros de datos comerciales (AI Compute Challenge), hasta 1,000 M para supercómputo público, hasta 300 M en el AI Compute Access Fund para pymes."
+    },
+    "anio": 2024,
+    "fuente": "ISED Canadá",
+    "url": "https://ised-isde.canada.ca/site/ised/en/canadian-sovereign-ai-compute-strategy"
+   },
+   {
+    "pais_iso3": "GBR",
+    "nombre": "Sovereign AI Unit (con British Business Bank)",
+    "monto": {
+     "valor": 500,
+     "unidad": "GBP millones",
+     "anio": "2025",
+     "fuente": "UK Compute Roadmap",
+     "url": "https://www.gov.uk/government/publications/uk-compute-roadmap/uk-compute-roadmap",
+     "nivel": "A",
+     "nota": "'Hasta 500'. Ecosistema público de cómputo: hasta GBP 2 mil M a 2030; AIRR x20 a 2030 con más de 1 mil M."
+    },
+    "anio": 2025,
+    "fuente": "UK Compute Roadmap",
+    "url": "https://www.gov.uk/government/publications/uk-compute-roadmap/uk-compute-roadmap"
+   },
+   {
+    "pais_iso3": "IND",
+    "nombre": "IndiaAI Mission",
+    "monto": {
+     "valor": 10371.92,
+     "unidad": "INR crore",
+     "anio": "2024",
+     "fuente": "Outlook Business (informe parlamentario)",
+     "url": "https://www.outlookbusiness.com/deeptech/indiaai-mission-misses-fellowship-targets-and-faces-budget-cuts-reveals-parliamentary-panel",
+     "nivel": "B",
+     "nota": "Misión completa a 5 años (meta >10,000 GPU), no solo startups; el componente de startups no se verificó."
+    },
+    "anio": 2024,
+    "fuente": "Outlook Business",
+    "url": "https://www.outlookbusiness.com/deeptech/indiaai-mission-misses-fellowship-targets-and-faces-budget-cuts-reveals-parliamentary-panel"
+   },
+   {
+    "pais_iso3": "BRA",
+    "nombre": "Plano Brasileiro de Inteligência Artificial (PBIA) 2024-2028",
+    "monto": {
+     "valor": 23.03,
+     "unidad": "BRL miles de millones",
+     "anio": "2024-2028",
+     "fuente": "Teletime",
+     "url": "https://teletime.com.br/13/06/2025/plano-de-ia-quer-brasil-como-referencia-global-em-infraestrutura-sustentavel/",
+     "nivel": "B",
+     "nota": "Plan completo (25.2% a infraestructura, 5.0% a formación); mezcla crédito, fondos públicos y contrapartida privada."
+    },
+    "anio": 2024,
+    "fuente": "Teletime",
+    "url": "https://teletime.com.br/13/06/2025/plano-de-ia-quer-brasil-como-referencia-global-em-infraestrutura-sustentavel/"
+   },
+   {
+    "pais_iso3": "KOR",
+    "nombre": "Ministerio de Ciencia y TIC: apoyo a la transición a IA (proyecto 2027)",
+    "monto": {
+     "valor": 9.4,
+     "unidad": "KRW billones (trillion)",
+     "anio": "2027",
+     "fuente": "Korea JoongAng Daily",
+     "url": "https://www.koreajoongangdaily.com/business/science-ministry-seeks-nearly-30-trillion-won-for-record-aifocused-budget/12854458",
+     "nivel": "B",
+     "nota": "Incluye 5.59 billones para modelos fundacionales con ~10,000 GPU. Solicitud presupuestal, no fondo de startups."
+    },
+    "anio": 2027,
+    "fuente": "Korea JoongAng Daily",
+    "url": "https://www.koreajoongangdaily.com/business/science-ministry-seeks-nearly-30-trillion-won-for-record-aifocused-budget/12854458"
+   }
+  ]
+ }
+}

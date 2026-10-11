@@ -17,7 +17,9 @@
   // valor absoluto en US$ a partir de la unidad declarada
   function usd(o) {
     var n = num(o); if (n == null) return null;
+    if (IA.cur(unitOf(o))) { var b = toBn(o); return b == null ? null : b * 1e9; }   // moneda local → US$ al tipo de cambio de corte
     var u = norm(unitOf(o));
+    if (/trillion/.test(u)) return n * 1e12;
     if (/miles de millones|billion|\bbn\b/.test(u)) return n * 1e9;
     if (/millones|million|\bmm\b/.test(u)) return n * 1e6;
     if (/\bmiles\b|thousand/.test(u)) return n * 1e3;
@@ -117,15 +119,17 @@
         series: [{ type: "bar", barMaxWidth: 34, data: st.map(function (r) { return { value: num(r), itemStyle: { color: p.s[3], opacity: r.proyeccion ? .5 : 1, borderRadius: [4, 4, 0, 0] } }; }),
           label: { show: true, position: "top", color: p.ink2, fontSize: 11.5, formatter: function (x) { return fmt(x.value, 0); } } }]
       });
-      note("nTwh", "TWh por año en todo el mundo. Barras tenues: proyección (año con «p»). Fuente: " + link(E.serie_fuente || "ver", E.serie_url) + ".");
+      note("nTwh", "TWh por año en todo el mundo. Barras tenues: proyección (año con «p»); los años no son consecutivos. Fuente: " + link(E.serie_fuente || "ver", E.serie_url) + ".");
     }
     var pp = arr(E.por_pais);
-    var metric = [["capacidad_mw", "Capacidad instalada de centros de datos", "MW"], ["consumo_twh", "Consumo eléctrico de centros de datos", "TWh"], ["n_centros", "Número de centros de datos", ""]]
+    var metric = [["capacidad_mw", "Capacidad instalada de centros de datos", "MW"], ["consumo_twh", "Consumo eléctrico de centros de datos", "TWh"], ["n_centros", "Número de centros de datos", ""], ["precio_kwh", "Precio de la electricidad para empresas", "USD/kWh"]]
       .map(function (d) { return { k: d[0], t: d[1], u: d[2], n: pp.filter(function (r) { return num(r[d[0]]) != null; }).length }; }).sort(function (a, b) { return b.n - a.n; })[0];
     if (metric && metric.n) {
       var rs = pp.filter(function (r) { return num(r[metric.k]) != null; }).sort(function (a, b) { return num(b[metric.k]) - num(a[metric.k]); });
-      hbar("cEnPais", rs.slice(0, 15).map(function (r) { return { name: nombre(r.iso3), value: num(r[metric.k]), extra: num(r.pct_demanda) != null ? fmt(num(r.pct_demanda)) + "% de la demanda eléctrica nacional" : "" }; }), { color: 3, fmt: function (v) { return fmt(v) + " " + (unitOf(rs[0][metric.k]) || metric.u); } });
-      $("tEnPais").textContent = metric.t; note("nEnPais", esc(unitOf(rs[0][metric.k]) || metric.u) + ", " + esc(when(rs[0][metric.k])) + ". " + IA.srcNote(rs[0][metric.k]));
+      if (metric.k === "precio_kwh") rs.reverse();   // de más barata a más cara
+      $("cEnPais").style.height = Math.max(400, Math.min(rs.length, 30) * 22) + "px";
+      hbar("cEnPais", rs.slice(0, 30).map(function (r) { return { name: nombre(r.iso3), value: num(r[metric.k]), extra: num(r.pct_demanda) != null ? fmt(num(r.pct_demanda)) + "% de la demanda eléctrica nacional" : "" }; }), { color: 3, fmt: function (v) { return fmt(v, 3) + " " + (unitOf(rs[0][metric.k]) || metric.u); }, short: function (v) { return fmt(v, metric.k === "precio_kwh" ? 3 : null); } });
+      $("tEnPais").textContent = metric.t; note("nEnPais", esc(unitOf(rs[0][metric.k]) || metric.u) + (metric.k === "precio_kwh" ? ", de la más barata a la más cara. Es tarifa general para empresas, no el precio de un contrato de gran consumo. " : ", " + esc(when(rs[0][metric.k])) + ". ") + IA.srcNote(rs[0][metric.k]));
     } else IA.noData("cEnPais");
     table("tAcuerdos", [
       { t: "Comprador", v: function (r) { return r.comprador; }, h: function (r) { return "<b>" + esc(r.comprador) + "</b>"; }, asc: true },
@@ -179,7 +183,7 @@
     ], arr(T.precios_api), { sort: 3 });
     table("tClusters", [
       { t: "Clúster", v: function (r) { return r.nombre; }, h: function (r) { return "<b>" + link(r.nombre, r.url) + "</b><br><span class=\"mut\">" + esc((r.operador ? r.operador + " · " : "") + nombre(r.pais_iso3)) + "</span>"; }, cls: "wide", asc: true },
-      { t: "GPU", num: true, v: function (r) { return num(r.gpus); }, h: function (r) { return num(r.gpus) != null ? fmt(num(r.gpus), 0) : MUT; } },
+      { t: "GPU (equiv. H100)", num: true, tip: "Equivalentes H100 estimados por Epoch AI, no conteo físico", v: function (r) { return num(r.gpus); }, h: function (r) { return num(r.gpus) != null ? fmt(num(r.gpus), 0) : MUT; } },
       { t: "Potencia", num: true, v: function (r) { return num(r.potencia_mw); }, h: function (r) { return num(r.potencia_mw) != null ? fmt(num(r.potencia_mw), 0) + " MW" : MUT; } }
     ], arr(T.clusteres), { sort: 1, rank: true });
     datosTable("tTrainDatos", arr(T.datos).concat(arr(CH.controles).map(function (c) { return { concepto: "Control de exportación (" + (c.fecha || "") + "): " + c.resumen, valor: null, url: c.url, fuente: c.fuente }; })));
@@ -200,7 +204,7 @@
   // ---- SIMULADOR -----------------------------------------------------------
   var SIM = K.simulador || {}, PAR = {};
   arr(SIM.parametros).forEach(function (q) { if (q.clave && num(q) != null) PAR[q.clave] = q; });
-  function par(k) { return PAR[k] ? (/kw|pue|vida|anios/.test(k) ? num(PAR[k]) : usd(PAR[k])) : null; }
+  function par(k) { return PAR[k] ? (/kw|pue|vida|anios|gpus_por/.test(k) ? num(PAR[k]) : usd(PAR[k])) : null; }
   var PILARES = [
     { k: "propio", t: "Cómputo propio", d: "Centro de datos y GPU del país" },
     { k: "alquiler", t: "Cómputo alquilado", d: "GPU por hora en la nube" },
@@ -217,7 +221,7 @@
   var sim = { iso: "PER", w: PRESETS[0].w.slice(), preset: "eq" };
   // escala logarítmica del deslizador: 0.005% … 2% del PIB
   function pctOf(v) { return 0.005 * Math.pow(400, v / 100); }
-  function simKwh(iso) { var r = arr((K.energia || {}).por_pais).filter(function (x) { return x.iso3 === iso; })[0]; return r && num(r.precio_kwh) != null ? r.precio_kwh : null; }
+  function simKwh(iso) { var r = arr((K.energia || {}).por_pais).filter(function (x) { return x.iso3 === iso; })[0]; return r && num(r.precio_kwh) != null ? { o: r.precio_kwh, pais: true } : (PAR.precio_kwh_mundial ? { o: PAR.precio_kwh_mundial, pais: false } : null); }
   function simInit() {
     var isos = Object.keys(M).sort(function (a, b) { return nombre(a).localeCompare(nombre(b), "es"); });
     if (!isos.length) { $("simulador").style.display = "none"; return false; }
@@ -265,25 +269,27 @@
     b = total * sh[0];
     var capMw = par("capex_por_mw"), kwGpu = par("kw_por_gpu"), pue = par("pue") || 1, pGpu = par("precio_gpu"), vida = par("vida_util_gpu_anios");
     if (b > 0) {
-      var mw = capMw ? b / capMw : null, gpus = (mw != null && kwGpu) ? mw * 1000 / (kwGpu * pue) : (pGpu ? b / pGpu : null);
-      var kwh = simKwh(sim.iso), twh = mw != null ? mw * 8760 / 1e6 : null;
-      out.push('<div class="sr"><h4>Cómputo propio · ' + esc(usdTxt(b)) + '</h4><div class="big">' + (mw != null ? fmt(mw) + " MW" : gpus != null ? fmt(gpus, 0) + " GPU" : "—") + "</div><ul>" + li([
+      // capMw es por MW de TI: las GPU salen de la potencia de TI; la red eléctrica debe dar TI × PUE
+      var mw = capMw ? b / capMw : null, gpus = (mw != null && kwGpu) ? mw * 1000 / kwGpu : (pGpu ? b / pGpu : null);
+      var kwh = simKwh(sim.iso), twh = mw != null ? mw * pue * 8760 / 1e6 : null;
+      out.push('<div class="sr"><h4>Cómputo propio · ' + esc(usdTxt(b)) + '</h4><div class="big">' + (mw != null ? fmt(mw) + " MW de cómputo" : gpus != null ? fmt(gpus, 0) + " GPU" : "—") + "</div><ul>" + li([
         gpus != null && mw != null ? "≈ <b>" + fmt(gpus, 0) + " GPU</b> de gama alta instaladas" : null,
         twh != null ? "Consumiría hasta <b>" + fmt(twh) + " TWh</b> al año a plena carga" : null,
-        twh != null && kwh ? "Factura eléctrica: <b>" + esc(usdTxt(twh * 1e9 * num(kwh))) + "</b> al año (a US$ " + fmt(num(kwh), 3) + "/kWh)" : null,
+        twh != null && kwh ? "Factura eléctrica: <b>" + esc(usdTxt(twh * 1e9 * num(kwh.o))) + "</b> al año (a US$ " + fmt(num(kwh.o), 3) + "/kWh, " + (kwh.pais ? "tarifa del país" : "promedio mundial") + ")" : null,
+        mw != null && pue > 1 ? "Necesita <b>" + fmt(mw * pue) + " MW</b> de la red (PUE " + fmt(pue) + ")" : null,
         vida ? "Las GPU se deprecian en ~" + fmt(vida) + " años: hay que reinvertir" : null,
         refSuper(gpus)
       ]) + "</ul></div>");
     }
     // 2. alquiler
     b = total * sh[1];
-    var hr = par("alquiler_gpu_hora"), fr = par("costo_entrenar_frontera"), af = par("costo_afinar_modelo_abierto");
+    var hr = par("alquiler_gpu_hora"), fr = par("costo_entrenar_frontera"), af = par("costo_entrenar_mediano");
     if (b > 0) {
       var horas = hr ? b / hr : null, eq = horas != null ? horas / (8760 * anios) : null;
       out.push('<div class="sr"><h4>Cómputo alquilado · ' + esc(usdTxt(b)) + '</h4><div class="big">' + (horas != null ? fmt(horas / 1e6) + " M GPU-hora" : "—") + "</div><ul>" + li([
         eq != null ? "Equivale a <b>" + fmt(eq, 0) + " GPU</b> encendidas todo el periodo" : null,
         fr ? "Alcanza para <b>" + fmt(b / fr, b / fr < 10 ? 1 : 0) + "</b> entrenamientos de un modelo frontera" : null,
-        af ? "o <b>" + fmt(b / af, 0) + "</b> afinamientos de un modelo abierto" : null,
+        af ? "o <b>" + fmt(b / af, 0) + "</b> entrenamientos de un modelo mediano" : null,
         "Sin capital fijo, pero el gasto es recurrente"
       ]) + "</ul></div>");
     }
@@ -294,8 +300,8 @@
     var s0 = latam && sal ? sal : (salUsa || sal);
     if (b > 0) {
       out.push('<div class="sr"><h4>Talento · ' + esc(usdTxt(b)) + '</h4><div class="big">' + (s0 ? fmt(b / s0 / anios, 0) + " investigadores" : "—") + "</div><ul>" + li([
-        s0 ? "contratados durante " + anios + (anios === 1 ? " año" : " años") + " a US$ " + fmt(s0, 0) + " al año" + (latam && sal ? " (referencia regional)" : " (referencia de EE.UU.)") : null,
-        beca ? "o <b>" + fmt(b / (beca * 4), 0) + "</b> doctorados completos (4 años de beca)" : null,
+        s0 ? "contratados durante " + anios + (anios === 1 ? " año" : " años") + " a US$ " + fmt(s0, 0) + " al año" + (latam && sal ? " (ingeniero de software en la región)" : " (referencia de EE.UU.)") : null,
+        beca ? "o <b>" + fmt(b / (beca * 4), 0) + "</b> doctorados completos (4 años de beca al nivel de EE.UU.)" : null,
         salUsa && s0 !== salUsa ? "Un investigador en EE.UU. cuesta " + fmt(salUsa / s0, 1) + " veces más: ahí está el riesgo de fuga" : null
       ]) + "</ul></div>");
     }
@@ -305,7 +311,6 @@
       var fn = arr(SIM.fondos_nacionales).filter(function (f) { return usd(f.monto) != null; }).sort(function (a, c) { return Math.abs(usd(a.monto) - b) - Math.abs(usd(c.monto) - b); })[0];
       var med = mediana(arr(N.noticias).filter(function (n) { return /serie a|series a|semilla|seed/i.test(n.operacion || "") && usd(n.monto) != null; }).map(function (n) { return usd(n.monto); }));
       out.push('<div class="sr"><h4>Fondo de startups · ' + esc(usdTxt(b)) + '</h4><div class="big">' + esc(usdTxt(b)) + "</div><ul>" + li([
-        med ? "≈ <b>" + fmt(b / med, 0) + "</b> rondas iniciales del tamaño mediano visto en 2026 (" + esc(usdTxt(med)) + ")" : null,
         fn ? "Tamaño parecido a: " + esc(fn.nombre) + " de " + esc(nombre(fn.pais_iso3)) + " (" + esc(usdTxt(usd(fn.monto))) + ")" : null,
         "Funciona como ancla si atrae capital privado adicional"
       ]) + "</ul></div>");
