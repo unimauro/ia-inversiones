@@ -28,9 +28,9 @@ for clave, archivo in BLOQUES.items():
 
 
 def degradar(o):
-    """Cifras vistas solo en el extracto del buscador (página con 403/paywall) bajan a nivel C."""
+    """Cifras vistas solo en el extracto del buscador (403/paywall) o tomadas de Wikipedia bajan a nivel C."""
     if isinstance(o, dict):
-        if o.get("verificacion") == "busqueda":
+        if o.get("verificacion") == "busqueda" or "wikipedia" in str(o.get("fuente", "")).lower() + str(o.get("url", "")).lower():
             o["nivel"] = "C"
         for v in o.values():
             degradar(v)

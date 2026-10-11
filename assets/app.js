@@ -624,7 +624,7 @@
       { t: "Tipo", v: function (f) { return tipoNom(f.tipo); }, h: function (f) { return '<span class="tag">' + esc(tipoNom(f.tipo)) + "</span>"; }, asc: true },
       { t: "País", v: function (f) { return nombre(f.pais_iso3); }, h: function (f) { return esc(nombre(f.pais_iso3)); }, asc: true },
       { t: "Activos / tamaño", num: true, tip: "Activos bajo gestión o tamaño del último fondo", v: function (f) { return toBn(f.aum); }, h: function (f) { return fig(f.aum); } },
-      { t: "Comprometido a IA", num: true, v: function (f) { return toBn(f.comprometido_ia); }, h: function (f) { return fig(f.comprometido_ia) + (f.comprometido_ia && f.comprometido_ia.concepto ? '<br><span class="mut">' + esc(f.comprometido_ia.concepto) + "</span>" : ""); } },
+      { t: "Dinero en IA", num: true, tip: "Según el caso: tamaño de fondo, compromiso anunciado, desembolso o valor de tenencias. Lee el concepto; no se suma entre filas.", v: function (f) { return toBn(f.comprometido_ia); }, h: function (f) { return fig(f.comprometido_ia) + (f.comprometido_ia && f.comprometido_ia.concepto ? '<br><span class="mut">' + esc(f.comprometido_ia.concepto) + "</span>" : ""); } },
       { t: "Apuestas en IA", h: function (f) { return chips(f.apuestas); }, cls: "wide" }
     ], fs, { sort: 4, rank: true, filter: function (f) {
       var q = norm($("qFondo").value), ty = $("fFondoTipo").value, pa = $("fFondoPais").value;
