@@ -1,0 +1,742 @@
+{
+  "meta": {
+    "bloque": "extra_inversionistas",
+    "consultado": "2026-10-11",
+    "advertencias": [
+      "Complemento de inversionistas.json: no lo reemplaza. Todas las cifras salen de páginas abiertas el 11-oct-2026; lo que solo apareció en resúmenes de búsqueda se omitió o se menciona sin monto.",
+      "En 'fondos' se usan dos valores de 'tipo' que no existen en inversionistas.json: 'corporativo' (Tencent, Alibaba) y 'corporativo_cvc' (brazos de venture corporativos). Varios ítems no traen 'aum' ni 'comprometido_ia' porque la firma no los publica.",
+      "Capital 'desplegado' o 'invertido acumulado' (Intel Capital 20, Salesforce Ventures 5, Samsung Next 2.1, Qualcomm Ventures 3+) NO es AUM: se dejó en 'nota' y no en el campo 'aum'.",
+      "Tencent y Alibaba: lo registrado es gasto de capital propio (capex), no participaciones accionarias; no se pudo verificar ningún monto de sus inversiones en laboratorios de IA chinos (Zhipu, Moonshot, MiniMax, Baichuan).",
+      "Nvidia: las filas del 10-Q son saldos y flujos agregados que se solapan entre sí y con las filas por empresa de inversionistas.json; no sumar. El 10-Q no nombra participadas. Los saldos son valor en libros o valor razonable, no costo.",
+      "Nvidia: no se pudieron verificar en página abierta los montos propios en xAI (hasta 2 mil millones, según resúmenes de búsqueda), Wayve (500 millones adicionales previstos), Mistral, Figure, Nscale ni Poolside; el artículo de TechCrunch que los recopila devolvió error 404.",
+      "Microsoft en la ronda 2026 de OpenAI: ninguna fuente abierta indica que aportara capital nuevo; la cifra de 11.6 y la participación de 26.79% provienen de una fuente secundaria (nivel C) que cita los 10-Q y una tabla de capitalización filtrada.",
+      "Fondos soberanos e IA: Bloomberg/Gulf News atribuye a Global SWF USD 66 mil millones en 'IA y digitalización' en 2025, mientras el boletín del propio Global SWF habla de 21 mil millones a IA en seis años; son definiciones distintas (digitalización amplia frente a IA estricta). El informe completo es de pago y no se abrió. No hay cifra de 2026.",
+      "Desglose por tipo de inversionista: no se halló una partición publicada corporativo/VC/soberano del capital de IA. Se incluyen indicadores parciales de PitchBook-NVCA (vía SiliconANGLE) y Global Corporate Venturing. Los 'USD 233.8 mil millones' de GCV son el valor total de rondas con al menos un corporativo, no el aporte de los corporativos.",
+      "AUM no verificados y por eso ausentes de 'aum_revalidados': KKR (resúmenes de búsqueda dan 796 al 2T-2026, sin página abierta), Blackstone, Accel, Greenoaks, Menlo, Benchmark, ADQ, GIC (no publica el tamaño de sus activos) y MGX.",
+      "QIA: USD 580 mil millones es una estimación sin fecha de Global SWF (nivel C), no una cifra oficial. PIF: 'más de 900' según su informe anual 2025 vía prensa (el sitio de PIF devolvió 403). Brookfield: 'más de 1 billón', sin cifra exacta. Silver Lake incluye capital comprometido.",
+      "Sin datos verificados: Amazon Alexa Fund e Industrial Innovation Fund, cartera de inversiones del Big Fund III (solo un reporte de pago sobre una primera inversión ligada a Piotech, sept-2025) y del fondo nacional de IA de China, y tamaño de fondos de Radical Ventures y Conviction.",
+      "Personas: Carlos Slim solo tiene una apuesta verificada y pequeña (centro de datos de Claro Argentina, USD 30 millones, inversión de la empresa); para Amancio Ortega/Pontegadea, David Vélez, Marcos Galperin, Michael Dell y Gautam Adani no se verificó ninguna inversión en IA o centros de datos con monto.",
+      "Centros de datos en América Latina: sus dueños son gestoras, no personas (Scala: DigitalBridge; según resultados de búsqueda, Ascenty es de Digital Realty y Brookfield, ODATA de Aligned Data Centers y Cirion de Stonepeak). Solo Scala/DigitalBridge se verificó en página abierta y con cifras de 2022.",
+      "El patrimonio de Marcos Galperin se copió de inversionistas.json (Forbes, 11-oct-2026) sin reabrir el perfil.",
+      "Unidades no USD: Tencent y Alibaba (CNY), Temasek (SGD), Norges (NOK). 'Billón' se usa en sentido español (10^12)."
+    ]
+  },
+  "fondos": [
+    {
+      "nombre": "Tencent",
+      "tipo": "corporativo",
+      "pais_iso3": "CHN",
+      "comprometido_ia": {
+        "valor": 52.8,
+        "unidad": "CNY miles de millones",
+        "fecha": "2026-06 (2T-2026)",
+        "fuente": "NetEase / TMTPost (钛媒体)",
+        "url": "https://www.163.com/dy/article/L5BSTOLI05118O92.html",
+        "nivel": "B",
+        "concepto": "Gasto de capital (capex) del 2T-2026; no es un fondo ni una participación accionaria"
+      },
+      "apuestas": [],
+      "nota": "Capex del 2T-2026 de 52.8 mil millones de yuanes; los pagos de capex del trimestre fueron ~59.3 mil millones, de los cuales ~51.4 mil millones en prepagos de capacidad de cómputo. Activos totales de 2.039 billones de yuanes (2025, Wikipedia) y participaciones en más de 600 empresas. No se verificaron montos de sus participaciones en laboratorios de IA chinos."
+    },
+    {
+      "nombre": "Alibaba Group",
+      "tipo": "corporativo",
+      "pais_iso3": "CHN",
+      "comprometido_ia": {
+        "valor": 380,
+        "unidad": "CNY miles de millones",
+        "fecha": "2026-02-12 (fecha del artículo)",
+        "fuente": "Futurum Group",
+        "url": "https://www.futurumgroup.com/insights/ai-capex-2026-the-690b-infrastructure-sprint/",
+        "nivel": "B",
+        "concepto": "Compromiso de inversión a tres años en IA y nube (anunciado; capex propio, no participaciones)"
+      },
+      "apuestas": [],
+      "nota": "Comprometió 380 mil millones de yuanes (~USD 53 mil millones) a tres años para IA y nube; su CEO adelantó un plan mayor. Capex del año fiscal 2026 de ~126 mil millones de yuanes según TMTPost/NetEase (27-ago-2026). No se verificaron montos de sus participaciones en startups de IA."
+    },
+    {
+      "nombre": "Intel Capital",
+      "tipo": "corporativo_cvc",
+      "pais_iso3": "USA",
+      "apuestas": [
+        "SambaNova Systems",
+        "Figure AI",
+        "AI21 Labs",
+        "Twelve Labs",
+        "Runpod",
+        "Anyscale"
+      ],
+      "nota": "Más de USD 20 mil millones invertidos en tres décadas (acumulado histórico, no AUM); invierte en IA desde 2014. Intel anunció en enero de 2025 su escisión como fondo independiente. Fuente: Wikipedia (Intel Capital), https://en.wikipedia.org/wiki/Intel_Capital."
+    },
+    {
+      "nombre": "Salesforce Ventures",
+      "tipo": "corporativo_cvc",
+      "pais_iso3": "USA",
+      "comprometido_ia": {
+        "valor": 1,
+        "unidad": "USD miles de millones",
+        "fecha": "2024-09",
+        "fuente": "Wikipedia (Salesforce Ventures)",
+        "url": "https://en.wikipedia.org/wiki/Salesforce_Ventures",
+        "nivel": "B",
+        "concepto": "Tamaño del Generative AI Fund (250 millones al lanzarse; 500 en jun-2023; 1,000 en sep-2024)"
+      },
+      "apuestas": [],
+      "nota": "A septiembre de 2024 había invertido USD 5 mil millones en empresas de 27 países (acumulado, no AUM). Su fondo de IA generativa pasó de 250 a 500 millones (jun-2023) y a 1,000 millones (sep-2024). No se verificaron participadas de IA con fuente abierta."
+    },
+    {
+      "nombre": "GV (Google Ventures)",
+      "tipo": "corporativo_cvc",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 10,
+        "unidad": "USD miles de millones",
+        "fecha": "s/f (infobox; fuente recuperada abr-2026)",
+        "fuente": "Wikipedia (GV, cita Kiplinger)",
+        "url": "https://en.wikipedia.org/wiki/GV_(company)",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Harvey",
+        "OpenEvidence",
+        "Synthesia",
+        "Lightmatter",
+        "Vercel"
+      ],
+      "nota": "Brazo de capital de riesgo de Alphabet; ~USD 10 mil millones en activos (aprox.). Alrededor del 80% de las nuevas inversiones de GV Europa en 2026 fueron en empresas de IA o nativas de IA. No publica montos por operación."
+    },
+    {
+      "nombre": "CapitalG",
+      "tipo": "corporativo_cvc",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 7,
+        "unidad": "USD miles de millones",
+        "fecha": "2024",
+        "fuente": "CapitalG (sitio oficial, titular de TechCrunch de 2024: 'Alphabet's $7B growth-stage investing arm')",
+        "url": "https://capitalg.com/",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Physical Intelligence",
+        "Baseten",
+        "Lovable",
+        "OpenRouter",
+        "Isomorphic Labs",
+        "LangChain"
+      ],
+      "nota": "Fondo de crecimiento independiente cuyo único aportante es Alphabet. La cifra de USD 7 mil millones es de 2024 y puede estar desactualizada. También figuran Clay, Bedrock Robotics, Magic y Dreamer en su cartera."
+    },
+    {
+      "nombre": "M12 (Microsoft)",
+      "tipo": "corporativo_cvc",
+      "pais_iso3": "USA",
+      "apuestas": [
+        "Inworld",
+        "HiddenLayer",
+        "Evisort"
+      ],
+      "nota": "Fondo de capital de riesgo de Microsoft (semilla a Serie B), lanzado en 2016 como Microsoft Ventures; declara más de 140 empresas activas en cartera y más de 50 salidas. No publica AUM. Fuente: https://m12.vc/."
+    },
+    {
+      "nombre": "Samsung Next",
+      "tipo": "corporativo_cvc",
+      "pais_iso3": "KOR",
+      "apuestas": [
+        "AI21",
+        "Arcee AI",
+        "Archetype AI",
+        "DeepInfra",
+        "Blackbox AI",
+        "AMI Labs"
+      ],
+      "nota": "Brazo de venture de Samsung, creado en 2012, con oficinas en Mountain View, Tel Aviv y Seúl; declara USD 2.1 mil millones de capital desplegado (acumulado, no AUM) y 248 inversiones activas. Fuente: https://www.samsungnext.com/portfolio."
+    },
+    {
+      "nombre": "Qualcomm Ventures",
+      "tipo": "corporativo_cvc",
+      "pais_iso3": "USA",
+      "comprometido_ia": {
+        "valor": 0.1,
+        "unidad": "USD miles de millones",
+        "fecha": "2018-11",
+        "fuente": "Wikipedia (Qualcomm Ventures)",
+        "url": "https://en.wikipedia.org/wiki/Qualcomm_Ventures",
+        "nivel": "B",
+        "concepto": "Fondo de IA 'en el dispositivo' (hasta USD 100 millones; anunciado)"
+      },
+      "apuestas": [
+        "Hugging Face"
+      ],
+      "nota": "Declara más de USD 3 mil millones de capital desplegado (acumulado, no AUM), más de 500 empresas en cartera y más de 200 salidas (https://www.qualcommventures.com/). En 2018 anunció un fondo de hasta 100 millones para IA en el dispositivo."
+    },
+    {
+      "nombre": "Radical Ventures",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "CAN",
+      "apuestas": [
+        "Cohere",
+        "World Labs",
+        "Waabi",
+        "Crusoe",
+        "Etched",
+        "Decart"
+      ],
+      "nota": "Firma especializada en IA; su cartera destacada incluye además Generalist, Latent Labs, Nabla Bio, Writer, Hebbia y Twelve Labs. El sitio no publica AUM ni tamaño de fondos. Fuente: https://radical.vc/about/."
+    },
+    {
+      "nombre": "Conviction",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "apuestas": [
+        "Mistral AI",
+        "Cognition",
+        "Harvey",
+        "Sierra",
+        "Baseten",
+        "HeyGen"
+      ],
+      "nota": "Firma de etapa temprana centrada en IA; declara cheques de USD 1 a 25 millones por empresa, a menudo como primer inversor. Su cartera incluye también OpenEvidence y Cartesia. No publica tamaño de fondos. Fuente: https://www.conviction.com/."
+    },
+    {
+      "nombre": "DigitalBridge (dueño de Scala Data Centers)",
+      "tipo": "gestora",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 45,
+        "unidad": "USD miles de millones",
+        "fecha": "2022-09",
+        "fuente": "NeoFeed",
+        "url": "https://neofeed.com.br/negocios/o-bilionario-plano-da-scala-para-se-tornar-o-data-center-dos-data-centers",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 3.5,
+        "unidad": "USD miles de millones",
+        "fecha": "2022-09-08",
+        "fuente": "NeoFeed",
+        "url": "https://neofeed.com.br/negocios/o-bilionario-plano-da-scala-para-se-tornar-o-data-center-dos-data-centers",
+        "nivel": "B",
+        "concepto": "Inversión total planeada en Scala Data Centers hasta 2027 (plan de 2022; centros de datos en América Latina, no exclusivo de IA)"
+      },
+      "apuestas": [
+        "Scala Data Centers"
+      ],
+      "nota": "Scala nació en 2020 cuando UOL vendió UOL Diveo a Digital Colony (hoy DigitalBridge) por USD 300–400 millones (estimado). El plan de 2022 preveía 33 centros de datos y más de 900 MW. Cifras de 2022: no se pudo abrir una fuente de 2026."
+    }
+  ],
+  "corporativos": [
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Cartera de participaciones no cotizadas (saldo en balance)",
+      "monto": {
+        "valor": 47.898,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-07-26",
+        "fuente": "Nvidia — Formulario 10-Q (2T del año fiscal 2027), SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm",
+        "nivel": "A",
+        "tipo": "invertido"
+      },
+      "nota": "Valor en libros de las participaciones no cotizadas; era 22.251 al 25-ene-2026. En el semestre: adiciones netas de 31.005, ganancias no realizadas de 7.504 y 12.712 reclasificados a valores cotizados. El 10-Q no nombra a las participadas."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Participaciones cotizadas en bolsa (saldo en balance)",
+      "monto": {
+        "valor": 42.783,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-07-26",
+        "fuente": "Nvidia — Formulario 10-Q (2T del año fiscal 2027), SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm",
+        "nivel": "A",
+        "tipo": "invertido"
+      },
+      "nota": "Valores de renta variable cotizados (corrientes); era 12.886 al 25-ene-2026. Además, 4.957 a largo plazo con restricción de venta hasta diciembre de 2027. Es valor razonable, no costo."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Compras de participaciones en el semestre (flujo de caja)",
+      "monto": {
+        "valor": 42.404,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-07-26 (1S del año fiscal 2027)",
+        "fuente": "Nvidia — Formulario 10-Q, SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm",
+        "nivel": "A",
+        "tipo": "invertido"
+      },
+      "nota": "Efectivo desembolsado en compras de valores de renta variable en seis meses (frente a 1.245 un año antes, según Unite.AI); ventas por 7.241. Se solapa con las filas por empresa: no sumar."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Compromisos de inversión pendientes (laboratorios de IA, financiadores de infraestructura y otras privadas)",
+      "monto": {
+        "valor": 25,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-07-26",
+        "fuente": "Nvidia — Formulario 10-Q, SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm",
+        "nivel": "A",
+        "tipo": "comprometido"
+      },
+      "nota": "Compromisos sujetos a contingencias: 18 en el resto del año fiscal 2027, 3 en 2028, 2 en 2029 y 2 en 2030."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Financiadores de infraestructura de IA (método de participación)",
+      "monto": {
+        "valor": 3.3,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-07-26",
+        "fuente": "Nvidia — Formulario 10-Q, SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm",
+        "nivel": "A",
+        "tipo": "invertido"
+      },
+      "nota": "Exposición máxima a pérdidas en estas entidades, incluidos montos comprometidos a futuro: 4.7. Aparte, en agosto de 2026 otorgó garantías de hasta 105 para un proyecto de SB Energy ligado a una afiliada de OpenAI (no es inversión accionaria)."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Hugging Face",
+      "monto": {
+        "valor": 12.93,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-09-03",
+        "fuente": "Unite.AI (citando el 10-Q de Nvidia)",
+        "url": "https://www.unite.ai/?p=461484",
+        "nivel": "B",
+        "tipo": "comprometido"
+      },
+      "nota": "Adquisición acordada por USD 12,930.3 millones (compra total, no participación minoritaria); no se verificó el cierre."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Baseten",
+      "monto": {
+        "valor": 0.15,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-01-21",
+        "fuente": "36Kr (IT Juzi)",
+        "url": "https://eu.36kr.com/en/p/3716969592927621",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "USD 150 millones dentro de una ronda de 300 millones. La misma fuente lista rondas del 1T-2026 con participación de Nvidia sin monto propio divulgado: Nscale (Serie C de 2 mil millones, valoración 14.6), Wayve (Serie D de 1.2 mil millones, valoración 8.6), World Labs (1 mil millones), Runway (315 millones) y Bedrock Robotics (270 millones)."
+    },
+    {
+      "inversor": "Microsoft",
+      "pais_iso3": "USA",
+      "participada": "OpenAI",
+      "monto": {
+        "valor": 11.6,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-09",
+        "fuente": "Techi (citando los 10-Q de Microsoft)",
+        "url": "https://www.techi.com/microsoft-openai-13b-investment/",
+        "nivel": "C",
+        "tipo": "invertido"
+      },
+      "nota": "Desembolsado a septiembre de 2025, de un compromiso total de ~13 mil millones. Participación de 26.79% (base totalmente diluida, fijada en la reestructuración del 28-oct-2025), valorada en ~228.3 mil millones a la valoración de 852 mil millones de marzo de 2026 (valor en papel). No se encontró que Microsoft aportara capital nuevo en la ronda de 2026. Fuente secundaria."
+    }
+  ],
+  "personas": [
+    {
+      "nombre": "Bill Gates",
+      "pais_iso3": "USA",
+      "rol": "Cofundador de Microsoft; presidente de TerraPower",
+      "patrimonio": {
+        "valor": 114.7,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/bill-gates/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "TerraPower",
+        "Microsoft (menos de 1%)"
+      ],
+      "apuestas": [
+        {
+          "concepto": "TerraPower (energía nuclear): aporte personal acumulado de 'más de' USD 1 mil millones en casi dos décadas; no es una inversión directa en IA",
+          "monto": {
+            "valor": 1,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-10-11",
+            "fuente": "Forbes (perfil)",
+            "url": "https://www.forbes.com/profile/bill-gates/",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Forbes estima que conserva menos de 1% de Microsoft. Su apuesta verificable ligada a la demanda energética es TerraPower, que apunta a completar su primer reactor hacia 2030. No se verificaron inversiones personales en laboratorios de IA."
+    },
+    {
+      "nombre": "Michael Dell",
+      "pais_iso3": "USA",
+      "rol": "Presidente y CEO de Dell Technologies",
+      "patrimonio": {
+        "valor": 281.9,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/michael-dell/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Dell Technologies",
+        "DFO Management",
+        "Broadcom (participación)"
+      ],
+      "apuestas": [],
+      "nota": "Su patrimonio subió con el alza de las acciones de Dell por el auge de la IA (servidores), según Forbes; tiene además una participación en Broadcom tras la compra de VMware por 69 mil millones (2023). No se verificaron inversiones personales en IA con monto."
+    },
+    {
+      "nombre": "Gautam Adani",
+      "pais_iso3": "IND",
+      "rol": "Presidente del Grupo Adani",
+      "patrimonio": {
+        "valor": 112.7,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-09-30",
+        "fuente": "Forbes (lista India's Richest 2026)",
+        "url": "https://www.forbes.com/profile/gautam-adani/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Adani Enterprises",
+        "AdaniConneX"
+      ],
+      "apuestas": [],
+      "nota": "Forbes señala que Adani y Mukesh Ambani hicieron en 2026 compromisos 'multimillonarios' para infraestructura de IA en India, sin dar cifra. La alianza AdaniConneX–Google en Visakhapatnam (~USD 15 mil millones en cinco años, según resultados de búsqueda) no pudo abrirse en fuente directa, por lo que no se registra monto."
+    },
+    {
+      "nombre": "Marcos Galperin",
+      "pais_iso3": "ARG",
+      "rol": "Fundador y presidente ejecutivo de Mercado Libre",
+      "patrimonio": {
+        "valor": 7.7,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/marcos-galperin/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Mercado Libre"
+      ],
+      "apuestas": [],
+      "nota": "Dejó el cargo de CEO (lo sucedió Ariel Szarfsztejn). Mercado Libre declara más de 20,000 programadores y que casi todo su código nuevo usa IA (Forbes Argentina, resultados 1T-2026), pero no publica un monto de inversión específico en IA. Patrimonio tomado de inversionistas.json (no reabierto)."
+    },
+    {
+      "nombre": "David Vélez",
+      "pais_iso3": "COL",
+      "rol": "Cofundador y CEO de Nubank",
+      "patrimonio": {
+        "valor": 15.6,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/david-velez/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Nu Holdings (Nubank)"
+      ],
+      "apuestas": [],
+      "nota": "Su perfil de Forbes no registra inversiones en IA ni en centros de datos; no se verificó ningún monto."
+    },
+    {
+      "nombre": "Carlos Slim Helú",
+      "pais_iso3": "MEX",
+      "rol": "Presidente honorario de América Móvil; su familia controla Grupo Carso (76%)",
+      "patrimonio": {
+        "valor": 114.9,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/carlos-slim-helu/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "América Móvil (Claro, Telmex)",
+        "Grupo Carso"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Claro Argentina (América Móvil): centro de datos Tier III en Buenos Aires, inversión inicial anunciada (obra 2024–2026); inversión de la empresa, no personal",
+          "monto": {
+            "valor": 0.03,
+            "unidad": "USD miles de millones",
+            "fecha": "2024-08-29",
+            "fuente": "Bloomberg Línea",
+            "url": "https://www.bloomberglinea.com/latinoamerica/argentina/claro-de-carlos-slim-anuncia-inversion-de-us30-millones-en-argentina-de-que-se-trata/",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "No se encontró una cifra consolidada de inversión en IA o centros de datos de Slim o América Móvil; la única apuesta verificada es de escala menor (USD 30 millones). Su perfil de Forbes no menciona IA."
+    },
+    {
+      "nombre": "Amancio Ortega",
+      "pais_iso3": "ESP",
+      "rol": "Fundador de Inditex (posee ~60%)",
+      "patrimonio": {
+        "valor": 140.6,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/amancio-ortega/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Pontegadea",
+        "Inditex"
+      ],
+      "apuestas": [],
+      "nota": "Pontegadea cerró 2025 con activos combinados de EUR 117,083 millones y una cartera inmobiliaria de ~22,000 millones (Xataka, 25-ago-2026, con datos del Registro Mercantil), centrada en oficinas, logística, hoteles e infraestructura; no se encontró ninguna inversión en centros de datos."
+    }
+  ],
+  "flujos": [
+    {
+      "concepto": "Fondos soberanos y estatales: inversión en IA y digitalización (Global SWF, vía Bloomberg/Gulf News)",
+      "valor": 66,
+      "unidad": "USD miles de millones",
+      "periodo": "2025",
+      "fuente": "Gulf News (Bloomberg), citando el informe anual 2026 de Global SWF",
+      "url": "https://gulfnews.com/business/markets/sovereign-wealth-funds-pour-66-billion-into-ai-as-assets-hit-15-trillion-1.500395812",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Mubadala: inversión en IA y digitalización (mayor inversor soberano en el rubro)",
+      "valor": 12.9,
+      "unidad": "USD miles de millones",
+      "periodo": "2025",
+      "fuente": "Gulf News (Bloomberg), citando a Global SWF",
+      "url": "https://gulfnews.com/business/markets/sovereign-wealth-funds-pour-66-billion-into-ai-as-assets-hit-15-trillion-1.500395812",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Kuwait Investment Authority: inversión en IA y digitalización",
+      "valor": 6,
+      "unidad": "USD miles de millones",
+      "periodo": "2025",
+      "fuente": "Gulf News (Bloomberg), citando a Global SWF",
+      "url": "https://gulfnews.com/business/markets/sovereign-wealth-funds-pour-66-billion-into-ai-as-assets-hit-15-trillion-1.500395812",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Qatar Investment Authority: inversión en IA y digitalización",
+      "valor": 4,
+      "unidad": "USD miles de millones",
+      "periodo": "2025",
+      "fuente": "Gulf News (Bloomberg), citando a Global SWF",
+      "url": "https://gulfnews.com/business/markets/sovereign-wealth-funds-pour-66-billion-into-ai-as-assets-hit-15-trillion-1.500395812",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Inversión total de inversionistas estatales (todas las industrias; 562 operaciones, récord)",
+      "valor": 278,
+      "unidad": "USD miles de millones",
+      "periodo": "2025",
+      "fuente": "Global SWF (boletín del informe anual 2026)",
+      "url": "https://globalswf.beehiiv.com/p/global-swf-2026-annual-report",
+      "nivel": "A"
+    },
+    {
+      "concepto": "IA: capital recibido de inversionistas estatales en los últimos seis años (definición estricta de Global SWF)",
+      "valor": 21,
+      "unidad": "USD miles de millones",
+      "periodo": "2020–2025",
+      "fuente": "Global SWF (boletín del informe anual 2026)",
+      "url": "https://globalswf.beehiiv.com/p/global-swf-2026-annual-report",
+      "nivel": "A"
+    },
+    {
+      "concepto": "Activos bajo gestión de los fondos soberanos del mundo (supera 15 billones por primera vez)",
+      "valor": 15000,
+      "unidad": "USD miles de millones",
+      "periodo": "2025 (cierre)",
+      "fuente": "Global SWF (boletín del informe anual 2026)",
+      "url": "https://globalswf.beehiiv.com/p/global-swf-2026-annual-report",
+      "nivel": "A"
+    },
+    {
+      "concepto": "Siete principales fondos del Golfo: capital desplegado, 43% de toda la inversión estatal mundial (Gulf News da 126; el boletín de Global SWF da 119)",
+      "valor": 126,
+      "unidad": "USD miles de millones",
+      "periodo": "2025",
+      "fuente": "Gulf News (Bloomberg), citando a Global SWF",
+      "url": "https://gulfnews.com/business/markets/sovereign-wealth-funds-pour-66-billion-into-ai-as-assets-hit-15-trillion-1.500395812",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Inversión estatal con destino a Estados Unidos (68.9 en 2024)",
+      "valor": 131.8,
+      "unidad": "USD miles de millones",
+      "periodo": "2025",
+      "fuente": "Gulf News (Bloomberg), citando a Global SWF",
+      "url": "https://gulfnews.com/business/markets/sovereign-wealth-funds-pour-66-billion-into-ai-as-assets-hit-15-trillion-1.500395812",
+      "nivel": "B"
+    },
+    {
+      "concepto": "PIF: capital desplegado, mayor inversor estatal del año (en su mayoría la compra de Electronic Arts)",
+      "valor": 36.2,
+      "unidad": "USD miles de millones",
+      "periodo": "2025",
+      "fuente": "Gulf News (Bloomberg), citando a Global SWF",
+      "url": "https://gulfnews.com/business/markets/sovereign-wealth-funds-pour-66-billion-into-ai-as-assets-hit-15-trillion-1.500395812",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Capital de riesgo de EE.UU.: valor total de operaciones (PitchBook-NVCA)",
+      "valor": 412.7,
+      "unidad": "USD miles de millones",
+      "periodo": "1S-2026",
+      "fuente": "SiliconANGLE, citando PitchBook-NVCA Venture Monitor 2T-2026",
+      "url": "https://siliconangle.com/2026/07/09/pitchbook-us-venture-funding-hits-412-7b-first-half-ai-deals-dominate/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Capital de riesgo de EE.UU. destinado a empresas de IA (~86% del total)",
+      "valor": 355.9,
+      "unidad": "USD miles de millones",
+      "periodo": "1S-2026",
+      "fuente": "SiliconANGLE, citando PitchBook-NVCA Venture Monitor 2T-2026",
+      "url": "https://siliconangle.com/2026/07/09/pitchbook-us-venture-funding-hits-412-7b-first-half-ai-deals-dominate/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Participación de brazos corporativos (CVC) en operaciones de capital de riesgo de EE.UU., por número de operaciones (mínimo en 10 años)",
+      "valor": 21,
+      "unidad": "%",
+      "periodo": "1S-2026",
+      "fuente": "SiliconANGLE, citando PitchBook-NVCA Venture Monitor 2T-2026",
+      "url": "https://siliconangle.com/2026/07/09/pitchbook-us-venture-funding-hits-412-7b-first-half-ai-deals-dominate/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Fondos de capital de riesgo de EE.UU.: capital levantado en 405 fondos (a16z, Thrive y Founders Fund sumaron 34.8, el 48%)",
+      "valor": 72.4,
+      "unidad": "USD miles de millones",
+      "periodo": "1S-2026",
+      "fuente": "SiliconANGLE, citando PitchBook-NVCA Venture Monitor 2T-2026",
+      "url": "https://siliconangle.com/2026/07/09/pitchbook-us-venture-funding-hits-412-7b-first-half-ai-deals-dominate/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Rondas con participación corporativa en el mundo: valor total (5,221 rondas, +30%; valor +75%)",
+      "valor": 233.8,
+      "unidad": "USD miles de millones",
+      "periodo": "2025",
+      "fuente": "Global Corporate Venturing",
+      "url": "https://globalventuring.com/intelligence/2026-wocv-6-global-trends/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Operaciones de IA 'pura' como proporción del capital corporativo desplegado (son solo 7% de las rondas con respaldo corporativo)",
+      "valor": 41,
+      "unidad": "%",
+      "periodo": "2025",
+      "fuente": "Global Corporate Venturing",
+      "url": "https://globalventuring.com/intelligence/2026-wocv-6-global-trends/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Nvidia: compras de participaciones accionarias en seis meses (flujo de caja del 10-Q)",
+      "valor": 42.404,
+      "unidad": "USD miles de millones",
+      "periodo": "1S del año fiscal 2027 (feb–jul 2026)",
+      "fuente": "Nvidia — Formulario 10-Q, SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm",
+      "nivel": "A"
+    }
+  ],
+  "aum_revalidados": [
+    {
+      "nombre": "Brookfield",
+      "aum": {
+        "valor": 1000,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-06-30 (2T-2026)",
+        "fuente": "Alternative Credit Investor (resultados 2T-2026: 'superó USD 1 billón'; capital que genera comisiones: 672)",
+        "url": "https://alternativecreditinvestor.com/2026/08/05/brookfield-raises-record-77bn-in-q2/",
+        "nivel": "B"
+      }
+    },
+    {
+      "nombre": "Silver Lake",
+      "aum": {
+        "valor": 126,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-06-30",
+        "fuente": "Silver Lake (sitio oficial; AUM aproximado más capital comprometido)",
+        "url": "https://www.silverlake.com/",
+        "nivel": "A"
+      }
+    },
+    {
+      "nombre": "Temasek",
+      "aum": {
+        "valor": 518,
+        "unidad": "SGD miles de millones",
+        "fecha": "2026-03-31",
+        "fuente": "Mothership (Temasek Review 2026, publicado el 8-jul-2026)",
+        "url": "https://mothership.sg/2026/07/temasek-review-2026/",
+        "nivel": "B"
+      }
+    },
+    {
+      "nombre": "Public Investment Fund (PIF) / Humain",
+      "aum": {
+        "valor": 900,
+        "unidad": "USD miles de millones",
+        "fecha": "2025 (informe anual 2025; 'más de')",
+        "fuente": "GDN Online (18-ago-2026), citando el informe anual 2025 de PIF",
+        "url": "https://www.gdnonline.com/Details/1403747/PIF-delivers-$120bn-revenue-in-2025-net-profit-doubles-to-$17bn",
+        "nivel": "B"
+      }
+    },
+    {
+      "nombre": "Mubadala",
+      "aum": {
+        "valor": 385,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-12-31",
+        "fuente": "Mubadala (resultados anuales 2025, 9-abr-2026; AED 1.4 billones)",
+        "url": "https://www.mubadala.com/en/news/strong-performance-by-uae-portfolio-drives-mubadalas-growth-in-2025",
+        "nivel": "A"
+      }
+    },
+    {
+      "nombre": "Norges Bank Investment Management (Fondo de Pensiones Global de Noruega)",
+      "aum": {
+        "valor": 22683,
+        "unidad": "NOK miles de millones",
+        "fecha": "2026-06-30",
+        "fuente": "Norges Bank Investment Management (valor de mercado del fondo)",
+        "url": "https://www.nbim.no/en/the-fund/Market-Value/",
+        "nivel": "A"
+      }
+    },
+    {
+      "nombre": "Qatar Investment Authority (QIA)",
+      "aum": {
+        "valor": 580,
+        "unidad": "USD miles de millones",
+        "fecha": "s/f (ficha consultada el 11-oct-2026)",
+        "fuente": "Global SWF (ficha del fondo; estimación de terceros)",
+        "url": "https://globalswf.com/fund/QIA",
+        "nivel": "C"
+      }
+    }
+  ]
+}

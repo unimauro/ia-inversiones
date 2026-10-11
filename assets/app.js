@@ -47,7 +47,7 @@
   }
   // moneda declarada en la unidad y conversión a US$ con el tipo de cambio del día de corte
   var FX = (D.fx || {}).unidades_por_usd || {};
-  function cur(u) { var m = /^(CNY|KRW|EUR|JPY|INR|TWD|HKD|GBP|CAD|BRL|MXN|COP|SEK|PLN|CHF|SGD|AUD|RUB|ILS)\b/.exec(String(u || "").trim()); return m ? m[1] : null; }
+  function cur(u) { var m = /^(CNY|KRW|EUR|JPY|INR|TWD|HKD|NOK|AED|SAR|PEN|CLP|ARS|GBP|CAD|BRL|MXN|COP|SEK|PLN|CHF|SGD|AUD|RUB|ILS)\b/.exec(String(u || "").trim()); return m ? m[1] : null; }
   function scale(u) { u = norm(u); return /10\^12|billones/.test(u) ? 1e12 : /miles de millones|billion|\bbn\b/.test(u) ? 1e9 : /crore/.test(u) ? 1e7 : /millones|million|\bmm\b/.test(u) ? 1e6 : 1; }
   function rango(o) {
     if (!o || typeof o !== "object" || o.valor != null) return "";
@@ -67,7 +67,8 @@
     opts = opts || {};
     var s = opts.raw ? fmt(n) + (unitOf(o) ? " " + esc(unitOf(o)) : "") : money(n, unitOf(o));
     var w = when(o), k = cur(unitOf(o)), rg = rango(o);
-    if (!opts.raw && k) s = "≈ " + money(toBn(o), "USD miles de millones") + '</b> <span class="mut">' + fmt(n) + " " + esc(unitOf(o).replace(/\s*\(.*\)/, "")) + "</span><b>";
+    if (!opts.raw && k && toBn(o) == null) s = fmt(n) + " " + esc(unitOf(o));
+    else if (!opts.raw && k) s = "≈ " + money(toBn(o), "USD miles de millones") + '</b> <span class="mut">' + fmt(n) + " " + esc(unitOf(o).replace(/\s*\(.*\)/, "")) + "</span><b>";
     if (rg) s = (rg.indexOf("rango") === 0 ? "" : rg + " ") + s + (rg.indexOf("rango") === 0 ? '</b> <span class="mut">' + rg + "</span><b>" : "");
     return "<b>" + s + "</b>" + (w && !opts.noWhen ? ' <span class="mut">(' + esc(w) + ")</span>" : "") + lv(o);
   }
@@ -462,6 +463,12 @@
     });
     note("nPubRank", pub.length ? "Miles de millones de US$. No es un ranking estricto: EE.UU. es I+D federal en IA, Corea es presupuesto de IA en sentido amplio y los demás son partidas de un ministerio o programa. Solo 7 gobiernos publican una cifra anual; China no lo hace." : "");
 
+    var ga = arr(G.ai_index_gasto).filter(function (r) { return num(r) != null && enBloque(r.iso3); }).sort(function (a, b) { return toBn(b) - toBn(a); });
+    if (!arr(G.ai_index_gasto).length) $("cardGastoAI").style.display = "none";
+    else {
+      hbar("cGastoAI", ga.slice(0, 20).map(function (r) { return { name: r.nombre_es || nombre(r.iso3), value: toBn(r), extra: (r.concepto || "") + " · " + when(r), iso: r.iso3 }; }), { color: 2, fmt: function (v) { return money(v, "USD miles de millones"); }, short: function (v) { return fmt(v); } });
+      note("nGastoAI", ga.length ? "Miles de millones de US$. Es la comparación más homogénea disponible entre gobiernos. " + srcNote(ga[0]) : "");
+    }
     var comp = []; Object.keys(C).filter(enBloque).forEach(function (i) { C[i].compromisos.forEach(function (k) { comp.push({ iso: i, k: k }); }); });
     table("tCompromisos", [
       { t: "País", v: function (r) { return nombre(r.iso); }, h: function (r) { return esc(nombre(r.iso)); }, asc: true },
@@ -611,7 +618,7 @@
   }
 
   // ---- QUIÉN FINANCIA -------------------------------------------------------
-  var TIPOS = { capital_riesgo: "Capital de riesgo", crecimiento: "Crecimiento", private_equity: "Private equity", gestora: "Gestora", soberano: "Fondo soberano", corporativo: "Corporativo", conglomerado: "Conglomerado" };
+  var TIPOS = { capital_riesgo: "Capital de riesgo", crecimiento: "Crecimiento", private_equity: "Private equity", gestora: "Gestora", soberano: "Fondo soberano", corporativo: "Corporativo", corporativo_cvc: "Capital de riesgo corporativo", conglomerado: "Conglomerado" };
   function tipoNom(t) { return TIPOS[t] || String(t || "").replace(/_/g, " "); }
   function chips(a) { return arr(a).map(function (x) { return '<span class="tag">' + esc(typeof x === "string" ? x : (x.nombre || x.concepto || "")) + "</span>"; }).join(" "); }
   function dinero() {
@@ -694,6 +701,15 @@
     var pr = arr(U.produccion_pais).filter(function (r) { return num(r.publicaciones) != null; }).sort(function (a, b) { return num(b.publicaciones) - num(a.publicaciones); });
     hbar("cPubs", pr.slice(0, 15).map(function (r) { return { name: nombre(r.iso3), value: num(r.publicaciones), iso: r.iso3 }; }), { color: 2, fmt: function (v, it) { return fmt(v) + " " + (unitOf(pr[0].publicaciones) || "publicaciones"); } });
     if (pr.length) note("nPubs", esc(unitOf(pr[0].publicaciones) || "Publicaciones") + ", " + esc(when(pr[0].publicaciones)) + ". " + srcNote(pr[0].publicaciones));
+    var mp = arr(U.modelos_notables_pais).filter(function (r) { return num(r.modelos) != null; }).sort(function (a, b) { return num(b.modelos) - num(a.modelos); });
+    var mo = arr(U.modelos_notables_org).filter(function (r) { return num(r.modelos) != null; }).sort(function (a, b) { return num(b.modelos) - num(a.modelos); });
+    if (!mp.length && !mo.length) $("gridModelos").style.display = "none";
+    else {
+      hbar("cModPais", mp.slice(0, 15).map(function (r) { return { name: r.nombre_es || nombre(r.iso3), value: num(r.modelos), iso: r.iso3 }; }), { color: 0, fmt: function (v) { return fmt(v, 0) + " modelos"; } });
+      if (mp.length) note("nModPais", "Modelos considerados notables, " + esc(mp[0].anio || "") + ". " + srcNote(mp[0]));
+      hbar("cModOrg", mo.slice(0, 15).map(function (r) { return { name: r.organizacion, value: num(r.modelos), extra: (r.tipo || "") + (r.pais_iso3 ? " · " + nombre(r.pais_iso3) : "") }; }), { color: 4, fmt: function (v) { return fmt(v, 0) + " modelos"; } });
+      if (mo.length) note("nModOrg", "Modelos considerados notables, " + esc(mo[0].anio || "") + ". " + srcNote(mo[0]));
+    }
     var cf = arr(U.conferencias).filter(function (r) { return num(r.papers) != null; });
     var conf = cf.length ? cf[0].conferencia : "";
     cf = cf.filter(function (r) { return r.conferencia === conf; }).sort(function (a, b) { return num(b.papers) - num(a.papers); });
@@ -713,7 +729,7 @@
     table("tInvUni", [
       { t: "Universidad", h: function (r) { return "<b>" + esc(r.universidad) + "</b><br><span class=\"mut\">" + esc(nombre(r.pais_iso3)) + "</span>"; } },
       { t: "Concepto", h: function (r) { return link(r.concepto || "", r.url); }, cls: "wide" },
-      { t: "Monto", num: true, v: function (r) { return num(r.monto_usd_mm); }, h: function (r) { return num(r.monto_usd_mm) != null ? "<b>" + money(num(r.monto_usd_mm), "USD millones") + "</b>" : '<span class="mut">—</span>'; } },
+      { t: "Monto", num: true, v: function (r) { return num(r.monto_usd_mm) != null ? num(r.monto_usd_mm) : (toBn(r.monto_original) != null ? toBn(r.monto_original) * 1000 : null); }, h: function (r) { return num(r.monto_usd_mm) != null ? "<b>" + money(num(r.monto_usd_mm), "USD millones") + "</b>" : fig(r.monto_original, { noWhen: true }); } },
       { t: "Año", num: true, v: function (r) { return num(r.anio); }, h: function (r) { return esc(r.anio || ""); } }
     ], arr(U.inversiones_universitarias), { sort: 2 });
   }
@@ -730,11 +746,19 @@
     } else noData("cIlia");
     var ul = arr(U.latam);
     table("tUniLatam", uniCols(rkKeys(ul)), ul, { sort: 2, dir: 1 });
+    var sl = arr(LA.startups_latam);
+    if (!sl.length) $("cardStartLatam").style.display = "none"; else table("tStartLatam", [
+      { t: "Startup", v: function (r) { return r.nombre; }, h: function (r) { return "<b>" + link(r.nombre, r.url) + "</b>" + (r.descripcion ? '<br><span class="mut">' + esc(r.descripcion) + "</span>" : ""); }, cls: "wide", asc: true },
+      { t: "País", v: function (r) { return nombre(r.pais_iso3); }, h: function (r) { return esc(nombre(r.pais_iso3)); }, asc: true },
+      { t: "Total recaudado", num: true, v: function (r) { return toBn(r.total_recaudado); }, h: function (r) { return fig(r.total_recaudado, { noWhen: true }); } },
+      { t: "Última ronda", num: true, v: function (r) { return toBn(r.ultima_ronda); }, h: function (r) { return fig(r.ultima_ronda); } }
+    ], sl, { sort: 2, rank: true });
     table("tLatam", [
       { t: "País", v: function (r) { return nombre(r.iso3); }, h: function (r) { return '<a href="#mapa" data-iso="' + esc(r.iso3) + '"><b>' + esc(nombre(r.iso3)) + "</b></a>"; }, asc: true },
       { t: "Estrategia nacional", h: function (r) { var e = r.estrategia; return e && e.nombre ? link(e.nombre, e.url) + (e.anio ? ' <span class="mut">' + esc(e.anio) + "</span>" : "") : '<span class="mut">—</span>'; }, cls: "wide" },
       { t: "Monto anunciado", num: true, h: function (r) { var m = r.estrategia && r.estrategia.monto; return num(m) != null ? fig(m) + (m.moneda_original ? '<br><span class="mut">' + esc(m.moneda_original) + "</span>" : "") : '<span class="mut">—</span>'; } },
       { t: "I+D % PIB", num: true, v: function (r) { return num(r.gerd_pct_pib); }, h: function (r) { return num(r.gerd_pct_pib) != null ? "<b>" + fmt(num(r.gerd_pct_pib)) + "%</b>" + lv(r.gerd_pct_pib) : '<span class="mut">—</span>'; } },
+      { t: "Capital de riesgo en IA", num: true, v: function (r) { return toBn(r.vc_ia); }, h: function (r) { return fig(r.vc_ia); } },
       { t: "Anuncios de inversión", h: function (r) { return arr(r.anuncios).slice(0, 3).map(function (a) { return esc(a.empresa || "") + (num(a.monto) != null ? " " + fig(a.monto, { noWhen: true }) : "") + (a.fecha ? ' <span class="mut">' + esc(a.fecha) + "</span>" : ""); }).join("<br>") || '<span class="mut">—</span>'; }, cls: "wide" }
     ], arr(LA.latam), { sort: 0, dir: 1 });
     $("tLatam").onclick = function (e) { var a = e.target.closest("a[data-iso]"); if (a) ficha(a.getAttribute("data-iso")); };
@@ -742,7 +766,7 @@
     var pe = LA.peru, el = $("peruCard");
     if (!pe) { el.style.display = "none"; return; }
     function ul2(t, items, f) { return items.length ? "<div><h4>" + esc(t) + "</h4><ul>" + items.map(function (i) { return "<li>" + f(i) + "</li>"; }).join("") + "</ul></div>" : ""; }
-    function any(i) { return typeof i === "string" ? esc(i) : (i.nombre || i.empresa || i.universidad || i.norma ? "<b>" + link(i.nombre || i.empresa || i.universidad || i.norma, i.url) + "</b>" : "") + (i.concepto || i.resumen || i.descripcion || i.programa || i.nota ? " — " + esc(i.concepto || i.resumen || i.descripcion || i.programa || i.nota) : "") + (num(i.monto) != null ? " " + fig(i.monto, { noWhen: true }) : "") + (i.fecha ? ' <span class="mut">' + esc(i.fecha) + "</span>" : ""); }
+    function any(i) { if (i && i.monto == null && i.ronda && typeof i.ronda === "object") i = Object.assign({}, i, { monto: i.ronda }); return typeof i === "string" ? esc(i) : (i.nombre || i.empresa || i.universidad || i.norma ? "<b>" + link(i.nombre || i.empresa || i.universidad || i.norma, i.url) + "</b>" : "") + (i.concepto || i.resumen || i.descripcion || i.programa || i.nota ? " — " + esc(i.concepto || i.resumen || i.descripcion || i.programa || i.nota) : "") + (num(i.monto) != null ? " " + fig(i.monto, { noWhen: true }) : "") + (i.fecha ? ' <span class="mut">' + esc(i.fecha) + "</span>" : ""); }
     el.innerHTML = "<h3>Perú, a detalle</h3>" + (pe.resumen ? '<p class="res">' + esc(pe.resumen) + "</p>" : "") + '<div class="cols">' +
       ul2("Indicadores", arr(pe.indicadores), function (i) { return esc(i.indicador) + ": " + fig(i, { raw: !/usd|us\$/i.test(unitOf(i)) }); }) +
       ul2("Marco legal", arr(pe.marco_legal), any) + ul2("Startups", arr(pe.startups), any) + ul2("Anuncios de inversión", arr(pe.anuncios), any) + ul2("Universidades", arr(pe.universidades), any) + "</div>";

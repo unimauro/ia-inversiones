@@ -131,6 +131,11 @@
         <div class="tablewrap short" id="tCompromisos"></div>
       </div>
     </div>
+    <div class="card" id="cardGastoAI">
+      <h3>Gasto público en IA según el AI Index</h3>
+      <div id="cGastoAI" class="chart tall"></div>
+      <p class="note" id="nGastoAI"></p>
+    </div>
     <div class="card">
       <h3>Tabla de países</h3>
       <div class="filters"><input type="search" id="qPais" placeholder="Buscar país…" aria-label="Buscar país"></div>
@@ -351,6 +356,8 @@
       </div>
       <div class="card">
         <h3>Alquiler de GPU y precios de API</h3>
+        <div id="cH100" class="chart" style="display:none"></div>
+        <p class="note" id="nH100"></p>
         <div class="tablewrap short" id="tGpuHora"></div>
         <div class="tablewrap short" id="tApi" style="margin-top:12px"></div>
       </div>
@@ -443,6 +450,18 @@
         <p class="note" id="nConf"></p>
       </div>
     </div>
+    <div class="grid2" id="gridModelos">
+      <div class="card">
+        <h3>Modelos notables de IA por país</h3>
+        <div id="cModPais" class="chart tall"></div>
+        <p class="note" id="nModPais"></p>
+      </div>
+      <div class="card">
+        <h3>Modelos notables de IA por organización</h3>
+        <div id="cModOrg" class="chart tall"></div>
+        <p class="note" id="nModOrg"></p>
+      </div>
+    </div>
     <div class="grid2">
       <div class="card">
         <h3>Talento</h3>
@@ -474,6 +493,10 @@
     <div class="card">
       <h3>Estrategias y anuncios por país</h3>
       <div class="tablewrap" id="tLatam"></div>
+    </div>
+    <div class="card" id="cardStartLatam">
+      <h3>Las startups de IA más financiadas de América Latina</h3>
+      <div class="tablewrap short" id="tStartLatam"></div>
     </div>
     <div class="card" id="cardLatReg">
       <h3>La región en conjunto</h3>

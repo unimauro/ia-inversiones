@@ -1,0 +1,300 @@
+{
+  "meta": {
+    "consultado": "2026-10-11",
+    "estado": "PARCIAL: conferencias, modelos_notables_pais, modelos_notables_org y citas_pais quedaron vacíos porque el disco se llenó (ENOSPC) y no se pudo ejecutar el conteo sobre los archivos ya descargados.",
+    "tipo_de_cambio": "No se declaró ninguno: monto_usd_mm solo se llena cuando la propia fuente da la cifra en USD; en los demás casos queda null y el monto va en monto_original.",
+    "niveles": "A = cifra o fecha textual en la página abierta; B = dato inferido de la redacción de la fuente o tomado de una fuente secundaria/agregador.",
+    "advertencias": [
+      "conferencias: VACÍO. Se localizó una fuente homogénea y se descargó, pero no se pudo procesar por falta de espacio en disco. Fuente propuesta: los JSON oficiales del sitio virtual de cada conferencia, que traen la institución de cada autor (https://neurips.cc/static/virtual/data/neurips-2025-orals-posters.json con 6 002 registros; https://icml.cc/static/virtual/data/icml-2026-orals-posters.json con 6 797; https://iclr.cc/static/virtual/data/iclr-2026-orals-posters.json con 5 691). Método previsto: contar papers con al menos un autor de la institución (un paper cuenta una vez por institución), normalizando nombres. No se publica ninguna cifra porque el conteo no se ejecutó.",
+      "conferencias: el repositorio papercopilot/paperlists (GitHub) trae afiliaciones normalizadas para NeurIPS 2025 (5 812 aceptados entre pista principal, Datasets & Benchmarks y Position; 5 275 en pista principal), pero sus archivos de ICML 2026 e ICLR 2026 vienen SIN afiliaciones, así que no sirve para un conteo homogéneo de las tres. La API pública de OpenReview (api2.openreview.net) responde 403 'Challenge verification required'; no se intentó eludir.",
+      "modelos_notables_pais y modelos_notables_org: VACÍOS. El CSV de Epoch AI (https://epoch.ai/data/notable_ai_models.csv) es accesible y trae las columnas 'Organization', 'Country (of organization)' y 'Publication date', pero pesa ~2.2 MB y no se pudo contar sin Bash. El PDF del capítulo 1 del AI Index 2026 no es legible por WebFetch (flujos comprimidos); requiere pdftotext.",
+      "citas_pais: VACÍO. No se pudo abrir el texto del AI Index 2026 cap. 1 ni se consultó OECD.AI; sigue vigente lo que ya dice universidades.json (solo China y EE. UU.).",
+      "inversiones_universitarias: 16 entradas nuevas (objetivo 20-30 no alcanzado). No se repiten Empire AI ni Isambard-AI, que ya están en universidades.json. Mezcla tres naturalezas distintas que no deben sumarse: donaciones privadas a una universidad, programas públicos nacionales cuyo beneficiario son universidades y centros (Canadá, Singapur, India, NSF) y alianzas empresa-universidad.",
+      "inversiones_universitarias: no se verificaron (página no abierta, 403/404 o sin monto fechado en 2023-2026) MIT Schwarzman (2018), Harvard Kempner (2021), Stanford HAI, Princeton, UC Berkeley, Cambridge, TUM, Tsinghua, U. de Tokio/SoftBank (2019), NUS/NTU como receptoras directas, MBZUAI, KAUST, Mila/Vector/Amii con monto propio, Tec de Monterrey, UNAM, Unicamp/CPQD ni ninguna universidad peruana. RIT (USD 24 M, jun-2026) y Motorola-USP (R$ 5.5 M) aparecieron solo en resultados de búsqueda y se omiten.",
+      "KAIST–NVIDIA: IBTimes Singapore da USD 300 M a cinco años; el agregador Ground News cita ~420 000 millones de wones (ddaily.co.kr, no abierto). Se guarda la cifra en USD de la fuente abierta.",
+      "Oxford–EIT: mínimo GBP 130 M en total; solo GBP 31 M son específicamente de IA (centro de doctorado). Los GBP 100 M de investigación conjunta cubren también salud, alimentación y clima.",
+      "NSF 2025: Campus Technology lista cinco institutos más el nodo coordinador (UC Davis); otras fuentes secundarias difieren sobre cuáles son nuevos y cuáles renovados. La nota original de NSF devolvió 404.",
+      "Amazon AI PhD Fellowship: la fuente no fecha el año en la nota (dice 29 de octubre; programa 2025-2027) y el desglose publicado (USD 10 M + USD 24 M) no suma los USD 68 M.",
+      "Perú: no se encontró año de creación para el Grupo IA-PUCP (su sitio dio error de certificado), ni para programas de UPCH, ESAN, UPC, UNSA o U. de Lima (maestría). La carrera de IA de ESAN existe (PDF de perfil de egresado en ue.edu.pe) pero el PDF no fue legible. Contexto: a abril de 2024, 5 de 93 universidades peruanas ofrecían carreras relacionadas con IA (UNI, ESAN, UTEC, UPC y UCV), según Infomercado (https://infomercado.pe/oferta-educativa-de-ia-5-de-93-universidades-peruanas-ofrecen-carreras-relacionadas-con-esta-herramienta/).",
+      "Perú, rankings: solo se obtuvo EduRank IA (clave adicional 'peru_rankings'). Scimago Institutions, Nature Index, CWUR y URAP no se consultaron.",
+      "UNI: la carrera se llama 'Ingeniería de Inteligencia Artificial' en El Peruano y 'Ingeniería en Inteligencia Artificial' en ProActivo. El Peruano (oct-2023) preveía el inicio en el segundo semestre de 2024; las primeras 30 vacantes recién se ofrecieron en el examen de febrero de 2026."
+    ]
+  },
+  "conferencias": [],
+  "inversiones_universitarias": [
+    {
+      "universidad": "University of Southern California (USC)",
+      "pais_iso3": "USA",
+      "concepto": "Donación de Mark y Mary Stevens para investigación en IA en toda la universidad; da nombre a la USC Mark and Mary Stevens School of Computing and Artificial Intelligence",
+      "monto_usd_mm": 200,
+      "monto_original": {"valor": 200, "unidad": "millones USD"},
+      "anio": 2026,
+      "fuente": "USC Viterbi School of Engineering, 5-may-2026",
+      "url": "https://viterbischool.usc.edu/mediacoverage/mark-and-mary-stevens-give-200-million-to-power-ai-research-across-usc/",
+      "nivel": "A"
+    },
+    {
+      "universidad": "University of Wisconsin–Madison",
+      "pais_iso3": "USA",
+      "concepto": "Compromisos de donación privada (grupo 'Catalyst Collective': A. Konwinski, J. y T. Morgridge, S. Ostby, J. Tangney, S. Cook y Epic) para el nuevo College of Computing and Artificial Intelligence, que abre el 1-jul-2026",
+      "monto_usd_mm": 100,
+      "monto_original": {"valor": 100, "unidad": "millones USD"},
+      "anio": 2026,
+      "fuente": "UW–Madison, Office of Strategic Communication (Clipsheet), 28-abr-2026",
+      "url": "https://clipsheet.strategiccommunication.wisc.edu/?p=256904",
+      "nivel": "A"
+    },
+    {
+      "universidad": "University of North Texas",
+      "pais_iso3": "USA",
+      "concepto": "Donación de Anuradha y Vikas Sinha para crear el College of Artificial Intelligence and Advanced Analytics (seis fondos permanentes)",
+      "monto_usd_mm": 20,
+      "monto_original": {"valor": 20, "unidad": "millones USD"},
+      "anio": 2026,
+      "fuente": "FOX 4 News (Dallas), 9-sep-2026; anuncio del 2-sep-2026",
+      "url": "https://www.fox4news.com/news/university-north-texas-launches-college-ai-advanced-analytics-following-20m-donation",
+      "nivel": "A"
+    },
+    {
+      "universidad": "Siete universidades líderes de EE. UU. (Maryland, UC Santa Barbara, Minnesota, Columbia, Carnegie Mellon, Illinois Urbana-Champaign, Buffalo)",
+      "pais_iso3": "USA",
+      "concepto": "NSF: siete nuevos National Artificial Intelligence Research Institutes",
+      "monto_usd_mm": 140,
+      "monto_original": {"valor": 140, "unidad": "millones USD"},
+      "anio": 2023,
+      "fuente": "U.S. National Science Foundation, 4-may-2023",
+      "url": "https://www.nsf.gov/news/nsf-announces-7-new-national-artificial-intelligence",
+      "nivel": "A"
+    },
+    {
+      "universidad": "Cornell, UT Austin, Colorado Boulder, Illinois Urbana-Champaign y Brown (más UC Davis como nodo coordinador)",
+      "pais_iso3": "USA",
+      "concepto": "NSF, con Capital One e Intel: inversión en cinco National AI Research Institutes y un nodo de coordinación de la red",
+      "monto_usd_mm": 100,
+      "monto_original": {"valor": 100, "unidad": "millones USD"},
+      "anio": 2025,
+      "fuente": "Campus Technology, 5-ago-2025 (fuente secundaria; la nota de NSF no fue accesible)",
+      "url": "https://campustechnology.com/articles/2025/08/05/nsf-invests-100-million-in-national-ai-research-institutes.aspx",
+      "nivel": "B"
+    },
+    {
+      "universidad": "MIT, Stanford, UC Berkeley, UCLA, Carnegie Mellon, Johns Hopkins, Illinois Urbana-Champaign, UT Austin y University of Washington",
+      "pais_iso3": "USA",
+      "concepto": "Amazon AI PhD Fellowship: becas doctorales y créditos de cómputo AWS en nueve universidades (2025-2027)",
+      "monto_usd_mm": 68,
+      "monto_original": {"valor": 68, "unidad": "millones USD"},
+      "anio": 2025,
+      "fuente": "EdTech Innovation Hub, 29-oct (programa 2025-2027)",
+      "url": "https://www.edtechinnovationhub.com/news/amazon-launches-68-million-ai-phd-fellowship-program-across-nine-us-universities",
+      "nivel": "B"
+    },
+    {
+      "universidad": "Carnegie Mellon University",
+      "pais_iso3": "USA",
+      "concepto": "Alianza a cinco años con BNY para investigación en IA; crea el BNY AI Lab en el campus de Pittsburgh",
+      "monto_usd_mm": 10,
+      "monto_original": {"valor": 10, "unidad": "millones USD"},
+      "anio": 2025,
+      "fuente": "EdTech Innovation Hub, 15-sep-2025",
+      "url": "https://www.edtechinnovationhub.com/news/bny-and-carnegie-mellon-university-announce-five-year-10-million-partnership-supporting-ai-research",
+      "nivel": "B"
+    },
+    {
+      "universidad": "University of Oxford",
+      "pais_iso3": "GBR",
+      "concepto": "Alianza estratégica con el Ellison Institute of Technology (EIT): mínimo GBP 130 M, de los cuales al menos GBP 100 M van a programas conjuntos de investigación y GBP 31 M a un centro de doctorado en fundamentos de IA (100 becas; primer ingreso oct-2025)",
+      "monto_usd_mm": null,
+      "monto_original": {"valor": 130, "unidad": "millones GBP"},
+      "anio": 2024,
+      "fuente": "Oxford University Innovation, 3-dic-2024",
+      "url": "https://innovation.ox.ac.uk/news/university-oxford-and-ellison-institute-technology-eit-form-strategic-alliance",
+      "nivel": "A"
+    },
+    {
+      "universidad": "ETH Zurich y EPFL (Swiss AI Initiative)",
+      "pais_iso3": "CHE",
+      "concepto": "Swiss AI Initiative, iniciada en dic-2023: subvención del ETH Domain más de 10 millones de horas-GPU en la supercomputadora Alps (CSCS)",
+      "monto_usd_mm": null,
+      "monto_original": {"valor": 20, "unidad": "millones CHF"},
+      "anio": 2023,
+      "fuente": "Swiss AI Initiative (sitio oficial)",
+      "url": "https://swiss-ai.org/",
+      "nivel": "A"
+    },
+    {
+      "universidad": "Programa nacional de Canadá (investigadores, start-ups y los tres institutos nacionales de IA de Montreal, Toronto y Edmonton)",
+      "pais_iso3": "CAN",
+      "concepto": "Paquete de IA del Presupuesto 2024: CAD 2 400 M en total, de los cuales CAD 2 000 M son para capacidad de cómputo e infraestructura (AI Compute Access Fund y Canadian AI Sovereign Compute Strategy) y CAD 50 M para el Canadian AI Safety Institute. La fuente no asigna montos a Mila, Vector ni Amii",
+      "monto_usd_mm": null,
+      "monto_original": {"valor": 2400, "unidad": "millones CAD"},
+      "anio": 2024,
+      "fuente": "Oficina del Primer Ministro de Canadá, 7-abr-2024",
+      "url": "https://www.pm.gc.ca/en/news/news-releases/2024/04/07/securing-canadas-ai-advantage",
+      "nivel": "A"
+    },
+    {
+      "universidad": "KAIST (Kim Jaechul Graduate School of AI)",
+      "pais_iso3": "KOR",
+      "concepto": "Laboratorio conjunto de investigación en IA NVIDIA–KAIST (IA agéntica y modelos en coreano), valorado en USD 300 M a cinco años; NVIDIA aporta cómputo y financia al menos 10 investigadores por año",
+      "monto_usd_mm": 300,
+      "monto_original": {"valor": 300, "unidad": "millones USD"},
+      "anio": 2026,
+      "fuente": "International Business Times Singapore, 25-jul-2026 (anuncio del 23-jul-2026)",
+      "url": "https://www.ibtimes.sg/nvidia-backs-south-koreas-bid-become-ai-powerhouse-new-kaist-partnership-90617",
+      "nivel": "B"
+    },
+    {
+      "universidad": "Programa nacional de Singapur (instituciones de investigación; la fuente no nombra universidades)",
+      "pais_iso3": "SGP",
+      "concepto": "National AI Research and Development (NAIRD) Plan: inversión adicional de más de SGD 1 000 M en cinco años (2025-2030) para centros de excelencia en investigación fundamental, IA aplicada y talento",
+      "monto_usd_mm": null,
+      "monto_original": {"valor": 1000, "unidad": "millones SGD (más de)"},
+      "anio": 2026,
+      "fuente": "Ministry of Digital Development and Information (MDDI) de Singapur, 24-ene-2026",
+      "url": "https://www.mddi.gov.sg/newsroom/singapore-invests-over-s-1-billion-in-national-ai-research-and-development-plan-to-strengthen-ai-research-capabilities-and-our-position-as-global-ai-hub/",
+      "nivel": "A"
+    },
+    {
+      "universidad": "Programa nacional de India (tres Centros de Excelencia en IA para educación; la fuente no nombra las instituciones)",
+      "pais_iso3": "IND",
+      "concepto": "Presupuesto de la Unión 2025: tres Centros de Excelencia en IA para educación",
+      "monto_usd_mm": null,
+      "monto_original": {"valor": 500, "unidad": "crore INR (5 000 millones de rupias)"},
+      "anio": 2025,
+      "fuente": "IANS, 1-feb-2025",
+      "url": "https://ianslive.in/india-bets-big-on-ai-allocates-rs-500-crore-for-3-centres-of-excellence--20250201144204",
+      "nivel": "A"
+    },
+    {
+      "universidad": "IISc Bengaluru, IIT Kanpur, IIT Madras e IIT Ropar",
+      "pais_iso3": "IND",
+      "concepto": "Google: USD 8 M para cuatro Centros de Excelencia en IA (salud, gobernanza urbana, educación y agricultura). Aparte, USD 2 M como aporte fundacional al Indic Language Technologies Research Hub de IIT Bombay",
+      "monto_usd_mm": 8,
+      "monto_original": {"valor": 8, "unidad": "millones USD"},
+      "anio": 2025,
+      "fuente": "CXO Digital Pulse, 17-dic-2025",
+      "url": "https://www.cxodigitalpulse.com/google-commits-8-million-to-ai-centres-of-excellence-expands-research-and-healthcare-partnerships-in-india/",
+      "nivel": "B"
+    },
+    {
+      "universidad": "Universidade de São Paulo (USP)",
+      "pais_iso3": "BRA",
+      "concepto": "Centro de Pesquisa Aplicada en 5G e IA generativa de Claro, FAPESP y USP (con nueve instituciones asociadas): más de BRL 40 M en cinco años",
+      "monto_usd_mm": null,
+      "monto_original": {"valor": 40, "unidad": "millones BRL (más de)"},
+      "anio": 2025,
+      "fuente": "Agência FAPESP, anuncio del 30-abr-2025 en Web Summit Rio",
+      "url": "https://agencia.fapesp.br/54627",
+      "nivel": "A"
+    },
+    {
+      "universidad": "Universidad de Chile (mandataria de un consorcio de 65 instituciones, con CENIA, CMM, PUC, REUNA, U. de Concepción y U. de Tarapacá)",
+      "pais_iso3": "CHL",
+      "concepto": "Laboratorio de Supercómputo para Inteligencia Artificial (SCAI-Lab), financiado por Corfo: USD 7 M para la primera etapa",
+      "monto_usd_mm": 7,
+      "monto_original": {"valor": 7, "unidad": "millones USD"},
+      "anio": 2025,
+      "fuente": "Centro de Modelamiento Matemático (CMM), Universidad de Chile, 12-jun-2025",
+      "url": "https://www.cmm.uchile.cl/?p=62216",
+      "nivel": "A"
+    }
+  ],
+  "peru_universidades": [
+    {
+      "universidad": "Universidad Nacional de Ingeniería (UNI)",
+      "programa": "Carrera de Ingeniería de Inteligencia Artificial (Facultad de Ingeniería Industrial y de Sistemas): primeras 30 vacantes en el examen de admisión de febrero de 2026",
+      "anio": 2026,
+      "fuente": "Diario Oficial El Peruano, 12-ene-2026",
+      "url": "https://elperuano.pe/noticia/286941-ingenieria-del-futuro-uni-ofrece-30-primeras-vacantes-para-carrera-de-ingenieria-de-inteligencia-artificial",
+      "nivel": "A",
+      "nota": "Aprobada por el Consejo de Facultad el 19-sep-2023 (R.D. 0385-23) y por la Asamblea Universitaria el 29-dic-2025, según ProActivo (https://proactivo.com.pe/?p=752892)."
+    },
+    {
+      "universidad": "Universidad Nacional de Ingeniería (UNI)",
+      "programa": "Maestría en Inteligencia Artificial (FIIS)",
+      "anio": 2025,
+      "fuente": "ProActivo, 31-dic-2025 ('la FIIS ofrece desde 2025 la Maestría en Inteligencia Artificial')",
+      "url": "https://proactivo.com.pe/?p=752892",
+      "nivel": "B"
+    },
+    {
+      "universidad": "Universidad Nacional Mayor de San Marcos (UNMSM)",
+      "programa": "Escuela Profesional de Inteligencia Artificial (Facultad de Ingeniería de Sistemas e Informática), carrera de pregrado anunciada en enero de 2026",
+      "anio": null,
+      "fuente": "ProActivo, 21-ene-2026",
+      "url": "https://proactivo.com.pe/unmsm-amplia-su-oferta-academica-con-la-carrera-de-inteligencia-artificial/",
+      "nivel": "B",
+      "nota": "La nota no indica año de inicio, resolución ni vacantes."
+    },
+    {
+      "universidad": "Universidad de Ingeniería y Tecnología (UTEC)",
+      "programa": "Maestría en Ciencia de Datos e Inteligencia Artificial",
+      "anio": 2024,
+      "fuente": "Gestión, 26-nov-2025",
+      "url": "https://gestion.pe/economia/empresas/utec-posgrado-sumara-seis-nuevas-maestrias-en-2026-en-datos-e-ia-cuales-noticia/",
+      "nivel": "A"
+    },
+    {
+      "universidad": "Universidad de Ingeniería y Tecnología (UTEC)",
+      "programa": "Maestría en Management Analytics & AI",
+      "anio": 2025,
+      "fuente": "Gestión, 26-nov-2025",
+      "url": "https://gestion.pe/economia/empresas/utec-posgrado-sumara-seis-nuevas-maestrias-en-2026-en-datos-e-ia-cuales-noticia/",
+      "nivel": "A"
+    },
+    {
+      "universidad": "Universidad de Ingeniería y Tecnología (UTEC)",
+      "programa": "Maestría en Investigación e Inteligencia Artificial (anunciada para 2026, sin mes de lanzamiento)",
+      "anio": 2026,
+      "fuente": "Gestión, 26-nov-2025",
+      "url": "https://gestion.pe/economia/empresas/utec-posgrado-sumara-seis-nuevas-maestrias-en-2026-en-datos-e-ia-cuales-noticia/",
+      "nivel": "B"
+    },
+    {
+      "universidad": "Universidad San Ignacio de Loyola (USIL)",
+      "programa": "Carrera de Ciencia de Datos",
+      "anio": 2023,
+      "fuente": "Forbes Perú, 30-oct-2024 ('el año pasado incorporaron la carrera de Ciencia de Datos')",
+      "url": "https://forbes.pe/especiales/2024-10-30/estas-planeando-estudiar-en-la-universidad-ten-en-cuenta-estas-carreras-del-futuro/",
+      "nivel": "B",
+      "nota": "Año inferido de la expresión 'el año pasado' en una nota de 2024."
+    },
+    {
+      "universidad": "Universidad de Lima",
+      "programa": "Curso de Inteligencia Artificial Aplicada en las carreras de ingeniería (es un curso, no una carrera)",
+      "anio": 2025,
+      "fuente": "Forbes Perú, 30-oct-2024 (anuncio de implementación para 2025)",
+      "url": "https://forbes.pe/especiales/2024-10-30/estas-planeando-estudiar-en-la-universidad-ten-en-cuenta-estas-carreras-del-futuro/",
+      "nivel": "B"
+    }
+  ],
+  "peru_rankings": {
+    "ranking": "EduRank – Best universities for Artificial Intelligence (AI) in Peru",
+    "actualizado": "2026-03-15",
+    "metodo": "Basado en citas: 54.3 mil citas recibidas por 6.36 mil artículos de 17 universidades peruanas. Mide producción científica, no programas de estudio.",
+    "url": "https://edurank.org/cs/ai/pe/",
+    "nivel": "A",
+    "filas": [
+      {"universidad": "Pontificia Universidad Católica del Perú (PUCP)", "puesto_peru": 1, "puesto_latam": 76, "puesto_mundo": 2043},
+      {"universidad": "Universidad Nacional Mayor de San Marcos (UNMSM)", "puesto_peru": 2, "puesto_latam": 142, "puesto_mundo": 3119},
+      {"universidad": "Universidad Peruana de Ciencias Aplicadas (UPC)", "puesto_peru": 3, "puesto_latam": 150, "puesto_mundo": 3293},
+      {"universidad": "Universidad Nacional de Ingeniería (UNI)", "puesto_peru": 4, "puesto_latam": 167, "puesto_mundo": 3530},
+      {"universidad": "Universidad Peruana Cayetano Heredia (UPCH)", "puesto_peru": 5, "puesto_latam": 189, "puesto_mundo": 3868},
+      {"universidad": "Universidad de Lima", "puesto_peru": 6, "puesto_latam": 231, "puesto_mundo": 4318},
+      {"universidad": "Universidad César Vallejo", "puesto_peru": 7, "puesto_latam": 233, "puesto_mundo": 4333},
+      {"universidad": "Universidad Privada del Norte", "puesto_peru": 8, "puesto_latam": 243, "puesto_mundo": 4466},
+      {"universidad": "Universidad de Piura", "puesto_peru": 9, "puesto_latam": 260, "puesto_mundo": 4673},
+      {"universidad": "Universidad del Pacífico", "puesto_peru": 10, "puesto_latam": 290, "puesto_mundo": 4987},
+      {"universidad": "Universidad Nacional Agraria La Molina", "puesto_peru": 11, "puesto_latam": 303, "puesto_mundo": 5202},
+      {"universidad": "Universidad Científica del Sur", "puesto_peru": 12, "puesto_latam": 304, "puesto_mundo": 5217},
+      {"universidad": "Universidad San Ignacio de Loyola (USIL)", "puesto_peru": 13, "puesto_latam": 310, "puesto_mundo": 5269},
+      {"universidad": "Universidad Nacional Federico Villarreal", "puesto_peru": 14, "puesto_latam": 311, "puesto_mundo": 5276},
+      {"universidad": "Universidad de San Martín de Porres", "puesto_peru": 15, "puesto_latam": 319, "puesto_mundo": 5339},
+      {"universidad": "Universidad ESAN", "puesto_peru": 16, "puesto_latam": 332, "puesto_mundo": 5443},
+      {"universidad": "Universidad Privada San Juan Bautista", "puesto_peru": 17, "puesto_latam": 373, "puesto_mundo": 5953}
+    ]
+  },
+  "modelos_notables_pais": [],
+  "modelos_notables_org": [],
+  "citas_pais": []
+}

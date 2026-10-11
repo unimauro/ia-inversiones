@@ -169,6 +169,17 @@
     var cm = arr(T.costos_modelos).filter(function (r) { return num(r.costo) != null; }).sort(function (a, b) { return usd(b.costo) - usd(a.costo); });
     hbar("cTrain", cm.slice(0, 15).map(function (r) { return { name: r.modelo + (r.anio ? " (" + r.anio + ")" : ""), value: Math.round(usd(r.costo) / 1e4) / 100, extra: (r.organizacion || "") + (r.nota ? " · " + r.nota : "") }; }), { color: 4, fmt: function (v) { return money(v, "USD millones"); }, short: function (v) { return fmt(v); } });
     note("nTrain", cm.length ? "Millones de US$, costo estimado de cómputo del entrenamiento final (no incluye salarios ni experimentos fallidos). " + IA.srcNote(cm[0].costo) : "");
+    var hh = arr(T.alquiler_historico).filter(function (r) { return num(r) != null; });
+    if (hh.length > 2) {
+      $("cH100").style.display = "";
+      mk("cH100").setOption({
+        grid: { left: 8, right: 16, top: 16, bottom: 8, containLabel: true },
+        tooltip: Object.assign(IA.tipBase(p), { trigger: "axis", valueFormatter: function (v) { return "US$ " + fmt(v) + " por hora"; } }),
+        xAxis: IA.axisCat(p, hh.map(function (r) { return String(r.periodo).replace("-Q", " T"); }), { axisLabel: { color: p.ink2, fontSize: 11 } }), yAxis: IA.axisVal(p),
+        series: [{ type: "line", data: hh.map(num), lineStyle: { width: 2, color: p.s[0] }, itemStyle: { color: p.s[0] }, symbol: "circle", symbolSize: 6, showSymbol: false }]
+      });
+      note("nH100", "Precio de alquiler de una GPU H100, US$ por hora. Fuente: " + link(hh[0].fuente || "ver", hh[0].url) + ".");
+    }
     table("tGpuHora", [
       { t: "GPU en alquiler", v: function (r) { return r.gpu; }, h: function (r) { return "<b>" + esc(r.gpu) + "</b>"; }, asc: true },
       { t: "Proveedor", v: function (r) { return r.proveedor || ""; }, h: function (r) { return esc(r.proveedor || ""); }, asc: true },
