@@ -7,7 +7,7 @@
 (function () {
   "use strict";
   var D = window.DATA || {};
-  var P = D.privada || {}, G = D.publica || {}, B = D.bigtech || {}, L = D.labs || {}, U = D.unis || {}, LA = D.latam || {}, I = D.inv || {};
+  var P = D.privada || {}, G = D.publica || {}, B = D.bigtech || {}, L = D.labs || {}, U = D.unis || {}, LA = D.latam || {}, I = D.inv || {}, OA = D.oa || {};
   var $ = function (id) { return document.getElementById(id); };
   var arr = function (x) { return Array.isArray(x) ? x : []; };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[<>&"]/g, function (c) { return { "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" }[c]; }); };
@@ -271,7 +271,8 @@
       });
     }
     if ($("ptUni").checked) {
-      var us = arr(U.universidades).filter(function (u) { return num(u.lat) != null && num(u.lon) != null; });
+      var us = (arr(OA.mundo).length ? arr(OA.mundo).slice(0, 60).concat(arr(OA.latam_es).filter(function (r) { return r.pais_iso3 !== "ESP"; }).slice(0, 15)).concat(arr(OA.peru).slice(0, 5)) : arr(U.universidades))
+        .filter(function (u) { return num(u.lat) != null && num(u.lon) != null; });
       series.push({
         type: "scatter", coordinateSystem: "geo", name: "Universidades", z: 6, symbol: "diamond", symbolSize: 10,
         data: us.map(function (u) { return { name: u.nombre, value: [u.lon, u.lat], u: u }; }),
@@ -301,7 +302,7 @@
           if (q.data && q.data.h) { var hh = q.data.h; return "<b>" + esc(hh.ciudad) + "</b><br>" + esc(nombre(hh.pais_iso3)) + (num(hh.monto) != null ? "<br>Capital de IA levantado: <b>" + money(num(hh.monto), unitOf(hh.monto)) + "</b> (" + esc(when(hh.monto)) + ")" : "") + (num(hh.pct_mundial) != null ? "<br>" + fmt(num(hh.pct_mundial)) + "% del total mundial" : ""); }
           if (q.data && q.data.f) { var ff = q.data.f; return "<b>" + esc(ff.nombre) + "</b><br>" + esc((ff.lugar ? ff.lugar + ", " : "") + nombre(ff.pais_iso3)) + (num(ff.inversion) != null ? "<br>Inversión: <b>" + money(num(ff.inversion), unitOf(ff.inversion)) + "</b>" : "") + (ff.nodo ? "<br>Nodo: " + esc(ff.nodo) : "") + (ff.estado ? '<br><span style="opacity:.7">' + esc(ff.estado) + "</span>" : ""); }
           if (q.data && q.data.m) { var m = q.data.m; return "<b>" + esc(m.nombre) + "</b><br>" + esc(m.lugar || nombre(m.pais_iso3)) + (num(m.monto) != null ? "<br>" + money(num(m.monto), unitOf(m.monto)) : "") + (m.capacidad_gw ? " · " + fmt(num(m.capacidad_gw)) + " GW" : "") + (m.estado ? '<br><span style="opacity:.7">' + esc(m.estado) + "</span>" : ""); }
-          if (q.data && q.data.u) { var u = q.data.u; return "<b>" + esc(u.nombre) + "</b><br>" + esc((u.ciudad ? u.ciudad + ", " : "") + nombre(u.pais_iso3)) + "<br>" + rkList(u); }
+          if (q.data && q.data.u) { var u = q.data.u; return "<b>" + esc(u.nombre) + "</b><br>" + esc((u.ciudad ? u.ciudad + ", " : "") + nombre(u.pais_iso3)) + "<br>" + (u.trabajos_ia != null ? fmt(u.trabajos_ia, 0) + " trabajos de IA (2021-2025), " + fmt(u.top10_ia, 0) + " en el 10% más citado" : rkList(u)); }
           var v = (q.componentSubType === "map" && q.value != null && !isNaN(q.value)) ? q.value : null;
           return "<b>" + esc(nombre(q.name)) + "</b><br>" + (v != null ? esc(layer.desc) + ": <b>" + layerFmt(layer, v) + "</b>" : '<span style="opacity:.7">Sin dato para este indicador</span>');
         }
@@ -691,13 +692,46 @@
     var order = arr((U.meta || {}).rankings).map(function (r) { return r.clave; });
     return Object.keys(cnt).sort(function (a, b) { var x = order.indexOf(a), y = order.indexOf(b); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y); });
   }
+  // ---- Ranking por producción en IA (OpenAlex + rankings propios) -----------
+  var oaSel = "mundo";
+  var OA_AMB = [["mundo", "Mundo"], ["latam_es", "América Latina y España"], ["peru", "Perú"]];
+  function pct(a, b) { return b ? a / b * 100 : null; }
+  function oaRank() {
+    var card = $("cardOA"); if (!card) return;
+    if (!arr(OA.mundo).length) { card.style.display = "none"; return; }
+    var m = OA.meta || {}, sg = $("segOA");
+    sg.innerHTML = OA_AMB.filter(function (a) { return arr(OA[a[0]]).length; }).map(function (a) { return '<button role="tab" data-id="' + a[0] + '" aria-selected="' + (a[0] === oaSel) + '">' + esc(a[1]) + "</button>"; }).join("");
+    sg.onclick = function (e) { var b = e.target.closest("button"); if (!b) return; oaSel = b.getAttribute("data-id"); $("qOA").value = ""; oaRank(); };
+    var rows = arr(OA[oaSel]).filter(function (r) { return oaSel === "mundo" || r.trabajos_ia > 0; });
+    var gen = oaSel !== "mundo";
+    $("fOAPais").style.display = oaSel === "peru" ? "none" : "";
+    if (oaSel !== "peru") { var keep = $("fOAPais").getAttribute("data-amb") === oaSel ? $("fOAPais").value : ""; fillPaises("fOAPais", rows.map(function (r) { return r.pais_iso3; })); $("fOAPais").value = keep; $("fOAPais").setAttribute("data-amb", oaSel); }
+    var cols = [
+      { t: "Universidad", v: function (r) { return r.nombre; }, h: function (r) { return "<b>" + link(r.nombre, "https://openalex.org/" + r.oa) + "</b>" + (r.sigla ? ' <span class="mut">' + esc(r.sigla) + "</span>" : "") + (r.ciudad ? '<br><span class="mut">' + esc(r.ciudad) + (r.tipo && oaSel === "peru" ? " · " + esc(r.tipo) : "") + "</span>" : ""); }, cls: "wide", asc: true },
+      { t: "País", v: function (r) { return nombre(r.pais_iso3); }, h: function (r) { return esc(nombre(r.pais_iso3)); }, asc: true },
+      { t: "Puesto en IA", num: true, asc: true, tip: "Posición por número de trabajos de IA dentro de este ámbito", v: function (r) { return r.puesto_ia; }, h: function (r) { return "<b>#" + r.puesto_ia + "</b>"; } },
+      { t: "Trabajos de IA", num: true, tip: "Publicaciones 2021-2025 cuyo tema principal es inteligencia artificial", v: function (r) { return r.trabajos_ia; }, h: function (r) { return fmt(r.trabajos_ia, 0); } },
+      { t: "En el 10% más citado", num: true, tip: "Trabajos de IA entre el 10% más citado de su año", v: function (r) { return r.top10_ia; }, h: function (r) { return fmt(r.top10_ia, 0); } },
+      { t: "% de alto impacto", num: true, tip: "Parte de sus trabajos de IA que está en el 10% más citado; lo esperable es 10%", v: function (r) { return r.trabajos_ia >= 20 ? pct(r.top10_ia, r.trabajos_ia) : null; }, h: function (r) { return r.trabajos_ia >= 20 ? fmt(pct(r.top10_ia, r.trabajos_ia), 1) + "%" : '<span class="mut">—</span>'; } }
+    ];
+    if (gen) cols.push({ t: "Puesto general", num: true, asc: true, tip: "Posición en el ranking general de investigación (todas las áreas)", v: function (r) { return r.puesto_general; }, h: function (r) { return r.puesto_general ? "#" + r.puesto_general : '<span class="mut">—</span>'; } });
+    var t = table("tOAtabla", cols, rows, { sort: 3, filter: function (r) { var q = norm($("qOA").value), f = oaSel === "peru" ? "" : $("fOAPais").value; return (!q || norm(r.nombre + " " + (r.sigla || "")).indexOf(q) >= 0) && (!f || r.pais_iso3 === f); } });
+    hook(["qOA", "fOAPais"], t.redraw);
+    var lm = m.latam_meta || {}, pm = m.peru_meta || {};
+    note("nOAtop", oaSel === "mundo" ? "Las 100 universidades del mundo con más publicaciones de IA en 2021-2025, con datos abiertos de OpenAlex. Es bibliometría reproducible: sin encuestas de reputación."
+      : oaSel === "latam_es" ? "Universidades de América Latina y España ordenadas por su producción en IA. El universo y el «puesto general» vienen del " + link("Ranking de Universidades de Latinoamérica y España", lm.sitio) + " (" + esc(lm.n_universo || "") + " universidades, " + esc(lm.paises || "") + " países)."
+      : "Las universidades peruanas con publicaciones de IA en 2021-2025. El universo y el «puesto general» vienen del " + link("Observatorio de Universidades del Perú", pm.sitio) + " (" + esc(pm.n_universo || "") + " universidades).");
+    note("nOA", esc(m.metodo || "") + " Fuente: " + link("OpenAlex (CC0)", m.url) + ", consultado el " + esc(m.consultado || "") + ". " + arr(m.advertencias).map(esc).join(" "));
+  }
+
   var confSel = "";
   function universidades() {
+    oaRank();
     var us = arr(U.universidades), keys = rkKeys(us);
     fillPaises("fUniPais", us.map(function (u) { return u.pais_iso3; }));
-    var t = table("tUnis", uniCols(keys), us, { rank: true, sort: keys.length ? 2 + Math.max(0, keys.indexOf("qs_ds_ai")) : 0, dir: 1, filter: function (u) { var s = norm($("qUni").value), f = $("fUniPais").value; return (!s || norm(u.nombre).indexOf(s) >= 0) && (!f || u.pais_iso3 === f); } });
+    var t = table("tUnis", uniCols(keys), us, { rank: true, sort: keys.length ? 2 + Math.max(0, keys.indexOf("csrankings")) : 0, dir: 1, filter: function (u) { var s = norm($("qUni").value), f = $("fUniPais").value; return (!s || norm(u.nombre).indexOf(s) >= 0) && (!f || u.pais_iso3 === f); } });
     hook(["qUni", "fUniPais"], t.redraw);
-    note("nUnis", "Aparecen las universidades que están en el top 20 de al menos uno de los rankings; el orden inicial es por QS IA y se puede cambiar con clic en cada columna. «—» significa que no figura en ese ranking.<br>" + arr((U.meta || {}).rankings).map(function (r) { return "<b>" + esc(r.corto || RK_CORTO[r.clave] || r.nombre) + "</b>: " + link((r.nombre || "") + (r.edicion ? " " + r.edicion : ""), r.url) + (r.metodo ? " — " + esc(r.metodo) : ""); }).join("<br>"));
+    note("nUnis", "Aparecen las universidades que están en el top 20 de al menos uno de los rankings; el orden inicial es por CSRankings (conteo de publicaciones en conferencias top) y se puede cambiar con clic en cada columna. «—» significa que no figura en ese ranking.<br>" + arr((U.meta || {}).rankings).map(function (r) { return "<b>" + esc(r.corto || RK_CORTO[r.clave] || r.nombre) + "</b>: " + link((r.nombre || "") + (r.edicion ? " " + r.edicion : ""), r.url) + (r.metodo ? " — " + esc(r.metodo) : ""); }).join("<br>"));
 
     var pr = arr(U.produccion_pais).filter(function (r) { return num(r.publicaciones) != null; }).sort(function (a, b) { return num(b.publicaciones) - num(a.publicaciones); });
     hbar("cPubs", pr.slice(0, 15).map(function (r) { return { name: nombre(r.iso3), value: num(r.publicaciones), iso: r.iso3 }; }), { color: 2, fmt: function (v, it) { return fmt(v) + " " + (unitOf(pr[0].publicaciones) || "publicaciones"); } });
@@ -753,8 +787,17 @@
       $("tIlia").textContent = (il.nombre || "Índice Latinoamericano de IA") + (il.edicion ? " · " + il.edicion : "");
       note("nIlia", "Puntaje " + esc(il.escala || "0-100") + ". Fuente: " + link(il.nombre || "ILIA", il.url) + ".");
     } else noData("cIlia");
-    var ul = arr(U.latam);
-    table("tUniLatam", uniCols(rkKeys(ul)), ul, { sort: 2, dir: 1 });
+    var ul = arr(U.latam), ol = arr(OA.latam_es).filter(function (r) { return r.region !== "España" && r.pais_iso3 !== "ESP" && r.trabajos_ia > 0; });
+    if (ol.length) {
+      $("tUniLatamT").textContent = "Universidades latinoamericanas: producción en IA";
+      table("tUniLatam", [
+        { t: "Universidad", v: function (r) { return r.nombre; }, h: function (r) { return "<b>" + esc(r.nombre) + '</b><br><span class="mut">' + esc(nombre(r.pais_iso3)) + "</span>"; }, cls: "wide", asc: true },
+        { t: "Trabajos de IA", num: true, v: function (r) { return r.trabajos_ia; }, h: function (r) { return fmt(r.trabajos_ia, 0); } },
+        { t: "10% más citado", num: true, v: function (r) { return r.top10_ia; }, h: function (r) { return fmt(r.top10_ia, 0); } },
+        { t: "Puesto general", num: true, asc: true, v: function (r) { return r.puesto_general; }, h: function (r) { return r.puesto_general ? "#" + r.puesto_general : ""; } }
+      ], ol.slice(0, 40), { sort: 1, rank: true });
+      note("nUniLatam", "Publicaciones de IA 2021-2025 (OpenAlex). «Puesto general» = posición en el " + link("Ranking de Universidades de Latinoamérica y España", ((OA.meta || {}).latam_meta || {}).sitio) + ", que incluye a España. Tabla completa en la sección Universidades.");
+    } else table("tUniLatam", uniCols(rkKeys(ul)), ul, { sort: 2, dir: 1 });
     var sl = arr(LA.startups_latam);
     if (!sl.length) $("cardStartLatam").style.display = "none"; else table("tStartLatam", [
       { t: "Startup", v: function (r) { return r.nombre; }, h: function (r) { return "<b>" + link(r.nombre, r.url) + "</b>" + (r.descripcion ? '<br><span class="mut">' + esc(r.descripcion) + "</span>" : ""); }, cls: "wide", asc: true },
@@ -778,7 +821,7 @@
     function any(i) { if (i && i.monto == null && i.ronda && typeof i.ronda === "object") i = Object.assign({}, i, { monto: i.ronda }); return typeof i === "string" ? esc(i) : (i.nombre || i.empresa || i.universidad || i.norma ? "<b>" + link(i.nombre || i.empresa || i.universidad || i.norma, i.url) + "</b>" : "") + (i.concepto || i.resumen || i.descripcion || i.programa || i.nota ? " — " + esc(i.concepto || i.resumen || i.descripcion || i.programa || i.nota) : "") + (num(i.monto) != null ? " " + fig(i.monto, { noWhen: true }) : "") + (i.fecha ? ' <span class="mut">' + esc(i.fecha) + "</span>" : ""); }
     el.innerHTML = "<h3>Perú, a detalle</h3>" + (pe.resumen ? '<p class="res">' + esc(pe.resumen) + "</p>" : "") + '<div class="cols">' +
       ul2("Indicadores", arr(pe.indicadores).filter(function (i) { return num(i) != null; }), function (i) { return esc(i.indicador) + ": " + fig(i, { raw: !/usd|us\$/i.test(unitOf(i)) }); }) +
-      ul2("Marco legal", arr(pe.marco_legal), any) + ul2("Startups", arr(pe.startups), any) + ul2("Anuncios de inversión", arr(pe.anuncios), any) + ul2("Universidades", arr(pe.universidades), any) + "</div>";
+      ul2("Universidades con más publicaciones de IA", arr(OA.peru).filter(function (r) { return r.trabajos_ia > 0; }).slice(0, 10), function (r) { return "<b>" + esc(r.sigla || r.nombre) + "</b> — " + fmt(r.trabajos_ia, 0) + " trabajos (2021-2025), " + fmt(r.top10_ia, 0) + " en el 10% más citado" + ' <span class="mut">· puesto general #' + esc(r.puesto_general) + "</span>"; }) + ul2("Marco legal", arr(pe.marco_legal), any) + ul2("Startups", arr(pe.startups), any) + ul2("Anuncios de inversión", arr(pe.anuncios), any) + ul2("Universidades", arr(pe.universidades), any) + "</div>";
   }
 
   // ---- FUENTES -------------------------------------------------------------

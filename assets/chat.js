@@ -139,6 +139,10 @@
 
     // listas
     if (/(universidad|campus|donde estudiar)/.test(t)) {
+      var oa = D.oa || {}, pe = /peru/.test(t), la = /(latinoamerica|america latina|latam|espana)/.test(t);
+      var lst = arr(pe ? oa.peru : la ? oa.latam_es : oa.mundo).slice(0, 10);
+      if (lst.length) return "<b>Universidades con más publicaciones de IA, 2021-2025" + (pe ? " — Perú" : la ? " — América Latina y España" : " — mundo") + "</b> (OpenAlex):\n" +
+        lst.map(function (u, i) { return (i + 1) + ". " + esc(u.nombre) + (pe ? "" : " — " + esc(nombre(u.pais_iso3))) + ": " + fmt(u.trabajos_ia, 0) + " trabajos, " + fmt(u.top10_ia, 0) + " en el 10% más citado"; }).join("\n") + "\nEs bibliometría abierta y reproducible, sin encuestas de reputación.";
       var us = arr(U.universidades).slice(0, 10);
       return us.length ? "<b>Universidades líderes en IA</b> (orden de la tabla):\n" + us.map(function (u, i) { return (i + 1) + ". " + esc(u.nombre) + " — " + esc(nombre(u.pais_iso3)); }).join("\n") + "\nCada ranking mide algo distinto; mira las columnas en la sección Universidades." : null;
     }

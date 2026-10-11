@@ -430,8 +430,20 @@
   <div class="wrap">
     <h2>Universidades y talento</h2>
     <p class="sub">Cada ranking mide algo distinto (publicaciones, reputación, citas), por eso se muestran por separado y no se promedian.</p>
+    <div class="card" id="cardOA">
+      <h3 id="tOA">Ranking por producción científica en IA</h3>
+      <p class="note top" id="nOAtop"></p>
+      <div class="filters">
+        <div class="seg" id="segOA" role="tablist" aria-label="Ámbito"></div>
+        <input type="search" id="qOA" placeholder="Buscar universidad…" aria-label="Buscar universidad">
+        <select id="fOAPais" aria-label="País"></select>
+      </div>
+      <div class="tablewrap" id="tOAtabla"></div>
+      <p class="note" id="nOA"></p>
+    </div>
     <div class="card">
-      <h3>Universidades líderes en IA</h3>
+      <h3>Otros rankings: reputación, encuestas y conferencias</h3>
+      <p class="note top">Rankings comerciales y académicos que combinan encuestas de reputación con bibliometría. Se muestran como contraste; cada uno mide algo distinto.</p>
       <div class="filters">
         <input type="search" id="qUni" placeholder="Buscar universidad…" aria-label="Buscar universidad">
         <select id="fUniPais" aria-label="País"></select>
@@ -488,8 +500,9 @@
         <p class="note" id="nIlia"></p>
       </div>
       <div class="card">
-        <h3>Universidades latinoamericanas en los rankings</h3>
+        <h3 id="tUniLatamT">Universidades latinoamericanas en los rankings</h3>
         <div class="tablewrap short" id="tUniLatam"></div>
+        <p class="note" id="nUniLatam"></p>
       </div>
     </div>
     <div class="card">

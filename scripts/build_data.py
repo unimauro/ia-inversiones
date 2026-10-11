@@ -15,6 +15,7 @@ BLOQUES = {
     "noti": "noticias.json",
     "cadena": "cadena_valor.json",
     "macro": "macro.json",
+    "oa": "universidades_openalex.json",
 }
 
 data = {"corte": "2026-10-11", "generado": datetime.date.today().isoformat()}
@@ -222,6 +223,16 @@ def fusionar():
 
 
 fusionar()
+
+
+# OpenAlex da el país en ISO2: se añade el ISO3 que usa el mapa
+if data["oa"]:
+    iso2 = json.loads((RAW / "iso2.json").read_text(encoding="utf-8")) if (RAW / "iso2.json").exists() else {}
+    for lista in ("mundo", "latam_es"):
+        for u in data["oa"].get(lista, []):
+            u["pais_iso3"] = iso2.get(str(u.get("cc") or "").upper())
+    for u in data["oa"].get("peru", []):
+        u["pais_iso3"] = "PER"
 
 def degradar(o):
     """Cifras vistas solo en el extracto del buscador (403/paywall) o tomadas de Wikipedia o agregadores bajan a nivel C."""

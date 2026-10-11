@@ -13,7 +13,8 @@ Informe interactivo sobre la inversión mundial en inteligencia artificial, con 
 - **Noticias de capital**: rondas de 2026 en infraestructura y servicios, dónde se levanta y rentabilidad.
 - **Energía, centros de datos y chips**: consumo eléctrico, costo por MW, GPU, fábricas, memorias, entrenamiento y modelos de negocio.
 - **Simulador de estrategia nacional**: traduce un % del PIB de cualquier país a GPU, MW, investigadores y rondas.
-- **Universidades y talento**, **América Latina y Perú**, FAQ y asistente de datos.
+- **Universidades**: ranking abierto por producción científica en IA (OpenAlex, CC0) con vistas Mundo, América Latina y España, y Perú, apoyado en los rankings propios [universidades-latam](https://unimauro.github.io/universidades-latam/) y [universidades-peru](https://unimauro.github.io/universidades-peru/); los rankings comerciales (QS, THE, US News, Shanghái, CSRankings) quedan como contraste. Se regenera con `python3 scripts/pull_openalex_ia.py`.
+- **Talento**, **América Latina y Perú**, FAQ y asistente de datos.
 
 ## Regla de datos
 
