@@ -691,6 +691,7 @@
     var order = arr((U.meta || {}).rankings).map(function (r) { return r.clave; });
     return Object.keys(cnt).sort(function (a, b) { var x = order.indexOf(a), y = order.indexOf(b); return (x < 0 ? 99 : x) - (y < 0 ? 99 : y); });
   }
+  var confSel = "";
   function universidades() {
     var us = arr(U.universidades), keys = rkKeys(us);
     fillPaises("fUniPais", us.map(function (u) { return u.pais_iso3; }));
@@ -701,8 +702,9 @@
     var pr = arr(U.produccion_pais).filter(function (r) { return num(r.publicaciones) != null; }).sort(function (a, b) { return num(b.publicaciones) - num(a.publicaciones); });
     hbar("cPubs", pr.slice(0, 15).map(function (r) { return { name: nombre(r.iso3), value: num(r.publicaciones), iso: r.iso3 }; }), { color: 2, fmt: function (v, it) { return fmt(v) + " " + (unitOf(pr[0].publicaciones) || "publicaciones"); } });
     if (pr.length) note("nPubs", esc(unitOf(pr[0].publicaciones) || "Publicaciones") + ", " + esc(when(pr[0].publicaciones)) + ". " + srcNote(pr[0].publicaciones));
-    var mp = arr(U.modelos_notables_pais).filter(function (r) { return num(r.modelos) != null; }).sort(function (a, b) { return num(b.modelos) - num(a.modelos); });
-    var mo = arr(U.modelos_notables_org).filter(function (r) { return num(r.modelos) != null; }).sort(function (a, b) { return num(b.modelos) - num(a.modelos); });
+    var un2025 = function (r) { return num(r.modelos) != null && (!r.periodo || String(r.periodo) === "2025"); };
+    var mp = arr(U.modelos_notables_pais).filter(un2025).sort(function (a, b) { return num(b.modelos) - num(a.modelos); });
+    var mo = arr(U.modelos_notables_org).filter(un2025).sort(function (a, b) { return num(b.modelos) - num(a.modelos); });
     if (!mp.length && !mo.length) $("gridModelos").style.display = "none";
     else {
       hbar("cModPais", mp.slice(0, 15).map(function (r) { return { name: r.nombre_es || nombre(r.iso3), value: num(r.modelos), iso: r.iso3 }; }), { color: 0, fmt: function (v) { return fmt(v, 0) + " modelos"; } });
@@ -711,13 +713,20 @@
       if (mo.length) note("nModOrg", "Modelos considerados notables, " + esc(mo[0].anio || "") + ". " + srcNote(mo[0]));
     }
     var cf = arr(U.conferencias).filter(function (r) { return num(r.papers) != null; });
-    var conf = cf.length ? cf[0].conferencia : "";
+    var confs = []; cf.forEach(function (r) { if (confs.indexOf(r.conferencia) < 0) confs.push(r.conferencia); });
+    if (confs.indexOf(confSel) < 0) confSel = confs[0] || "";
+    var conf = confSel;
+    var sg = $("segConf");
+    if (sg) {
+      sg.innerHTML = confs.length > 1 ? confs.map(function (k) { return '<button role="tab" data-id="' + esc(k) + '" aria-selected="' + (k === conf) + '">' + esc(k) + "</button>"; }).join("") : "";
+      sg.onclick = function (e) { var b = e.target.closest("button"); if (!b) return; confSel = b.getAttribute("data-id"); universidades(); };
+    }
     cf = cf.filter(function (r) { return r.conferencia === conf; }).sort(function (a, b) { return num(b.papers) - num(a.papers); });
     // con menos de 5 instituciones (cifras autodeclaradas) no hay ranking que mostrar
     var cc = $("cConf").closest(".card");
     if (cf.length < 5) { cc.style.display = "none"; cc.parentNode.style.gridTemplateColumns = "1fr"; return universidadesResto(); }
     hbar("cConf", cf.slice(0, 15).map(function (r) { return { name: r.institucion, value: num(r.papers), extra: (r.tipo || "") + " · " + nombre(r.pais_iso3) }; }), { color: 0, fmt: function (v) { return fmt(v) + " papers"; } });
-    if (cf.length) { $("tConf").textContent = "Papers aceptados en " + conf; note("nConf", "Incluye universidades y empresas. " + srcNote(cf[0])); }
+    if (cf.length) { $("tConf").textContent = "Papers aceptados en " + conf; note("nConf", "Papers con al menos un autor de la institución; incluye universidades y empresas. Conteo propio sobre el listado oficial de cada conferencia: algunas instituciones agrupan sedes (Google incluye DeepMind; la Academia China de Ciencias, sus institutos). " + link("Datos de origen", cf[0].url) + "."); }
     universidadesResto();
   }
   function universidadesResto() {
@@ -768,7 +777,7 @@
     function ul2(t, items, f) { return items.length ? "<div><h4>" + esc(t) + "</h4><ul>" + items.map(function (i) { return "<li>" + f(i) + "</li>"; }).join("") + "</ul></div>" : ""; }
     function any(i) { if (i && i.monto == null && i.ronda && typeof i.ronda === "object") i = Object.assign({}, i, { monto: i.ronda }); return typeof i === "string" ? esc(i) : (i.nombre || i.empresa || i.universidad || i.norma ? "<b>" + link(i.nombre || i.empresa || i.universidad || i.norma, i.url) + "</b>" : "") + (i.concepto || i.resumen || i.descripcion || i.programa || i.nota ? " — " + esc(i.concepto || i.resumen || i.descripcion || i.programa || i.nota) : "") + (num(i.monto) != null ? " " + fig(i.monto, { noWhen: true }) : "") + (i.fecha ? ' <span class="mut">' + esc(i.fecha) + "</span>" : ""); }
     el.innerHTML = "<h3>Perú, a detalle</h3>" + (pe.resumen ? '<p class="res">' + esc(pe.resumen) + "</p>" : "") + '<div class="cols">' +
-      ul2("Indicadores", arr(pe.indicadores), function (i) { return esc(i.indicador) + ": " + fig(i, { raw: !/usd|us\$/i.test(unitOf(i)) }); }) +
+      ul2("Indicadores", arr(pe.indicadores).filter(function (i) { return num(i) != null; }), function (i) { return esc(i.indicador) + ": " + fig(i, { raw: !/usd|us\$/i.test(unitOf(i)) }); }) +
       ul2("Marco legal", arr(pe.marco_legal), any) + ul2("Startups", arr(pe.startups), any) + ul2("Anuncios de inversión", arr(pe.anuncios), any) + ul2("Universidades", arr(pe.universidades), any) + "</div>";
   }
 

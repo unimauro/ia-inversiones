@@ -1,0 +1,1487 @@
+{
+ "meta": {
+  "bloque": "extra_peru_latam",
+  "consultado": "2026-10-11",
+  "complementa": "latam_peru.json (no lo reemplaza ni repite sus cifras)",
+  "niveles": "A = fuente primaria u oficial abierta directamente; B = prensa o nota de empresa que cita la cifra; C = agregador o fuente secundaria que cita a un tercero no abierto",
+  "advertencias": [
+   "Todas las cifras salen de páginas abiertas el 2026-10-11. Lo que solo apareció en resúmenes de buscador y no pudo abrirse quedó fuera.",
+   "PECAP: el Reporte Anual 2025 está en DocSend (403 al acceso automatizado) y el diagnóstico COFIDE/PECAP en PDF no pudo leerse (disco lleno durante la sesión). Solo se usan las cifras de la nota de prensa de COFIDE (junio de 2026), que no precisa el año de los 23 deals y US$ 76,5 millones; por contexto corresponden a 2025. No se encontró cuánto de la inversión de capital emprendedor en Perú fue a IA.",
+   "Startups peruanas: solo 6 tienen ronda con monto publicado (Midas, PathPilot, Moventi, Udocz, Price Lab, Nutri Co), además de Yavendió que ya está en latam_peru.json. Las demás figuran por tracción o por cofinanciamiento de ProInnóvate sin monto publicado (monto null). Midas y PathPilot fueron fundadas por peruanos pero operan desde Estados Unidos. Moventi es una consultora de TI, no una startup de producto.",
+   "Centros de datos en Perú: datacentermap.com devolvió HTTP 429 en todos los intentos; el conteo de 13 centros existentes y 1 futuro es de Arizton citado por Gestión. No se halló monto de inversión para Cirion LIM2, ni anuncios con monto de AWS, Google, Microsoft, Oracle, Huawei, Equinix, Scala, Odata o Entel en Perú. La AWS Local Zone de Lima fue anunciada en febrero de 2022; no se pudo confirmar su estado operativo en la página de AWS (lista colapsada).",
+   "Estado peruano: no se encontró el PIA 2026 de CONCYTEC/PROCIENCIA (la consulta amigable del MEF no se pudo abrir); solo el monto de los concursos 2026. No se hallaron proyectos de IA de SUNAT, RENIEC, Poder Judicial, MINSA o MINEDU con monto, ni un supercomputador con GPU en el país con inversión publicada, ni un Centro Nacional de IA o de Alto Rendimiento Computacional ya creado (solo la propuesta de un Centro de Excelencia en IA liderado por CONCYTEC ante la OEA).",
+   "ENIA 2026-2030: el anexo con metas e indicadores no pudo abrirse. La R.M. 152-2026-PCM no fija metas cuantitativas en su articulado. La meta de 4.750 mypes al 2030 proviene de un agregador (nivel C) y no se verificó en el anexo oficial.",
+   "Adopción en Perú: las encuestas son de fuentes y metodologías distintas y no son comparables entre sí (BCRP 49% usa IA; Lenovo 38% la adoptó). La nota técnica del BCRP no pudo abrirse (bloqueo); se cita vía Gestión. No se halló una encuesta de Ipsos o Datum sobre el porcentaje de la población que usa IA generativa (el Monitor de IA de Ipsos mide actitudes), ni cifras verificables de graduados o brecha de talento en IA.",
+   "América Latina, capital de riesgo en IA por país: no existe en abierto (el informe de LAVCA con desglose por país es de pago). El campo vc_ia queda en null para todos los países. Distrito y Endeavor no se pudieron consultar.",
+   "América Latina, anuncios: son montos anunciados (nivel B), no ejecutados. No se encontraron anuncios nuevos con monto para Argentina, Bolivia, Colombia, Costa Rica, Ecuador, Guatemala, Panamá ni Paraguay. No se verificaron y se omiten: Scala AI City, Microsoft en Chile (monto), Oracle, Ascenty, Equinix y la reformulación del proyecto de Google en Uruguay reportada en 2026.",
+   "Chile: el Plan Nacional de Data Centers no es presupuesto público sino inversión privada que el plan espera acelerar. Las cifras de capacidad difieren por fuente (166 MW según JLL citado por InvestChile; cerca de 386 MW según CNN Chile) y no deben mezclarse.",
+   "startups_latam NO es un ranking verificado de las más financiadas: es la lista de rondas de IA de mayor monto que pudieron verificarse en página abierta, ordenada por última ronda. Solo Blip tiene total recaudado publicado en la fuente; en las demás total_recaudado es null. Quedaron fuera por no poder verificarse: Unico, Yalo, CloudWalk, Jota, Magie (cifra inconsistente en la fuente), Luca y Logcomex. Azos, Bliss y Decade son fintech/insurtech que usan IA como componente central según la fuente.",
+   "El artículo de Bloomberg Línea (11-ago-2023) abierto contenía un bloque de instrucciones incrustado ajeno al contenido; se ignoró."
+  ]
+ },
+ "peru": {
+  "startups": [
+   {
+    "nombre": "Midas",
+    "descripcion": "Infraestructura de verificación matemática formal para datos de entrenamiento y salidas de modelos de IA (reducir errores y alucinaciones). Fundada por los peruanos Shalim Monteagudo (Cusco) y Renzo Balcázar (Piura); con sede en Nueva York.",
+    "ronda": "ronda de inversión (tipo no especificado)",
+    "monto": {
+     "valor": 10,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "2026",
+     "fuente": "Forbes Perú",
+     "url": "https://forbes.pe/negocios/2026-02-05/esta-startup-fundada-por-dos-peruanos-acaba-de-levantar-us10-millones-y-quiere-hacer-confiable-a-los-sistemas-de-ia",
+     "nivel": "B"
+    },
+    "inversionistas": [
+     "Nova Global"
+    ],
+    "fecha": "2026-02-05",
+    "url": "https://forbes.pe/negocios/2026-02-05/esta-startup-fundada-por-dos-peruanos-acaba-de-levantar-us10-millones-y-quiere-hacer-confiable-a-los-sistemas-de-ia",
+    "nota": "Fundadores peruanos; empresa con sede en Estados Unidos. Valorización no divulgada."
+   },
+   {
+    "nombre": "Nutri Co",
+    "descripcion": "Foodtech peruana; su software Virgilio AI formula recetas de alimentos a partir de más de 1.300 ingredientes.",
+    "ronda": "no especificada",
+    "monto": {
+     "valor": 2,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "2024",
+     "fuente": "Contxto",
+     "url": "https://contxto.com/en/startups/15-ai-startups-operating-in-latin-america-to-watch-in-2025/",
+     "nivel": "B"
+    },
+    "inversionistas": [],
+    "fecha": "2024-07",
+    "url": "https://contxto.com/en/startups/15-ai-startups-operating-in-latin-america-to-watch-in-2025/",
+    "nota": "También figura entre las startups con IA cofinanciadas por ProInnóvate (ProActivo, 21-mar-2024)."
+   },
+   {
+    "nombre": "Udocz",
+    "descripcion": "Edtech peruana con \"Tutor IA\" para estudiantes universitarios; presente en Perú, México, Colombia y Chile.",
+    "ronda": "no especificada",
+    "monto": {
+     "valor": 1.9,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "2025",
+     "fuente": "G de Gestión",
+     "url": "https://gestion.pe/g-de-gestion/reportaje/las-10-startups-en-peru-que-hay-que-seguir-en-2026-segun-3-ejecutivos-del-ecosistema-noticia/",
+     "nivel": "B"
+    },
+    "inversionistas": [],
+    "fecha": "2025",
+    "url": "https://gestion.pe/g-de-gestion/reportaje/las-10-startups-en-peru-que-hay-que-seguir-en-2026-segun-3-ejecutivos-del-ecosistema-noticia/"
+   },
+   {
+    "nombre": "PathPilot",
+    "descripcion": "Agentes de IA prefabricados para servicios financieros (contacto con el cliente, riesgo crediticio, monitoreo de transacciones). Fundada en junio de 2024 por el peruano Víctor Laguna, ex Facebook; acelerada por Y Combinator.",
+    "ronda": "presemilla",
+    "monto": {
+     "valor": 1.3,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "2025",
+     "fuente": "Forbes Perú",
+     "url": "https://forbes.pe/negocios/2025-09-05/peruano-que-trabajo-en-facebook-cerro-una-ronda-de-us13-millones-para-acelerar-su-startup-de-agentes-de-ia",
+     "nivel": "B"
+    },
+    "inversionistas": [
+     "Y Combinator",
+     "Alaya Capital",
+     "Unpopular Ventures",
+     "Network VC",
+     "inversionistas ángeles de EE. UU."
+    ],
+    "fecha": "2025-05",
+    "url": "https://forbes.pe/negocios/2025-09-05/peruano-que-trabajo-en-facebook-cerro-una-ronda-de-us13-millones-para-acelerar-su-startup-de-agentes-de-ia",
+    "nota": "Y Combinator aportó US$ 500.000 dentro del total. Opera principalmente desde Estados Unidos."
+   },
+   {
+    "nombre": "Moventi",
+    "descripcion": "Consultora peruana de tecnología y desarrollo de software (170 colaboradores); modelo \"AI Pods\". Capital para reforzar servicios de IA y evaluar una adquisición.",
+    "ronda": "inversionistas privados (tipo no especificado)",
+    "monto": {
+     "valor": 1.2,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "2026",
+     "fuente": "Forbes Perú",
+     "url": "https://forbes.pe/tecnologia/2026-08-31/esta-empresa-peruana-de-ti-levanto-us12-millones-y-prepara-una-adquisicion-para-acelerar-su-apuesta-por-la-ia",
+     "nivel": "B"
+    },
+    "inversionistas": [],
+    "fecha": "2026-08-31",
+    "url": "https://forbes.pe/tecnologia/2026-08-31/esta-empresa-peruana-de-ti-levanto-us12-millones-y-prepara-una-adquisicion-para-acelerar-su-apuesta-por-la-ia",
+    "nota": "Empresa de servicios de TI, no startup de producto."
+   },
+   {
+    "nombre": "Price Lab",
+    "descripcion": "Fijación dinámica de precios con IA para comercio minorista, integrada con etiquetas electrónicas de góndola. Fundadora: Vania Rivero.",
+    "ronda": "presemilla",
+    "monto": {
+     "valor": 0.36,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "2024",
+     "fuente": "Forbes Perú",
+     "url": "https://forbes.pe/negocios/2024-02-13/esta-startup-peruana-busca-optimizar-el-pricing-de-los-comercios-minoristas-a-traves-de-ia",
+     "nivel": "B"
+    },
+    "inversionistas": [
+     "iThink VC",
+     "Venture Do",
+     "inversionistas ángeles"
+    ],
+    "fecha": "2024-02-13",
+    "url": "https://forbes.pe/negocios/2024-02-13/esta-startup-peruana-busca-optimizar-el-pricing-de-los-comercios-minoristas-a-traves-de-ia"
+   },
+   {
+    "nombre": "Juztina",
+    "descripcion": "Legaltech con IA fundada en 2023; más de 100 mil usuarios registrados en Colombia y México; ingresos de US$ 500.000 desde su lanzamiento. Evalúa una siguiente ronda.",
+    "ronda": "sin ronda reportada",
+    "monto": null,
+    "inversionistas": [],
+    "fecha": "2026-04-11",
+    "url": "https://gestion.pe/g-de-gestion/reportaje/las-10-startups-en-peru-que-hay-que-seguir-en-2026-segun-3-ejecutivos-del-ecosistema-noticia/",
+    "nota": "Incluida por tracción, no por financiamiento."
+   },
+   {
+    "nombre": "Soda Latam (Qonteo)",
+    "descripcion": "Analítica de video con IA para medir flujo de personas, trabajadores y vehículos en centros comerciales y otros espacios.",
+    "ronda": "cofinanciamiento público (ProInnóvate)",
+    "monto": null,
+    "inversionistas": [
+     "ProInnóvate (Produce)"
+    ],
+    "fecha": "2024-03-21",
+    "url": "https://proactivo.com.pe/proinnovate-cofinancia-startups-peruanas-que-utilizan-inteligencia-artificial/",
+    "nota": "Monto no publicado."
+   },
+   {
+    "nombre": "Nereuz",
+    "descripcion": "Exploración y monitoreo de recursos acuáticos con IA y robótica submarina para acuicultura; declara reducir en 30% el tiempo y costo de estimar biomasa.",
+    "ronda": "cofinanciamiento público (ProInnóvate)",
+    "monto": null,
+    "inversionistas": [
+     "ProInnóvate (Produce)"
+    ],
+    "fecha": "2024-03-21",
+    "url": "https://proactivo.com.pe/proinnovate-cofinancia-startups-peruanas-que-utilizan-inteligencia-artificial/",
+    "nota": "Monto no publicado."
+   },
+   {
+    "nombre": "Doctor CV",
+    "descripcion": "Reclutador virtual con IA que indica cómo mejorar el currículum; para egresados, trabajadores y empresas.",
+    "ronda": "cofinanciamiento público (ProInnóvate)",
+    "monto": null,
+    "inversionistas": [
+     "ProInnóvate (Produce)"
+    ],
+    "fecha": "2024-03-21",
+    "url": "https://proactivo.com.pe/proinnovate-cofinancia-startups-peruanas-que-utilizan-inteligencia-artificial/",
+    "nota": "Monto no publicado."
+   },
+   {
+    "nombre": "Pixmap",
+    "descripcion": "Software que predice con IA dónde se fijará primero la mirada en una imagen (empaques, exhibidores, comercio electrónico).",
+    "ronda": "cofinanciamiento público (ProInnóvate)",
+    "monto": null,
+    "inversionistas": [
+     "ProInnóvate (Produce)"
+    ],
+    "fecha": "2024-03-21",
+    "url": "https://proactivo.com.pe/proinnovate-cofinancia-startups-peruanas-que-utilizan-inteligencia-artificial/",
+    "nota": "Monto no publicado."
+   },
+   {
+    "nombre": "Cyber Eye",
+    "descripcion": "Visión artificial para control de inventarios automatizado y en tiempo real.",
+    "ronda": "cofinanciamiento público (ProInnóvate)",
+    "monto": null,
+    "inversionistas": [
+     "ProInnóvate (Produce)"
+    ],
+    "fecha": "2024-03-21",
+    "url": "https://proactivo.com.pe/proinnovate-cofinancia-startups-peruanas-que-utilizan-inteligencia-artificial/",
+    "nota": "Monto no publicado."
+   },
+   {
+    "nombre": "Metric 360",
+    "descripcion": "Software de planificación y análisis de datos para mipymes.",
+    "ronda": "cofinanciamiento público (ProInnóvate)",
+    "monto": null,
+    "inversionistas": [
+     "ProInnóvate (Produce)"
+    ],
+    "fecha": "2025-06-24",
+    "url": "https://proactivo.com.pe/produce-impulsa-con-ia-para-transformar-a-las-mipymes-peruanas/",
+    "nota": "Monto no publicado."
+   },
+   {
+    "nombre": "Litis",
+    "descripcion": "Plataforma de análisis de jurisprudencia con IA.",
+    "ronda": "cofinanciamiento público (ProInnóvate)",
+    "monto": null,
+    "inversionistas": [
+     "ProInnóvate (Produce)"
+    ],
+    "fecha": "2025-06-24",
+    "url": "https://proactivo.com.pe/produce-impulsa-con-ia-para-transformar-a-las-mipymes-peruanas/",
+    "nota": "Monto no publicado."
+   },
+   {
+    "nombre": "AIO Sensor",
+    "descripcion": "Monitoreo predictivo de equipos industriales.",
+    "ronda": "cofinanciamiento público (ProInnóvate)",
+    "monto": null,
+    "inversionistas": [
+     "ProInnóvate (Produce)"
+    ],
+    "fecha": "2025-06-24",
+    "url": "https://proactivo.com.pe/produce-impulsa-con-ia-para-transformar-a-las-mipymes-peruanas/",
+    "nota": "Monto no publicado."
+   },
+   {
+    "nombre": "Yala",
+    "descripcion": "Gestión de ventas mediante asistentes virtuales en WhatsApp.",
+    "ronda": "cofinanciamiento público (ProInnóvate)",
+    "monto": null,
+    "inversionistas": [
+     "ProInnóvate (Produce)"
+    ],
+    "fecha": "2025-06-24",
+    "url": "https://proactivo.com.pe/produce-impulsa-con-ia-para-transformar-a-las-mipymes-peruanas/",
+    "nota": "Monto no publicado."
+   }
+  ],
+  "anuncios": [
+   {
+    "empresa": "InfraCorp (Grupo Romero) / Gtd",
+    "concepto": "Compra del 49% de Gtdata, filial de centros de datos de Gtd: 11 centros de datos en Chile, Perú y Colombia y uno en desarrollo; 6 MW de capacidad TI instalada y 79% de ocupación promedio (Oaklins)",
+    "monto": {
+     "valor": 118,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "anuncio oct-2025; transacción registrada en ene-2026",
+     "fuente": "TeleSemana; Oaklins",
+     "url": "https://www.telesemana.com/blog/2025/10/13/infracorp-compro-el-49-de-gtdata-y-se-asocio-con-gtd-para-impulsar-el-negocio-de-datacenters-en-la-region/",
+     "nivel": "B"
+    },
+    "fecha": "2025-10-13",
+    "fuente": "TeleSemana; Oaklins (asesor de la operación)",
+    "url": "https://www.oaklins.com/co/es/case-study.html?did=111743",
+    "nota": "Operación regional (tres países), no solo Perú; es una adquisición, no inversión nueva en infraestructura."
+   },
+   {
+    "empresa": "BCP, con Microsoft y Kyndryl",
+    "concepto": "Proyecto de transformación a la nube híbrida del Banco de Crédito del Perú (alianza de 2024)",
+    "monto": {
+     "valor": 650,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "alianza 2024",
+     "fuente": "Gestión",
+     "url": "https://gestion.pe/economia/empresas/el-mercado-de-data-centers-en-peru-crecera-a-us-378-millones-al-2031-por-que-noticia/",
+     "nivel": "B"
+    },
+    "fecha": "2024",
+    "fuente": "Gestión (8-jul-2026)",
+    "url": "https://gestion.pe/economia/empresas/el-mercado-de-data-centers-en-peru-crecera-a-us-378-millones-al-2031-por-que-noticia/",
+    "nota": "La fuente dice \"más de US$ 650 millones\"; no precisa plazo."
+   },
+   {
+    "empresa": "Claro Perú",
+    "concepto": "Data center en Lima inaugurado en diciembre de 2023: 104 gabinetes, certificación Uptime Tier III",
+    "monto": {
+     "valor": 50,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "2023",
+     "fuente": "Minería & Energía (cita a Gestión)",
+     "url": "https://mineriaenergia.com/data-centers-en-peru-moveran-us310-mllns-con-crecimiento-anual-de-15-al-2029/",
+     "nivel": "C"
+    },
+    "fecha": "2023-12",
+    "fuente": "Minería & Energía (11-nov-2024), con datos de Gestión",
+    "url": "https://mineriaenergia.com/data-centers-en-peru-moveran-us310-mllns-con-crecimiento-anual-de-15-al-2029/"
+   },
+   {
+    "empresa": "Win Empresas (antes Optical Networks)",
+    "concepto": "Sexto data center, en La Molina (terreno de 1.400 m²): tres fases, más de 200 gabinetes en la primera y 600 en total; US$ 12 millones en la primera fase",
+    "monto": {
+     "valor": 30,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "tres fases desde 2024",
+     "fuente": "Gestión",
+     "url": "https://gestion.pe/economia/empresas/win-empresas-construye-sexto-data-center-por-mas-de-us-30-mllns-y-planea-otro-optical-networks-la-molina-la-victoria-pymes-tecnologia-noticia/",
+     "nivel": "B"
+    },
+    "fecha": "2024-07-17",
+    "fuente": "Gestión",
+    "url": "https://gestion.pe/economia/empresas/win-empresas-construye-sexto-data-center-por-mas-de-us-30-mllns-y-planea-otro-optical-networks-la-molina-la-victoria-pymes-tecnologia-noticia/",
+    "nota": "La fuente dice \"superior a US$ 30 millones\". Opera cinco data centers y planea un séptimo fuera de Lima."
+   },
+   {
+    "empresa": "Win Empresas (antes Optical Networks)",
+    "concepto": "Ampliación del data center de La Victoria (Santa Catalina): de 120 a 240 gabinetes",
+    "monto": {
+     "valor": 6,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "2024",
+     "fuente": "Gestión",
+     "url": "https://gestion.pe/economia/empresas/win-empresas-construye-sexto-data-center-por-mas-de-us-30-mllns-y-planea-otro-optical-networks-la-molina-la-victoria-pymes-tecnologia-noticia/",
+     "nivel": "B"
+    },
+    "fecha": "2024-07-17",
+    "fuente": "Gestión",
+    "url": "https://gestion.pe/economia/empresas/win-empresas-construye-sexto-data-center-por-mas-de-us-30-mllns-y-planea-otro-optical-networks-la-molina-la-victoria-pymes-tecnologia-noticia/",
+    "nota": "\"Cerca de US$ 6 millones\"."
+   },
+   {
+    "empresa": "Cirion Technologies",
+    "concepto": "Puesta en operación del data center LIM2 en Lurín (20 MW, cinco veces el de Surco; racks de 10 a 30 kVA orientados a cargas de IA; inversión respaldada por Stonepeak)",
+    "monto": null,
+    "fecha": "2025-12-21",
+    "fuente": "Gestión; Revista Economía (18-jun-2025)",
+    "url": "https://gestion.pe/economia/empresas/cirion-activa-data-center-en-lurin-y-apuesta-por-mercado-con-potencial-de-us-310-mlls-noticia/",
+    "nota": "Actualiza el anuncio de 2023 que ya está en latam_peru.json. Cirion no divulga el monto de inversión de LIM2."
+   },
+   {
+    "empresa": "Actis / Nabiax",
+    "concepto": "Compra de 11 centros de datos de Nabiax en la región, dos de ellos en Perú (marzo de 2023)",
+    "monto": {
+     "valor": 500,
+     "unidad": "USD millones",
+     "moneda_original": "USD",
+     "periodo": "2023",
+     "fuente": "Minería & Energía (cita a Gestión)",
+     "url": "https://mineriaenergia.com/data-centers-en-peru-moveran-us310-mllns-con-crecimiento-anual-de-15-al-2029/",
+     "nivel": "C"
+    },
+    "fecha": "2023-03",
+    "fuente": "Minería & Energía (11-nov-2024)",
+    "url": "https://mineriaenergia.com/data-centers-en-peru-moveran-us310-mllns-con-crecimiento-anual-de-15-al-2029/",
+    "nota": "Monto regional por las 11 propiedades; no se desglosa la parte de Perú."
+   },
+   {
+    "empresa": "Amazon Web Services",
+    "concepto": "Anuncio de una AWS Local Zone en Lima (una de seis previstas en América Latina; latencia menor a 10 ms)",
+    "monto": null,
+    "fecha": "2022-02-23",
+    "fuente": "Andina",
+    "url": "https://andina.pe/agencia/noticia-peru-se-convierte-nueva-zona-local-amazon-web-services-882082.aspx",
+    "nota": "Sin monto. No es una región de nube. No se pudo confirmar su estado operativo actual en la página de AWS."
+   }
+  ],
+  "indicadores": [
+   {
+    "indicador": "Empresas que declaran usar IA (encuesta de expectativas macroeconómicas del BCRP, enero de 2026)",
+    "valor": 49,
+    "unidad": "% de empresas",
+    "anio": 2026,
+    "fuente": "BCRP, citado por Gestión (8-feb-2026)",
+    "url": "https://gestion.pe/economia/ia-en-peru-usan-inteligencia-artificial-en-tu-empresa-la-mitad-de-los-negocios-no-lo-hace-las-2-limitantes-noticia/",
+    "nivel": "B",
+    "nota": "La fuente publica el complemento: 51% no emplea IA (62% en manufactura). Tamaño de muestra no indicado."
+   },
+   {
+    "indicador": "Empresas usuarias de IA que emplean IA generativa (ChatGPT, Copilot) para consultas (BCRP, enero de 2026)",
+    "valor": 66,
+    "unidad": "% de las empresas que usan IA",
+    "anio": 2026,
+    "fuente": "BCRP, citado por Gestión (8-feb-2026)",
+    "url": "https://gestion.pe/economia/ia-en-peru-usan-inteligencia-artificial-en-tu-empresa-la-mitad-de-los-negocios-no-lo-hace-las-2-limitantes-noticia/",
+    "nivel": "B",
+    "nota": "50% la usa para optimizar procesos internos."
+   },
+   {
+    "indicador": "Empresas que no prevén aumentar su gasto en IA frente al año anterior (BCRP, enero de 2026)",
+    "valor": 56,
+    "unidad": "% de empresas",
+    "anio": 2026,
+    "fuente": "BCRP, citado por Gestión (8-feb-2026)",
+    "url": "https://gestion.pe/economia/ia-en-peru-usan-inteligencia-artificial-en-tu-empresa-la-mitad-de-los-negocios-no-lo-hace-las-2-limitantes-noticia/",
+    "nivel": "B",
+    "nota": "Otro 32% considera un aumento de hasta 10%. Limitantes principales: falta de información clara sobre cómo aplicar IA y falta de personal con conocimientos."
+   },
+   {
+    "indicador": "Empresas peruanas que han adoptado IA (Lenovo, CIO Playbook 2025)",
+    "valor": 38,
+    "unidad": "% de empresas",
+    "anio": 2025,
+    "fuente": "Lenovo, citado por Gestión (20-abr-2025)",
+    "url": "https://gestion.pe/economia/empresas/ia-en-peru-predictiva-generativa-o-interpretativa-por-cual-apuestan-las-empresas-peruanas-noticia/",
+    "nivel": "B",
+    "nota": "22% en etapa temprana y 16% en pilotos; solo 4% la aplica de forma sistemática en toda la organización. Entre las que adoptaron: 68% IA interpretativa, 21% predictiva, 11% generativa. Muestra no indicada."
+   },
+   {
+    "indicador": "Presupuesto de tecnología destinado a IA en empresas peruanas (Lenovo, CIO Playbook 2025)",
+    "valor": 20,
+    "unidad": "% del presupuesto de TI (previsto 2025)",
+    "anio": 2025,
+    "fuente": "Lenovo, citado por Gestión (20-abr-2025)",
+    "url": "https://gestion.pe/economia/empresas/ia-en-peru-predictiva-generativa-o-interpretativa-por-cual-apuestan-las-empresas-peruanas-noticia/",
+    "nivel": "B",
+    "nota": "Se estimaba 5% en 2024."
+   },
+   {
+    "indicador": "Gasto nacional en IA",
+    "valor": 497,
+    "unidad": "USD millones",
+    "anio": 2025,
+    "fuente": "Sonda Perú, citado por El Peruano (22-jul-2026)",
+    "url": "https://www.elperuano.pe/noticia/300840-mercado-de-inteligencia-artificial-en-peru-creceria-20-anual-hasta-2027",
+    "nivel": "B",
+    "nota": "\"Casi 497 millones\"; 412 millones en 2024. Proyección de crecimiento cercano a 20% anual hasta 2027. Estimación de un proveedor; la nota no detalla metodología."
+   },
+   {
+    "indicador": "Inversión de empresas peruanas en servicios de IA",
+    "valor": 50.1,
+    "unidad": "USD millones",
+    "anio": 2024,
+    "fuente": "IDC, citado por Ecosistema Startup (22-jul-2026)",
+    "url": "https://ecosistemastartup.com/?p=93290",
+    "nivel": "C",
+    "nota": "Crecimiento interanual de 38,4%. No se abrió el informe de IDC."
+   },
+   {
+    "indicador": "Inversión en proyectos de IA de las empresas peruanas (IDC para Microsoft)",
+    "valor": 1.1,
+    "unidad": "USD millones",
+    "anio": 2024,
+    "fuente": "IDC/Microsoft, citado por Gestión (11-jun-2024)",
+    "url": "https://gestion.pe/economia/empresas/empresas-peruanas-invierten-menos-en-ia-que-el-resto-de-la-region-microsoft-idc-noticia/",
+    "nivel": "B",
+    "nota": "La nota no aclara si es promedio por empresa. Comparación en la misma nota: Colombia 3,7; Chile 2,7; Argentina 1,9. Retorno en Perú: 2,5 veces el costo en 13,7 meses."
+   },
+   {
+    "indicador": "Organizaciones peruanas que aumentaron su presupuesto en datos e IA en los últimos 12 meses (EY Chief Data Officer Study 2026)",
+    "valor": 85,
+    "unidad": "% de organizaciones consultadas",
+    "anio": 2026,
+    "fuente": "EY, citado por Energiminas (26-ago-2026)",
+    "url": "https://energiminas.com/2026/08/26/85-de-empresas-peruanas-aumento-su-inversion-en-datos-e-ia-durante-ultimo-ano/",
+    "nivel": "B",
+    "nota": "93% espera seguir aumentándolo el año siguiente. Muestra no indicada."
+   },
+   {
+    "indicador": "Empresas con políticas de IA aprobadas (EY Perú, AI & Boards 2026)",
+    "valor": 10,
+    "unidad": "% de empresas encuestadas",
+    "anio": 2026,
+    "fuente": "EY Perú, citado por Infobae (8-oct-2026)",
+    "url": "https://www.infobae.com/peru/2026/10/08/haces-empresa-cuidado-con-las-alucinaciones-de-la-ia-generativa-solo-el-10-de-firmas-en-peru-esta-preparada/",
+    "nivel": "B",
+    "nota": "18% tiene protocolos de uso seguro y ético; 24% asignó la supervisión a un comité."
+   },
+   {
+    "indicador": "Ejecutivos que no recibieron capacitación en IA (EY Perú, AI & Boards 2026)",
+    "valor": 68,
+    "unidad": "% de ejecutivos encuestados",
+    "anio": 2026,
+    "fuente": "EY Perú, citado por Infobae (8-oct-2026)",
+    "url": "https://www.infobae.com/peru/2026/10/08/haces-empresa-cuidado-con-las-alucinaciones-de-la-ia-generativa-solo-el-10-de-firmas-en-peru-esta-preparada/",
+    "nivel": "B"
+   },
+   {
+    "indicador": "Peruanos conectados que se declaran emocionados por productos y servicios con IA (Ipsos, Monitor de IA 2025)",
+    "valor": 66,
+    "unidad": "% de peruanos conectados",
+    "anio": 2025,
+    "fuente": "Ipsos Perú",
+    "url": "https://www.ipsos.com/es-pe/la-ia-genera-entusiasmo-y-nerviosismo-siendo-peru-un-pais-optimista-frente-la-adopcion",
+    "nivel": "A",
+    "nota": "47% dice que le generan nerviosismo. Mide actitudes, no uso. Estudio global: más de 23 mil entrevistas en 30 países; muestra de Perú no indicada."
+   },
+   {
+    "indicador": "Peruanos conectados que creen que la IA cambiará su trabajo actual en 5 años (Ipsos, Monitor de IA 2025)",
+    "valor": 72,
+    "unidad": "% de peruanos conectados",
+    "anio": 2025,
+    "fuente": "Ipsos Perú",
+    "url": "https://www.ipsos.com/es-pe/la-ia-genera-entusiasmo-y-nerviosismo-siendo-peru-un-pais-optimista-frente-la-adopcion",
+    "nivel": "A",
+    "nota": "Promedio global: 59%. 46% cree que la IA reemplazará su trabajo."
+   },
+   {
+    "indicador": "Inversión de capital emprendedor en startups peruanas (todas las verticales)",
+    "valor": 76.5,
+    "unidad": "USD millones",
+    "anio": 2025,
+    "fuente": "PECAP, en nota de prensa de COFIDE (junio de 2026)",
+    "url": "https://www.cofide.com.pe/wp-content/uploads/2026/06/NP-COFIDE-y-PECAP-presentan-informe.pdf",
+    "nivel": "A",
+    "nota": "23 transacciones (-30% interanual); monto +64% interanual; 72% del monto fue deuda; fintech es el sector más invertido. La nota no precisa el año: por contexto corresponde a 2025 (Reporte Anual 2025 de PECAP). No hay desglose de IA."
+   },
+   {
+    "indicador": "Inversión en startups peruanas que proviene de fuentes internacionales",
+    "valor": 97,
+    "unidad": "%",
+    "anio": 2026,
+    "fuente": "COFIDE y PECAP, Diagnóstico de la oferta de venture capital en el Perú (nota de prensa)",
+    "url": "https://www.cofide.com.pe/wp-content/uploads/2026/06/NP-COFIDE-y-PECAP-presentan-informe.pdf",
+    "nivel": "A"
+   },
+   {
+    "indicador": "Brecha de financiamiento para startups peruanas en los próximos cinco años",
+    "valor": 516,
+    "unidad": "USD millones",
+    "anio": 2026,
+    "fuente": "COFIDE y PECAP, Diagnóstico de la oferta de venture capital en el Perú (nota de prensa)",
+    "url": "https://www.cofide.com.pe/wp-content/uploads/2026/06/NP-COFIDE-y-PECAP-presentan-informe.pdf",
+    "nivel": "A",
+    "nota": "Demanda estimada de US$ 1.106 millones frente a oferta proyectada de US$ 590 millones; cerca de 881 startups quedarían sin financiamiento."
+   },
+   {
+    "indicador": "Startups que aplican IA apoyadas por ProInnóvate",
+    "valor": 60,
+    "unidad": "startups",
+    "anio": 2025,
+    "fuente": "Produce/ProInnóvate, citado por ProActivo (24-jun-2025)",
+    "url": "https://proactivo.com.pe/produce-impulsa-con-ia-para-transformar-a-las-mipymes-peruanas/",
+    "nivel": "B",
+    "nota": "\"Cerca de 60\". La nota no publica montos."
+   },
+   {
+    "indicador": "ProInnóvate: recursos invertidos en 2025 (todos los proyectos, no solo IA)",
+    "valor": 230,
+    "unidad": "millones de soles",
+    "anio": 2025,
+    "fuente": "Ecosistema Startup (30-jul-2026), con datos de ProInnóvate",
+    "url": "https://ecosistemastartup.com/?p=94478",
+    "nivel": "C",
+    "nota": "2.725 proyectos. StartUp Perú 13G: capital semilla de S/ 67.000 (innovadores) y hasta S/ 150.000 (dinámicos). La misma nota menciona un fondo de US$ 120 millones (US$ 100 millones del BID y US$ 20 millones del Estado). Sin cifras específicas de IA."
+   },
+   {
+    "indicador": "CONCYTEC/PROCIENCIA: fondos concursables del calendario 2026",
+    "valor": 73,
+    "unidad": "millones de soles",
+    "anio": 2026,
+    "fuente": "ProActivo (15-ene-2026)",
+    "url": "https://proactivo.com.pe/concytec-destinara-mas-de-s-73-millones-para-impulsar-la-ciencia-y-la-innovacion-en-2026/",
+    "nivel": "B",
+    "nota": "\"Más de S/ 73 millones\": unos S/ 60 millones para 403 subvenciones en 13 concursos de PROCIENCIA y S/ 13,55 millones en dos concursos del proyecto SINACTI II. Ninguna línea específica de IA. No es el PIA del pliego."
+   },
+   {
+    "indicador": "Mercado de centros de datos en Perú (inversión)",
+    "valor": 176,
+    "unidad": "USD millones",
+    "anio": 2025,
+    "fuente": "Arizton, citado por Gestión (8-jul-2026)",
+    "url": "https://gestion.pe/economia/empresas/el-mercado-de-data-centers-en-peru-crecera-a-us-378-millones-al-2031-por-que-noticia/",
+    "nivel": "B",
+    "nota": "Proyección: US$ 378 millones en 2031 (CAGR 13,59%)."
+   },
+   {
+    "indicador": "Centros de datos existentes en Perú",
+    "valor": 13,
+    "unidad": "centros de datos",
+    "anio": 2026,
+    "fuente": "Arizton, citado por Gestión (8-jul-2026)",
+    "url": "https://gestion.pe/economia/empresas/el-mercado-de-data-centers-en-peru-crecera-a-us-378-millones-al-2031-por-que-noticia/",
+    "nivel": "B",
+    "nota": "Más una instalación futura. Operadores de colocation citados: Claro, Equinix, Cirion, Gtd y Win; también se nombra a Scala, Nabiax, Entel, Odata y Huawei sin cifras."
+   },
+   {
+    "indicador": "Costo de construcción de centros de datos en Perú",
+    "valor": 6.5,
+    "unidad": "USD millones por MW (rango: valor a valor_max)",
+    "anio": 2025,
+    "fuente": "Arizton, citado por Gestión (8-jul-2026)",
+    "url": "https://gestion.pe/economia/empresas/el-mercado-de-data-centers-en-peru-crecera-a-us-378-millones-al-2031-por-que-noticia/",
+    "nivel": "B",
+    "nota": "Rango publicado: 6,5 a 7,5 millones por MW. En mercados vecinos: 8 a 10 millones por MW.",
+    "valor_max": 7.5
+   },
+   {
+    "indicador": "Capacidad energética acumulada proyectada de centros de datos en Perú a 2029",
+    "valor": 51,
+    "unidad": "MW",
+    "anio": 2029,
+    "fuente": "Arizton, citado por Minería & Energía (11-nov-2024)",
+    "url": "https://mineriaenergia.com/data-centers-en-peru-moveran-us310-mllns-con-crecimiento-anual-de-15-al-2029/",
+    "nivel": "C",
+    "nota": "\"Más de 51 MW\"; ingresos de unos US$ 310 millones en 2029 (CAGR 15% desde 2023); Perú sería 3,1% de la inversión regional en centros de datos."
+   },
+   {
+    "indicador": "Sistemas de cable submarino que amarran en Perú",
+    "valor": 4,
+    "unidad": "cables",
+    "anio": 2026,
+    "fuente": "TeleGeography, Submarine Cable Map (API)",
+    "url": "https://www.submarinecablemap.com/api/v3/country/peru.json",
+    "nivel": "A",
+    "nota": "South American Crossing (SAC, 2000; Lurín), South America-1 (SAm-1, 2001; Lurín y Máncora), Fibra Óptica al Pacífico (2020; Lurín e Ilo) y South Pacific Cable System/Mistral (2021; Lurín). Ninguno planificado adicional en el registro."
+   }
+  ],
+  "marco_legal": [
+   {
+    "norma": "ENIA 2026-2030 (R.M. N° 152-2026-PCM): pilares y obligaciones con plazo",
+    "fecha": "2026-05-06",
+    "resumen": "Presentada el 6-may-2026. Cuatro pilares: talento y capacidades en IA; innovación y emprendimiento basado en IA; marco ético y regulatorio; participación ciudadana y colaboración. La resolución fija plazos, no metas numéricas: 90 días hábiles para los lineamientos del Oficial de IA; 120 días hábiles para el Catálogo IA Perú y para el marco de referencia de gobernanza de tecnología y datos; Plan de Acción de IA no menor de 3 años; reporte trimestral del Oficial de IA al Comité de Gobierno y Transformación Digital; registro anual en la Plataforma de Cumplimiento Digital; actualización de la estrategia cada 2 años. Art. 12: sin recursos adicionales del Tesoro Público.",
+    "url": "https://andina.pe/agencia/noticia-peru-government-unveils-national-artificial-intelligence-strategy-enia-1073935.aspx",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2511535-1",
+    "nivel": "A",
+    "nota": "Complementa la entrada de latam_peru.json. El anexo con metas e indicadores no pudo abrirse."
+   },
+   {
+    "norma": "ENIA 2026-2030: meta para mypes (dato secundario)",
+    "fecha": "2026-07-22",
+    "resumen": "Según Ecosistema Startup, la estrategia apunta a que al menos 4.750 micro y pequeñas empresas incorporen soluciones de IA al 2030 mediante programas de transformación digital.",
+    "url": "https://ecosistemastartup.com/?p=93290",
+    "nivel": "C",
+    "nota": "No verificado en el anexo oficial."
+   },
+   {
+    "norma": "Registro de la ENIA 2026-2030 en el Observatorio de Políticas de IA de la OCDE",
+    "fecha": "2026-08-26",
+    "resumen": "La OCDE registra la estrategia como activa, periodo 2026-2030, aprobada por R.M. 152-2026-PCM, a cargo de la Secretaría de Gobierno y Transformación Digital; aún sin evaluación, aunque está prevista.",
+    "url": "https://oecd.ai/en/dashboards/policy-initiatives/national-artificial-intelligence-strategy-2026-2030",
+    "nivel": "A"
+   },
+   {
+    "norma": "Plan de trabajo en IA de la COMCYT-OEA 2025-2027 (presidencia del Perú, CONCYTEC)",
+    "fecha": "2026-01-16",
+    "resumen": "El Perú recibió la presidencia de la Comisión Interamericana de Ciencia y Tecnología en la VII REMCYT (diciembre de 2025). CONCYTEC presidió la primera reunión multisectorial y propuso un Centro de Excelencia en IA, liderado por CONCYTEC y a registrarse ante la OEA, además de una hoja de ruta nacional. Sin presupuesto ni plazos publicados.",
+    "url": "https://proactivo.com.pe/peru-impulsa-liderazgo-regional-en-inteligencia-artificial/",
+    "nivel": "B"
+   }
+  ],
+  "universidades": []
+ },
+ "latam": [
+  {
+   "iso3": "ARG",
+   "nombre_es": "Argentina",
+   "vc_ia": null,
+   "anuncios": [],
+   "publico": null,
+   "nota": "Sin anuncios nuevos verificados; OpenAI/Sur Energy ya está en latam_peru.json."
+  },
+  {
+   "iso3": "BOL",
+   "nombre_es": "Bolivia",
+   "vc_ia": null,
+   "anuncios": [],
+   "publico": null,
+   "nota": "Sin datos verificados."
+  },
+  {
+   "iso3": "BRA",
+   "nombre_es": "Brasil",
+   "vc_ia": null,
+   "anuncios": [
+    {
+     "empresa": "TikTok (ByteDance), con Omnia y Casa dos Ventos",
+     "concepto": "Centro de datos cerca del puerto industrial de Pecém, Ceará; primero de la empresa en América Latina",
+     "monto": {
+      "valor": 200,
+      "unidad": "BRL miles de millones",
+      "moneda_original": "BRL",
+      "periodo": "anuncio dic-2025; plazo no precisado en la fuente",
+      "fuente": "Bloomberg Línea Brasil",
+      "url": "https://www.bloomberglinea.com.br/negocios/tiktok-anuncia-investimento-de-r-200-bilhoes-para-construir-data-center-no-brasil/",
+      "nivel": "B"
+     },
+     "fecha": "2025-12-03",
+     "fuente": "Bloomberg Línea Brasil",
+     "url": "https://www.bloomberglinea.com.br/negocios/tiktok-anuncia-investimento-de-r-200-bilhoes-para-construir-data-center-no-brasil/",
+     "nota": "\"Más de R$ 200 mil millones\". Sin conversión a USD en la fuente."
+    },
+    {
+     "empresa": "Gobierno de Brasil (LNCC), supercomputador del PBIA",
+     "concepto": "Supercomputador de IA de unas 5 mil GPU, con inauguración prevista en 2026; adquisición coordinada por el Laboratório Nacional de Computação Científica",
+     "monto": {
+      "valor": 1.8,
+      "unidad": "BRL miles de millones",
+      "moneda_original": "BRL",
+      "periodo": "inauguración prevista 2026",
+      "fuente": "DPL News",
+      "url": "https://dplnews.com/?p=285031",
+      "nivel": "B"
+     },
+     "fecha": "2025-08-13",
+     "fuente": "DPL News",
+     "url": "https://dplnews.com/?p=285031",
+     "nota": "Inversión pública."
+    },
+    {
+     "empresa": "Universidade de São Paulo (CIAAM-USP)",
+     "concepto": "Clúster de IA Jairu: 96 GPU Nvidia Blackwell B200",
+     "monto": {
+      "valor": 40,
+      "unidad": "BRL millones",
+      "moneda_original": "BRL",
+      "periodo": "2026",
+      "fuente": "Baguete",
+      "url": "https://www.baguete.com.br/noticias/usp-investe-r-40-mi-no-maior-cluster-de-ia-da-latam",
+      "nivel": "B"
+     },
+     "fecha": "2026-02-13",
+     "fuente": "Baguete",
+     "url": "https://www.baguete.com.br/noticias/usp-investe-r-40-mi-no-maior-cluster-de-ia-da-latam",
+     "nota": "Presentado como el mayor clúster de IA de América Latina. Origen de los recursos no indicado."
+    }
+   ],
+   "publico": {
+    "concepto": "Plano Brasileiro de Inteligência Artificial (PBIA): presupuesto total y desglose por eje",
+    "valor": 23.03,
+    "unidad": "BRL miles de millones",
+    "moneda_original": "BRL",
+    "periodo": "plan presentado el 29-jul-2024 (2024-2028 según CEPAL)",
+    "fuente": "Teletime (30-jul-2024), con datos del MCTI",
+    "url": "https://teletime.com.br/30/07/2024/plano-de-inteligencia-artificial-preve-r-23-bi-para-a-tecnologia-no-brasil/",
+    "nivel": "B",
+    "ejes": [
+     {
+      "eje": "IA para Innovación Empresarial",
+      "valor": 13.79,
+      "unidad": "BRL miles de millones"
+     },
+     {
+      "eje": "Infraestructura y Desarrollo de IA",
+      "valor": 5.79,
+      "unidad": "BRL miles de millones"
+     },
+     {
+      "eje": "IA para Mejora de los Servicios Públicos",
+      "valor": 1.76,
+      "unidad": "BRL miles de millones"
+     },
+     {
+      "eje": "Difusión, Formación y Capacitación en IA",
+      "valor": 1.15,
+      "unidad": "BRL miles de millones"
+     },
+     {
+      "eje": "Acciones de Impacto Inmediato",
+      "valor": 0.43504,
+      "unidad": "BRL miles de millones"
+     },
+     {
+      "eje": "Apoyo al Proceso Regulatorio y de Gobernanza de la IA",
+      "valor": 0.10325,
+      "unidad": "BRL miles de millones"
+     }
+    ],
+    "fuentes_de_recursos": "BNDES (operando recursos de Finep y FNDCT): R$ 12,72 mil millones; FNDCT no reembolsable: R$ 5,57 mil millones.",
+    "nota": "El total de R$ 23 mil millones ya figura en latam_peru.json (vía CEPAL); aquí se agrega el desglose. El portal gov.br/mcti bloqueó el acceso automatizado."
+   }
+  },
+  {
+   "iso3": "CHL",
+   "nombre_es": "Chile",
+   "vc_ia": null,
+   "anuncios": [
+    {
+     "empresa": "Amazon Web Services, Microsoft y Google (agregado)",
+     "concepto": "Inversiones comprometidas en centros de datos en Chile por grandes proveedores; incluye los más de US$ 4.000 millones de AWS a 16 años (tres centros de datos), ya registrados en latam_peru.json",
+     "monto": {
+      "valor": 7500,
+      "unidad": "USD millones",
+      "moneda_original": "USD",
+      "periodo": "compromisos vigentes a 2026",
+      "fuente": "CNN Chile",
+      "url": "https://www.cnnchile.com/negocios/amazon-microsoft-google-chile-suma-mas-us7500-millones-inversiones-comprometidas-data-centers/",
+      "nivel": "B"
+     },
+     "fecha": "2026",
+     "fuente": "CNN Chile",
+     "url": "https://www.cnnchile.com/negocios/amazon-microsoft-google-chile-suma-mas-us7500-millones-inversiones-comprometidas-data-centers/",
+     "nota": "\"Más de US$ 7.500 millones\". Cifra agregada: no sumar al anuncio de AWS. La nota no da montos de Microsoft ni Google ni fecha exacta de publicación (aprox. sep-2026)."
+    }
+   ],
+   "publico": {
+    "concepto": "Plan Nacional de Data Centers 2024-2030: inversión que el plan espera acelerar (privada, no presupuesto público)",
+    "valor": 2500,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "periodo": "plan presentado el 5-dic-2024; horizonte 2024-2030",
+    "fuente": "Gobierno de Chile, reproducido por CPI Chile (6-dic-2024)",
+    "url": "https://cpichile.org/que-es-el-plan-nacional-de-data-centers/",
+    "nivel": "B",
+    "nota": "\"Acelerará una inversión posible de US$ 2.500 millones\"; la ministra Etcheverry habló de más de US$ 4 mil millones de inversión proyectada. Meta: triplicar la industria en 5 años. Contexto (JLL vía InvestChile, 20-abr-2026): Chile tiene 166 MW instalados, 15% de la capacidad regional, y sumó 18 MW en 2025; Santiago concentra 93 MW de hiperescala (46% del segmento regional)."
+   }
+  },
+  {
+   "iso3": "COL",
+   "nombre_es": "Colombia",
+   "vc_ia": null,
+   "anuncios": [],
+   "publico": null,
+   "nota": "CONPES 4144 ya está en latam_peru.json. Sin anuncios nuevos con monto verificados (AWS figura con una Local Zone en Bogotá en estado \"anunciada\", sin monto)."
+  },
+  {
+   "iso3": "CRI",
+   "nombre_es": "Costa Rica",
+   "vc_ia": null,
+   "anuncios": [],
+   "publico": null,
+   "nota": "Sin datos verificados."
+  },
+  {
+   "iso3": "DOM",
+   "nombre_es": "República Dominicana",
+   "vc_ia": null,
+   "anuncios": [
+    {
+     "empresa": "Google",
+     "concepto": "Nuevo centro internacional de intercambio digital (digital exchange hub)",
+     "monto": {
+      "valor": 500,
+      "unidad": "USD millones",
+      "moneda_original": "USD",
+      "periodo": "anuncio feb-2026",
+      "fuente": "Arizton (nota de prensa vía PR Newswire, 23-abr-2026)",
+      "url": "https://www.bolsamania.com/nota-de-prensa_print/mercados/latin-america-data-center-construction-market-to-exceed-usd-693-billion-by-2031-supported-by-googles-500m-digital-port-investment---arizton--22341549.html",
+      "nivel": "B"
+     },
+     "fecha": "2026-02",
+     "fuente": "Arizton (nota de prensa)",
+     "url": "https://www.bolsamania.com/nota-de-prensa_print/mercados/latin-america-data-center-construction-market-to-exceed-usd-693-billion-by-2031-supported-by-googles-500m-digital-port-investment---arizton--22341549.html"
+    }
+   ],
+   "publico": null
+  },
+  {
+   "iso3": "ECU",
+   "nombre_es": "Ecuador",
+   "vc_ia": null,
+   "anuncios": [],
+   "publico": null,
+   "nota": "Sin datos verificados."
+  },
+  {
+   "iso3": "GTM",
+   "nombre_es": "Guatemala",
+   "vc_ia": null,
+   "anuncios": [],
+   "publico": null,
+   "nota": "Sin datos verificados."
+  },
+  {
+   "iso3": "MEX",
+   "nombre_es": "México",
+   "vc_ia": null,
+   "anuncios": [
+    {
+     "empresa": "ODATA (Aligned)",
+     "concepto": "Inversión en colocation y conectividad neutral en México",
+     "monto": {
+      "valor": 3,
+      "unidad": "USD miles de millones",
+      "moneda_original": "USD",
+      "periodo": "anuncio may-2025 (año implícito en la fuente)",
+      "fuente": "ISI Markets (8-jun-2026)",
+      "url": "https://isimarkets.com/insights/latin-americas-data-centre-boom-from-emerging-market-to-investment-magnet/",
+      "nivel": "C"
+     },
+     "fecha": "2025-05",
+     "fuente": "ISI Markets",
+     "url": "https://isimarkets.com/insights/latin-americas-data-centre-boom-from-emerging-market-to-investment-magnet/",
+     "nota": "La fuente no explicita año ni plazo; se infiere 2025 por el párrafo."
+    }
+   ],
+   "publico": null,
+   "vc_total": {
+    "valor": 877,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "periodo": "primer semestre 2026",
+    "fuente": "LAVCA, citado por Ecosistema Startup (3-oct-2026)",
+    "url": "https://ecosistemastartup.com/55-de-nuevas-startups-latam-son-ia-cdmx-2o-hub/",
+    "nivel": "C",
+    "nota": "Capital de riesgo total, NO solo IA; dos rondas (Plata y Kavak) explican cerca del 80%."
+   },
+   "nota": "Según Alcor (citado por Ecosistema Startup), las startups de IA de México y Brasil levantaron en conjunto más de US$ 300 millones en 2025; sin desglose por país."
+  },
+  {
+   "iso3": "PAN",
+   "nombre_es": "Panamá",
+   "vc_ia": null,
+   "anuncios": [],
+   "publico": null,
+   "nota": "Sin datos verificados."
+  },
+  {
+   "iso3": "PRY",
+   "nombre_es": "Paraguay",
+   "vc_ia": null,
+   "anuncios": [],
+   "publico": null,
+   "nota": "Sin datos verificados."
+  },
+  {
+   "iso3": "URY",
+   "nombre_es": "Uruguay",
+   "vc_ia": null,
+   "anuncios": [
+    {
+     "empresa": "Google",
+     "concepto": "Centro de datos en Canelones (Parque de las Ciencias), segundo de Google en América Latina; 26 meses de obra y unas 800 personas en el pico de construcción",
+     "monto": {
+      "valor": 850,
+      "unidad": "USD millones",
+      "moneda_original": "USD",
+      "periodo": "inicio de obra 29-ago-2024",
+      "fuente": "LexLatin (27-sep-2024)",
+      "url": "https://lexlatin.com/noticias/google-data-center-uruguay-invierte-millones",
+      "nivel": "B"
+     },
+     "fecha": "2024-08-29",
+     "fuente": "LexLatin",
+     "url": "https://lexlatin.com/noticias/google-data-center-uruguay-invierte-millones",
+     "nota": "\"Inversión superior a 850 millones de dólares\". En 2026 la prensa uruguaya reportó una reformulación del proyecto que no se verificó."
+    }
+   ],
+   "publico": null
+  }
+ ],
+ "latam_regional_extra": [
+  {
+   "indicador": "Capital de riesgo total en América Latina",
+   "valor": 4126,
+   "unidad": "USD millones",
+   "periodo": "2025",
+   "fuente": "Cuantico VP, Latin America Venture Capital Report 2026, citado por Forbes Argentina",
+   "url": "https://www.forbesargentina.com/negocios/mas-us-427-millones-startups-argentinas-2026-se-reactivo-capital-n88093/amp",
+   "nivel": "B",
+   "nota": "+13,8% frente a US$ 3.627 millones; 681 rondas (694 el año previo). Fintech: 29% de los deals y 61% del capital. Fuente distinta de LAVCA; no mezclar series."
+  },
+  {
+   "indicador": "Capital de riesgo en rondas de etapa temprana en América Latina",
+   "valor": 2200,
+   "unidad": "USD millones",
+   "periodo": "2025",
+   "fuente": "LAVCA, 2026 Trends in Tech",
+   "url": "https://lavca.org/research/2026-lavca-trends-in-tech/",
+   "nivel": "A",
+   "nota": "52% del total; mayor monto anual en etapa temprana desde 2022. Cinco empresas (Plata, ADDI, Klar, Omie y Kavak) concentraron cerca del 25% de los dólares de VC de 2025. LAVCA indica que las startups de IA respaldadas por VC se enfocan sobre todo en aplicaciones empresariales."
+  },
+  {
+   "indicador": "Capacidad de colocation en América Latina",
+   "valor": 1105,
+   "unidad": "MW",
+   "periodo": "2025",
+   "fuente": "JLL, citado por ISI Markets e InvestChile",
+   "url": "https://isimarkets.com/insights/latin-americas-data-centre-boom-from-emerging-market-to-investment-magnet/",
+   "nivel": "B",
+   "nota": "384 MW en 2019; inventario de hiperescala de 35 MW (2020) a 202 MW (2025); récord de 184 MW de nuevas entregas."
+  },
+  {
+   "indicador": "Mercado de construcción de centros de datos en América Latina",
+   "valor": 3010,
+   "unidad": "USD millones",
+   "periodo": "2025",
+   "fuente": "Arizton (nota de prensa, 23-abr-2026)",
+   "url": "https://www.bolsamania.com/nota-de-prensa_print/mercados/latin-america-data-center-construction-market-to-exceed-usd-693-billion-by-2031-supported-by-googles-500m-digital-port-investment---arizton--22341549.html",
+   "nivel": "B",
+   "nota": "Proyección de US$ 6.930 millones en 2031 (CAGR 14,92%) y 536 MW; costo de construcción de US$ 7 a 10 millones por MW."
+  },
+  {
+   "indicador": "Actis: plan de inversión en centros de datos en América Latina",
+   "valor": 1500,
+   "unidad": "USD millones",
+   "periodo": "anunciado a fines de 2025",
+   "fuente": "ISI Markets (8-jun-2026)",
+   "url": "https://isimarkets.com/insights/latin-americas-data-centre-boom-from-emerging-market-to-investment-magnet/",
+   "nivel": "C",
+   "nota": "Regional; Querétaro (México) citado como estratégico."
+  }
+ ],
+ "startups_latam": [
+  {
+   "nombre": "Tractian",
+   "pais_iso3": "BRA",
+   "descripcion": "IA para mantenimiento industrial predictivo (monitoreo de maquinaria). Origen brasileño; sede en Atlanta, con oficinas en São Paulo y Ciudad de México.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 120,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2024-12",
+    "tipo": "Serie C",
+    "inversionistas": [
+     "Sapphire Ventures (líder)",
+     "General Catalyst",
+     "Next47",
+     "NGP Capital"
+    ],
+    "fuente": "WilmerHale (19-dic-2024)",
+    "url": "http://www.wilmerhale.com/en/insights/news/20241219-tractian-raises-$120m-in-series-c-funding",
+    "nivel": "B"
+   },
+   "fuente": "WilmerHale; Bloomberg Línea",
+   "url": "http://www.wilmerhale.com/en/insights/news/20241219-tractian-raises-$120m-in-series-c-funding",
+   "nota": "Rondas previas verificadas: R$ 80 millones (US$ 16,3 millones, 2022, Next47) y Serie B de US$ 50 millones (2023, General Catalyst). Total no publicado en las fuentes abiertas."
+  },
+  {
+   "nombre": "Enter",
+   "pais_iso3": "BRA",
+   "descripcion": "Agentes de IA que automatizan trabajo jurídico de alto volumen (gestión de litigios, redacción de escritos).",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 100,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-05",
+    "tipo": "Serie B",
+    "inversionistas": [
+     "Founders Fund (líder)",
+     "Sequoia Capital",
+     "Ribbit Capital",
+     "ONEVC",
+     "Kaszek",
+     "Atlantico"
+    ],
+    "fuente": "Nosso Meio (8-may-2026)",
+    "url": "https://nossomeio.com.br/enter-startup-juridica-brasileira-vira-unicornio-de-ia-com-rodada-de-us-100-milhoes/",
+    "nivel": "B"
+   },
+   "fuente": "Nosso Meio",
+   "url": "https://nossomeio.com.br/enter-startup-juridica-brasileira-vira-unicornio-de-ia-com-rodada-de-us-100-milhoes/",
+   "nota": "\"Más de US$ 100 millones\"; valorización de cerca de US$ 1.200 millones."
+  },
+  {
+   "nombre": "Decade",
+   "pais_iso3": "BRA",
+   "descripcion": "Plataforma de asesoría patrimonial que combina IA con asesores humanos. Fundada por Vitor Olivier (ex CTO de Nubank) y Felipe Meneses (fundador de Hyperplane).",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 85,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-08",
+    "tipo": "semilla",
+    "inversionistas": [
+     "Greenoaks",
+     "Benchmark",
+     "Diffusion"
+    ],
+    "fuente": "LatamList (4-ago-2026)",
+    "url": "https://latamlist.com/decade-raises-85m-seed-round-to-launch-ai-powered-wealth-advisory-platform/",
+    "nivel": "B"
+   },
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/decade-raises-85m-seed-round-to-launch-ai-powered-wealth-advisory-platform/",
+   "nota": "Techloy la describe distinto (agentes de IA para back-office); se toma la descripción de LatamList."
+  },
+  {
+   "nombre": "NotCo",
+   "pais_iso3": "CHL",
+   "descripcion": "Foodtech que usa IA patentada para formular alimentos de base vegetal.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 70,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2022-12",
+    "tipo": "extensión de Serie D",
+    "inversionistas": [
+     "Princeville Capital (líder)",
+     "Bezos Expeditions",
+     "Tiger Global",
+     "L Catterton",
+     "Kaszek",
+     "Marcos Galperin"
+    ],
+    "fuente": "Techloy (14-dic-2022)",
+    "url": "https://techloy.com/chilean-foodtech-unicorn-raises-series-d-extension",
+    "nivel": "B"
+   },
+   "fuente": "Techloy; LatamList",
+   "url": "https://techloy.com/chilean-foodtech-unicorn-raises-series-d-extension",
+   "nota": "Ronda previa: US$ 235 millones en julio de 2021 (Tiger Global), valorización de US$ 1.500 millones, mantenida en la extensión. Total no publicado en las fuentes abiertas."
+  },
+  {
+   "nombre": "Blip",
+   "pais_iso3": "BRA",
+   "descripcion": "Plataforma de chatbots con IA y mensajería conversacional (WhatsApp, Instagram, Messenger); sede en São Paulo.",
+   "total_recaudado": {
+    "valor": 230,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "periodo": "acumulado a nov-2024",
+    "fuente": "TechCrunch",
+    "url": "https://techcrunch.com/2024/11/18/text-marketing-firm-blip-secures-backing-from-softbank-and-microsoft/",
+    "nivel": "B"
+   },
+   "ultima_ronda": {
+    "valor": 60,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2024-11",
+    "tipo": "Serie C",
+    "inversionistas": [
+     "SoftBank (líder)",
+     "Microsoft"
+    ],
+    "fuente": "TechCrunch (18-nov-2024)",
+    "url": "https://techcrunch.com/2024/11/18/text-marketing-firm-blip-secures-backing-from-softbank-and-microsoft/",
+    "nivel": "B"
+   },
+   "fuente": "TechCrunch",
+   "url": "https://techcrunch.com/2024/11/18/text-marketing-firm-blip-secures-backing-from-softbank-and-microsoft/"
+  },
+  {
+   "nombre": "Telepatia",
+   "pais_iso3": null,
+   "descripcion": "Healthtech con IA para documentación clínica, apoyo a la decisión y \"trabajadores de salud\" de IA; opera en Brasil, Colombia, México, Chile y Argentina (sede no indicada).",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 33,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-06",
+    "tipo": "Serie A",
+    "inversionistas": [
+     "Andreessen Horowitz (líder)",
+     "Shyam Sankar",
+     "Simón Borrero",
+     "David Vélez"
+    ],
+    "fuente": "LatamList (18-jun-2026)",
+    "url": "https://latamlist.com/telepatia-raises-33m-series-a-led-by-andreessen-horowitz/",
+    "nivel": "B"
+   },
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/telepatia-raises-33m-series-a-led-by-andreessen-horowitz/"
+  },
+  {
+   "nombre": "Azos",
+   "pais_iso3": "BRA",
+   "descripcion": "Insurtech de seguros de vida y salud; la ronda financia sus sistemas de IA para suscripción, siniestros y apoyo a corredores.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 24,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-03",
+    "tipo": "Serie C",
+    "inversionistas": [
+     "Kaszek (líder)",
+     "Kevin Efrusy"
+    ],
+    "fuente": "Techloy (20-mar-2026)",
+    "url": "https://www.techloy.com/latin-americas-biggest-startup-funding-rounds-in-week-12-led-by-azos-with-big-bets-on-ai-and-insurtech.md",
+    "nivel": "B"
+   },
+   "fuente": "Techloy",
+   "url": "https://www.techloy.com/latin-americas-biggest-startup-funding-rounds-in-week-12-led-by-azos-with-big-bets-on-ai-and-insurtech.md"
+  },
+  {
+   "nombre": "Vambe",
+   "pais_iso3": "CHL",
+   "descripcion": "Comercio conversacional con agentes de IA para empresas B2C (ventas, retención y soporte por WhatsApp); sede en Santiago.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 14,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-01",
+    "tipo": "Serie A",
+    "inversionistas": [
+     "Monashees (líder)",
+     "Cathay Latam",
+     "Atlantico",
+     "Tekton Ventures"
+    ],
+    "fuente": "Contxto (5-ene-2026)",
+    "url": "https://contxto.com/en/funding/vambe-raises-14-million-in-series-a-and-accelerates-expansion/",
+    "nivel": "B"
+   },
+   "fuente": "Contxto; TechCrunch",
+   "url": "https://contxto.com/en/funding/vambe-raises-14-million-in-series-a-and-accelerates-expansion/",
+   "nota": "Ronda previa verificada: semilla de US$ 3,85 millones (dic-2024; Monashees, Nazca, M13). La fecha es la de publicación."
+  },
+  {
+   "nombre": "Primero",
+   "pais_iso3": "MEX",
+   "descripcion": "Plataforma Primia: conecta ERP, CRM y sistemas financieros de la empresa en una capa de datos para operar agentes de IA con gobernanza. Sede en Ciudad de México; oficinas en Bogotá y Madrid.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 12,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-09",
+    "tipo": "semilla",
+    "inversionistas": [
+     "Kaszek (colíder)",
+     "General Catalyst (colíder)",
+     "Definition Capital",
+     "Conviction",
+     "8VC"
+    ],
+    "fuente": "LatamList (14-sep-2026)",
+    "url": "https://latamlist.com/primero-raises-12m-seed-round-led-by-kaszek-and-general-catalyst/",
+    "nivel": "B"
+   },
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/primero-raises-12m-seed-round-led-by-kaszek-and-general-catalyst/"
+  },
+  {
+   "nombre": "Bliss",
+   "pais_iso3": "BRA",
+   "descripcion": "Distribución de planes de salud para pymes con un agente de IA (Fátima) que automatiza cotización y emisión.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 11,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-03",
+    "tipo": "Serie A",
+    "inversionistas": [
+     "Kfund (colíder)",
+     "Grupo Bradesco (colíder)",
+     "Actyus",
+     "Clocktower Ventures"
+    ],
+    "fuente": "Techloy (27-mar-2026)",
+    "url": "https://www.techloy.com/latin-americas-biggest-startup-funding-rounds-in-week-13-led-by-prestamype-with-big-bets-on-fintech-and-ai.md",
+    "nivel": "B"
+   },
+   "fuente": "Techloy",
+   "url": "https://www.techloy.com/latin-americas-biggest-startup-funding-rounds-in-week-13-led-by-prestamype-with-big-bets-on-fintech-and-ai.md"
+  },
+  {
+   "nombre": "Midas",
+   "pais_iso3": "PER",
+   "descripcion": "Verificación matemática formal de sistemas de IA; fundadores peruanos, sede en Nueva York.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 10,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-02",
+    "tipo": "no especificado",
+    "inversionistas": [
+     "Nova Global"
+    ],
+    "fuente": "Forbes Perú (5-feb-2026)",
+    "url": "https://forbes.pe/negocios/2026-02-05/esta-startup-fundada-por-dos-peruanos-acaba-de-levantar-us10-millones-y-quiere-hacer-confiable-a-los-sistemas-de-ia",
+    "nivel": "B"
+   },
+   "fuente": "Forbes Perú",
+   "url": "https://forbes.pe/negocios/2026-02-05/esta-startup-fundada-por-dos-peruanos-acaba-de-levantar-us10-millones-y-quiere-hacer-confiable-a-los-sistemas-de-ia",
+   "nota": "País por origen de los fundadores; la empresa está constituida en Estados Unidos."
+  },
+  {
+   "nombre": "Inner AI",
+   "pais_iso3": "BRA",
+   "descripcion": "Espacio de trabajo que reúne más de 50 modelos de IA; lanza Squad.com para desplegar agentes autónomos.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 6,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-04",
+    "tipo": "semilla",
+    "inversionistas": [
+     "Canary (colíder)",
+     "ONEVC (colíder)",
+     "Norte",
+     "Crivo Ventures",
+     "Phenomen VC"
+    ],
+    "fuente": "Techloy (17-abr-2026)",
+    "url": "https://www.techloy.com/latin-americas-biggest-startup-funding-rounds-in-week-16-led-by-inner-ai-with-big-bets-on-ai-and-fintech/",
+    "nivel": "B"
+   },
+   "fuente": "Techloy",
+   "url": "https://www.techloy.com/latin-americas-biggest-startup-funding-rounds-in-week-16-led-by-inner-ai-with-big-bets-on-ai-and-fintech/"
+  },
+  {
+   "nombre": "Tess AI",
+   "pais_iso3": "BRA",
+   "descripcion": "Plataforma empresarial de agentes de IA sin código que integra más de 250 modelos.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 5,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-03",
+    "tipo": "semilla",
+    "inversionistas": [
+     "Hi Ventures (líder)",
+     "DYDX Capital",
+     "Honeystone Ventures"
+    ],
+    "fuente": "Techloy (27-mar-2026)",
+    "url": "https://www.techloy.com/latin-americas-biggest-startup-funding-rounds-in-week-13-led-by-prestamype-with-big-bets-on-fintech-and-ai.md",
+    "nivel": "B"
+   },
+   "fuente": "Techloy",
+   "url": "https://www.techloy.com/latin-americas-biggest-startup-funding-rounds-in-week-13-led-by-prestamype-with-big-bets-on-fintech-and-ai.md"
+  },
+  {
+   "nombre": "Darwin AI",
+   "pais_iso3": "BRA",
+   "descripcion": "Agentes de IA para ventas, atención y posventa por WhatsApp, Instagram y llamadas; opera en 20 países con foco en Brasil y México.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 4.5,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2025-09",
+    "tipo": "semilla",
+    "inversionistas": [
+     "Base10 Partners (líder)"
+    ],
+    "fuente": "LatamList (3-sep-2025)",
+    "url": "https://latamlist.com/darwin-ai-raises-4-5m-seed-round-led-by-base10-partners/",
+    "nivel": "B"
+   },
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/darwin-ai-raises-4-5m-seed-round-led-by-base10-partners/"
+  },
+  {
+   "nombre": "Strattum",
+   "pais_iso3": "BRA",
+   "descripcion": "Startup brasileña de IA (expansión internacional tras su ronda presemilla).",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 3.2,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-08",
+    "tipo": "presemilla",
+    "inversionistas": [],
+    "fuente": "LatamList, etiqueta AI (4-ago-2026)",
+    "url": "https://latamlist.com/tag/ai/",
+    "nivel": "B"
+   },
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/tag/ai/",
+   "nota": "Solo se abrió el titular en el listado; sin detalle de producto ni inversionistas."
+  },
+  {
+   "nombre": "Nilo",
+   "pais_iso3": "BRA",
+   "descripcion": "Plataforma nativa de IA para hospitales y clínicas: agentes para triaje, agendamiento y derivación, a menudo por WhatsApp.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 2.9,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-03",
+    "tipo": "Serie A",
+    "inversionistas": [
+     "Citrino Ventures",
+     "14B"
+    ],
+    "fuente": "Techloy (20-mar-2026)",
+    "url": "https://www.techloy.com/latin-americas-biggest-startup-funding-rounds-in-week-12-led-by-azos-with-big-bets-on-ai-and-insurtech.md",
+    "nivel": "B"
+   },
+   "fuente": "Techloy",
+   "url": "https://www.techloy.com/latin-americas-biggest-startup-funding-rounds-in-week-12-led-by-azos-with-big-bets-on-ai-and-insurtech.md"
+  },
+  {
+   "nombre": "Pitz",
+   "pais_iso3": "MEX",
+   "descripcion": "Digitaliza talleres mecánicos; usa IA para apoyar el diagnóstico de vehículos.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 2.9,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-05",
+    "tipo": "extensión presemilla",
+    "inversionistas": [],
+    "fuente": "Techloy (22-may-2026)",
+    "url": "https://www.techloy.com/week-21s-biggest-startup-funding-rounds-in-latin-america-led-by-pitz-with-big-bets-on-ai-mobility-tech-and-energy.md",
+    "nivel": "B"
+   },
+   "fuente": "Techloy",
+   "url": "https://www.techloy.com/week-21s-biggest-startup-funding-rounds-in-latin-america-led-by-pitz-with-big-bets-on-ai-mobility-tech-and-energy.md"
+  },
+  {
+   "nombre": "Nutri Co",
+   "pais_iso3": "PER",
+   "descripcion": "Foodtech peruana; Virgilio AI formula recetas a partir de más de 1.300 ingredientes.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 2,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2024-07",
+    "tipo": "no especificado",
+    "inversionistas": [],
+    "fuente": "Contxto (8-ene-2025)",
+    "url": "https://contxto.com/en/startups/15-ai-startups-operating-in-latin-america-to-watch-in-2025/",
+    "nivel": "B"
+   },
+   "fuente": "Contxto",
+   "url": "https://contxto.com/en/startups/15-ai-startups-operating-in-latin-america-to-watch-in-2025/"
+  },
+  {
+   "nombre": "Udocz",
+   "pais_iso3": "PER",
+   "descripcion": "Edtech peruana con tutor de IA para universitarios.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 1.9,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2025",
+    "tipo": "no especificado",
+    "inversionistas": [],
+    "fuente": "G de Gestión (11-abr-2026)",
+    "url": "https://gestion.pe/g-de-gestion/reportaje/las-10-startups-en-peru-que-hay-que-seguir-en-2026-segun-3-ejecutivos-del-ecosistema-noticia/",
+    "nivel": "B"
+   },
+   "fuente": "G de Gestión",
+   "url": "https://gestion.pe/g-de-gestion/reportaje/las-10-startups-en-peru-que-hay-que-seguir-en-2026-segun-3-ejecutivos-del-ecosistema-noticia/"
+  },
+  {
+   "nombre": "Nuvia",
+   "pais_iso3": "BRA",
+   "descripcion": "Agentes de ventas con IA; expansión en América Latina.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 1.8,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2026-09",
+    "tipo": "no especificado",
+    "inversionistas": [],
+    "fuente": "LatamList, etiqueta AI (23-sep-2026)",
+    "url": "https://latamlist.com/tag/ai/",
+    "nivel": "B"
+   },
+   "fuente": "LatamList",
+   "url": "https://latamlist.com/tag/ai/",
+   "nota": "Solo se abrió el titular en el listado."
+  },
+  {
+   "nombre": "PathPilot",
+   "pais_iso3": "PER",
+   "descripcion": "Agentes de IA prefabricados para servicios financieros; fundador peruano, acelerada por Y Combinator.",
+   "total_recaudado": null,
+   "ultima_ronda": {
+    "valor": 1.3,
+    "unidad": "USD millones",
+    "moneda_original": "USD",
+    "fecha": "2025-05",
+    "tipo": "presemilla",
+    "inversionistas": [
+     "Y Combinator",
+     "Alaya Capital",
+     "Unpopular Ventures",
+     "Network VC"
+    ],
+    "fuente": "Forbes Perú (5-sep-2025)",
+    "url": "https://forbes.pe/negocios/2025-09-05/peruano-que-trabajo-en-facebook-cerro-una-ronda-de-us13-millones-para-acelerar-su-startup-de-agentes-de-ia",
+    "nivel": "B"
+   },
+   "fuente": "Forbes Perú",
+   "url": "https://forbes.pe/negocios/2025-09-05/peruano-que-trabajo-en-facebook-cerro-una-ronda-de-us13-millones-para-acelerar-su-startup-de-agentes-de-ia"
+  }
+ ]
+}

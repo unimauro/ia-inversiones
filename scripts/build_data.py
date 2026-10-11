@@ -110,7 +110,12 @@ def fusionar():
             if e.get(k):
                 d[k] = e[k]
         if e.get("peru_universidades") and data["latam"].get("peru") is not None:
-            anexar(data["latam"]["peru"].setdefault("universidades", []), e["peru_universidades"], ["universidad", "programa"])
+            # el complemento detalla programa por programa: reemplaza las filas resumidas de la misma universidad
+            import re
+            sigla = lambda u: (re.findall(r"\(([^)]+)\)", u.get("universidad", "")) or [u.get("universidad", "")])[0].strip().lower()
+            nuevas = {sigla(u) for u in e["peru_universidades"]}
+            pe = data["latam"]["peru"]
+            pe["universidades"] = [u for u in pe.get("universidades", []) if sigla(u) not in nuevas] + e["peru_universidades"]
         d.setdefault("meta", {}).setdefault("advertencias", []).extend(e.get("meta", {}).get("advertencias", []))
     # cadena de valor
     e = extra("extra_cadena.json")
