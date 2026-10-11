@@ -249,7 +249,7 @@
     var x = IA.C[sim.iso] || { idx: {} };
     $("simCtx").innerHTML = "PIB: <b>" + esc(usdTxt(m.pib * 1e9)) + "</b> (" + m.pib_anio + ")" + (m.pob ? " · Población: <b>" + fmt(m.pob) + " M</b>" : "") +
       (m.gerd != null ? "<br>I+D total hoy: <b>" + fmt(m.gerd) + "% del PIB</b> (" + m.gerd_anio + ")" : "") +
-      (num(x.priv) != null ? "<br>Inversión privada en IA: <b>" + esc(money(num(x.priv), unitOf(x.priv))) + "</b> (" + esc(when(x.priv)) + ")" : "") +
+      (num(x.vc) != null ? "<br>Capital de riesgo en IA: <b>" + esc(money(num(x.vc), unitOf(x.vc))) + "</b> (" + esc(when(x.vc)) + ")" : "") +
       (x.estrategia && x.estrategia.nombre ? "<br>Estrategia: " + esc(x.estrategia.nombre) : "");
     $("simKpis").innerHTML = [
       { lab: "Presupuesto anual", val: usdTxt(anual), ctx: fmt(pct, pct < 0.1 ? 3 : 2) + "% del PIB de " + nombre(sim.iso) },
@@ -359,8 +359,8 @@
     var qa = [];
     function top(list, get, n) { return arr(list).filter(function (x) { return get(x) != null; }).sort(function (a, b) { return get(b) - get(a); }).slice(0, n); }
     var g = arr((P.series || {}).global), gl = g[g.length - 1];
-    var cs = top(Object.keys(IA.C).map(function (i) { return IA.C[i]; }), function (x) { return num(x.priv) != null ? toBn(x.priv) : null; }, 5);
-    if (cs.length) qa.push(["¿Qué países invierten más en IA?", (gl ? "La inversión privada mundial en IA fue de <b>" + esc(money(num(gl), "USD miles de millones")) + "</b> en " + esc(gl.anio) + ". " : "") + "Lideran " + cs.map(function (x) { return "<b>" + esc(nombre(x.iso)) + "</b> (" + esc(money(num(x.priv), unitOf(x.priv))) + ")"; }).join(", ") + ". Estados Unidos concentra la mayor parte; el resto del mundo se reparte lo demás."]);
+    var cs = top(Object.keys(IA.C).map(function (i) { return IA.C[i]; }), function (x) { return num(x.vc) != null ? toBn(x.vc) : null; }, 5);
+    if (cs.length) qa.push(["¿Qué países invierten más en IA?", (gl ? "La inversión privada mundial en IA fue de <b>" + esc(money(num(gl), "USD miles de millones")) + "</b> en " + esc(gl.anio) + ". " : "") + "Por capital de riesgo (OCDE) lideran " + cs.map(function (x) { return "<b>" + esc(nombre(x.iso)) + "</b> (" + esc(money(num(x.vc), unitOf(x.vc))) + ")"; }).join(", ") + ". Estados Unidos concentra la mayor parte; el resto del mundo se reparte lo demás."]);
     var es = top(B.empresas, function (e) { return toBn(e.capex_2026); }, 5);
     if (es.length) qa.push(["¿Qué empresas gastan más?", "Por capex previsto para 2026: " + es.map(function (e) { return "<b>" + esc(e.nombre) + "</b> (" + esc(money(toBn(e.capex_2026), "USD miles de millones")) + ")"; }).join(", ") + ". Es inversión total de la empresa en centros de datos, chips y equipos; ninguna publica cuánto es exactamente IA, pero es lo que explica el salto de los últimos años."]);
     var ls = top(L.empresas, function (e) { return toBn(e.valoracion); }, 5);

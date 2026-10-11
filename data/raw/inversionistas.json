@@ -1,0 +1,2810 @@
+{
+  "meta": {
+    "bloque": "inversionistas",
+    "consultado": "2026-10-11",
+    "fuentes_principales": [
+      {
+        "nombre": "Forbes — perfiles con patrimonio en tiempo real (11-oct-2026)",
+        "url": "https://www.forbes.com/real-time-billionaires/"
+      },
+      {
+        "nombre": "SoftBank Group — nota de prensa 'Follow-on Investments in OpenAI' (27-feb-2026)",
+        "url": "https://group.softbank/en/news/press/20260227"
+      },
+      {
+        "nombre": "Anthropic — anuncio Serie G (12-feb-2026)",
+        "url": "https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation"
+      },
+      {
+        "nombre": "xAI — anuncio Serie E (6-ene-2026)",
+        "url": "https://x.ai/news/series-e"
+      },
+      {
+        "nombre": "Microsoft — alianza Microsoft/Nvidia/Anthropic (18-nov-2025)",
+        "url": "https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/"
+      },
+      {
+        "nombre": "Yahoo Finance — cierre de la ronda de OpenAI de USD 122 mil millones",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/openai-closes-122bn-funding-round-093126735.html"
+      },
+      {
+        "nombre": "Outlook Business (Bloomberg) — Serie H de Anthropic",
+        "url": "https://www.outlookbusiness.com/corporate/anthropic-surpasses-openai-with-965-bn-valuation-after-latest-fundraise"
+      },
+      {
+        "nombre": "Crunchbase News — capital de riesgo global 1T-2026",
+        "url": "https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/"
+      },
+      {
+        "nombre": "Crunchbase News / TechCrunch — fondos de a16z",
+        "url": "https://news.crunchbase.com/venture/a16z-15b-new-funds-american-dynamism-ben-horowitz/"
+      },
+      {
+        "nombre": "ValueAdd VC — rastreador de fondos de VC 2026",
+        "url": "https://valueaddvc.com/vc-fundraises-2026"
+      },
+      {
+        "nombre": "EnterpriseAM — fondos soberanos del Golfo (jun y jul 2026)",
+        "url": "https://enterpriseam.com/menaplus/2026/07/22/gulf-sovereign-funds-pour-into-ai-and-infrastructure-while-trimming-non-core-assets-abroad/"
+      },
+      {
+        "nombre": "Euronews / Al-Monitor — gira de Trump por el Golfo (may-2025)",
+        "url": "https://euronews.com/business/2025/05/16/trump-wraps-up-gulf-tour-with-179-billion-deals-with-the-uae-centring-on-ai"
+      },
+      {
+        "nombre": "Wikipedia (inglés) — fichas de firmas y fondos (AUM, rondas)",
+        "url": "https://en.wikipedia.org/"
+      }
+    ],
+    "advertencias": [
+      "Todas las cifras provienen de páginas abiertas el 11-oct-2026; no se estimó ni interpoló ningún valor. Campos sin fuente verificada se omitieron.",
+      "El presupuesto de búsquedas web de la sesión se agotó a mitad del trabajo; desde entonces solo se abrieron URLs ya conocidas (sitios oficiales, Forbes, Wikipedia). Por eso quedaron huecos (ver nota final del investigador).",
+      "Muchos AUM y varias rondas se tomaron de Wikipedia en inglés (nivel B): son datos secundarios con fechas dispares (2021–2026); conviene revalidar contra la fuente primaria antes de publicar.",
+      "'comprometido_ia' mezcla conceptos distintos según el caso (tamaño de fondo, compromiso anunciado, monto desembolsado, valor de tenencias); leer siempre el campo 'concepto'. No sumar entre filas.",
+      "Varios fondos de VC no son exclusivos de IA (p. ej., los USD 15 mil millones de a16z o los 10 mil millones de Thrive); se indica en 'concepto'.",
+      "Distinguir anunciado/comprometido de desembolsado: p. ej., Amazon→OpenAI (15 inicial + 35 condicionado), Google→Anthropic (10 + 30 condicionado), Amazon→Anthropic (5 + 20 por hitos), Stargate (compromisos según The Information) y los compromisos del Golfo de 2025 son anuncios, no desembolsos.",
+      "Doble conteo: las filas de 'corporativos' y las 'apuestas' de 'personas' repiten las mismas operaciones (p. ej., SoftBank→OpenAI aparece en fondos, corporativos y Masayoshi Son). Las apuestas de personas son, salvo indicación, operaciones de las empresas o fondos que dirigen, no dinero personal.",
+      "Patrimonios: Forbes tiempo real al 11-oct-2026 (Adani: lista Forbes India al 30-sep-2026). Bloomberg Billionaires Index bloqueó el acceso; su última tabla visible en Wikipedia era del 13-jul-2026 y no se usó.",
+      "Tahnoon bin Zayed, Mohammed bin Salman y Yasir Al-Rumayyan figuran como gestores de capital estatal; no se registra patrimonio personal.",
+      "Los AUM de MGX (objetivo de 100) y GIC (estimación SWFI) no son cifras oficiales auditadas.",
+      "Cifras de los compromisos del Golfo con EE.UU. difieren entre fuentes (Euronews da USD 200/600/243 mil millones en acuerdos; Al-Monitor da 1.4 billones a 10 años para EAU) y son en su mayoría no exclusivas de IA.",
+      "No se encontró un desglose publicado del capital de riesgo de IA por tipo de inversionista (corporativo vs VC vs soberano); se incluyen indicadores parciales (PitchBook-NVCA vía GoingVC, CSET 2021).",
+      "Unidades no USD: Index (EUR), Temasek (SGD), fondos chinos (CNY), fondo coreano (KRW billones = 10^12), Bpifrance/Francia/Mistral/Helsing (EUR)."
+    ]
+  },
+  "fondos": [
+    {
+      "nombre": "Andreessen Horowitz (a16z)",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 90,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-01",
+        "fuente": "TechCrunch (más de USD 90 mil millones)",
+        "url": "https://techcrunch.com/2026/01/09/the-venture-firm-that-ate-silicon-valley",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 15,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-01-09",
+        "fuente": "Crunchbase News",
+        "url": "https://news.crunchbase.com/venture/a16z-15b-new-funds-american-dynamism-ben-horowitz/",
+        "nivel": "B",
+        "concepto": "Capital nuevo levantado en cinco fondos (multiestrategia, no exclusivo de IA); incluye fondos Apps (1.7) e Infraestructura (1.7)"
+      },
+      "apuestas": [
+        "OpenAI",
+        "xAI",
+        "Mistral AI",
+        "Databricks",
+        "Safe Superintelligence",
+        "ElevenLabs"
+      ],
+      "nota": "Levantó más de USD 15 mil millones en enero de 2026 (Growth 6.75; Apps 1.7; Infraestructura 1.7; American Dynamism 1.176; Bio+Health 0.7; otras 3) y en agosto de 2026 un fondo adicional de hardware de IA ('Machine Age Fund') de USD 1.1 mil millones; la cifra de 15 mil millones no es exclusiva de IA."
+    },
+    {
+      "nombre": "Sequoia Capital",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 56,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-01",
+        "fuente": "Wikipedia (Sequoia Capital)",
+        "url": "https://en.wikipedia.org/wiki/Sequoia_Capital",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 7,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-04-16",
+        "fuente": "TechCrunch (citando a Bloomberg)",
+        "url": "https://techcrunch.com/2026/04/16/new-leaders-new-fund-sequoia-has-raised-7b-to-expand-its-ai-bets",
+        "nivel": "B",
+        "concepto": "Fondo de expansión para ampliar apuestas en IA (reportado, no confirmado por la firma)"
+      },
+      "apuestas": [
+        "OpenAI",
+        "Anthropic",
+        "xAI",
+        "Physical Intelligence",
+        "Factory",
+        "Harvey"
+      ],
+      "nota": "Fondo de expansión (etapa tardía) de ~USD 7 mil millones reportado por Bloomberg en abril de 2026, casi el doble del anterior (3.4 en 2022); colideró la Serie H de Anthropic (mayo 2026)."
+    },
+    {
+      "nombre": "Thrive Capital",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 65,
+        "unidad": "USD miles de millones",
+        "fecha": "2026",
+        "fuente": "Forbes (perfil Josh Kushner: gestiona más de USD 65 mil millones)",
+        "url": "https://www.forbes.com/profile/josh-kushner/",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 10,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-02-17",
+        "fuente": "Newcomer",
+        "url": "https://www.newcomer.co/p/big-wins-for-two-of-ventures-most",
+        "nivel": "B",
+        "concepto": "Tamaño del décimo fondo (generalista con fuerte peso en IA)"
+      },
+      "apuestas": [
+        "OpenAI",
+        "Anysphere (Cursor)",
+        "Databricks",
+        "Scale AI",
+        "Physical Intelligence",
+        "Anduril"
+      ],
+      "nota": "Fondo X de USD 10 mil millones anunciado el 17-feb-2026 (1 para etapa temprana, 9 para crecimiento); invirtió USD 130 millones en OpenAI en 2022 a valoración de 29 mil millones."
+    },
+    {
+      "nombre": "Founders Fund",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 17,
+        "unidad": "USD miles de millones",
+        "fecha": "2025",
+        "fuente": "Wikipedia (Founders Fund)",
+        "url": "https://en.wikipedia.org/wiki/Founders_Fund",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 6,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-03",
+        "fuente": "ValueAdd VC (rastreador de fondos 2026, estado 'Reported')",
+        "url": "https://valueaddvc.com/vc-fundraises-2026",
+        "nivel": "B",
+        "concepto": "Fondo Growth IV (reportado)"
+      },
+      "apuestas": [
+        "OpenAI",
+        "Anthropic",
+        "Crusoe",
+        "Cognition AI",
+        "Scale AI",
+        "Databricks"
+      ],
+      "nota": "Fondo Growth IV de USD 6 mil millones reportado (mar-2026, sin cierre confirmado); el anterior Growth III fue de 4.6 mil millones (2025). Colideró la Serie G de Anthropic."
+    },
+    {
+      "nombre": "Lightspeed Venture Partners",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 50,
+        "unidad": "USD miles de millones",
+        "fecha": "s/f (infobox)",
+        "fuente": "Wikipedia (Lightspeed Venture Partners)",
+        "url": "https://en.wikipedia.org/wiki/Lightspeed_Venture_Partners",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 9,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-02 (fecha del artículo; el fondo se describe como 'reciente')",
+        "fuente": "Newcomer",
+        "url": "https://www.newcomer.co/p/big-wins-for-two-of-ventures-most",
+        "nivel": "B",
+        "concepto": "Tamaño del último fondo"
+      },
+      "apuestas": [
+        "Anthropic",
+        "Mistral AI",
+        "xAI",
+        "Helsing",
+        "Glean"
+      ],
+      "nota": "Fondo reciente de USD 9 mil millones según Newcomer; inversor semilla de Mistral (2023) y participante en la Serie G de Anthropic."
+    },
+    {
+      "nombre": "General Catalyst",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 43,
+        "unidad": "USD miles de millones",
+        "fecha": "2024-12",
+        "fuente": "Wikipedia (General Catalyst)",
+        "url": "https://en.wikipedia.org/wiki/General_Catalyst",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 8,
+        "unidad": "USD miles de millones",
+        "fecha": "2024-10",
+        "fuente": "Wikipedia (General Catalyst)",
+        "url": "https://en.wikipedia.org/wiki/General_Catalyst",
+        "nivel": "B",
+        "concepto": "Fondos nuevos anunciados (4.5 para fondos núcleo de venture); no exclusivo de IA"
+      },
+      "apuestas": [
+        "Anthropic",
+        "Mistral AI",
+        "Helsing"
+      ],
+      "nota": "Anunció USD 8 mil millones en fondos nuevos en octubre de 2024; en marzo de 2026 se reportó (rumor) un megafondo con objetivo de 10 mil millones. Lideró rondas de Helsing en 2023 y 2024."
+    },
+    {
+      "nombre": "Khosla Ventures",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 15,
+        "unidad": "USD miles de millones",
+        "fecha": "2021-10",
+        "fuente": "Wikipedia (Khosla Ventures)",
+        "url": "https://en.wikipedia.org/wiki/Khosla_Ventures",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 0.405,
+        "unidad": "USD miles de millones",
+        "fecha": "2024-10",
+        "fuente": "Wikipedia (Khosla Ventures)",
+        "url": "https://en.wikipedia.org/wiki/Khosla_Ventures",
+        "nivel": "B",
+        "concepto": "SPV dedicado a invertir en OpenAI"
+      },
+      "apuestas": [
+        "OpenAI"
+      ],
+      "nota": "Primera firma de capital de riesgo en invertir en OpenAI; en octubre de 2024 levantó un vehículo especial (SPV) de USD 405 millones para invertir en OpenAI."
+    },
+    {
+      "nombre": "Kleiner Perkins",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 21,
+        "unidad": "USD miles de millones",
+        "fecha": "2026",
+        "fuente": "Wikipedia (Kleiner Perkins)",
+        "url": "https://en.wikipedia.org/wiki/Kleiner_Perkins",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 3.5,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-03",
+        "fuente": "ValueAdd VC (estado 'Confirmed') / Wikipedia",
+        "url": "https://valueaddvc.com/vc-fundraises-2026",
+        "nivel": "B",
+        "concepto": "Fondos KP22 (1.0) y de crecimiento (2.5); no exclusivos de IA"
+      },
+      "apuestas": [
+        "Anthropic",
+        "Waymo",
+        "Glean",
+        "OpenEvidence",
+        "Harvey",
+        "Together AI"
+      ],
+      "nota": "En marzo de 2026 anunció USD 3.5 mil millones: KP22 (1, etapa temprana) y 2.5 en fondos de crecimiento."
+    },
+    {
+      "nombre": "Accel",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "comprometido_ia": {
+        "valor": 4,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-04",
+        "fuente": "ValueAdd VC (estado 'Confirmed')",
+        "url": "https://valueaddvc.com/vc-fundraises-2026",
+        "nivel": "B",
+        "concepto": "Leaders Fund (etapa tardía); no exclusivo de IA"
+      },
+      "apuestas": [
+        "Anthropic",
+        "Scale AI",
+        "Perplexity AI",
+        "Synthesia",
+        "Helsing",
+        "H"
+      ],
+      "nota": "Leaders Fund de USD 4 mil millones confirmado en abril de 2026 más un vehículo de coinversión de 650 millones; lideró la ronda de Scale AI de marzo de 2024."
+    },
+    {
+      "nombre": "Index Ventures",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "GBR",
+      "aum": {
+        "valor": 11.7,
+        "unidad": "EUR miles de millones",
+        "fecha": "2025",
+        "fuente": "Wikipedia (Index Ventures)",
+        "url": "https://en.wikipedia.org/wiki/Index_Ventures",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 2.3,
+        "unidad": "USD miles de millones",
+        "fecha": "2024-07",
+        "fuente": "Wikipedia (Index Ventures, cita FT)",
+        "url": "https://en.wikipedia.org/wiki/Index_Ventures",
+        "nivel": "B",
+        "concepto": "Fondos de venture y crecimiento"
+      },
+      "apuestas": [
+        "Scale AI"
+      ],
+      "nota": "Levantó USD 2.3 mil millones en julio de 2024 para fondos de venture y crecimiento orientados a IA (según titular del Financial Times citado)."
+    },
+    {
+      "nombre": "Greenoaks",
+      "tipo": "crecimiento",
+      "pais_iso3": "USA",
+      "apuestas": [
+        "Anthropic",
+        "Scale AI"
+      ],
+      "nota": "Colideró la Serie H de Anthropic (USD 65 mil millones, mayo 2026) junto a Altimeter, Dragoneer y Sequoia; colideró ronda de Scale AI en 2021."
+    },
+    {
+      "nombre": "ICONIQ",
+      "tipo": "crecimiento",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 100,
+        "unidad": "USD miles de millones",
+        "fecha": "2026",
+        "fuente": "Wikipedia (Iconiq Capital)",
+        "url": "https://en.wikipedia.org/wiki/Iconiq_Capital",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Anthropic",
+        "Helsing"
+      ],
+      "nota": "Colideró la Serie G de Anthropic (feb-2026) y participó en la ronda de Helsing de julio de 2026; último fondo de crecimiento reportado: USD 5.8 mil millones (jul-2024)."
+    },
+    {
+      "nombre": "Coatue Management",
+      "tipo": "crecimiento",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 73,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (perfil Philippe Laffont: ~USD 73 mil millones)",
+        "url": "https://www.forbes.com/profile/philippe-laffont/",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Anthropic",
+        "CoreWeave",
+        "Databricks",
+        "Nvidia (bolsa)",
+        "Broadcom (bolsa)"
+      ],
+      "nota": "Lideró junto a GIC la Serie G de Anthropic (USD 30 mil millones, feb-2026) y la ronda de CoreWeave de USD 1.1 mil millones (may-2024)."
+    },
+    {
+      "nombre": "Tiger Global Management",
+      "tipo": "crecimiento",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 54,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (perfil Chase Coleman III: ~USD 54 mil millones)",
+        "url": "https://www.forbes.com/profile/chase-coleman-iii/",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Scale AI",
+        "Databricks",
+        "Waymo"
+      ],
+      "nota": "Su brazo de venture es hoy su mayor unidad; último fondo privado listado (PIP XVI, 2024): USD 2.2 mil millones."
+    },
+    {
+      "nombre": "Dragoneer Investment Group",
+      "tipo": "crecimiento",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 22.6,
+        "unidad": "USD miles de millones",
+        "fecha": "2024",
+        "fuente": "Wikipedia (Dragoneer Investment Group)",
+        "url": "https://en.wikipedia.org/wiki/Dragoneer_Investment_Group",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Anthropic",
+        "OpenAI",
+        "Scale AI",
+        "Waymo"
+      ],
+      "nota": "Colíder de las Series G y H de Anthropic en 2026; inversor inicial de Scale AI."
+    },
+    {
+      "nombre": "Insight Partners",
+      "tipo": "crecimiento",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 90,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-04",
+        "fuente": "Wikipedia (Insight Partners)",
+        "url": "https://en.wikipedia.org/wiki/Insight_Partners",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Anthropic",
+        "OpenAI"
+      ],
+      "nota": "Levantó USD 12.5 mil millones en enero de 2025 (fondo XIII y vehículo de capital estructurado); participó en la Serie G de Anthropic."
+    },
+    {
+      "nombre": "Altimeter Capital",
+      "tipo": "crecimiento",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 6.75,
+        "unidad": "USD miles de millones",
+        "fecha": "2024-09",
+        "fuente": "Wikipedia (Altimeter Capital)",
+        "url": "https://en.wikipedia.org/wiki/Altimeter_Capital",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Anthropic"
+      ],
+      "nota": "Colíder de la Serie H de Anthropic (may-2026) y participante en la Serie G."
+    },
+    {
+      "nombre": "Benchmark",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "comprometido_ia": {
+        "valor": 0.425,
+        "unidad": "USD miles de millones",
+        "fecha": "2024-06-28",
+        "fuente": "Wikipedia (Benchmark, cita Forbes)",
+        "url": "https://en.wikipedia.org/wiki/Benchmark_(venture_capital_firm)",
+        "nivel": "B",
+        "concepto": "Fondo en levantamiento (no se confirma cierre)"
+      },
+      "apuestas": [
+        "Fireworks",
+        "Mercor",
+        "Sierra",
+        "Legora",
+        "Manus"
+      ],
+      "nota": "Fondos pequeños por diseño: Forbes reportó en junio de 2024 que levantaba un fondo de USD 425 millones 'para la era de las startups de IA'; a agosto de 2025 no tenía participación en OpenAI, Anthropic ni xAI."
+    },
+    {
+      "nombre": "Spark Capital",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 15,
+        "unidad": "USD miles de millones",
+        "fecha": "s/f (infobox)",
+        "fuente": "Wikipedia (Spark Capital)",
+        "url": "https://en.wikipedia.org/wiki/Spark_Capital",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Anthropic",
+        "Scale AI",
+        "The Bot Company"
+      ],
+      "nota": "Lideró la Serie C de Anthropic en 2022; según Wikipedia convirtió USD 75 millones en 3 mil millones. Fondos 2024: 700 millones (temprano) y 1.4 mil millones (crecimiento); megafondo de 3 mil millones rumoreado en 2026."
+    },
+    {
+      "nombre": "Menlo Ventures",
+      "tipo": "capital_riesgo",
+      "pais_iso3": "USA",
+      "apuestas": [
+        "Anthropic"
+      ],
+      "nota": "Listado entre los participantes significativos de la Serie G de Anthropic (feb-2026); no se verificaron cifras de AUM."
+    },
+    {
+      "nombre": "DST Global",
+      "tipo": "crecimiento",
+      "pais_iso3": "CYM",
+      "aum": {
+        "valor": 50,
+        "unidad": "USD miles de millones",
+        "fecha": "s/f",
+        "fuente": "Wikipedia (DST Global)",
+        "url": "https://en.wikipedia.org/wiki/DST_Global",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "ByteDance"
+      ],
+      "nota": "Firma fundada por Yuri Milner, domiciliada en Islas Caimán; inversor histórico de ByteDance (matriz de Doubao). No se verificaron montos en IA."
+    },
+    {
+      "nombre": "SoftBank Group / Vision Fund 2",
+      "tipo": "conglomerado",
+      "pais_iso3": "JPN",
+      "comprometido_ia": {
+        "valor": 64.6,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-01",
+        "fuente": "SoftBank Group (nota de prensa 27-feb-2026) / Reuters vía The Star",
+        "url": "https://group.softbank/en/news/press/20260227",
+        "nivel": "A",
+        "concepto": "Inversión acumulada en OpenAI vía Vision Fund 2 (desembolsada; ~13% de participación)"
+      },
+      "apuestas": [
+        "OpenAI",
+        "Stargate",
+        "Ampere Computing",
+        "ABB Robotics",
+        "DigitalBridge"
+      ],
+      "nota": "Completó el 1-oct-2026 su inversión adicional de USD 30 mil millones en OpenAI (tres tramos de 10); acumulado 64.6 mil millones y ~13% de participación. Vision Fund 1 (2017) levantó ~100 mil millones, con PIF (45) y Mubadala (15) como socios."
+    },
+    {
+      "nombre": "BlackRock / GIP / AI Infrastructure Partnership",
+      "tipo": "gestora",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 15300,
+        "unidad": "USD miles de millones",
+        "fecha": "2026",
+        "fuente": "Wikipedia (BlackRock)",
+        "url": "https://en.wikipedia.org/wiki/BlackRock",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 30,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-07-22",
+        "fuente": "EnterpriseAM (citando comunicado conjunto AIP/MGX/GIP)",
+        "url": "https://enterpriseam.com/menaplus/2026/07/22/gulf-sovereign-funds-pour-into-ai-and-infrastructure-while-trimming-non-core-assets-abroad/",
+        "nivel": "B",
+        "concepto": "Objetivo de capital (equity) de AIP; hasta 100 mil millones incluyendo deuda (anunciado, no desembolsado)"
+      },
+      "apuestas": [
+        "Aligned Data Centers",
+        "Anthropic",
+        "xAI"
+      ],
+      "nota": "AIP (con MGX, Microsoft y Nvidia) apunta a USD 30 mil millones de capital y hasta 100 mil millones con deuda; primera inversión: compra de Aligned Data Centers por 40 mil millones (cerrada en 2026). BlackRock compró GIP por 12.5 mil millones (anunciado ene-2024)."
+    },
+    {
+      "nombre": "Blackstone",
+      "tipo": "private_equity",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 1350,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-06-30",
+        "fuente": "Mingtiandi (resultados 2T-2026 de Blackstone)",
+        "url": "https://www.mingtiandi.com/real-estate/finance/blackstone-data-centre-platform-hits-185b-as-ai-bets-power-q2-earnings/",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 185,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-07-27",
+        "fuente": "Mingtiandi (resultados 2T-2026 de Blackstone)",
+        "url": "https://www.mingtiandi.com/real-estate/finance/blackstone-data-centre-platform-hits-185b-as-ai-bets-power-q2-earnings/",
+        "nivel": "B",
+        "concepto": "Valor total de la plataforma de centros de datos, incluidos proyectos en construcción (no es monto invertido en laboratorios)"
+      },
+      "apuestas": [
+        "QTS",
+        "AirTrunk",
+        "Anthropic",
+        "OpenAI",
+        "CoreWeave (deuda)"
+      ],
+      "nota": "Su plataforma global de centros de datos vale USD 185 mil millones incluyendo proyectos en construcción (era 130 a inicios de 2026); tiene Anthropic, OpenAI y SpaceX en su cartera de capital privado."
+    },
+    {
+      "nombre": "Brookfield",
+      "tipo": "gestora",
+      "pais_iso3": "CAN",
+      "comprometido_ia": {
+        "valor": 5,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-11-19",
+        "fuente": "Weil (asesor legal de Brookfield)",
+        "url": "https://www.weil.com/articles/weil-advised-brookfield-in-5b-initial-closing-for-brookfield-ai-infrastructure-fund",
+        "nivel": "B",
+        "concepto": "Cierre inicial de BAIIF (objetivo 10; programa de hasta 100 con coinversión y deuda)"
+      },
+      "apuestas": [
+        "Brookfield AI Infrastructure Fund (BAIIF)",
+        "Centros de datos en Francia"
+      ],
+      "nota": "BAIIF tuvo cierre inicial de USD 5 mil millones (nov-2025) con objetivo de 10 mil millones y un programa de hasta 100 mil millones en activos; socios: Nvidia y Kuwait Investment Authority. En febrero de 2025 comprometió EUR 20 mil millones en Francia."
+    },
+    {
+      "nombre": "KKR",
+      "tipo": "private_equity",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 758,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-03-31",
+        "fuente": "Wikipedia (KKR & Co.)",
+        "url": "https://en.wikipedia.org/wiki/KKR_%26_Co.",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 10,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-02",
+        "fuente": "Wikipedia (KKR & Co.)",
+        "url": "https://en.wikipedia.org/wiki/KKR_%26_Co.",
+        "nivel": "B",
+        "concepto": "Adquisición de STT GDC (centros de datos) junto a Singtel"
+      },
+      "apuestas": [
+        "STT GDC",
+        "CyrusOne"
+      ],
+      "nota": "Lideró en febrero de 2026 la compra de los centros de datos de ST Telemedia (STT GDC) por ~USD 10 mil millones (75% KKR, 25% Singtel); compró CyrusOne con GIP por 15 mil millones (2021)."
+    },
+    {
+      "nombre": "Fidelity Management & Research",
+      "tipo": "gestora",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 7800,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-06",
+        "fuente": "Wikipedia (Fidelity Investments)",
+        "url": "https://en.wikipedia.org/wiki/Fidelity_Investments",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "xAI",
+        "Anthropic",
+        "CoreWeave"
+      ],
+      "nota": "Participó en las Series C y E de xAI y en la Serie G de Anthropic; activos administrados por USD 19.9 billones (jun-2026)."
+    },
+    {
+      "nombre": "T. Rowe Price",
+      "tipo": "gestora",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 1730,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-08",
+        "fuente": "Wikipedia (T. Rowe Price)",
+        "url": "https://en.wikipedia.org/wiki/T._Rowe_Price",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "OpenAI"
+      ],
+      "nota": "Cuentas asesoradas por T. Rowe Price participaron en la ronda de USD 122 mil millones de OpenAI (cerrada el 1-abr-2026)."
+    },
+    {
+      "nombre": "Silver Lake",
+      "tipo": "private_equity",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 110,
+        "unidad": "USD miles de millones",
+        "fecha": "2025",
+        "fuente": "Wikipedia (Silver Lake)",
+        "url": "https://en.wikipedia.org/wiki/Silver_Lake_(investment_firm)",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 0.8,
+        "unidad": "USD miles de millones",
+        "fecha": "2021-04",
+        "fuente": "Wikipedia (Silver Lake)",
+        "url": "https://en.wikipedia.org/wiki/Silver_Lake_(investment_firm)",
+        "nivel": "B",
+        "concepto": "Inversión en G42 (Emiratos)"
+      },
+      "apuestas": [
+        "G42",
+        "Altera",
+        "Waymo",
+        "TikTok USDS"
+      ],
+      "nota": "Invirtió ~USD 800 millones en G42 (abr-2021), compró 51% de Altera (2025) y forma parte del grupo con Oracle y MGX en la entidad estadounidense de TikTok (ene-2026)."
+    },
+    {
+      "nombre": "Apollo Global Management",
+      "tipo": "private_equity",
+      "pais_iso3": "USA",
+      "aum": {
+        "valor": 840,
+        "unidad": "USD miles de millones",
+        "fecha": "2025",
+        "fuente": "Wikipedia (Apollo Global Management)",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Global_Management",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Intel Fab 34 (empresa conjunta)"
+      ],
+      "nota": "Financiamiento de semiconductores: compró 49% de la empresa conjunta de la Fab 34 de Intel en Irlanda por EUR 10.1 mil millones (jun-2024); Intel acordó recomprarlo por USD 14.2 mil millones (abr-2026). Wikipedia da dos cifras de AUM 2025 (840 y 938.4)."
+    },
+    {
+      "nombre": "MGX",
+      "tipo": "soberano",
+      "pais_iso3": "ARE",
+      "aum": {
+        "valor": 100,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-06",
+        "fuente": "EnterpriseAM (citando a Bloomberg) — es un objetivo, no AUM alcanzado",
+        "url": "https://enterpriseam.com/menaplus/2026/06/24/gulf-sovereigns-chase-ai-indian-ipos-and-korean-defense-as-private-credit-overtakes-vc/",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 50,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-06-23",
+        "fuente": "EnterpriseAM / Wikipedia (citando a Bloomberg): 'cerca de USD 50 mil millones'",
+        "url": "https://enterpriseam.com/menaplus/2026/06/24/gulf-sovereigns-chase-ai-indian-ipos-and-korean-defense-as-private-credit-overtakes-vc/",
+        "nivel": "B",
+        "concepto": "Capital levantado para su fondo de IA entre soberanos regionales, fondos de pensiones e instituciones"
+      },
+      "apuestas": [
+        "OpenAI",
+        "Anthropic",
+        "xAI",
+        "Aligned Data Centers",
+        "Stargate",
+        "TikTok USDS"
+      ],
+      "nota": "Vehículo de IA de Abu Dabi creado en marzo de 2024 (Mubadala y G42 como socios fundadores), presidido por el jeque Tahnoon bin Zayed; apunta a más de USD 100 mil millones en activos y planea desplegar ~10 mil millones al año. Colideró la Serie G de Anthropic y participó en la Serie E de xAI y la ronda de OpenAI."
+    },
+    {
+      "nombre": "Mubadala",
+      "tipo": "soberano",
+      "pais_iso3": "ARE",
+      "aum": {
+        "valor": 330,
+        "unidad": "USD miles de millones",
+        "fecha": "2024",
+        "fuente": "Wikipedia (Mubadala Investment Company)",
+        "url": "https://en.wikipedia.org/wiki/Mubadala_Investment_Company",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "MGX",
+        "G42",
+        "Anthropic",
+        "Waymo"
+      ],
+      "nota": "Socio fundador de MGX; según CNBC/PitchBook completó ocho operaciones de IA en cuatro años (a 2024) e invirtió en Anthropic. Aportó USD 15 mil millones al Vision Fund 1."
+    },
+    {
+      "nombre": "ADQ",
+      "tipo": "soberano",
+      "pais_iso3": "ARE",
+      "aum": {
+        "valor": 110,
+        "unidad": "USD miles de millones",
+        "fecha": "2021",
+        "fuente": "Wikipedia (Tahnoun bin Zayed, cita ICIJ)",
+        "url": "https://en.wikipedia.org/wiki/Tahnoun_bin_Zayed_Al_Nahyan_(national_security_advisor)",
+        "nivel": "B"
+      },
+      "apuestas": [],
+      "nota": "Holding soberano de Abu Dabi presidido por el jeque Tahnoon; no se verificó ninguna operación de IA con monto. La cifra de activos es de 2021."
+    },
+    {
+      "nombre": "Public Investment Fund (PIF) / Humain",
+      "tipo": "soberano",
+      "pais_iso3": "SAU",
+      "aum": {
+        "valor": 900,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-05",
+        "fuente": "Wikipedia (Public Investment Fund)",
+        "url": "https://en.wikipedia.org/wiki/Public_Investment_Fund",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 3,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-02-18",
+        "fuente": "eWeek / W.Media",
+        "url": "https://www.eweek.com/news/saudi-arabia-invests-3b-in-xai/",
+        "nivel": "B",
+        "concepto": "Inversión de Humain en la Serie E de xAI (divulgada; desembolsada)"
+      },
+      "apuestas": [
+        "Humain",
+        "xAI",
+        "SoftBank Vision Fund 1",
+        "a16z (vía Sanabil)"
+      ],
+      "nota": "Dueño al 100% de Humain (creada el 12-may-2025), que invirtió USD 3 mil millones en la Serie E de xAI; la posición se convirtió en acciones de SpaceX tras la fusión. Aportó 45 mil millones al Vision Fund 1."
+    },
+    {
+      "nombre": "Qatar Investment Authority (QIA)",
+      "tipo": "soberano",
+      "pais_iso3": "QAT",
+      "aum": {
+        "valor": 600,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-05",
+        "fuente": "Wikipedia (Qatar Investment Authority)",
+        "url": "https://en.wikipedia.org/wiki/Qatar_Investment_Authority",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 1,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-09",
+        "fuente": "Bloomberg (vía Bloomberg Government)",
+        "url": "https://news.bgov.com/private-equity/blue-owl-xai-deals-solidify-qatar-funds-500-billion-us-pledge",
+        "nivel": "B",
+        "concepto": "Capital nuevo en empresa conjunta de centros de datos con Blue Owl (aprox.)"
+      },
+      "apuestas": [
+        "Anthropic",
+        "xAI",
+        "Databricks",
+        "Cresta",
+        "Instabase",
+        "Blue Owl (centros de datos)"
+      ],
+      "nota": "Participó en las Series F y G de Anthropic y en las Series C y E de xAI; ~USD 1 mil millones de capital en una empresa de centros de datos con Blue Owl (sep-2025). Bloomberg lo vincula a un compromiso de 500 mil millones en EE.UU. (titular)."
+    },
+    {
+      "nombre": "Kingdom Holding Company",
+      "tipo": "conglomerado",
+      "pais_iso3": "SAU",
+      "aum": {
+        "valor": 13.6,
+        "unidad": "USD miles de millones",
+        "fecha": "2022",
+        "fuente": "Wikipedia (Kingdom Holding Company, cita Forbes Middle East)",
+        "url": "https://en.wikipedia.org/wiki/Kingdom_Holding_Company",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 0.4,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-04",
+        "fuente": "Wikipedia (Kingdom Holding Company, titular de la fuente citada)",
+        "url": "https://en.wikipedia.org/wiki/Kingdom_Holding_Company",
+        "nivel": "B",
+        "concepto": "Participación en xAI"
+      },
+      "apuestas": [
+        "xAI",
+        "X Corp."
+      ],
+      "nota": "Vehículo del príncipe Alwaleed bin Talal; participación minoritaria en xAI (un titular citado por Wikipedia la cifra en USD 400 millones, consultado abr-2025)."
+    },
+    {
+      "nombre": "GIC",
+      "tipo": "soberano",
+      "pais_iso3": "SGP",
+      "aum": {
+        "valor": 936,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-05",
+        "fuente": "Wikipedia (GIC, estimación SWFI)",
+        "url": "https://en.wikipedia.org/wiki/GIC_(sovereign_wealth_fund)",
+        "nivel": "C"
+      },
+      "apuestas": [
+        "Anthropic"
+      ],
+      "nota": "Lideró junto a Coatue la Serie G de Anthropic (USD 30 mil millones, feb-2026). GIC no publica oficialmente sus activos; la cifra es estimación del Sovereign Wealth Fund Institute."
+    },
+    {
+      "nombre": "Temasek",
+      "tipo": "soberano",
+      "pais_iso3": "SGP",
+      "aum": {
+        "valor": 518,
+        "unidad": "SGD miles de millones",
+        "fecha": "2026-03-31",
+        "fuente": "Wikipedia (Temasek Holdings)",
+        "url": "https://en.wikipedia.org/wiki/Temasek_Holdings",
+        "nivel": "B"
+      },
+      "apuestas": [
+        "Anthropic"
+      ],
+      "nota": "En julio de 2026 declaró que busca elevar su exposición a IA de 6% de su cartera hasta 15% hacia 2031; participó en la Serie G de Anthropic."
+    },
+    {
+      "nombre": "Norges Bank Investment Management (Fondo de Pensiones Global de Noruega)",
+      "tipo": "soberano",
+      "pais_iso3": "NOR",
+      "aum": {
+        "valor": 2267,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-07",
+        "fuente": "Wikipedia (Government Pension Fund of Norway)",
+        "url": "https://en.wikipedia.org/wiki/Government_Pension_Fund_of_Norway",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 61.847,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-06 (2T-2026)",
+        "fuente": "Wikipedia (Government Pension Fund of Norway)",
+        "url": "https://en.wikipedia.org/wiki/Government_Pension_Fund_of_Norway",
+        "nivel": "B",
+        "concepto": "Valor de mercado de su posición en Nvidia (tenencia bursátil, no compromiso)"
+      },
+      "apuestas": [
+        "Nvidia (1.28%)",
+        "Alphabet (1.17%)",
+        "Microsoft (1.27%)",
+        "TSMC (1.70%)",
+        "Broadcom (1.30%)"
+      ],
+      "nota": "Exposición a IA vía acciones cotizadas: al 2T-2026 su posición en Nvidia valía USD 61.8 mil millones, Alphabet 50.5, Microsoft 35.1 y TSMC 33.5."
+    },
+    {
+      "nombre": "Fondo Nacional de Inversión en la Industria de IA (China)",
+      "tipo": "soberano",
+      "pais_iso3": "CHN",
+      "comprometido_ia": {
+        "valor": 60,
+        "unidad": "CNY miles de millones",
+        "fecha": "2025-01",
+        "fuente": "Wikipedia (China Integrated Circuit Industry Investment Fund)",
+        "url": "https://en.wikipedia.org/wiki/China_Integrated_Circuit_Industry_Investment_Fund",
+        "nivel": "B",
+        "concepto": "Capital inicial del fondo"
+      },
+      "apuestas": [],
+      "nota": "Lanzado en enero de 2025 con capital inicial de 60 mil millones de yuanes (~USD 8.2 mil millones); empresa conjunta entre el Big Fund III y Guozhi Investment (Shanghái)."
+    },
+    {
+      "nombre": "Fondo de Inversión de la Industria de Circuitos Integrados de China ('Big Fund') — Fase III",
+      "tipo": "soberano",
+      "pais_iso3": "CHN",
+      "comprometido_ia": {
+        "valor": 344,
+        "unidad": "CNY miles de millones",
+        "fecha": "2024-05-24",
+        "fuente": "Wikipedia (China Integrated Circuit Industry Investment Fund)",
+        "url": "https://en.wikipedia.org/wiki/China_Integrated_Circuit_Industry_Investment_Fund",
+        "nivel": "B",
+        "concepto": "Capital registrado de la Fase III (semiconductores)"
+      },
+      "apuestas": [],
+      "nota": "Fase III constituida el 24-may-2024 con capital registrado de 344 mil millones de yuanes (~USD 47.5 mil millones); fases previas: USD 21.8 mil millones (2014) y 29.08 mil millones (2019). Orientado a semiconductores."
+    },
+    {
+      "nombre": "Bpifrance",
+      "tipo": "soberano",
+      "pais_iso3": "FRA",
+      "comprometido_ia": {
+        "valor": 10,
+        "unidad": "EUR miles de millones",
+        "fecha": "2025-02-07",
+        "fuente": "TechCrunch",
+        "url": "https://techcrunch.com/2025/02/10/macron-unveils-a-112b-ai-investment-package-as-frances-answer-to-stargate",
+        "nivel": "B",
+        "concepto": "Compromiso para IA hasta 2029 (anunciado)"
+      },
+      "apuestas": [],
+      "nota": "Banco público de inversión francés: comprometió EUR 10 mil millones al ecosistema de IA hasta 2029, dentro de los EUR 109 mil millones anunciados por Macron en febrero de 2025."
+    },
+    {
+      "nombre": "Fondo Nacional de Crecimiento (Corea del Sur)",
+      "tipo": "soberano",
+      "pais_iso3": "KOR",
+      "aum": {
+        "valor": 150,
+        "unidad": "KRW billones (10^12)",
+        "fecha": "2025-12-16",
+        "fuente": "Korea JoongAng Daily",
+        "url": "https://www.koreajoongangdaily.com/business/govt-to-tap-national-growth-fund-for-20b-investment-in-ai-chips/12469910",
+        "nivel": "B"
+      },
+      "comprometido_ia": {
+        "valor": 6,
+        "unidad": "KRW billones (10^12)",
+        "fecha": "2026",
+        "fuente": "Korea JoongAng Daily",
+        "url": "https://www.koreajoongangdaily.com/business/govt-to-tap-national-growth-fund-for-20b-investment-in-ai-chips/12469910",
+        "nivel": "B",
+        "concepto": "Asignación a IA dentro de la inyección de 2026 (anunciada)"
+      },
+      "apuestas": [],
+      "nota": "Vehículo público-privado de 150 billones de wones en cinco años; la inyección de 2026 es de 30 billones (~USD 20 mil millones), de los cuales 6 billones se asignan a IA."
+    }
+  ],
+  "corporativos": [
+    {
+      "inversor": "Microsoft",
+      "pais_iso3": "USA",
+      "participada": "OpenAI",
+      "monto": {
+        "valor": 13,
+        "unidad": "USD miles de millones",
+        "fecha": "2025 (fines)",
+        "fuente": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/openai-closes-122bn-funding-round-093126735.html",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "Inversión histórica total de más de USD 13 mil millones; tras la recapitalización de oct-2025 posee ~27% de OpenAI, valorado en ~135 mil millones (TechCrunch). Su monto en la ronda de 2026 no fue divulgado."
+    },
+    {
+      "inversor": "Microsoft",
+      "pais_iso3": "USA",
+      "participada": "Anthropic",
+      "monto": {
+        "valor": 5,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-11-18",
+        "fuente": "Microsoft (blog oficial)",
+        "url": "https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/",
+        "nivel": "A",
+        "tipo": "comprometido"
+      },
+      "nota": "Hasta USD 5 mil millones; Anthropic se comprometió a comprar 30 mil millones en capacidad de Azure."
+    },
+    {
+      "inversor": "Microsoft",
+      "pais_iso3": "USA",
+      "participada": "Mistral AI",
+      "monto": {
+        "valor": 0.016,
+        "unidad": "USD miles de millones",
+        "fecha": "2024-02-26",
+        "fuente": "Wikipedia (Mistral AI)",
+        "url": "https://en.wikipedia.org/wiki/Mistral_AI",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "USD 16 millones."
+    },
+    {
+      "inversor": "Amazon",
+      "pais_iso3": "USA",
+      "participada": "OpenAI",
+      "monto": {
+        "valor": 50,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-04-01",
+        "fuente": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/openai-closes-122bn-funding-round-093126735.html",
+        "nivel": "B",
+        "tipo": "comprometido"
+      },
+      "nota": "USD 15 mil millones iniciales y 35 mil millones adicionales sujetos a condiciones futuras; OpenAI usará 2 GW de capacidad con chips Trainium."
+    },
+    {
+      "inversor": "Amazon",
+      "pais_iso3": "USA",
+      "participada": "Anthropic",
+      "monto": {
+        "valor": 8,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-04-21",
+        "fuente": "The News International (Reuters)",
+        "url": "https://www.thenews.pk/story/1411340-amazon-to-invest-up-to-25-billion-in-anthropic-as-part-of-100-billion-cloud-deal",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "Total invertido antes del nuevo acuerdo de abril de 2026."
+    },
+    {
+      "inversor": "Amazon",
+      "pais_iso3": "USA",
+      "participada": "Anthropic",
+      "monto": {
+        "valor": 25,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-04-20",
+        "fuente": "The News International (Reuters)",
+        "url": "https://www.thenews.pk/story/1411340-amazon-to-invest-up-to-25-billion-in-anthropic-as-part-of-100-billion-cloud-deal",
+        "nivel": "B",
+        "tipo": "comprometido"
+      },
+      "nota": "Hasta USD 25 mil millones adicionales: 5 inmediatos y 20 sujetos a hitos comerciales; Anthropic gastará más de 100 mil millones en AWS en 10 años. En la Serie H (may-2026) Amazon aportó 5 mil millones como parte de un compromiso previo."
+    },
+    {
+      "inversor": "Alphabet (Google)",
+      "pais_iso3": "USA",
+      "participada": "Anthropic",
+      "monto": {
+        "valor": 40,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-04-24",
+        "fuente": "BNN Bloomberg",
+        "url": "https://www.bnnbloomberg.ca/business/company-news/2026/04/24/google-to-invest-up-to-us40b-in-ai-rival-anthropic/",
+        "nivel": "B",
+        "tipo": "comprometido"
+      },
+      "nota": "Hasta USD 40 mil millones: 10 en efectivo de inmediato a valoración de 350 mil millones y 30 condicionados a metas de desempeño."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "OpenAI",
+      "monto": {
+        "valor": 30,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-03-04",
+        "fuente": "Newsquawk (Huang en conferencia de Morgan Stanley) / Yahoo Finance",
+        "url": "https://www.newsquawk.com/headlines/nvidia-nvda-ceo-huang-says-will-invest-usd-30bln-in-openai-usd-100bln-not-in-the-cards-as-openai-ipo-limits-investment-opportunity-usd-10bln-investment-in-anthropic-probably-will-be-the-last-via-ms-conference",
+        "nivel": "B",
+        "tipo": "comprometido"
+      },
+      "nota": "Parte de la ronda de USD 122 mil millones; reemplaza el memorando no vinculante de hasta 100 mil millones de sep-2025, que Huang dijo 'no está en los planes'. No se verificó el desembolso."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Anthropic",
+      "monto": {
+        "valor": 10,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-11-18",
+        "fuente": "Microsoft (blog oficial)",
+        "url": "https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/",
+        "nivel": "A",
+        "tipo": "comprometido"
+      },
+      "nota": "Hasta USD 10 mil millones; Huang dijo en marzo de 2026 que probablemente sea su última inversión en Anthropic."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "CoreWeave",
+      "monto": {
+        "valor": 2,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-01",
+        "fuente": "Wikipedia (CoreWeave)",
+        "url": "https://en.wikipedia.org/wiki/CoreWeave",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "A USD 87.20 por acción; había invertido 100 millones en abril de 2023."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Intel",
+      "monto": {
+        "valor": 5,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-09-18",
+        "fuente": "Wikipedia (Nvidia)",
+        "url": "https://en.wikipedia.org/wiki/Nvidia",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "Participación de ~4% tras la emisión de acciones."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Nebius Group",
+      "monto": {
+        "valor": 2,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-03-11",
+        "fuente": "Wikipedia (Nvidia)",
+        "url": "https://en.wikipedia.org/wiki/Nvidia",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": ""
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "IREN",
+      "monto": {
+        "valor": 2.1,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-05",
+        "fuente": "The Decoder (citando a CNBC)",
+        "url": "https://the-decoder.com/nvidia-pumps-over-40-billion-dollars-into-ai-partners-so-far-in-2026/",
+        "nivel": "B",
+        "tipo": "comprometido"
+      },
+      "nota": "Derecho a invertir hasta USD 2.1 mil millones."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Corning",
+      "monto": {
+        "valor": 3.2,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-05",
+        "fuente": "The Decoder (citando a CNBC)",
+        "url": "https://the-decoder.com/nvidia-pumps-over-40-billion-dollars-into-ai-partners-so-far-in-2026/",
+        "nivel": "B",
+        "tipo": "comprometido"
+      },
+      "nota": "Hasta USD 3.2 mil millones ligado a un acuerdo de fibra óptica; Wikipedia lo describe como inversión en tres plantas, no como participación accionaria."
+    },
+    {
+      "inversor": "Nvidia",
+      "pais_iso3": "USA",
+      "participada": "Cartera de socios de IA (agregado)",
+      "monto": {
+        "valor": 40,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-05-11",
+        "fuente": "The Decoder",
+        "url": "https://the-decoder.com/nvidia-pumps-over-40-billion-dollars-into-ai-partners-so-far-in-2026/",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "'Más de USD 40 mil millones' en empresas de IA; la cartera incluye también xAI (inversor estratégico de la Serie E, monto no publicado), Nebius, Marvell, Lumentum y Coherent. El artículo es inconsistente sobre si el total corresponde a 2025 o 2026."
+    },
+    {
+      "inversor": "SoftBank Group",
+      "pais_iso3": "JPN",
+      "participada": "OpenAI",
+      "monto": {
+        "valor": 64.6,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-01",
+        "fuente": "SoftBank Group (nota de prensa 27-feb-2026); cierre confirmado por Reuters vía The Star",
+        "url": "https://group.softbank/en/news/press/20260227",
+        "nivel": "A",
+        "tipo": "invertido"
+      },
+      "nota": "34.6 mil millones desde sep-2024 más 30 mil millones en 2026 (tramos del 1-abr, 1-jul y 1-oct); ~13% de participación."
+    },
+    {
+      "inversor": "SoftBank Group",
+      "pais_iso3": "JPN",
+      "participada": "Stargate",
+      "monto": {
+        "valor": 19,
+        "unidad": "USD miles de millones",
+        "fecha": "2025",
+        "fuente": "Wikipedia (Stargate LLC, citando a The Information)",
+        "url": "https://en.wikipedia.org/wiki/Stargate_LLC",
+        "nivel": "B",
+        "tipo": "comprometido"
+      },
+      "nota": "40% de la sociedad; el proyecto prevé hasta USD 500 mil millones al 2029."
+    },
+    {
+      "inversor": "Oracle",
+      "pais_iso3": "USA",
+      "participada": "Stargate",
+      "monto": {
+        "valor": 7,
+        "unidad": "USD miles de millones",
+        "fecha": "2025",
+        "fuente": "Wikipedia (Stargate LLC, citando a The Information)",
+        "url": "https://en.wikipedia.org/wiki/Stargate_LLC",
+        "nivel": "B",
+        "tipo": "comprometido"
+      },
+      "nota": "Socio accionista de Stargate; OpenAI comprometió 19 y MGX 7 según la misma fuente."
+    },
+    {
+      "inversor": "Meta",
+      "pais_iso3": "USA",
+      "participada": "Scale AI",
+      "monto": {
+        "valor": 14.8,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-06-10",
+        "fuente": "Wikipedia (Scale AI)",
+        "url": "https://en.wikipedia.org/wiki/Scale_AI",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "49% sin derecho a voto; Forbes indica que la operación valoró a Scale en ~USD 29 mil millones. Alexandr Wang pasó a ser director de IA de Meta."
+    },
+    {
+      "inversor": "Humain (PIF)",
+      "pais_iso3": "SAU",
+      "participada": "xAI",
+      "monto": {
+        "valor": 3,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-02-18",
+        "fuente": "eWeek / W.Media",
+        "url": "https://www.eweek.com/news/saudi-arabia-invests-3b-in-xai/",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "Invertido en la Serie E de xAI (USD 20 mil millones, ene-2026); convertido en acciones de SpaceX tras la fusión de febrero de 2026."
+    },
+    {
+      "inversor": "SpaceX",
+      "pais_iso3": "USA",
+      "participada": "xAI",
+      "monto": {
+        "valor": 2,
+        "unidad": "USD miles de millones",
+        "fecha": "2025-07-01",
+        "fuente": "Wikipedia (SpaceXAI)",
+        "url": "https://en.wikipedia.org/wiki/SpaceXAI",
+        "nivel": "B",
+        "tipo": "comprometido"
+      },
+      "nota": "Parte del tramo de capital de USD 5 mil millones anunciado por Morgan Stanley; SpaceX adquirió xAI el 2-feb-2026 en una operación en acciones (valor combinado 1.25 billones)."
+    },
+    {
+      "inversor": "ASML",
+      "pais_iso3": "NLD",
+      "participada": "Mistral AI",
+      "monto": {
+        "valor": 1.3,
+        "unidad": "EUR miles de millones",
+        "fecha": "2025-09",
+        "fuente": "Wikipedia (Mistral AI)",
+        "url": "https://en.wikipedia.org/wiki/Mistral_AI",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "Participación de 11% dentro de una ronda de EUR 2 mil millones."
+    },
+    {
+      "inversor": "Samsung Electronics",
+      "pais_iso3": "KOR",
+      "participada": "Mistral AI",
+      "monto": {
+        "valor": 3,
+        "unidad": "EUR miles de millones",
+        "fecha": "2026-09",
+        "fuente": "Wikipedia (Mistral AI)",
+        "url": "https://en.wikipedia.org/wiki/Mistral_AI",
+        "nivel": "B",
+        "tipo": "invertido"
+      },
+      "nota": "Compra de participación a valoración de EUR 21 mil millones según el artículo (un titular de Les Echos citado habla de casi 25). Samsung, SK Hynix y Micron también invirtieron montos no divulgados en la Serie H de Anthropic."
+    }
+  ],
+  "personas": [
+    {
+      "nombre": "Elon Musk",
+      "pais_iso3": "USA",
+      "rol": "CEO de SpaceX y Tesla; fundador de xAI",
+      "patrimonio": {
+        "valor": 1004,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/elon-musk/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "SpaceX (incluye xAI)",
+        "Tesla"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Serie E de xAI (USD 20 mil millones, sobre objetivo de 15)",
+          "monto": {
+            "valor": 20,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-01-06",
+            "fuente": "xAI",
+            "url": "https://x.ai/news/series-e",
+            "nivel": "A"
+          }
+        },
+        {
+          "concepto": "Fusión SpaceX–xAI: valor combinado (SpaceX 1 billón + xAI 250 mil millones)",
+          "monto": {
+            "valor": 1250,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-02-02",
+            "fuente": "Wikipedia (SpaceXAI) / Forbes",
+            "url": "https://en.wikipedia.org/wiki/SpaceXAI",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Posee ~38% de SpaceX (con opciones) y casi 11% de Tesla; SpaceX salió a bolsa el 12-jun-2026 a una valoración cercana a 2 billones."
+    },
+    {
+      "nombre": "Jeff Bezos",
+      "pais_iso3": "USA",
+      "rol": "Fundador y presidente ejecutivo de Amazon; co-CEO de Project Prometheus",
+      "patrimonio": {
+        "valor": 380.8,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/jeff-bezos/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Amazon",
+        "Project Prometheus",
+        "Bezos Expeditions"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Financiamiento de lanzamiento de Project Prometheus (parcialmente aportado por Bezos)",
+          "monto": {
+            "valor": 6.2,
+            "unidad": "USD miles de millones",
+            "fecha": "2025-11",
+            "fuente": "Wikipedia (Project Prometheus)",
+            "url": "https://en.wikipedia.org/wiki/Project_Prometheus_(company)",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Ronda de Project Prometheus a valoración de USD 41 mil millones (según titular de GeekWire citado)",
+          "monto": {
+            "valor": 12,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-06-11",
+            "fuente": "Wikipedia (Project Prometheus, titular de GeekWire)",
+            "url": "https://en.wikipedia.org/wiki/Project_Prometheus_(company)",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Co-CEO de Project Prometheus junto a Vik Bajaj; Amazon comprometió hasta 50 mil millones en OpenAI y hasta 25 mil millones adicionales en Anthropic en 2026."
+    },
+    {
+      "nombre": "Larry Page",
+      "pais_iso3": "USA",
+      "rol": "Cofundador de Google; accionista de control de Alphabet",
+      "patrimonio": {
+        "valor": 287.9,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/larry-page/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Alphabet"
+      ],
+      "apuestas": [],
+      "nota": "Su exposición a IA es su participación en Alphabet, que comprometió hasta USD 40 mil millones en Anthropic (abr-2026)."
+    },
+    {
+      "nombre": "Michael Dell",
+      "pais_iso3": "USA",
+      "rol": "Presidente y CEO de Dell Technologies",
+      "patrimonio": {
+        "valor": 281.9,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/michael-dell/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Dell Technologies",
+        "DFO Management"
+      ],
+      "apuestas": [],
+      "nota": "Gran parte de su fortuna está en su firma privada DFO Management; no se verificaron montos de inversión personal en IA."
+    },
+    {
+      "nombre": "Sergey Brin",
+      "pais_iso3": "USA",
+      "rol": "Cofundador de Google; consejero y accionista de control de Alphabet",
+      "patrimonio": {
+        "valor": 265,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/sergey-brin/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Alphabet"
+      ],
+      "apuestas": [],
+      "nota": "Su exposición a IA es su participación en Alphabet."
+    },
+    {
+      "nombre": "Mark Zuckerberg",
+      "pais_iso3": "USA",
+      "rol": "Fundador y CEO de Meta",
+      "patrimonio": {
+        "valor": 246.5,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/mark-zuckerberg/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Meta"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Compra por Meta del 49% de Scale AI (valoración ~USD 29 mil millones según Forbes)",
+          "monto": {
+            "valor": 14.8,
+            "unidad": "USD miles de millones",
+            "fecha": "2025-06-10",
+            "fuente": "Wikipedia (Scale AI)",
+            "url": "https://en.wikipedia.org/wiki/Scale_AI",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Meta reorientó su foco a la IA; adquirió 49% de Scale AI en junio de 2025."
+    },
+    {
+      "nombre": "Jensen Huang",
+      "pais_iso3": "USA",
+      "rol": "Cofundador y CEO de Nvidia",
+      "patrimonio": {
+        "valor": 198.5,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/jensen-huang/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Nvidia"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Inversión de Nvidia en OpenAI (ronda de 2026)",
+          "monto": {
+            "valor": 30,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-03-04",
+            "fuente": "Newsquawk",
+            "url": "https://www.newsquawk.com/headlines/nvidia-nvda-ceo-huang-says-will-invest-usd-30bln-in-openai-usd-100bln-not-in-the-cards-as-openai-ipo-limits-investment-opportunity-usd-10bln-investment-in-anthropic-probably-will-be-the-last-via-ms-conference",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Inversión de Nvidia en Anthropic (hasta)",
+          "monto": {
+            "valor": 10,
+            "unidad": "USD miles de millones",
+            "fecha": "2025-11-18",
+            "fuente": "Microsoft (blog oficial)",
+            "url": "https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/",
+            "nivel": "A"
+          }
+        },
+        {
+          "concepto": "Total invertido por Nvidia en empresas de IA ('más de')",
+          "monto": {
+            "valor": 40,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-05-11",
+            "fuente": "The Decoder",
+            "url": "https://the-decoder.com/nvidia-pumps-over-40-billion-dollars-into-ai-partners-so-far-in-2026/",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Posee ~4% de Nvidia; Forbes estimó su fortuna en más de 203 mil millones el 2-oct-2026 tras un récord de la acción."
+    },
+    {
+      "nombre": "Larry Ellison",
+      "pais_iso3": "USA",
+      "rol": "Cofundador, presidente y CTO de Oracle",
+      "patrimonio": {
+        "valor": 183.5,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/larry-ellison/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Oracle"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Compromiso de Oracle en Stargate (según The Information)",
+          "monto": {
+            "valor": 7,
+            "unidad": "USD miles de millones",
+            "fecha": "2025",
+            "fuente": "Wikipedia (Stargate LLC)",
+            "url": "https://en.wikipedia.org/wiki/Stargate_LLC",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Participó en el anuncio de Stargate en la Casa Blanca (21-ene-2025); en sep-2025 superó brevemente los 400 mil millones por el alza de Oracle impulsada por la IA."
+    },
+    {
+      "nombre": "Bill Gates",
+      "pais_iso3": "USA",
+      "rol": "Cofundador de Microsoft",
+      "patrimonio": {
+        "valor": 114.7,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/bill-gates/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Cascade Investment",
+        "Microsoft (participación reducida)"
+      ],
+      "apuestas": [],
+      "nota": "Figura entre los inversores de Inflection AI (ronda de USD 1.3 mil millones, jun-2023) junto a Microsoft, Nvidia y Eric Schmidt; no se verificó su monto personal."
+    },
+    {
+      "nombre": "Zhang Yiming",
+      "pais_iso3": "CHN",
+      "rol": "Fundador de ByteDance",
+      "patrimonio": {
+        "valor": 84,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/zhang-yiming/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "ByteDance"
+      ],
+      "apuestas": [],
+      "nota": "El asistente Doubao de ByteDance alcanzó 345 millones de usuarios activos mensuales en el 1T-2026 (QuestMobile, citado por Forbes)."
+    },
+    {
+      "nombre": "Mukesh Ambani",
+      "pais_iso3": "IND",
+      "rol": "Presidente de Reliance Industries",
+      "patrimonio": {
+        "valor": 79.6,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/mukesh-ambani/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Reliance Industries",
+        "Jio Platforms"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Plan de inversión en infraestructura de IA en India a siete años (anunciado)",
+          "monto": {
+            "valor": 110,
+            "unidad": "USD miles de millones",
+            "fecha": "2026",
+            "fuente": "Forbes (perfil)",
+            "url": "https://www.forbes.com/profile/mukesh-ambani/",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Anunció en 2026 un plan de inversión en infraestructura de IA en India a siete años."
+    },
+    {
+      "nombre": "Masayoshi Son",
+      "pais_iso3": "JPN",
+      "rol": "Fundador y CEO de SoftBank Group; presidente de Stargate",
+      "patrimonio": {
+        "valor": 69.8,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/masayoshi-son/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "SoftBank Group",
+        "Vision Fund 2",
+        "Stargate"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Inversión acumulada de SoftBank en OpenAI (desembolsada)",
+          "monto": {
+            "valor": 64.6,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-10-01",
+            "fuente": "SoftBank Group (nota de prensa)",
+            "url": "https://group.softbank/en/news/press/20260227",
+            "nivel": "A"
+          }
+        },
+        {
+          "concepto": "Compromiso de SoftBank en Stargate (según The Information)",
+          "monto": {
+            "valor": 19,
+            "unidad": "USD miles de millones",
+            "fecha": "2025",
+            "fuente": "Wikipedia (Stargate LLC)",
+            "url": "https://en.wikipedia.org/wiki/Stargate_LLC",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Adquisición de Ampere Computing",
+          "monto": {
+            "valor": 6.5,
+            "unidad": "USD miles de millones",
+            "fecha": "2025-11",
+            "fuente": "Wikipedia (SoftBank Group)",
+            "url": "https://en.wikipedia.org/wiki/SoftBank_Group",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Adquisición de la división de robótica de ABB (valor empresa)",
+          "monto": {
+            "valor": 5.375,
+            "unidad": "USD miles de millones",
+            "fecha": "2025-10",
+            "fuente": "Wikipedia (SoftBank Group)",
+            "url": "https://en.wikipedia.org/wiki/SoftBank_Group",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Adquisición de DigitalBridge (anunciada, ~)",
+          "monto": {
+            "valor": 4,
+            "unidad": "USD miles de millones",
+            "fecha": "2025-12-29",
+            "fuente": "Wikipedia (SoftBank Group)",
+            "url": "https://en.wikipedia.org/wiki/SoftBank_Group",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "SoftBank alcanzó ~13% de OpenAI tras completar su inversión el 1-oct-2026; Son preside Stargate."
+    },
+    {
+      "nombre": "Gautam Adani",
+      "pais_iso3": "IND",
+      "rol": "Presidente de Adani Group",
+      "patrimonio": {
+        "valor": 112.7,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-09-30",
+        "fuente": "Forbes (lista India 2026; Gautam Adani y familia)",
+        "url": "https://www.forbes.com/profile/gautam-adani/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Adani Group",
+        "AdaniConneX"
+      ],
+      "apuestas": [],
+      "nota": "Forbes señala que Adani y Ambani hicieron compromisos multimillonarios para centros de datos en India; no se verificó el monto de Adani."
+    },
+    {
+      "nombre": "Ma Huateng (Pony Ma)",
+      "pais_iso3": "CHN",
+      "rol": "Cofundador, presidente y CEO de Tencent",
+      "patrimonio": {
+        "valor": 46,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/ma-huateng/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Tencent"
+      ],
+      "apuestas": [],
+      "nota": "Amplía las inversiones de Tencent en IA para su familia de modelos Hunyuan; en 2026 contrató a Yao Shunyu, exinvestigador de OpenAI."
+    },
+    {
+      "nombre": "Stephen Schwarzman",
+      "pais_iso3": "USA",
+      "rol": "Cofundador, presidente y CEO de Blackstone",
+      "patrimonio": {
+        "valor": 41.1,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/stephen-schwarzman/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Blackstone"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Plataforma global de centros de datos de Blackstone (valor total incl. construcción)",
+          "monto": {
+            "valor": 185,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-07-27",
+            "fuente": "Mingtiandi",
+            "url": "https://www.mingtiandi.com/real-estate/finance/blackstone-data-centre-platform-hits-185b-as-ai-bets-power-q2-earnings/",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Blackstone reportó AUM récord de 1.35 billones y una plataforma de centros de datos de 185 mil millones al 2T-2026."
+    },
+    {
+      "nombre": "Liang Wenfeng",
+      "pais_iso3": "CHN",
+      "rol": "Fundador de DeepSeek y de High-Flyer Capital Management",
+      "patrimonio": {
+        "valor": 40,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/liang-wenfeng/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "DeepSeek",
+        "High-Flyer"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Ronda de DeepSeek a valoración de USD 52 mil millones",
+          "monto": {
+            "valor": 7.4,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-06",
+            "fuente": "Forbes (perfil)",
+            "url": "https://www.forbes.com/profile/liang-wenfeng/",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "DeepSeek fue financiada en parte por su firma cuantitativa High-Flyer."
+    },
+    {
+      "nombre": "Peter Thiel",
+      "pais_iso3": "USA",
+      "rol": "Cofundador y socio general de Founders Fund; cofundador de Palantir",
+      "patrimonio": {
+        "valor": 39.9,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/peter-thiel/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Founders Fund",
+        "Thiel Capital"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Fondo Growth IV de Founders Fund (reportado)",
+          "monto": {
+            "valor": 6,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-03",
+            "fuente": "ValueAdd VC",
+            "url": "https://valueaddvc.com/vc-fundraises-2026",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Inversión de Founders Fund en Scale AI",
+          "monto": {
+            "valor": 0.1,
+            "unidad": "USD miles de millones",
+            "fecha": "2019-08",
+            "fuente": "Wikipedia (Scale AI)",
+            "url": "https://en.wikipedia.org/wiki/Scale_AI",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Founders Fund participó en la ronda de OpenAI de agosto de 2025 y colideró la Serie G de Anthropic."
+    },
+    {
+      "nombre": "Eric Schmidt",
+      "pais_iso3": "USA",
+      "rol": "Ex CEO de Google; cofundador de Innovation Endeavors",
+      "patrimonio": {
+        "valor": 38.9,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/eric-schmidt/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Innovation Endeavors",
+        "Schmidt Futures / Schmidt Sciences"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Compromiso de Schmidt Futures a becas posdoctorales de IA en ciencia",
+          "monto": {
+            "valor": 0.148,
+            "unidad": "USD miles de millones",
+            "fecha": "2022",
+            "fuente": "Forbes (perfil)",
+            "url": "https://www.forbes.com/profile/eric-schmidt/",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Inversor en la ronda semilla de Mistral AI (jun-2023) y en Inflection AI; Schmidt Futures comprometió 148 millones a becas posdoctorales de IA en ciencia (2022)."
+    },
+    {
+      "nombre": "Príncipe Alwaleed bin Talal",
+      "pais_iso3": "SAU",
+      "rol": "Fundador y presidente de Kingdom Holding",
+      "patrimonio": {
+        "valor": 25.9,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/prince-alwaleed-bin-talal-alsaud/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Kingdom Holding Company"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Participación de Kingdom Holding en xAI (según titular citado)",
+          "monto": {
+            "valor": 0.4,
+            "unidad": "USD miles de millones",
+            "fecha": "2025-04",
+            "fuente": "Wikipedia (Kingdom Holding Company)",
+            "url": "https://en.wikipedia.org/wiki/Kingdom_Holding_Company",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Invirtió en X y en xAI, tanto a título personal como a través de Kingdom Holding (Forbes)."
+    },
+    {
+      "nombre": "Josh Kushner",
+      "pais_iso3": "USA",
+      "rol": "Fundador de Thrive Capital",
+      "patrimonio": {
+        "valor": 16.7,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/josh-kushner/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Thrive Capital",
+        "Thrive Holdings"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Décimo fondo de Thrive Capital",
+          "monto": {
+            "valor": 10,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-02-17",
+            "fuente": "Newcomer",
+            "url": "https://www.newcomer.co/p/big-wins-for-two-of-ventures-most",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Inversión de Thrive en OpenAI a valoración de 29 mil millones",
+          "monto": {
+            "valor": 0.13,
+            "unidad": "USD miles de millones",
+            "fecha": "2022",
+            "fuente": "Wikipedia (Thrive Capital)",
+            "url": "https://en.wikipedia.org/wiki/Thrive_Capital",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Posee ~66% de Thrive, firma que Forbes valora en ~10.5 mil millones y que gestiona más de 65 mil millones."
+    },
+    {
+      "nombre": "David Vélez",
+      "pais_iso3": "COL",
+      "rol": "Cofundador y CEO de Nubank",
+      "patrimonio": {
+        "valor": 15.6,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/david-velez/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Nu Holdings"
+      ],
+      "apuestas": [],
+      "nota": "Sin inversiones de IA con monto verificado; Nubank se asoció con OpenAI en marzo de 2025 (alianza, no inversión)."
+    },
+    {
+      "nombre": "Dario Amodei",
+      "pais_iso3": "USA",
+      "rol": "Cofundador y CEO de Anthropic",
+      "patrimonio": {
+        "valor": 15.5,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/dario-amodei/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Anthropic"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Serie H de Anthropic (a valoración post-money de 965 mil millones)",
+          "monto": {
+            "valor": 65,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-05-28",
+            "fuente": "Outlook Business (citando a Bloomberg)",
+            "url": "https://www.outlookbusiness.com/corporate/anthropic-surpasses-openai-with-965-bn-valuation-after-latest-fundraise",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Serie G de Anthropic (a valoración post-money de 380 mil millones)",
+          "monto": {
+            "valor": 30,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-02-12",
+            "fuente": "Anthropic",
+            "url": "https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation",
+            "nivel": "A"
+          }
+        }
+      ],
+      "nota": "Inversionistas privados valoraron Anthropic en USD 965 mil millones en mayo de 2026; Forbes estimó en ene-2025 ~2% por cofundador (dato anterior a las rondas de 2026)."
+    },
+    {
+      "nombre": "Xavier Niel",
+      "pais_iso3": "FRA",
+      "rol": "Fundador de Iliad (Free)",
+      "patrimonio": {
+        "valor": 13.8,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/xavier-niel/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Iliad",
+        "NJJ Holding"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Compromiso de Iliad en infraestructura de IA en Francia",
+          "monto": {
+            "valor": 3,
+            "unidad": "EUR miles de millones",
+            "fecha": "2025-02",
+            "fuente": "TechCrunch",
+            "url": "https://techcrunch.com/2025/02/10/macron-unveils-a-112b-ai-investment-package-as-frances-answer-to-stargate",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Inversor en la ronda semilla de Mistral AI (jun-2023); Iliad comprometió EUR 3 mil millones en IA en el marco de la cumbre de París (feb-2025)."
+    },
+    {
+      "nombre": "Daniel Ek",
+      "pais_iso3": "SWE",
+      "rol": "Fundador y presidente ejecutivo de Spotify; presidente de Helsing",
+      "patrimonio": {
+        "valor": 12.7,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/daniel-ek/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Prima Materia"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Ronda inicial de Helsing liderada vía Prima Materia",
+          "monto": {
+            "valor": 0.1,
+            "unidad": "EUR miles de millones",
+            "fecha": "2021-11",
+            "fuente": "Wikipedia (Helsing)",
+            "url": "https://en.wikipedia.org/wiki/Helsing_(company)",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Ronda de Helsing liderada vía Prima Materia (valoración EUR 12 mil millones)",
+          "monto": {
+            "valor": 0.6,
+            "unidad": "EUR miles de millones",
+            "fecha": "2025-06",
+            "fuente": "Wikipedia (Helsing)",
+            "url": "https://en.wikipedia.org/wiki/Helsing_(company)",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Prima Materia era el mayor accionista de Helsing (~17%) en julio de 2024; Helsing levantó USD 1.8 mil millones a valoración de 18 mil millones en julio de 2026."
+    },
+    {
+      "nombre": "Vinod Khosla",
+      "pais_iso3": "USA",
+      "rol": "Fundador y director gerente de Khosla Ventures",
+      "patrimonio": {
+        "valor": 11.8,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/vinod-khosla/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Khosla Ventures"
+      ],
+      "apuestas": [
+        {
+          "concepto": "SPV de Khosla Ventures para invertir en OpenAI",
+          "monto": {
+            "valor": 0.405,
+            "unidad": "USD miles de millones",
+            "fecha": "2024-10",
+            "fuente": "Wikipedia (Khosla Ventures)",
+            "url": "https://en.wikipedia.org/wiki/Khosla_Ventures",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Khosla Ventures fue la primera firma de capital de riesgo en invertir en OpenAI; N.º 1 de la Midas List 2026 de Forbes."
+    },
+    {
+      "nombre": "Philippe Laffont",
+      "pais_iso3": "USA",
+      "rol": "Fundador de Coatue Management",
+      "patrimonio": {
+        "valor": 9.5,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/philippe-laffont/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Coatue Management"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Ronda de CoreWeave liderada por Coatue",
+          "monto": {
+            "valor": 1.1,
+            "unidad": "USD miles de millones",
+            "fecha": "2024-05",
+            "fuente": "Wikipedia (CoreWeave)",
+            "url": "https://en.wikipedia.org/wiki/CoreWeave",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Coatue gestiona ~USD 73 mil millones; sus mayores posiciones bursátiles incluyen Nvidia, Broadcom, Meta y CoreWeave; colideró la Serie G de Anthropic."
+    },
+    {
+      "nombre": "Yuri Milner",
+      "pais_iso3": "ISR",
+      "rol": "Fundador y socio de DST Global",
+      "patrimonio": {
+        "valor": 8.7,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/yuri-milner/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "DST Global"
+      ],
+      "apuestas": [],
+      "nota": "Ciudadano israelí nacido en Rusia (renunció a la ciudadanía rusa en 2022); DST fue inversor de ByteDance. No se verificaron montos en IA."
+    },
+    {
+      "nombre": "Chase Coleman III",
+      "pais_iso3": "USA",
+      "rol": "Fundador de Tiger Global",
+      "patrimonio": {
+        "valor": 8.1,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/chase-coleman-iii/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Tiger Global Management"
+      ],
+      "apuestas": [],
+      "nota": "Tiger Global gestiona ~USD 54 mil millones; inversor inicial de Scale AI."
+    },
+    {
+      "nombre": "Marcos Galperin",
+      "pais_iso3": "ARG",
+      "rol": "Fundador y presidente ejecutivo de MercadoLibre",
+      "patrimonio": {
+        "valor": 7.7,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/marcos-galperin/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "MercadoLibre"
+      ],
+      "apuestas": [],
+      "nota": "Dejó el cargo de CEO en 2026 tras 26 años; no se verificaron inversiones de IA con monto."
+    },
+    {
+      "nombre": "Robin Li",
+      "pais_iso3": "CHN",
+      "rol": "Cofundador, presidente y CEO de Baidu",
+      "patrimonio": {
+        "valor": 5.2,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/robin-li/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Baidu"
+      ],
+      "apuestas": [],
+      "nota": "Baidu lanzó Ernie en 2023, opera robotaxis y diseña chips de IA mediante su unidad Kunlunxin."
+    },
+    {
+      "nombre": "Sam Altman",
+      "pais_iso3": "USA",
+      "rol": "CEO de OpenAI; inversor de capital de riesgo",
+      "patrimonio": {
+        "valor": 3.3,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/sam-altman/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Hydrazine Capital",
+        "inversiones personales"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Ronda de OpenAI cerrada en 2026 (capital comprometido; valoración post-money 852 mil millones)",
+          "monto": {
+            "valor": 122,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-04-01",
+            "fuente": "Yahoo Finance",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/openai-closes-122bn-funding-round-093126735.html",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Fondo inicial de Hydrazine Capital (mayoritariamente de Peter Thiel)",
+          "monto": {
+            "valor": 0.021,
+            "unidad": "USD miles de millones",
+            "fecha": "2012-04",
+            "fuente": "Wikipedia (Sam Altman)",
+            "url": "https://en.wikipedia.org/wiki/Sam_Altman",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Forbes indica que no tiene acciones de OpenAI; su patrimonio proviene de inversiones (Stripe, Reddit, Helion). Wikipedia cifra su cartera en más de 400 empresas (~USD 2.8 mil millones a jun-2024)."
+    },
+    {
+      "nombre": "Alexandr Wang",
+      "pais_iso3": "USA",
+      "rol": "Director de IA de Meta; cofundador de Scale AI",
+      "patrimonio": {
+        "valor": 3.2,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/alexandr-wang/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Scale AI",
+        "Meta"
+      ],
+      "apuestas": [],
+      "nota": "Fue CEO de Scale AI hasta junio de 2025, cuando Meta adquirió 49% en una operación que valoró a Scale en ~USD 29 mil millones."
+    },
+    {
+      "nombre": "Reid Hoffman",
+      "pais_iso3": "USA",
+      "rol": "Cofundador de LinkedIn; socio de Greylock; cofundador de Inflection AI y Manas AI",
+      "patrimonio": {
+        "valor": 2.6,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/reid-hoffman/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Greylock Partners",
+        "fundación familiar"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Financiamiento inicial de Manas AI (WSJ: USD 24.6 millones)",
+          "monto": {
+            "valor": 0.0246,
+            "unidad": "USD miles de millones",
+            "fecha": "2025-01",
+            "fuente": "Wikipedia (Reid Hoffman)",
+            "url": "https://en.wikipedia.org/wiki/Reid_Hoffman",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Ronda de Inflection AI (valoración 4 mil millones)",
+          "monto": {
+            "valor": 1.3,
+            "unidad": "USD miles de millones",
+            "fecha": "2023-06",
+            "fuente": "Forbes (perfil)",
+            "url": "https://www.forbes.com/profile/reid-hoffman/",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Donante inicial de OpenAI (2016) e inversor en su filial con fines de lucro; a mayo de 2023 él y Greylock habían invertido en al menos 37 empresas de IA."
+    },
+    {
+      "nombre": "Marc Andreessen",
+      "pais_iso3": "USA",
+      "rol": "Cofundador y socio general de Andreessen Horowitz",
+      "patrimonio": {
+        "valor": 1.9,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/marc-andreessen/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Andreessen Horowitz (a16z)"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Fondos nuevos de a16z (multiestrategia)",
+          "monto": {
+            "valor": 15,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-01-09",
+            "fuente": "Crunchbase News",
+            "url": "https://news.crunchbase.com/venture/a16z-15b-new-funds-american-dynamism-ben-horowitz/",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "'Machine Age Fund' de a16z para hardware e infraestructura de IA",
+          "monto": {
+            "valor": 1.1,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-08-28",
+            "fuente": "Bloomberg (vía Bloomberg Government)",
+            "url": "https://news.bgov.com/california-brief/andreessen-horowitz-raises-1-1-billion-for-new-ai-hardware-fund",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "a16z gestiona más de USD 90 mil millones y declara haber captado 18% del capital de riesgo de EE.UU. de 2025."
+    },
+    {
+      "nombre": "Satya Nadella",
+      "pais_iso3": "USA",
+      "rol": "Presidente y CEO de Microsoft (gestor, no dueño)",
+      "patrimonio": {
+        "valor": 1.4,
+        "unidad": "USD miles de millones",
+        "fecha": "2026-10-11",
+        "fuente": "Forbes (tiempo real)",
+        "url": "https://www.forbes.com/profile/satya-nadella/",
+        "nivel": "B"
+      },
+      "vehiculos": [
+        "Microsoft"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Inversión histórica de Microsoft en OpenAI ('más de')",
+          "monto": {
+            "valor": 13,
+            "unidad": "USD miles de millones",
+            "fecha": "2025 (fines)",
+            "fuente": "Yahoo Finance",
+            "url": "https://finance.yahoo.com/markets/stocks/articles/openai-closes-122bn-funding-round-093126735.html",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Valor de la participación de Microsoft (~27%) en OpenAI tras la recapitalización",
+          "monto": {
+            "valor": 135,
+            "unidad": "USD miles de millones",
+            "fecha": "2025-10-28",
+            "fuente": "TechCrunch",
+            "url": "https://techcrunch.com/2025/10/28/openai-completes-its-for-profit-recapitalization",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Posee ~0.01% de Microsoft; bajo su gestión Microsoft invierte en OpenAI desde 2019 y comprometió hasta 5 mil millones en Anthropic."
+    },
+    {
+      "nombre": "Jeque Tahnoon bin Zayed Al Nahyan",
+      "pais_iso3": "ARE",
+      "rol": "Asesor de Seguridad Nacional de EAU; presidente de MGX, G42, ADIA, ADQ e IHC",
+      "vehiculos": [
+        "MGX",
+        "G42",
+        "ADIA",
+        "ADQ",
+        "IHC"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Capital levantado por MGX para su fondo de IA ('cerca de')",
+          "monto": {
+            "valor": 50,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-06-23",
+            "fuente": "EnterpriseAM (citando a Bloomberg)",
+            "url": "https://enterpriseam.com/menaplus/2026/06/24/gulf-sovereigns-chase-ai-indian-ipos-and-korean-defense-as-private-credit-overtakes-vc/",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Compra de Aligned Data Centers por el consorcio AIP/MGX/GIP",
+          "monto": {
+            "valor": 40,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-07-22",
+            "fuente": "EnterpriseAM",
+            "url": "https://enterpriseam.com/menaplus/2026/07/22/gulf-sovereign-funds-pour-into-ai-and-infrastructure-while-trimming-non-core-assets-abroad/",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Compromiso de MGX en Stargate (según The Information)",
+          "monto": {
+            "valor": 7,
+            "unidad": "USD miles de millones",
+            "fecha": "2025",
+            "fuente": "Wikipedia (Stargate LLC)",
+            "url": "https://en.wikipedia.org/wiki/Stargate_LLC",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Sin patrimonio personal publicado en las fuentes consultadas; Wikipedia indica que gestiona una cartera de negocios de USD 1.3 billones (sin fecha), cifra de activos bajo su supervisión, no fortuna personal."
+    },
+    {
+      "nombre": "Mohammed bin Salman",
+      "pais_iso3": "SAU",
+      "rol": "Príncipe heredero de Arabia Saudita; presidente del PIF",
+      "vehiculos": [
+        "Public Investment Fund",
+        "Humain"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Inversión de Humain en xAI",
+          "monto": {
+            "valor": 3,
+            "unidad": "USD miles de millones",
+            "fecha": "2026-02-18",
+            "fuente": "eWeek",
+            "url": "https://www.eweek.com/news/saudi-arabia-invests-3b-in-xai/",
+            "nivel": "B"
+          }
+        },
+        {
+          "concepto": "Acuerdo de inversión en IA anunciado en la visita de Trump a Riad",
+          "monto": {
+            "valor": 80,
+            "unidad": "USD miles de millones",
+            "fecha": "2025-05-13",
+            "fuente": "Euronews",
+            "url": "https://euronews.com/business/2025/05/16/trump-wraps-up-gulf-tour-with-179-billion-deals-with-the-uae-centring-on-ai",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Preside el PIF (~USD 900 mil millones a may-2026) y lanzó Humain en mayo de 2025. Cifras del fondo estatal, no patrimonio personal."
+    },
+    {
+      "nombre": "Yasir Al-Rumayyan",
+      "pais_iso3": "SAU",
+      "rol": "Gobernador del PIF",
+      "vehiculos": [
+        "Public Investment Fund"
+      ],
+      "apuestas": [
+        {
+          "concepto": "Aporte del PIF al SoftBank Vision Fund 1",
+          "monto": {
+            "valor": 45,
+            "unidad": "USD miles de millones",
+            "fecha": "2017",
+            "fuente": "Wikipedia (SoftBank Vision Fund)",
+            "url": "https://en.wikipedia.org/wiki/SoftBank_Vision_Fund",
+            "nivel": "B"
+          }
+        }
+      ],
+      "nota": "Gestor del fondo soberano saudí; sin patrimonio personal publicado en las fuentes consultadas."
+    }
+  ],
+  "flujos": [
+    {
+      "concepto": "Financiamiento global de capital de riesgo (todas las industrias)",
+      "valor": 300,
+      "unidad": "USD miles de millones",
+      "periodo": "1T-2026",
+      "fuente": "Crunchbase News",
+      "url": "https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Financiamiento global de capital de riesgo destinado a IA",
+      "valor": 242,
+      "unidad": "USD miles de millones",
+      "periodo": "1T-2026",
+      "fuente": "Crunchbase News",
+      "url": "https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Participación de la IA en el capital de riesgo global (récord previo: 55% en 1T-2025)",
+      "valor": 80,
+      "unidad": "%",
+      "periodo": "1T-2026",
+      "fuente": "Crunchbase News",
+      "url": "https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Concentración: OpenAI (122), Anthropic (30), xAI (20) y Waymo (16) sumaron USD 188 mil millones, ~65% del capital de riesgo global",
+      "valor": 65,
+      "unidad": "%",
+      "periodo": "1T-2026",
+      "fuente": "Crunchbase News",
+      "url": "https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Ronda de OpenAI: capital comprometido total; de ello Amazon 50, Nvidia 30 y SoftBank 30 (corporativos y conglomerado estratégicos)",
+      "valor": 122,
+      "unidad": "USD miles de millones",
+      "periodo": "feb–abr 2026",
+      "fuente": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/openai-closes-122bn-funding-round-093126735.html",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Participación de corporaciones y CVC en operaciones de capital de riesgo de EE.UU. (por número de operaciones; mínimo en una década)",
+      "valor": 21.1,
+      "unidad": "% de operaciones",
+      "periodo": "1S-2026",
+      "fuente": "GoingVC (citando PitchBook-NVCA Venture Monitor 2T-2026)",
+      "url": "https://www.goingvc.com/post/corporate-venture-capital-and-the-concentration-of-ai-capital",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Participación de inversionistas corporativos en el VALOR de las operaciones de capital de riesgo de EE.UU. (récord; fuente secundaria, periodo no explícito)",
+      "valor": 82.6,
+      "unidad": "% del valor",
+      "periodo": "1S-2026 (aprox.)",
+      "fuente": "GoingVC (citando a Sinergia Empresarial)",
+      "url": "https://www.goingvc.com/post/corporate-venture-capital-and-the-concentration-of-ai-capital",
+      "nivel": "C"
+    },
+    {
+      "concepto": "Operaciones de CVC que involucran IA (frente a 49% en firmas de VC independientes)",
+      "valor": 63,
+      "unidad": "% de operaciones",
+      "periodo": "2026",
+      "fuente": "GoingVC (citando informe de Affinity 2026)",
+      "url": "https://www.goingvc.com/post/corporate-venture-capital-and-the-concentration-of-ai-capital",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Startups de IA líderes de EE.UU. con al menos un inversionista corporativo (dato histórico)",
+      "valor": 71,
+      "unidad": "%",
+      "periodo": "publicado feb-2021",
+      "fuente": "CSET Georgetown",
+      "url": "https://cset.georgetown.edu/publication/corporate-investors-in-top-u-s-ai-startups/",
+      "nivel": "A"
+    },
+    {
+      "concepto": "Capital de riesgo de EE.UU. captado por a16z sobre el total asignado en 2025 (declaración de la propia firma)",
+      "valor": 18,
+      "unidad": "%",
+      "periodo": "2025",
+      "fuente": "TechCrunch",
+      "url": "https://techcrunch.com/2026/01/09/the-venture-firm-that-ate-silicon-valley",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Financiamiento de fondos soberanos de Medio Oriente a empresas de IA: se multiplicó ~5 veces en un año (PitchBook)",
+      "valor": 5,
+      "unidad": "veces",
+      "periodo": "2023–2024",
+      "fuente": "CNBC (vía NBC Connecticut)",
+      "url": "https://www.nbcconnecticut.com/news/business/money-report/middle-eastern-funds-are-plowing-billions-of-dollars-into-hottest-ai-start-ups/3391547/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: compromiso de inversión de EAU en la economía estadounidense a 10 años (anunciado; no exclusivo de IA)",
+      "valor": 1400,
+      "unidad": "USD miles de millones",
+      "periodo": "anunciado may-2025",
+      "fuente": "Al-Monitor",
+      "url": "https://www.al-monitor.com/originals/2025/05/trump-caps-gulf-tour-abu-dhabi-dizzying-investment-pledges",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: acuerdos firmados con EAU durante la gira de Trump, centrados en IA (según la Casa Blanca; 'más de')",
+      "valor": 200,
+      "unidad": "USD miles de millones",
+      "periodo": "may-2025",
+      "fuente": "Al-Monitor / Euronews",
+      "url": "https://www.al-monitor.com/originals/2025/05/trump-caps-gulf-tour-abu-dhabi-dizzying-investment-pledges",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: compromiso de inversión de Arabia Saudita (anunciado; incluye ~142 mil millones en armas)",
+      "valor": 600,
+      "unidad": "USD miles de millones",
+      "periodo": "anunciado may-2025",
+      "fuente": "Al-Monitor",
+      "url": "https://www.al-monitor.com/originals/2025/05/trump-caps-gulf-tour-abu-dhabi-dizzying-investment-pledges",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: acuerdo de inversión en IA con Arabia Saudita (anunciado)",
+      "valor": 80,
+      "unidad": "USD miles de millones",
+      "periodo": "13-may-2025",
+      "fuente": "Euronews",
+      "url": "https://euronews.com/business/2025/05/16/trump-wraps-up-gulf-tour-with-179-billion-deals-with-the-uae-centring-on-ai",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: acuerdos con Qatar reportados en la gira (anunciado; dominado por pedido de aviones Boeing)",
+      "valor": 243,
+      "unidad": "USD miles de millones",
+      "periodo": "may-2025",
+      "fuente": "Euronews",
+      "url": "https://euronews.com/business/2025/05/16/trump-wraps-up-gulf-tour-with-179-billion-deals-with-the-uae-centring-on-ai",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: compromiso de QIA de invertir en EE.UU. (cifra de titular de Bloomberg; términos no detallados en el texto abierto)",
+      "valor": 500,
+      "unidad": "USD miles de millones",
+      "periodo": "reportado sep-2025",
+      "fuente": "Bloomberg (vía Bloomberg Government)",
+      "url": "https://news.bgov.com/private-equity/blue-owl-xai-deals-solidify-qatar-funds-500-billion-us-pledge",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: AI Infrastructure Partnership (MGX, BlackRock/GIP, Microsoft, Nvidia): objetivo de capital; hasta 100 mil millones con deuda (anunciado)",
+      "valor": 30,
+      "unidad": "USD miles de millones",
+      "periodo": "2024–2026",
+      "fuente": "EnterpriseAM",
+      "url": "https://enterpriseam.com/menaplus/2026/07/22/gulf-sovereign-funds-pour-into-ai-and-infrastructure-while-trimming-non-core-assets-abroad/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: adquisición de Aligned Data Centers por MGX y GIP de BlackRock (cerrada)",
+      "valor": 40,
+      "unidad": "USD miles de millones",
+      "periodo": "2025–2026",
+      "fuente": "EnterpriseAM",
+      "url": "https://enterpriseam.com/menaplus/2026/07/22/gulf-sovereign-funds-pour-into-ai-and-infrastructure-while-trimming-non-core-assets-abroad/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: capital levantado por MGX para IA ('cerca de'); planea desplegar ~10 mil millones al año",
+      "valor": 50,
+      "unidad": "USD miles de millones",
+      "periodo": "jun-2026",
+      "fuente": "EnterpriseAM (citando a Bloomberg)",
+      "url": "https://enterpriseam.com/menaplus/2026/06/24/gulf-sovereigns-chase-ai-indian-ipos-and-korean-defense-as-private-credit-overtakes-vc/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: inversión de Humain (PIF) en xAI (desembolsada)",
+      "valor": 3,
+      "unidad": "USD miles de millones",
+      "periodo": "divulgado feb-2026",
+      "fuente": "eWeek",
+      "url": "https://www.eweek.com/news/saudi-arabia-invests-3b-in-xai/",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→EE.UU.: compromiso de MGX en Stargate (según The Information)",
+      "valor": 7,
+      "unidad": "USD miles de millones",
+      "periodo": "2025",
+      "fuente": "Wikipedia (Stargate LLC)",
+      "url": "https://en.wikipedia.org/wiki/Stargate_LLC",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Golfo→Europa: compromiso de EAU/MGX para campus de centros de datos de IA en Francia (rango anunciado 30–50; se registra el mínimo)",
+      "valor": 30,
+      "unidad": "EUR miles de millones",
+      "periodo": "anunciado feb-2025",
+      "fuente": "TechCrunch",
+      "url": "https://techcrunch.com/2025/02/10/macron-unveils-a-112b-ai-investment-package-as-frances-answer-to-stargate",
+      "nivel": "B"
+    },
+    {
+      "concepto": "Europa: inversión privada en IA anunciada por Macron en la cumbre de París (incluye EAU, Brookfield 20, Bpifrance 10, Iliad 3)",
+      "valor": 109,
+      "unidad": "EUR miles de millones",
+      "periodo": "anunciado feb-2025",
+      "fuente": "TechCrunch",
+      "url": "https://techcrunch.com/2025/02/10/macron-unveils-a-112b-ai-investment-package-as-frances-answer-to-stargate",
+      "nivel": "B"
+    }
+  ]
+}

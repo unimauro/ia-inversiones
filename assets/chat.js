@@ -64,7 +64,8 @@
   function paisTxt(iso) {
     var x = IA.C[iso], L = [];
     if (!x) return null;
-    if (m(x.priv)) L.push("• Inversión privada en IA: <b>" + m(x.priv) + "</b> (" + when(x.priv) + ")");
+    if (m(x.vc)) L.push("• Capital de riesgo en IA (OCDE): <b>" + m(x.vc) + "</b> (" + when(x.vc) + ")");
+    if (m(x.priv)) L.push("• Inversión privada en IA (AI Index): <b>" + m(x.priv) + "</b> (" + when(x.priv) + ")");
     if (m(x.acum)) L.push("• Privada acumulada: <b>" + m(x.acum) + "</b> (" + when(x.acum) + ")");
     if (m(x.pub)) L.push("• Presupuesto público anual en IA: <b>" + m(x.pub) + "</b> (" + when(x.pub) + ")");
     if (num(x.gerd) != null) L.push("• I+D total: <b>" + fmt(num(x.gerd)) + "% del PIB</b> (" + when(x.gerd) + ")");
@@ -80,11 +81,11 @@
   }
   function bloqueTxt(b) {
     var t = 0, n = 0, tops = [];
-    b.isos.forEach(function (i) { var x = IA.C[i]; if (x && num(x.priv) != null) { t += toBn(x.priv); n++; tops.push(i); } });
-    tops.sort(function (a, c) { return toBn(IA.C[c].priv) - toBn(IA.C[a].priv); });
+    b.isos.forEach(function (i) { var x = IA.C[i]; if (x && num(x.vc) != null) { t += toBn(x.vc); n++; tops.push(i); } });
+    tops.sort(function (a, c) { return toBn(IA.C[c].vc) - toBn(IA.C[a].vc); });
     if (!n) return "No hay inversión privada verificada para los países de <b>" + esc(b.label) + "</b>.";
-    return "<b>" + esc(b.label) + "</b>: inversión privada en IA sumada de <b>" + money(t, "USD miles de millones") + "</b> (" + n + " de " + b.isos.length + " países con dato). Lideran: " +
-      tops.slice(0, 4).map(function (i) { return esc(nombre(i)) + " " + m(IA.C[i].priv); }).join("; ") + ".";
+    return "<b>" + esc(b.label) + "</b>: capital de riesgo en IA sumado de <b>" + money(t, "USD miles de millones") + "</b> (" + n + " de " + b.isos.length + " países con dato). Lideran: " +
+      tops.slice(0, 4).map(function (i) { return esc(nombre(i)) + " " + m(IA.C[i].vc); }).join("; ") + ".";
   }
 
   // ------- motor local -------
@@ -168,10 +169,10 @@
     var iso = paisFind(t);
     if (iso) return paisTxt(iso);
     if (/(pais|paises|quien invierte mas|ranking|lider|mundo|global|cuanto)/.test(t)) {
-      var cs2 = top(Object.keys(IA.C).map(function (i) { return IA.C[i]; }), function (x) { return num(x.priv) != null ? toBn(x.priv) : null; }, 8);
+      var cs2 = top(Object.keys(IA.C).map(function (i) { return IA.C[i]; }), function (x) { return num(x.vc) != null ? toBn(x.vc) : null; }, 8);
       var g = arr((D.privada || {}).series && D.privada.series.global), gl = g[g.length - 1];
-      return cs2.length ? (gl ? "La inversión privada mundial en IA fue de <b>" + money(num(gl), "USD miles de millones") + "</b> en " + gl.anio + ".\n" : "") + "<b>Países con más inversión privada</b>:\n" +
-        cs2.map(function (x, i) { return (i + 1) + ". " + esc(nombre(x.iso)) + " — " + m(x.priv); }).join("\n") : null;
+      return cs2.length ? (gl ? "La inversión privada mundial en IA fue de <b>" + money(num(gl), "USD miles de millones") + "</b> en " + gl.anio + ".\n" : "") + "<b>Países con más capital de riesgo en IA (OCDE, 2025)</b>:\n" +
+        cs2.map(function (x, i) { return (i + 1) + ". " + esc(nombre(x.iso)) + " — " + m(x.vc); }).join("\n") : null;
     }
     return null; // sin coincidencia → gateway
   }

@@ -26,6 +26,26 @@ for clave, archivo in BLOQUES.items():
         print("falta", archivo)
         data[clave] = {}
 
+
+def degradar(o):
+    """Cifras vistas solo en el extracto del buscador (página con 403/paywall) bajan a nivel C."""
+    if isinstance(o, dict):
+        if o.get("verificacion") == "busqueda":
+            o["nivel"] = "C"
+        for v in o.values():
+            degradar(v)
+    elif isinstance(o, list):
+        for v in o:
+            degradar(v)
+
+
+degradar(data)
+# Proyección de Gartner: la nota original no se pudo abrir (403); fuera hasta verificarla.
+if data["bigtech"].get("proyecciones"):
+    data["bigtech"]["proyecciones"] = [x for x in data["bigtech"]["proyecciones"] if "Gartner" not in x.get("concepto", "")]
+# Tipos de cambio declarados (spot del día de corte) para ordenar cifras en moneda local.
+data["fx"] = data["publica"].get("meta", {}).get("tipos_de_cambio_usd", {})
+
 salida = ROOT / "data" / "data.js"
 salida.write_text("window.DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
 print("ok", salida, salida.stat().st_size, "bytes")

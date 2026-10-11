@@ -1,0 +1,2753 @@
+{
+  "meta": {
+    "bloque": "universidades_talento",
+    "consultado": "2026-10-11",
+    "criterio_universo": "Sin índice propio: 'universidades' reúne a toda institución que aparece en el top 20 de al menos uno de cinco rankings publicados (CSRankings IA, QS DS&AI, US News IA, THE Computer Science, ShanghaiRanking GRAS IA). La unión da exactamente 50. El orden de la lista no es un ranking. qs_cs se reporta como columna adicional y no define el universo.",
+    "convenciones": "Entero = puesto exacto (los empates se guardan como entero y se señalan en 'nota' cuando la fuente los marca; US News no siempre los marca en la celda). Cadena = banda publicada. Clave ausente = la institución no figura en ese ranking. 'csrankings_conteo_ajustado' es la media geométrica del conteo ajustado que muestra CSRankings.",
+    "rankings": [
+      {
+        "clave": "csrankings",
+        "nombre": "CSRankings – áreas de IA (AI, Computer vision, Machine learning, NLP, Web & IR)",
+        "edicion": "ventana 2021–2026, consultado 11-oct-2026",
+        "url": "https://csrankings.org/#/fromyear/2021/toyear/2026/index?ai&vision&mlmining&nlp&inforet&world",
+        "metodo": "Media geométrica del conteo ajustado de papers del profesorado en conferencias top de cada área; 626 instituciones listadas."
+      },
+      {
+        "clave": "qs_ds_ai",
+        "nombre": "QS World University Rankings by Subject 2026: Data Science and Artificial Intelligence",
+        "edicion": "2026",
+        "url": "https://www.topuniversities.com/university-subject-rankings/data-science-artificial-intelligence",
+        "metodo": "Reputación académica y de empleadores más indicadores bibliométricos; 201 universidades (puestos exactos hasta el 50, luego bandas 51-100 y 101-200)."
+      },
+      {
+        "clave": "qs_cs",
+        "nombre": "QS World University Rankings by Subject 2026: Computer Science and Information Systems",
+        "edicion": "2026",
+        "url": "https://www.topuniversities.com/university-subject-rankings/computer-science-information-systems",
+        "metodo": "Reputación académica y de empleadores más indicadores bibliométricos; 849 universidades."
+      },
+      {
+        "clave": "usnews_ai",
+        "nombre": "U.S. News Best Global Universities for Artificial Intelligence",
+        "edicion": "2026-2027",
+        "url": "https://www.usnews.com/education/best-global-universities/artificial-intelligence",
+        "metodo": "Indicadores bibliométricos y de reputación de investigación en la materia; 250 universidades (111 de China, 27 de EE. UU.; ninguna latinoamericana)."
+      },
+      {
+        "clave": "the_cs",
+        "nombre": "Times Higher Education World University Rankings 2026 by Subject: Computer Science",
+        "edicion": "2026",
+        "url": "https://www.timeshighereducation.com/world-university-rankings/2026/subject-ranking/computer-science",
+        "metodo": "Docencia, entorno y calidad de investigación, industria y perspectiva internacional; 1 165 universidades."
+      },
+      {
+        "clave": "gras_ai",
+        "nombre": "ShanghaiRanking Global Ranking of Academic Subjects (GRAS): Artificial Intelligence",
+        "edicion": "2026",
+        "url": "https://www.shanghairanking.com/rankings/gras/2026/AS0229",
+        "metodo": "Indicadores bibliométricos y de premios por materia; 400 universidades (puestos exactos hasta el 50, luego bandas). Ninguna latinoamericana."
+      }
+    ],
+    "advertencias": [
+      "No se construyó un índice compuesto: cada ranking se reporta por separado y miden cosas distintas (CSRankings y US News premian volumen de publicaciones, donde dominan universidades chinas; QS y THE pesan la reputación, donde dominan EE. UU. y Reino Unido).",
+      "La lista 'universidades' tiene 50 entradas por la regla de unión de top 20, no por un orden de mérito.",
+      "CSRankings lista a la Chinese Academy of Sciences; US News, QS y GRAS evalúan a la University of Chinese Academy of Sciences. Se dejan como dos entradas sin fusionar.",
+      "KAIST no aparece en ninguna de las dos tablas QS 2026 consultadas; no se investigó el motivo.",
+      "Ciudad y coordenadas son aproximadas y de referencia para el mapa; no provienen de los rankings.",
+      "Para GRAS se usó la materia 'Artificial Intelligence' (edición 2026), no 'Computer Science & Engineering'.",
+      "AIRankings.org: el sitio cargó pero no expuso una tabla legible; omitido. Nature Index (suplemento IA): no consultado. Scimago (área Artificial Intelligence): bloqueado por verificación anti-bots; omitido. OECD.AI: no consultado.",
+      "El presupuesto de búsquedas web de la sesión se agotó a mitad del trabajo; los puntos 4 (conferencias) y 6 (inversiones universitarias) quedaron muy incompletos y solo contienen lo que se pudo abrir por URL directa.",
+      "produccion_pais: el conteo por país es de CSET/ETO vía Our World in Data (2024, publicaciones con título o resumen en inglés; un paper con autores de varios países cuenta para cada uno; 2024 puede estar incompleto por rezago). Las cuotas del AI Index 2026 usan otra base (OpenAlex, IA dentro de CS, 39.25% sin país identificado) y no son comparables con ese conteo. Hong Kong no figura como entidad separada en el conteo.",
+      "citas_pct solo existe para China y EE. UU.; el AI Index da Europa (19.5%) como región, no por país. No se obtuvo un conteo de citas por país.",
+      "top100_mas_citados: valores con nivel B fueron leídos del gráfico 1.6.11 (barras 2024); los de nivel A están además en el texto. Hong Kong (15 en 2024) aparece como área separada y no se incluyó por país.",
+      "conferencias: no se encontró un conteo publicado e independiente de papers aceptados por institución para NeurIPS/ICML/ICLR. Solo hay tres cifras autodeclaradas de NeurIPS 2025 (pisos del tipo 'más de N'), no comparables entre sí ni un top 20. Contexto: NeurIPS 2025 tuvo 21 575 envíos válidos y 5 290 aceptados (24.52%), según el blog de NeurIPS citado por una fuente secundaria.",
+      "talento: el MacroPolo Global AI Talent Tracker no se usó. La página 'archivemacropolo.org' muestra una 'versión 3.0' cuyas cifras contradicen la edición conocida y cuya autoría no se pudo verificar. Se usaron en su lugar Zeki Data y LinkedIn vía AI Index 2026. Zeki no cubre China.",
+      "talento: los datos de doctorados en IA son de EE. UU. y Canadá juntos (CRA Taulbee) y se guardan con pais_iso3 USA. El texto del AI Index dice 65% a industria y el gráfico 62.75%; se reporta el gráfico.",
+      "talento: los flujos netos Zeki solo incluyen los seis países cuyo valor 2025 está en el texto; el resto del gráfico 1.8.6 no se pudo leer sin ambigüedad.",
+      "inversiones_universitarias: solo dos entradas verificadas. Isambard-AI está en libras sin convertir. Quedaron sin verificar, entre otras, NSF AI Institutes, USC Frontiers of Computing, OpenAI NextGenAI y Ellison Institute/Oxford (páginas no accesibles).",
+      "Perú: solo PUCP (QS CS 401-450; THE CS 1001+) y UPC (QS CS 701-750; THE CS 1001+) aparecen. UNI, UNMSM, UPCH y UTEC no figuran en ninguno de los seis rankings consultados.",
+      "latam: 17 universidades ordenadas por QS Computer Science 2026 (el ranking con más cobertura regional) más las dos peruanas; ninguna latinoamericana figura en US News IA (250) ni en GRAS IA (400)."
+    ]
+  },
+  "universidades": [
+    {
+      "nombre": "Massachusetts Institute of Technology (MIT)",
+      "pais_iso3": "USA",
+      "ciudad": "Cambridge, MA",
+      "lat": 42.36,
+      "lon": -71.09,
+      "rankings": {
+        "csrankings": 37,
+        "qs_ds_ai": 1,
+        "qs_cs": 1,
+        "usnews_ai": 45,
+        "the_cs": 4,
+        "gras_ai": 36
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 20.4
+    },
+    {
+      "nombre": "Stanford University",
+      "pais_iso3": "USA",
+      "ciudad": "Stanford",
+      "lat": 37.43,
+      "lon": -122.17,
+      "rankings": {
+        "csrankings": 33,
+        "qs_ds_ai": 2,
+        "qs_cs": 2,
+        "usnews_ai": 44,
+        "the_cs": 6,
+        "gras_ai": 14
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 22.9
+    },
+    {
+      "nombre": "National University of Singapore (NUS)",
+      "pais_iso3": "SGP",
+      "ciudad": "Singapur",
+      "lat": 1.3,
+      "lon": 103.78,
+      "rankings": {
+        "csrankings": 12,
+        "qs_ds_ai": 3,
+        "qs_cs": 4,
+        "usnews_ai": 5,
+        "the_cs": 13,
+        "gras_ai": 19
+      },
+      "nota": "Empate en QS CS (=4) y THE CS (=13).",
+      "csrankings_conteo_ajustado": 47.0
+    },
+    {
+      "nombre": "Nanyang Technological University (NTU)",
+      "pais_iso3": "SGP",
+      "ciudad": "Singapur",
+      "lat": 1.35,
+      "lon": 103.68,
+      "rankings": {
+        "csrankings": 5,
+        "qs_ds_ai": 4,
+        "qs_cs": 9,
+        "usnews_ai": 2,
+        "the_cs": 16,
+        "gras_ai": 1
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 64.3
+    },
+    {
+      "nombre": "Carnegie Mellon University",
+      "pais_iso3": "USA",
+      "ciudad": "Pittsburgh",
+      "lat": 40.44,
+      "lon": -79.94,
+      "rankings": {
+        "csrankings": 10,
+        "qs_ds_ai": 5,
+        "qs_cs": 3,
+        "usnews_ai": 39,
+        "the_cs": 7,
+        "gras_ai": 10
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 50.2
+    },
+    {
+      "nombre": "University of California, Berkeley",
+      "pais_iso3": "USA",
+      "ciudad": "Berkeley",
+      "lat": 37.87,
+      "lon": -122.26,
+      "rankings": {
+        "csrankings": 43,
+        "qs_ds_ai": 6,
+        "qs_cs": 6,
+        "usnews_ai": 46,
+        "the_cs": 13,
+        "gras_ai": 26
+      },
+      "nota": "Empate en QS DS&AI (=6), US News (46) y THE CS (=13).",
+      "csrankings_conteo_ajustado": 19.3
+    },
+    {
+      "nombre": "University of Oxford",
+      "pais_iso3": "GBR",
+      "ciudad": "Oxford",
+      "lat": 51.75,
+      "lon": -1.25,
+      "rankings": {
+        "csrankings": 78,
+        "qs_ds_ai": 6,
+        "qs_cs": 4,
+        "usnews_ai": 33,
+        "the_cs": 1,
+        "gras_ai": 13
+      },
+      "nota": "Empate en QS DS&AI (=6), QS CS (=4) y CSRankings (78).",
+      "csrankings_conteo_ajustado": 13.6
+    },
+    {
+      "nombre": "Harvard University",
+      "pais_iso3": "USA",
+      "ciudad": "Cambridge, MA",
+      "lat": 42.37,
+      "lon": -71.12,
+      "rankings": {
+        "csrankings": 127,
+        "qs_ds_ai": 8,
+        "qs_cs": 7,
+        "usnews_ai": 61,
+        "the_cs": 8,
+        "gras_ai": 6
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 8.5
+    },
+    {
+      "nombre": "University of Cambridge",
+      "pais_iso3": "GBR",
+      "ciudad": "Cambridge",
+      "lat": 52.2,
+      "lon": 0.12,
+      "rankings": {
+        "csrankings": 85,
+        "qs_ds_ai": 9,
+        "qs_cs": 8,
+        "usnews_ai": 65,
+        "the_cs": 2,
+        "gras_ai": "51-75"
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 13.0
+    },
+    {
+      "nombre": "Tsinghua University",
+      "pais_iso3": "CHN",
+      "ciudad": "Pekín",
+      "lat": 40.0,
+      "lon": 116.33,
+      "rankings": {
+        "csrankings": 1,
+        "qs_ds_ai": 10,
+        "qs_cs": 11,
+        "usnews_ai": 1,
+        "the_cs": 12,
+        "gras_ai": 2
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 92.6
+    },
+    {
+      "nombre": "ETH Zurich",
+      "pais_iso3": "CHE",
+      "ciudad": "Zúrich",
+      "lat": 47.38,
+      "lon": 8.55,
+      "rankings": {
+        "csrankings": 64,
+        "qs_ds_ai": 11,
+        "qs_cs": 10,
+        "usnews_ai": 19,
+        "the_cs": 3,
+        "gras_ai": "51-75"
+      },
+      "nota": "Empate en CSRankings (64).",
+      "csrankings_conteo_ajustado": 15.5
+    },
+    {
+      "nombre": "Peking University",
+      "pais_iso3": "CHN",
+      "ciudad": "Pekín",
+      "lat": 39.99,
+      "lon": 116.31,
+      "rankings": {
+        "csrankings": 3,
+        "qs_ds_ai": 12,
+        "qs_cs": 16,
+        "usnews_ai": 4,
+        "the_cs": 10,
+        "gras_ai": 16
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 81.8
+    },
+    {
+      "nombre": "University of Toronto",
+      "pais_iso3": "CAN",
+      "ciudad": "Toronto",
+      "lat": 43.66,
+      "lon": -79.4,
+      "rankings": {
+        "csrankings": 64,
+        "qs_ds_ai": 13,
+        "qs_cs": 13,
+        "usnews_ai": 54,
+        "the_cs": 22,
+        "gras_ai": 3
+      },
+      "nota": "Empate en CSRankings (64) y US News (54).",
+      "csrankings_conteo_ajustado": 15.5
+    },
+    {
+      "nombre": "University of California, Los Angeles (UCLA)",
+      "pais_iso3": "USA",
+      "ciudad": "Los Ángeles",
+      "lat": 34.07,
+      "lon": -118.44,
+      "rankings": {
+        "csrankings": 39,
+        "qs_ds_ai": 14,
+        "qs_cs": 19,
+        "usnews_ai": 90,
+        "the_cs": 18,
+        "gras_ai": 11
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 19.7
+    },
+    {
+      "nombre": "EPFL (École Polytechnique Fédérale de Lausanne)",
+      "pais_iso3": "CHE",
+      "ciudad": "Lausana",
+      "lat": 46.52,
+      "lon": 6.57,
+      "rankings": {
+        "csrankings": 46,
+        "qs_ds_ai": 15,
+        "qs_cs": 15,
+        "usnews_ai": 116,
+        "the_cs": 21,
+        "gras_ai": "101-150"
+      },
+      "nota": "Empate en QS DS&AI (=15) y CSRankings (46).",
+      "csrankings_conteo_ajustado": 18.4
+    },
+    {
+      "nombre": "Imperial College London",
+      "pais_iso3": "GBR",
+      "ciudad": "Londres",
+      "lat": 51.5,
+      "lon": -0.18,
+      "rankings": {
+        "csrankings": 78,
+        "qs_ds_ai": 15,
+        "qs_cs": 12,
+        "usnews_ai": 56,
+        "the_cs": 9,
+        "gras_ai": "51-75"
+      },
+      "nota": "Empate en QS DS&AI (=15) y CSRankings (78).",
+      "csrankings_conteo_ajustado": 13.6
+    },
+    {
+      "nombre": "Princeton University",
+      "pais_iso3": "USA",
+      "ciudad": "Princeton",
+      "lat": 40.34,
+      "lon": -74.66,
+      "rankings": {
+        "csrankings": 90,
+        "qs_ds_ai": 17,
+        "qs_cs": 14,
+        "the_cs": 5,
+        "gras_ai": "101-150"
+      },
+      "nota": "No figura entre las 250 de US News IA.",
+      "csrankings_conteo_ajustado": 12.0
+    },
+    {
+      "nombre": "The University of Hong Kong (HKU)",
+      "pais_iso3": "HKG",
+      "ciudad": "Hong Kong",
+      "lat": 22.28,
+      "lon": 114.14,
+      "rankings": {
+        "csrankings": 31,
+        "qs_ds_ai": 18,
+        "qs_cs": 27,
+        "usnews_ai": 16,
+        "the_cs": 47,
+        "gras_ai": "51-75"
+      },
+      "nota": "Empate en QS CS (=27).",
+      "csrankings_conteo_ajustado": 24.3
+    },
+    {
+      "nombre": "University of Washington",
+      "pais_iso3": "USA",
+      "ciudad": "Seattle",
+      "lat": 47.66,
+      "lon": -122.31,
+      "rankings": {
+        "csrankings": 55,
+        "qs_ds_ai": 19,
+        "qs_cs": 22,
+        "usnews_ai": 58,
+        "the_cs": 20,
+        "gras_ai": "101-150"
+      },
+      "nota": "Empate en QS CS (=22).",
+      "csrankings_conteo_ajustado": 17.5
+    },
+    {
+      "nombre": "Yale University",
+      "pais_iso3": "USA",
+      "ciudad": "New Haven",
+      "lat": 41.31,
+      "lon": -72.93,
+      "rankings": {
+        "csrankings": 149,
+        "qs_ds_ai": 20,
+        "qs_cs": 21,
+        "the_cs": 27,
+        "gras_ai": "151-200"
+      },
+      "nota": "No figura entre las 250 de US News IA.",
+      "csrankings_conteo_ajustado": 7.1
+    },
+    {
+      "nombre": "Zhejiang University",
+      "pais_iso3": "CHN",
+      "ciudad": "Hangzhou",
+      "lat": 30.26,
+      "lon": 120.12,
+      "rankings": {
+        "csrankings": 2,
+        "qs_ds_ai": 39,
+        "qs_cs": 34,
+        "usnews_ai": 3,
+        "the_cs": 23,
+        "gras_ai": 4
+      },
+      "nota": "Empate en QS CS (=34).",
+      "csrankings_conteo_ajustado": 82.9
+    },
+    {
+      "nombre": "Shanghai Jiao Tong University",
+      "pais_iso3": "CHN",
+      "ciudad": "Shanghái",
+      "lat": 31.03,
+      "lon": 121.44,
+      "rankings": {
+        "csrankings": 4,
+        "qs_ds_ai": 23,
+        "qs_cs": 30,
+        "usnews_ai": 10,
+        "the_cs": 25,
+        "gras_ai": 20
+      },
+      "nota": "Empate en QS DS&AI (=23), US News (10) y THE CS (=25).",
+      "csrankings_conteo_ajustado": 77.4
+    },
+    {
+      "nombre": "Nanjing University",
+      "pais_iso3": "CHN",
+      "ciudad": "Nankín",
+      "lat": 32.06,
+      "lon": 118.78,
+      "rankings": {
+        "csrankings": 6,
+        "qs_cs": 80,
+        "usnews_ai": 38,
+        "the_cs": 60,
+        "gras_ai": "51-75"
+      },
+      "nota": "No figura en QS DS&AI 2026. Empate en QS CS (=80).",
+      "csrankings_conteo_ajustado": 63.7
+    },
+    {
+      "nombre": "University of Science and Technology of China (USTC)",
+      "pais_iso3": "CHN",
+      "ciudad": "Hefei",
+      "lat": 31.84,
+      "lon": 117.26,
+      "rankings": {
+        "csrankings": 7,
+        "qs_ds_ai": "51-100",
+        "qs_cs": 82,
+        "usnews_ai": 7,
+        "the_cs": 49,
+        "gras_ai": 29
+      },
+      "nota": "Empate en QS CS (=82).",
+      "csrankings_conteo_ajustado": 61.0
+    },
+    {
+      "nombre": "Chinese Academy of Sciences (CAS)",
+      "pais_iso3": "CHN",
+      "ciudad": "Pekín",
+      "lat": 39.98,
+      "lon": 116.32,
+      "rankings": {
+        "csrankings": 8
+      },
+      "nota": "Solo CSRankings la lista como institución; US News, QS y GRAS evalúan a la University of Chinese Academy of Sciences (entrada aparte).",
+      "csrankings_conteo_ajustado": 53.3
+    },
+    {
+      "nombre": "KAIST",
+      "pais_iso3": "KOR",
+      "ciudad": "Daejeon",
+      "lat": 36.37,
+      "lon": 127.36,
+      "rankings": {
+        "csrankings": 9,
+        "usnews_ai": 82,
+        "the_cs": 32,
+        "gras_ai": 47
+      },
+      "nota": "No aparece en las tablas QS 2026 consultadas (ni DS&AI ni Computer Science).",
+      "csrankings_conteo_ajustado": 50.6
+    },
+    {
+      "nombre": "Harbin Institute of Technology",
+      "pais_iso3": "CHN",
+      "ciudad": "Harbin",
+      "lat": 45.74,
+      "lon": 126.63,
+      "rankings": {
+        "csrankings": 11,
+        "qs_ds_ai": "51-100",
+        "qs_cs": 85,
+        "usnews_ai": 12,
+        "the_cs": 89,
+        "gras_ai": 5
+      },
+      "nota": "Empate en THE CS (=89).",
+      "csrankings_conteo_ajustado": 48.9
+    },
+    {
+      "nombre": "Renmin University of China",
+      "pais_iso3": "CHN",
+      "ciudad": "Pekín",
+      "lat": 39.97,
+      "lon": 116.31,
+      "rankings": {
+        "csrankings": 13,
+        "qs_cs": "201-250",
+        "usnews_ai": 114,
+        "gras_ai": "151-200"
+      },
+      "nota": "No figura en THE CS 2026 ni en QS DS&AI 2026.",
+      "csrankings_conteo_ajustado": 45.4
+    },
+    {
+      "nombre": "Fudan University",
+      "pais_iso3": "CHN",
+      "ciudad": "Shanghái",
+      "lat": 31.3,
+      "lon": 121.5,
+      "rankings": {
+        "csrankings": 14,
+        "qs_ds_ai": 37,
+        "qs_cs": 49,
+        "usnews_ai": 41,
+        "the_cs": 46,
+        "gras_ai": 50
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 45.1
+    },
+    {
+      "nombre": "The Hong Kong University of Science and Technology (HKUST)",
+      "pais_iso3": "HKG",
+      "ciudad": "Hong Kong",
+      "lat": 22.34,
+      "lon": 114.26,
+      "rankings": {
+        "csrankings": 15,
+        "qs_ds_ai": 25,
+        "qs_cs": 33,
+        "usnews_ai": 25,
+        "the_cs": 25,
+        "gras_ai": 21
+      },
+      "nota": "Empate en THE CS (=25).",
+      "csrankings_conteo_ajustado": 44.6
+    },
+    {
+      "nombre": "University of Illinois Urbana-Champaign",
+      "pais_iso3": "USA",
+      "ciudad": "Urbana-Champaign",
+      "lat": 40.1,
+      "lon": -88.23,
+      "rankings": {
+        "csrankings": 16,
+        "qs_ds_ai": 42,
+        "qs_cs": 32,
+        "usnews_ai": 78,
+        "the_cs": 19,
+        "gras_ai": 44
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 44.1
+    },
+    {
+      "nombre": "Seoul National University",
+      "pais_iso3": "KOR",
+      "ciudad": "Seúl",
+      "lat": 37.46,
+      "lon": 126.95,
+      "rankings": {
+        "csrankings": 17,
+        "qs_ds_ai": 29,
+        "qs_cs": 47,
+        "usnews_ai": 183,
+        "the_cs": 44,
+        "gras_ai": "51-75"
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 36.1
+    },
+    {
+      "nombre": "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)",
+      "pais_iso3": "ARE",
+      "ciudad": "Abu Dabi",
+      "lat": 24.43,
+      "lon": 54.62,
+      "rankings": {
+        "csrankings": 18,
+        "qs_cs": "751-850",
+        "gras_ai": 46
+      },
+      "nota": "No figura en QS DS&AI, US News IA ni THE CS.",
+      "csrankings_conteo_ajustado": 33.5
+    },
+    {
+      "nombre": "The Chinese University of Hong Kong (CUHK)",
+      "pais_iso3": "HKG",
+      "ciudad": "Hong Kong",
+      "lat": 22.42,
+      "lon": 114.21,
+      "rankings": {
+        "csrankings": 19,
+        "qs_ds_ai": 28,
+        "qs_cs": 37,
+        "usnews_ai": 9,
+        "the_cs": 34,
+        "gras_ai": 31
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 31.4
+    },
+    {
+      "nombre": "Wuhan University",
+      "pais_iso3": "CHN",
+      "ciudad": "Wuhan",
+      "lat": 30.54,
+      "lon": 114.36,
+      "rankings": {
+        "csrankings": 20,
+        "qs_cs": 146,
+        "usnews_ai": 8,
+        "the_cs": 97,
+        "gras_ai": 25
+      },
+      "nota": "No figura en QS DS&AI 2026.",
+      "csrankings_conteo_ajustado": 30.8
+    },
+    {
+      "nombre": "University of Electronic Science and Technology of China (UESTC)",
+      "pais_iso3": "CHN",
+      "ciudad": "Chengdu",
+      "lat": 30.75,
+      "lon": 103.93,
+      "rankings": {
+        "csrankings": 25,
+        "qs_cs": 178,
+        "usnews_ai": 6,
+        "the_cs": "101-125",
+        "gras_ai": 30
+      },
+      "nota": "Empate en QS CS (=178).",
+      "csrankings_conteo_ajustado": 27.2
+    },
+    {
+      "nombre": "Huazhong University of Science and Technology (HUST)",
+      "pais_iso3": "CHN",
+      "ciudad": "Wuhan",
+      "lat": 30.51,
+      "lon": 114.41,
+      "rankings": {
+        "csrankings": 38,
+        "qs_cs": 158,
+        "usnews_ai": 10,
+        "the_cs": "126-150",
+        "gras_ai": 7
+      },
+      "nota": "Empate en US News (10) y QS CS (=158).",
+      "csrankings_conteo_ajustado": 20.0
+    },
+    {
+      "nombre": "Northwestern Polytechnical University",
+      "pais_iso3": "CHN",
+      "ciudad": "Xi'an",
+      "lat": 34.24,
+      "lon": 108.91,
+      "rankings": {
+        "csrankings": 146,
+        "qs_cs": "301-350",
+        "usnews_ai": 13,
+        "the_cs": "151-175",
+        "gras_ai": 28
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 7.3
+    },
+    {
+      "nombre": "Beihang University",
+      "pais_iso3": "CHN",
+      "ciudad": "Pekín",
+      "lat": 39.98,
+      "lon": 116.35,
+      "rankings": {
+        "csrankings": 21,
+        "qs_cs": 154,
+        "usnews_ai": 14,
+        "the_cs": 100,
+        "gras_ai": 17
+      },
+      "nota": "Empate en QS CS (=154).",
+      "csrankings_conteo_ajustado": 30.5
+    },
+    {
+      "nombre": "University of Technology Sydney (UTS)",
+      "pais_iso3": "AUS",
+      "ciudad": "Sídney",
+      "lat": -33.88,
+      "lon": 151.2,
+      "rankings": {
+        "csrankings": 139,
+        "qs_ds_ai": 45,
+        "qs_cs": 55,
+        "usnews_ai": 15,
+        "the_cs": 92,
+        "gras_ai": 18
+      },
+      "nota": "Empate en QS DS&AI (=45).",
+      "csrankings_conteo_ajustado": 7.6
+    },
+    {
+      "nombre": "University of Chinese Academy of Sciences (UCAS)",
+      "pais_iso3": "CHN",
+      "ciudad": "Pekín",
+      "lat": 39.91,
+      "lon": 116.25,
+      "rankings": {
+        "qs_cs": "201-250",
+        "usnews_ai": 17
+      },
+      "nota": "CSRankings lista a la Chinese Academy of Sciences (entrada aparte), no a UCAS."
+    },
+    {
+      "nombre": "Nanjing University of Science and Technology",
+      "pais_iso3": "CHN",
+      "ciudad": "Nankín",
+      "lat": 32.03,
+      "lon": 118.86,
+      "rankings": {
+        "qs_cs": "501-550",
+        "usnews_ai": 18,
+        "the_cs": "301-400",
+        "gras_ai": 39
+      },
+      "nota": "No figura en CSRankings."
+    },
+    {
+      "nombre": "Xidian University",
+      "pais_iso3": "CHN",
+      "ciudad": "Xi'an",
+      "lat": 34.12,
+      "lon": 108.84,
+      "rankings": {
+        "csrankings": 83,
+        "qs_cs": "401-450",
+        "usnews_ai": 20,
+        "the_cs": "176-200",
+        "gras_ai": 43
+      },
+      "nota": "Empate en CSRankings (83).",
+      "csrankings_conteo_ajustado": 13.1
+    },
+    {
+      "nombre": "California Institute of Technology (Caltech)",
+      "pais_iso3": "USA",
+      "ciudad": "Pasadena",
+      "lat": 34.14,
+      "lon": -118.13,
+      "rankings": {
+        "csrankings": 204,
+        "qs_cs": 40,
+        "the_cs": 11,
+        "gras_ai": "201-300"
+      },
+      "nota": "No figura en QS DS&AI 2026 ni en US News IA.",
+      "csrankings_conteo_ajustado": 4.3
+    },
+    {
+      "nombre": "Technical University of Munich (TUM)",
+      "pais_iso3": "DEU",
+      "ciudad": "Múnich",
+      "lat": 48.15,
+      "lon": 11.57,
+      "rankings": {
+        "csrankings": 56,
+        "qs_ds_ai": 26,
+        "qs_cs": 26,
+        "usnews_ai": 51,
+        "the_cs": 15,
+        "gras_ai": "51-75"
+      },
+      "nota": "Empate en QS DS&AI (=26).",
+      "csrankings_conteo_ajustado": 17.2
+    },
+    {
+      "nombre": "Cornell University",
+      "pais_iso3": "USA",
+      "ciudad": "Ithaca",
+      "lat": 42.45,
+      "lon": -76.48,
+      "rankings": {
+        "csrankings": 30,
+        "qs_cs": 17,
+        "usnews_ai": 130,
+        "the_cs": 17,
+        "gras_ai": "76-100"
+      },
+      "nota": "No figura en QS DS&AI 2026.",
+      "csrankings_conteo_ajustado": 24.5
+    },
+    {
+      "nombre": "The Hong Kong Polytechnic University",
+      "pais_iso3": "HKG",
+      "ciudad": "Hong Kong",
+      "lat": 22.3,
+      "lon": 114.18,
+      "rankings": {
+        "csrankings": 32,
+        "qs_ds_ai": "51-100",
+        "qs_cs": 70,
+        "usnews_ai": 23,
+        "the_cs": 70,
+        "gras_ai": 15
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 23.5
+    },
+    {
+      "nombre": "University of Alberta",
+      "pais_iso3": "CAN",
+      "ciudad": "Edmonton",
+      "lat": 53.52,
+      "lon": -113.53,
+      "rankings": {
+        "csrankings": 115,
+        "qs_ds_ai": "101-200",
+        "qs_cs": 103,
+        "usnews_ai": 60,
+        "the_cs": 77,
+        "gras_ai": 8
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 9.4
+    },
+    {
+      "nombre": "Université de Montréal",
+      "pais_iso3": "CAN",
+      "ciudad": "Montreal",
+      "lat": 45.5,
+      "lon": -73.62,
+      "rankings": {
+        "csrankings": 122,
+        "qs_ds_ai": "51-100",
+        "qs_cs": 56,
+        "usnews_ai": 160,
+        "the_cs": 52,
+        "gras_ai": 9
+      },
+      "nota": "Empate en QS CS (=56).",
+      "csrankings_conteo_ajustado": 8.7
+    },
+    {
+      "nombre": "Southeast University",
+      "pais_iso3": "CHN",
+      "ciudad": "Nankín",
+      "lat": 32.06,
+      "lon": 118.79,
+      "rankings": {
+        "csrankings": 29,
+        "qs_cs": "251-300",
+        "usnews_ai": 27,
+        "the_cs": "151-175",
+        "gras_ai": 12
+      },
+      "nota": "No figura en QS DS&AI 2026.",
+      "csrankings_conteo_ajustado": 24.8
+    }
+  ],
+  "latam": [
+    {
+      "nombre": "Tecnológico de Monterrey",
+      "pais_iso3": "MEX",
+      "ciudad": "Monterrey",
+      "lat": 25.65,
+      "lon": -100.29,
+      "rankings": {
+        "qs_ds_ai": "51-100",
+        "qs_cs": 60,
+        "the_cs": "401-500"
+      },
+      "nota": "",
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidade de São Paulo (USP)",
+      "pais_iso3": "BRA",
+      "ciudad": "São Paulo",
+      "lat": -23.56,
+      "lon": -46.73,
+      "rankings": {
+        "csrankings": 514,
+        "qs_ds_ai": "51-100",
+        "qs_cs": 71,
+        "the_cs": "301-400"
+      },
+      "nota": "CSRankings lista aparte a USP-ICMC (São Carlos), también en el puesto 514 (1.2).",
+      "csrankings_conteo_ajustado": 1.2,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidad Nacional Autónoma de México (UNAM)",
+      "pais_iso3": "MEX",
+      "ciudad": "Ciudad de México",
+      "lat": 19.33,
+      "lon": -99.19,
+      "rankings": {
+        "qs_ds_ai": "51-100",
+        "qs_cs": 102,
+        "the_cs": "801-1000"
+      },
+      "nota": "",
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidade Estadual de Campinas (Unicamp)",
+      "pais_iso3": "BRA",
+      "ciudad": "Campinas",
+      "lat": -22.82,
+      "lon": -47.07,
+      "rankings": {
+        "csrankings": 552,
+        "qs_ds_ai": "101-200",
+        "qs_cs": 105,
+        "the_cs": "301-400"
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 1.1,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidad de Chile",
+      "pais_iso3": "CHL",
+      "ciudad": "Santiago",
+      "lat": -33.46,
+      "lon": -70.66,
+      "rankings": {
+        "csrankings": 552,
+        "qs_ds_ai": "101-200",
+        "qs_cs": 118,
+        "the_cs": "501-600"
+      },
+      "nota": "Empate en QS CS (=118).",
+      "csrankings_conteo_ajustado": 1.1,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Pontificia Universidad Católica de Chile",
+      "pais_iso3": "CHL",
+      "ciudad": "Santiago",
+      "lat": -33.5,
+      "lon": -70.61,
+      "rankings": {
+        "csrankings": 311,
+        "qs_ds_ai": "101-200",
+        "qs_cs": 139,
+        "the_cs": "401-500"
+      },
+      "nota": "Mejor latinoamericana en CSRankings (área IA, 2021-2026).",
+      "csrankings_conteo_ajustado": 2.4,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidad de los Andes",
+      "pais_iso3": "COL",
+      "ciudad": "Bogotá",
+      "lat": 4.6,
+      "lon": -74.07,
+      "rankings": {
+        "csrankings": 552,
+        "qs_cs": 160
+      },
+      "nota": "Empate en QS CS (=160). No figura en THE CS 2026.",
+      "csrankings_conteo_ajustado": 1.1,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidade Federal do Rio de Janeiro (UFRJ)",
+      "pais_iso3": "BRA",
+      "ciudad": "Río de Janeiro",
+      "lat": -22.86,
+      "lon": -43.23,
+      "rankings": {
+        "csrankings": 552,
+        "qs_cs": 185,
+        "the_cs": "501-600"
+      },
+      "nota": "Empate en QS CS (=185).",
+      "csrankings_conteo_ajustado": 1.1,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidade Federal de Minas Gerais (UFMG)",
+      "pais_iso3": "BRA",
+      "ciudad": "Belo Horizonte",
+      "lat": -19.87,
+      "lon": -43.97,
+      "rankings": {
+        "csrankings": 339,
+        "qs_cs": "201-250",
+        "the_cs": "601-800"
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 2.1,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Instituto Politécnico Nacional (IPN)",
+      "pais_iso3": "MEX",
+      "ciudad": "Ciudad de México",
+      "lat": 19.5,
+      "lon": -99.14,
+      "rankings": {
+        "qs_cs": "201-250"
+      },
+      "nota": "",
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidad Nacional de Colombia",
+      "pais_iso3": "COL",
+      "ciudad": "Bogotá",
+      "lat": 4.64,
+      "lon": -74.08,
+      "rankings": {
+        "qs_cs": "201-250",
+        "the_cs": "1001+"
+      },
+      "nota": "",
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidad de Buenos Aires (UBA)",
+      "pais_iso3": "ARG",
+      "ciudad": "Buenos Aires",
+      "lat": -34.6,
+      "lon": -58.37,
+      "rankings": {
+        "csrankings": 603,
+        "qs_cs": "201-250"
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 1.0,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio)",
+      "pais_iso3": "BRA",
+      "ciudad": "Río de Janeiro",
+      "lat": -22.98,
+      "lon": -43.23,
+      "rankings": {
+        "csrankings": 404,
+        "qs_cs": "251-300",
+        "the_cs": "401-500"
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 1.6,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Escuela Superior Politécnica del Litoral (ESPOL)",
+      "pais_iso3": "ECU",
+      "ciudad": "Guayaquil",
+      "lat": -2.15,
+      "lon": -79.96,
+      "rankings": {
+        "qs_cs": "301-350",
+        "the_cs": "801-1000"
+      },
+      "nota": "",
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Pontificia Universidad Javeriana",
+      "pais_iso3": "COL",
+      "ciudad": "Bogotá",
+      "lat": 4.63,
+      "lon": -74.06,
+      "rankings": {
+        "qs_ds_ai": "101-200",
+        "qs_cs": "301-350"
+      },
+      "nota": "",
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidade Federal do Rio Grande do Sul (UFRGS)",
+      "pais_iso3": "BRA",
+      "ciudad": "Porto Alegre",
+      "lat": -30.03,
+      "lon": -51.22,
+      "rankings": {
+        "csrankings": 429,
+        "qs_cs": "351-400",
+        "the_cs": "501-600"
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 1.5,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidad Nacional de Córdoba",
+      "pais_iso3": "ARG",
+      "ciudad": "Córdoba",
+      "lat": -31.44,
+      "lon": -64.19,
+      "rankings": {
+        "csrankings": 452,
+        "qs_cs": "701-750"
+      },
+      "nota": "",
+      "csrankings_conteo_ajustado": 1.4,
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Pontificia Universidad Católica del Perú (PUCP)",
+      "pais_iso3": "PER",
+      "ciudad": "Lima",
+      "lat": -12.07,
+      "lon": -77.08,
+      "rankings": {
+        "qs_cs": "401-450",
+        "the_cs": "1001+"
+      },
+      "nota": "Única peruana con banda en QS Computer Science 2026 dentro del top 500. No figura en QS DS&AI, US News IA, GRAS IA ni CSRankings.",
+      "region": "LATAM"
+    },
+    {
+      "nombre": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+      "pais_iso3": "PER",
+      "ciudad": "Lima",
+      "lat": -12.1,
+      "lon": -76.96,
+      "rankings": {
+        "qs_cs": "701-750",
+        "the_cs": "1001+"
+      },
+      "nota": "No figura en QS DS&AI, US News IA, GRAS IA ni CSRankings.",
+      "region": "LATAM"
+    }
+  ],
+  "produccion_pais": [
+    {
+      "iso3": "CHN",
+      "nombre_es": "China",
+      "puesto": 1,
+      "publicaciones": {
+        "valor": 116434,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      },
+      "citas_pct": {
+        "valor": 20.6,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.7 (cuota de citas de publicaciones de IA en CS, OpenAlex)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "A"
+      },
+      "publicaciones_pct_aiindex": {
+        "valor": 17.76,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.6 (cuota de publicaciones de IA en CS; 39.25% sin país identificado)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "A"
+      },
+      "top100_mas_citados": {
+        "valor": 41,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 más citadas)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "IND",
+      "nombre_es": "India",
+      "puesto": 2,
+      "publicaciones": {
+        "valor": 52054,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      },
+      "publicaciones_pct_aiindex": {
+        "valor": 7.55,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.6 (cuota de publicaciones de IA en CS; 39.25% sin país identificado)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "A"
+      },
+      "top100_mas_citados": {
+        "valor": 4,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 más citadas)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "B"
+      }
+    },
+    {
+      "iso3": "USA",
+      "nombre_es": "Estados Unidos",
+      "puesto": 3,
+      "publicaciones": {
+        "valor": 50810,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      },
+      "citas_pct": {
+        "valor": 12.6,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.7 (cuota de citas de publicaciones de IA en CS, OpenAlex)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "A"
+      },
+      "publicaciones_pct_aiindex": {
+        "valor": 7.29,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.6 (cuota de publicaciones de IA en CS; 39.25% sin país identificado)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "A"
+      },
+      "top100_mas_citados": {
+        "valor": 46,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 más citadas)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "puesto": 4,
+      "publicaciones": {
+        "valor": 15494,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      },
+      "top100_mas_citados": {
+        "valor": 9,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 más citadas)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "B"
+      }
+    },
+    {
+      "iso3": "DEU",
+      "nombre_es": "Alemania",
+      "puesto": 5,
+      "publicaciones": {
+        "valor": 12793,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      },
+      "top100_mas_citados": {
+        "valor": 8,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 más citadas)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "B"
+      }
+    },
+    {
+      "iso3": "JPN",
+      "nombre_es": "Japón",
+      "puesto": 6,
+      "publicaciones": {
+        "valor": 10873,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "KOR",
+      "nombre_es": "Corea del Sur",
+      "puesto": 7,
+      "publicaciones": {
+        "valor": 10265,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "ITA",
+      "nombre_es": "Italia",
+      "puesto": 8,
+      "publicaciones": {
+        "valor": 9123,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "CAN",
+      "nombre_es": "Canadá",
+      "puesto": 9,
+      "publicaciones": {
+        "valor": 8444,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      },
+      "top100_mas_citados": {
+        "valor": 5,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 más citadas)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "B"
+      }
+    },
+    {
+      "iso3": "FRA",
+      "nombre_es": "Francia",
+      "puesto": 10,
+      "publicaciones": {
+        "valor": 7681,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "AUS",
+      "nombre_es": "Australia",
+      "puesto": 11,
+      "publicaciones": {
+        "valor": 7605,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      },
+      "top100_mas_citados": {
+        "valor": 14,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 más citadas)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "IDN",
+      "nombre_es": "Indonesia",
+      "puesto": 12,
+      "publicaciones": {
+        "valor": 6750,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "ESP",
+      "nombre_es": "España",
+      "puesto": 13,
+      "publicaciones": {
+        "valor": 5552,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "SAU",
+      "nombre_es": "Arabia Saudita",
+      "puesto": 14,
+      "publicaciones": {
+        "valor": 5488,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "TUR",
+      "nombre_es": "Turquía",
+      "puesto": 15,
+      "publicaciones": {
+        "valor": 4962,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "SGP",
+      "nombre_es": "Singapur",
+      "puesto": 16,
+      "publicaciones": {
+        "valor": 4463,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      },
+      "top100_mas_citados": {
+        "valor": 6,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 más citadas)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "B"
+      }
+    },
+    {
+      "iso3": "MYS",
+      "nombre_es": "Malasia",
+      "puesto": 17,
+      "publicaciones": {
+        "valor": 4243,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "TWN",
+      "nombre_es": "Taiwán",
+      "puesto": 18,
+      "publicaciones": {
+        "valor": 4012,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "NLD",
+      "nombre_es": "Países Bajos",
+      "puesto": 19,
+      "publicaciones": {
+        "valor": 3978,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "PAK",
+      "nombre_es": "Pakistán",
+      "puesto": 20,
+      "publicaciones": {
+        "valor": 3469,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "RUS",
+      "nombre_es": "Rusia",
+      "puesto": 21,
+      "publicaciones": {
+        "valor": 3419,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "CHE",
+      "nombre_es": "Suiza",
+      "puesto": 22,
+      "publicaciones": {
+        "valor": 3310,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      },
+      "top100_mas_citados": {
+        "valor": 7,
+        "anio": 2024,
+        "fuente": "AI Index 2026, cap. 1, Fig. 1.6.11 (n.º de publicaciones entre las 100 más citadas)",
+        "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+        "nivel": "B"
+      }
+    },
+    {
+      "iso3": "BRA",
+      "nombre_es": "Brasil",
+      "puesto": 23,
+      "publicaciones": {
+        "valor": 3209,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "BGD",
+      "nombre_es": "Bangladés",
+      "puesto": 24,
+      "publicaciones": {
+        "valor": 3185,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "IRN",
+      "nombre_es": "Irán",
+      "puesto": 25,
+      "publicaciones": {
+        "valor": 2968,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "MEX",
+      "nombre_es": "México",
+      "puesto": null,
+      "fuera_top25": true,
+      "publicaciones": {
+        "valor": 1456,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "COL",
+      "nombre_es": "Colombia",
+      "puesto": null,
+      "fuera_top25": true,
+      "publicaciones": {
+        "valor": 685,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "CHL",
+      "nombre_es": "Chile",
+      "puesto": null,
+      "fuera_top25": true,
+      "publicaciones": {
+        "valor": 577,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "PER",
+      "nombre_es": "Perú",
+      "puesto": null,
+      "fuera_top25": true,
+      "publicaciones": {
+        "valor": 471,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "ECU",
+      "nombre_es": "Ecuador",
+      "puesto": null,
+      "fuera_top25": true,
+      "publicaciones": {
+        "valor": 454,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    },
+    {
+      "iso3": "ARG",
+      "nombre_es": "Argentina",
+      "puesto": null,
+      "fuera_top25": true,
+      "publicaciones": {
+        "valor": 289,
+        "anio": 2024,
+        "fuente": "CSET Country Activity Tracker (vía Our World in Data, actualizado 27-abr-2026)",
+        "url": "https://ourworldindata.org/grapher/annual-scholarly-publications-on-artificial-intelligence",
+        "nivel": "A"
+      }
+    }
+  ],
+  "conferencias": [
+    {
+      "institucion": "Google (Google Research / DeepMind)",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 175,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Google Research, 'Google at NeurIPS 2025' (autodeclarado: 'más de 175 papers aceptados')",
+      "url": "https://research.google/conferences-and-events/google-at-neurips-2025/",
+      "nota": "Cifra mínima autodeclarada; no comparable con conteos independientes."
+    },
+    {
+      "institucion": "Microsoft",
+      "tipo": "empresa",
+      "pais_iso3": "USA",
+      "papers": 150,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Microsoft Research, 'Microsoft at NeurIPS 2025' (autodeclarado: 'más de 150 papers aceptados')",
+      "url": "https://www.microsoft.com/en-us/research/event/neurips-2025/",
+      "nota": "Cifra mínima autodeclarada; no comparable con conteos independientes."
+    },
+    {
+      "institucion": "Universität Tübingen – Cluster of Excellence 'Machine Learning for Science'",
+      "tipo": "universidad",
+      "pais_iso3": "DEU",
+      "papers": 39,
+      "conferencia": "NeurIPS 2025",
+      "fuente": "Universidad de Tübingen, nota del clúster (autodeclarado)",
+      "url": "https://uni-tuebingen.de/en/research/core-research/cluster-of-excellence-machine-learning/home/home-newsfullview/article/39-papers-at-neurips-2025-accepted",
+      "nota": "Solo el clúster, no toda la universidad."
+    }
+  ],
+  "talento": [
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "USA",
+      "valor": 220520,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "IND",
+      "valor": 50460,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "DEU",
+      "valor": 48520,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "GBR",
+      "valor": 34370,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "CAN",
+      "valor": 31450,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "FRA",
+      "valor": 18820,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "AUS",
+      "valor": 14540,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "NLD",
+      "valor": 13960,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "ITA",
+      "valor": 13230,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "BRA",
+      "valor": 11100,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "CHE",
+      "valor": 9980,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "ESP",
+      "valor": 9170,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "SWE",
+      "valor": 8520,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "SGP",
+      "valor": 6610,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "JPN",
+      "valor": 6280,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "KOR",
+      "valor": 5960,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "ISR",
+      "valor": 5190,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "FIN",
+      "valor": 4380,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "DNK",
+      "valor": 3900,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "SAU",
+      "valor": 3430,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA (stock)",
+      "pais_iso3": "ARE",
+      "valor": 3090,
+      "unidad": "personas",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.1 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "CHE",
+      "valor": 110.45,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "SGP",
+      "valor": 109.51,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "SWE",
+      "valor": 80.63,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "FIN",
+      "valor": 77.61,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "NLD",
+      "valor": 77.61,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "CAN",
+      "valor": 76.16,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "DNK",
+      "valor": 65.25,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "USA",
+      "valor": 64.84,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "DEU",
+      "valor": 58.1,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "AUS",
+      "valor": 53.43,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "ISR",
+      "valor": 52.01,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "GBR",
+      "valor": 49.64,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "ARE",
+      "valor": 28.38,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "FRA",
+      "valor": 27.46,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Autores e inventores top de IA por 100 000 habitantes",
+      "pais_iso3": "ITA",
+      "valor": 22.43,
+      "unidad": "por 100 000 hab.",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, Fig. 1.8.2 (Zeki Data; no cubre China)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Flujo neto de autores e inventores top de IA (entradas menos salidas, media móvil 12 meses)",
+      "pais_iso3": "USA",
+      "valor": 26.0,
+      "unidad": "personas (media móvil 12 meses)",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, sección 1.8 Mobility y Fig. 1.8.6 (Zeki Data)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Flujo neto de autores e inventores top de IA (entradas menos salidas, media móvil 12 meses)",
+      "pais_iso3": "SAU",
+      "valor": 3.1,
+      "unidad": "personas (media móvil 12 meses)",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, sección 1.8 Mobility y Fig. 1.8.6 (Zeki Data)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Flujo neto de autores e inventores top de IA (entradas menos salidas, media móvil 12 meses)",
+      "pais_iso3": "DNK",
+      "valor": 2.1,
+      "unidad": "personas (media móvil 12 meses)",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, sección 1.8 Mobility y Fig. 1.8.6 (Zeki Data)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Flujo neto de autores e inventores top de IA (entradas menos salidas, media móvil 12 meses)",
+      "pais_iso3": "DEU",
+      "valor": -2.4,
+      "unidad": "personas (media móvil 12 meses)",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, sección 1.8 Mobility y Fig. 1.8.6 (Zeki Data)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Flujo neto de autores e inventores top de IA (entradas menos salidas, media móvil 12 meses)",
+      "pais_iso3": "CAN",
+      "valor": -7.1,
+      "unidad": "personas (media móvil 12 meses)",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, sección 1.8 Mobility y Fig. 1.8.6 (Zeki Data)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Flujo neto de autores e inventores top de IA (entradas menos salidas, media móvil 12 meses)",
+      "pais_iso3": "IND",
+      "valor": -16.9,
+      "unidad": "personas (media móvil 12 meses)",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, sección 1.8 Mobility y Fig. 1.8.6 (Zeki Data)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Flujo neto de autores e inventores top de IA: máximo histórico de EE. UU.",
+      "pais_iso3": "USA",
+      "valor": 324.6,
+      "unidad": "personas (media móvil 12 meses)",
+      "anio": 2022,
+      "fuente": "AI Index 2026, cap. 1, sección 1.8 Mobility y Fig. 1.8.6 (Zeki Data)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A",
+      "nota": "Cayó a 26.0 en 2025; el informe resume: −89% desde 2017 y −80% en el último año en investigadores/desarrolladores de IA que se mudan a EE. UU."
+    },
+    {
+      "indicador": "Caída de investigadores y desarrolladores de IA que se mudan a EE. UU. desde 2017",
+      "pais_iso3": "USA",
+      "valor": -89,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 1, hallazgo 9",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_1_research_development.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "ISR",
+      "valor": 2.1,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "SGP",
+      "valor": 1.82,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "LUX",
+      "valor": 1.6,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "IRL",
+      "valor": 1.31,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "CHE",
+      "valor": 1.25,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "FIN",
+      "valor": 1.23,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "EST",
+      "valor": 1.15,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "DEU",
+      "valor": 1.15,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "LTU",
+      "valor": 1.1,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "NLD",
+      "valor": 1.05,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "KOR",
+      "valor": 1.05,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "IND",
+      "valor": 1.01,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "CAN",
+      "valor": 1.01,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "POL",
+      "valor": 1.0,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Concentración de talento de IA (% de miembros de LinkedIn)",
+      "pais_iso3": "CYP",
+      "valor": 0.95,
+      "unidad": "%",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.21 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "ARE",
+      "valor": 121,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "IND",
+      "valor": 120,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "SAU",
+      "valor": 113,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "CYP",
+      "valor": 112,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "PRT",
+      "valor": 111,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "IDN",
+      "valor": 108,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "BRA",
+      "valor": 107,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "ISL",
+      "valor": 93,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "URY",
+      "valor": 90,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "DNK",
+      "valor": 89,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "CRI",
+      "valor": 89,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "CHL",
+      "valor": 82,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "ESP",
+      "valor": 77,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "ARG",
+      "valor": 76,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Crecimiento de la concentración de talento de IA, 2019 vs. 2025",
+      "pais_iso3": "TUR",
+      "valor": 75,
+      "unidad": "% de variación",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.22 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "LUX",
+      "valor": 5.23,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "ARE",
+      "valor": 4.4,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "AUS",
+      "valor": 1.79,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "SAU",
+      "valor": 1.77,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "CHE",
+      "valor": 1.72,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "SGP",
+      "valor": 1.36,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "CAN",
+      "valor": 1.23,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "USA",
+      "valor": 1.22,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "HKG",
+      "valor": 1.14,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "GBR",
+      "valor": 1.04,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "AUT",
+      "valor": 0.9,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "CYP",
+      "valor": 0.62,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "DNK",
+      "valor": 0.45,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "ESP",
+      "valor": 0.23,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Migración neta de talento de IA por 10 000 miembros de LinkedIn",
+      "pais_iso3": "DEU",
+      "valor": 0.17,
+      "unidad": "por 10 000 miembros",
+      "anio": 2025,
+      "fuente": "AI Index 2026, cap. 4, Fig. 4.4.23 (LinkedIn; solo top 15)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Nuevos doctorados en IA (EE. UU. y Canadá)",
+      "pais_iso3": "USA",
+      "valor": 442,
+      "unidad": "doctorados",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.7–7.2.8 (CRA Taulbee Survey; EE. UU. y Canadá)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "B",
+      "nota": "Total leído del gráfico 7.2.7 (362 en 2022, 388 en 2023, 442 en 2024); coherente con el +22% 2022→2024 que cita el texto. Incluye Canadá."
+    },
+    {
+      "indicador": "Nuevos doctorados en IA que van a la industria (EE. UU. y Canadá)",
+      "pais_iso3": "USA",
+      "valor": 62.75,
+      "unidad": "%",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.7–7.2.8 (CRA Taulbee Survey; EE. UU. y Canadá)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "Gráfico 7.2.8. El texto del capítulo redondea a 65% y sitúa el máximo en 77% (2022). Incluye Canadá."
+    },
+    {
+      "indicador": "Nuevos doctorados en IA que van a la academia (EE. UU. y Canadá)",
+      "pais_iso3": "USA",
+      "valor": 31.59,
+      "unidad": "%",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.7–7.2.8 (CRA Taulbee Survey; EE. UU. y Canadá)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "Incluye Canadá."
+    },
+    {
+      "indicador": "Nuevos doctorados en IA que van al gobierno (EE. UU. y Canadá)",
+      "pais_iso3": "USA",
+      "valor": 1.96,
+      "unidad": "%",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.7–7.2.8 (CRA Taulbee Survey; EE. UU. y Canadá)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "Incluye Canadá."
+    },
+    {
+      "indicador": "Crecimiento de nuevos doctorados en IA 2022→2024 (EE. UU. y Canadá)",
+      "pais_iso3": "USA",
+      "valor": 22,
+      "unidad": "%",
+      "anio": 2024,
+      "fuente": "AI Index 2026, cap. 7, hallazgo 5",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A"
+    },
+    {
+      "indicador": "Nuevos graduados de licenciatura en TIC",
+      "pais_iso3": "USA",
+      "valor": 122814,
+      "unidad": "graduados",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.10 (OCDE; nuevos graduados de bachillerato/licenciatura en TIC)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "TIC en general (no solo IA)."
+    },
+    {
+      "indicador": "Nuevos graduados de licenciatura en TIC",
+      "pais_iso3": "BRA",
+      "valor": 80316,
+      "unidad": "graduados",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.10 (OCDE; nuevos graduados de bachillerato/licenciatura en TIC)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "TIC en general (no solo IA)."
+    },
+    {
+      "indicador": "Nuevos graduados de licenciatura en TIC",
+      "pais_iso3": "MEX",
+      "valor": 33861,
+      "unidad": "graduados",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.10 (OCDE; nuevos graduados de bachillerato/licenciatura en TIC)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "TIC en general (no solo IA)."
+    },
+    {
+      "indicador": "Nuevos graduados de licenciatura en TIC",
+      "pais_iso3": "DEU",
+      "valor": 21504,
+      "unidad": "graduados",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.10 (OCDE; nuevos graduados de bachillerato/licenciatura en TIC)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "TIC en general (no solo IA)."
+    },
+    {
+      "indicador": "Nuevos graduados de licenciatura en TIC",
+      "pais_iso3": "GBR",
+      "valor": 20703,
+      "unidad": "graduados",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.10 (OCDE; nuevos graduados de bachillerato/licenciatura en TIC)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "TIC en general (no solo IA)."
+    },
+    {
+      "indicador": "Nuevos graduados de licenciatura en TIC",
+      "pais_iso3": "KOR",
+      "valor": 19591,
+      "unidad": "graduados",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.10 (OCDE; nuevos graduados de bachillerato/licenciatura en TIC)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "TIC en general (no solo IA)."
+    },
+    {
+      "indicador": "Nuevos graduados de licenciatura en TIC",
+      "pais_iso3": "PER",
+      "valor": 15171,
+      "unidad": "graduados",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.10 (OCDE; nuevos graduados de bachillerato/licenciatura en TIC)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "TIC en general (no solo IA). Perú: 13 054 en 2022."
+    },
+    {
+      "indicador": "Nuevos graduados de licenciatura en TIC",
+      "pais_iso3": "POL",
+      "valor": 14688,
+      "unidad": "graduados",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.10 (OCDE; nuevos graduados de bachillerato/licenciatura en TIC)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "TIC en general (no solo IA)."
+    },
+    {
+      "indicador": "Nuevos graduados de licenciatura en TIC",
+      "pais_iso3": "AUS",
+      "valor": 14363,
+      "unidad": "graduados",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.10 (OCDE; nuevos graduados de bachillerato/licenciatura en TIC)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "TIC en general (no solo IA)."
+    },
+    {
+      "indicador": "Nuevos graduados de licenciatura en TIC",
+      "pais_iso3": "CAN",
+      "valor": 13590,
+      "unidad": "graduados",
+      "anio": 2023,
+      "fuente": "AI Index 2026, cap. 7, Fig. 7.2.10 (OCDE; nuevos graduados de bachillerato/licenciatura en TIC)",
+      "url": "https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_7_education.pdf",
+      "nivel": "A",
+      "nota": "TIC en general (no solo IA)."
+    }
+  ],
+  "inversiones_universitarias": [
+    {
+      "universidad": "Consorcio Empire AI (Columbia, Cornell, NYU, RPI, SUNY, CUNY + Simons Foundation)",
+      "pais_iso3": "USA",
+      "concepto": "Centro de cómputo de IA compartido para investigación universitaria en el estado de Nueva York: hasta USD 275 M del Estado + más de USD 125 M de instituciones fundadoras y socios privados",
+      "monto_usd_mm": 400,
+      "anio": 2024,
+      "fuente": "Gobernación del Estado de Nueva York, anuncio del 8-ene-2024 ('más de USD 400 millones')",
+      "url": "https://www.governor.ny.gov/news/governor-hochul-unveils-fifth-proposal-2024-state-state-empire-ai-consortium-make-new-york"
+    },
+    {
+      "universidad": "University of Bristol",
+      "pais_iso3": "GBR",
+      "concepto": "Isambard-AI, supercomputadora nacional de IA del Reino Unido alojada por la universidad (financia el Gobierno británico)",
+      "monto_usd_mm": null,
+      "monto_original": "GBP 225 millones",
+      "anio": 2023,
+      "fuente": "University of Bristol, nota de prensa del 1-nov-2023",
+      "url": "https://www.bristol.ac.uk/news/2023/november/supercomputer-announcement.html",
+      "nota": "Monto publicado en libras; no se convirtió a USD para no introducir un tipo de cambio no verificado."
+    }
+  ]
+}

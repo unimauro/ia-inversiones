@@ -19,7 +19,7 @@
     if (o == null) return null;
     if (typeof o === "number") return isFinite(o) ? o : null;
     if (typeof o === "string") { var f = parseFloat(o); return isFinite(f) ? f : null; }
-    if (typeof o === "object") return num(o.valor);
+    if (typeof o === "object") { var v = num(o.valor); return v != null ? v : (o.valor_min != null ? num(o.valor_min) : num(o.valor_max)); }
     return null;
   }
   function fmt(n, d) {
@@ -45,6 +45,14 @@
     }
     return "US$ " + fmt(n);
   }
+  // moneda declarada en la unidad y conversión a US$ con el tipo de cambio del día de corte
+  var FX = (D.fx || {}).unidades_por_usd || {};
+  function cur(u) { var m = /^(CNY|KRW|EUR|JPY|INR|TWD|GBP|CAD|BRL|MXN|COP|SEK|PLN|CHF|SGD|AUD|RUB|ILS)\b/.exec(String(u || "").trim()); return m ? m[1] : null; }
+  function scale(u) { u = norm(u); return /10\^12|billones/.test(u) ? 1e12 : /miles de millones|billion|\bbn\b/.test(u) ? 1e9 : /crore/.test(u) ? 1e7 : /millones|million|\bmm\b/.test(u) ? 1e6 : 1; }
+  function rango(o) {
+    if (!o || typeof o !== "object" || o.valor != null) return "";
+    return o.valor_min != null && o.valor_max != null ? "rango " + fmt(num(o.valor_min)) + "–" + fmt(num(o.valor_max)) : o.valor_min != null ? "al menos" : o.valor_max != null ? "hasta" : "";
+  }
   function when(o) { return o && (o.anio || o.periodo || o.fecha) ? String(o.anio || o.periodo || o.fecha) : ""; }
   function lv(o) {
     if (!o || typeof o !== "object") return "";
@@ -58,7 +66,9 @@
     var n = num(o); if (n == null) return '<span class="mut">—</span>';
     opts = opts || {};
     var s = opts.raw ? fmt(n) + (unitOf(o) ? " " + esc(unitOf(o)) : "") : money(n, unitOf(o));
-    var w = when(o);
+    var w = when(o), k = cur(unitOf(o)), rg = rango(o);
+    if (!opts.raw && k) s = "≈ " + money(toBn(o), "USD miles de millones") + '</b> <span class="mut">' + fmt(n) + " " + esc(unitOf(o).replace(/\s*\(.*\)/, "")) + "</span><b>";
+    if (rg) s = (rg.indexOf("rango") === 0 ? "" : rg + " ") + s + (rg.indexOf("rango") === 0 ? '</b> <span class="mut">' + rg + "</span><b>" : "");
     return "<b>" + s + "</b>" + (w && !opts.noWhen ? ' <span class="mut">(' + esc(w) + ")</span>" : "") + lv(o);
   }
   function link(text, url) { var u = safeUrl(url); return u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(text) + "</a>" : esc(text); }
@@ -75,7 +85,7 @@
   var IDX = LA.indices || {};
   var IDX_KEYS = Object.keys(IDX).filter(function (k) { return IDX[k] && arr(IDX[k].paises).length; });
   function buildIndex() {
-    arr(P.paises).forEach(function (p) { var x = c(p.iso3, p.nombre_es); if (!x) return; x.priv = p.privada_ultimo_anio; x.acum = p.privada_acumulada; x.startups = p.startups_financiadas; x.notaPriv = p.notas; });
+    arr(P.paises).forEach(function (p) { var x = c(p.iso3, p.nombre_es); if (!x) return; x.priv = (p.privada_ultimo_anio && /quid/i.test(p.privada_ultimo_anio.metodologia || "")) ? p.privada_ultimo_anio : null; x.vc = p.vc_ocde || (p.privada_ultimo_anio && !x.priv ? p.privada_ultimo_anio : null); x.vc26 = p.vc_ocde_2026_parcial; x.acum = p.privada_acumulada; x.startups = p.startups_financiadas; x.notaPriv = p.notas; });
     arr(G.paises).forEach(function (p) {
       var x = c(p.iso3, p.nombre_es); if (!x) return;
       x.pub = p.publico_anual; x.compromisos = arr(p.compromisos); x.estrategia = p.estrategia; x.gerd = p.gerd_pct_pib; x.notaPub = p.notas;
@@ -215,7 +225,8 @@
       var n = Object.keys(C).filter(function (i) { return num(get(C[i])) != null; }).length;
       if (n >= 3) LAYERS.push(Object.assign({ id: id, label: label, get: get, n: n }, o || {}));
     }
-    add("priv", "Inversión privada", function (x) { return x.priv; }, { money: true, desc: "Inversión privada en IA, último año" });
+    add("vc", "Capital de riesgo en IA", function (x) { return x.vc; }, { money: true, desc: "Capital de riesgo en empresas de IA, 2025 (OCDE/Preqin)" });
+    add("priv", "Inversión privada (AI Index)", function (x) { return x.priv; }, { money: true, desc: "Inversión privada en IA, 2025 (AI Index de Stanford, solo publica los 15 primeros)" });
     add("acum", "Privada acumulada", function (x) { return x.acum; }, { money: true, desc: "Inversión privada en IA acumulada" });
     add("pub", "Presupuesto público", function (x) { return x.pub; }, { money: true, desc: "Presupuesto público anual en IA" });
     IDX_KEYS.forEach(function (k) {
@@ -321,7 +332,8 @@
     if (!x) { el.innerHTML = h + '<p class="note">No hay datos verificados de este país en el informe.</p>'; return; }
     var dl = [];
     function row(t, o, opts) { if (num(o) != null) dl.push("<dt>" + esc(t) + "</dt><dd>" + fig(o, opts) + "</dd>"); }
-    row("Inversión privada en IA", x.priv); row("Inversión privada acumulada", x.acum);
+    row("Capital de riesgo en IA (OCDE)", x.vc); row("Capital de riesgo en IA, 1.er semestre 2026", x.vc26);
+    row("Inversión privada en IA (AI Index)", x.priv); row("Inversión privada acumulada (AI Index)", x.acum);
     row("Startups de IA financiadas", x.startups, { raw: true });
     row("Presupuesto público anual en IA", x.pub);
     if (num(x.gerd) != null) dl.push("<dt>I+D total (todas las áreas)</dt><dd><b>" + fmt(num(x.gerd)) + "% del PIB</b> <span class=\"mut\">(" + esc(when(x.gerd)) + ")</span>" + lv(x.gerd) + "</dd>");
@@ -400,15 +412,15 @@
   }
   function bloquesChart() {
     var rows = BLOQUES.filter(function (b) { return b.isos; }).map(function (b) {
-      var t = 0, n = 0; b.isos.forEach(function (i) { var v = C[i] && num(C[i].priv); if (v != null) { t += toBn(C[i].priv); n++; } });
+      var t = 0, n = 0; b.isos.forEach(function (i) { var v = C[i] && num(C[i].vc); if (v != null) { t += toBn(C[i].vc); n++; } });
       return { name: b.label, value: Math.round(t * 100) / 100, extra: n + " de " + b.isos.length + " países con dato", n: n };
     }).filter(function (r) { return r.n > 0; });
-    var usa = C.USA && num(C.USA.priv) != null ? toBn(C.USA.priv) : null, chn = C.CHN && num(C.CHN.priv) != null ? toBn(C.CHN.priv) : null;
+    var usa = C.USA && num(C.USA.vc) != null ? toBn(C.USA.vc) : null, chn = C.CHN && num(C.CHN.vc) != null ? toBn(C.CHN.vc) : null;
     if (usa != null) rows.push({ name: "Estados Unidos (solo)", value: usa, extra: "referencia" });
     if (chn != null) rows.push({ name: "China (solo)", value: chn, extra: "referencia" });
     rows.sort(function (a, b) { return b.value - a.value; });
     hbar("cBloques", rows, { fmt: function (v) { return money(v, "USD miles de millones"); }, short: function (v) { return fmt(v); } });
-    note("nBloques", rows.length ? "Inversión privada en IA sumada por bloque, miles de millones de US$, último año. Solo suma países con dato verificado; los bloques comparten miembros, así que no se suman entre sí." : "");
+    note("nBloques", rows.length ? "Capital de riesgo en empresas de IA sumado por bloque, miles de millones de US$, 2025 (OCDE/Preqin, una sola metodología para todos). Solo suma países con dato; los bloques comparten miembros, así que no se suman entre sí." : "");
   }
 
   // ---- PAÍSES --------------------------------------------------------------
@@ -416,12 +428,12 @@
     var p = pal();
     bloquesChart();
     note("nBloque", bloque.isos ? "<b>" + esc(bloque.label) + ".</b> " + esc(bloque.nota || "") + " El filtro aplica al ranking, al presupuesto público, a los compromisos y a la tabla." : "");
-    var priv = Object.keys(C).filter(function (i) { return enBloque(i) && num(C[i].priv) != null; }).sort(function (a, b) { return num(C[b].priv) - num(C[a].priv); });
-    hbar("cPrivRank", priv.slice(0, 15).map(function (i) { return { name: nombre(i), value: num(C[i].priv), iso: i }; }), {
+    var priv = Object.keys(C).filter(function (i) { return enBloque(i) && num(C[i].vc) != null; }).sort(function (a, b) { return num(C[b].vc) - num(C[a].vc); });
+    hbar("cPrivRank", priv.slice(0, 15).map(function (i) { return { name: nombre(i), value: num(C[i].vc), iso: i }; }), {
       fmt: function (v) { return money(v, "USD miles de millones"); }, short: function (v) { return fmt(v); },
       onClick: function (it) { ficha(it.iso); location.hash = "#mapa"; }
     });
-    if (!priv.length) note("nPrivRank", ""); else note("nPrivRank", "Miles de millones de US$, " + esc(when(C[priv[0]].priv)) + ". " + srcNote(C[priv[0]].priv, "Clic en una barra para abrir la ficha del país."));
+    if (!priv.length) note("nPrivRank", ""); else note("nPrivRank", "Miles de millones de US$, " + esc(when(C[priv[0]].vc)) + ". " + srcNote(C[priv[0]].vc, "Mide capital de riesgo; el AI Index de Stanford usa otra metodología y da cifras distintas (ver tabla). Clic en una barra para abrir la ficha."));
 
     var sp = P.series || {}, defs = [["global", "Mundo"], ["USA", "Estados Unidos"], ["CHN", "China"], ["EUR_UK", "Europa y Reino Unido"], ["genai_global", "IA generativa (mundo)"]]
       .filter(function (d) { return arr(sp[d[0]]).length > 1; });
@@ -440,14 +452,14 @@
             endLabel: i < 4 ? { show: true, formatter: "{a}", color: p.ink2, fontSize: 11.5 } : { show: false } };
         })
       });
-      note("nPrivSerie", "Miles de millones de US$ por año. " + srcNote(sp));
+      note("nPrivSerie", "Inversión privada según el AI Index de Stanford, miles de millones de US$ por año. " + srcNote(sp));
     }
 
     var pub = Object.keys(C).filter(function (i) { return enBloque(i) && num(C[i].pub) != null && /usd|us\$/i.test(unitOf(C[i].pub)); }).sort(function (a, b) { return num(C[b].pub) - num(C[a].pub); });
     hbar("cPubRank", pub.slice(0, 15).map(function (i) { return { name: nombre(i), value: toBn(C[i].pub), extra: when(C[i].pub) + " · " + (C[i].pub.fuente || ""), iso: i }; }).sort(function (a, b) { return b.value - a.value; }), {
       color: 2, fmt: function (v) { return money(v, "USD miles de millones"); }, short: function (v) { return fmt(v); }, onClick: function (it) { ficha(it.iso); location.hash = "#mapa"; }
     });
-    note("nPubRank", pub.length ? "Miles de millones de US$. Los años fiscales y lo que cada gobierno cuenta como «IA» difieren: comparar con cautela. Fuente por país en la tabla." : "");
+    note("nPubRank", pub.length ? "Miles de millones de US$. No es un ranking estricto: EE.UU. es I+D federal en IA, Corea es presupuesto de IA en sentido amplio y los demás son partidas de un ministerio o programa. Solo 7 gobiernos publican una cifra anual; China no lo hace." : "");
 
     var comp = []; Object.keys(C).filter(enBloque).forEach(function (i) { C[i].compromisos.forEach(function (k) { comp.push({ iso: i, k: k }); }); });
     table("tCompromisos", [
@@ -457,10 +469,12 @@
       { t: "Periodo", h: function (r) { return esc(when(r.k)); } }
     ], comp, { sort: 2 });
 
-    var all = Object.keys(C).filter(function (i) { var x = C[i]; return enBloque(i) && (num(x.priv) != null || num(x.pub) != null || num(x.gerd) != null || Object.keys(x.idx).length || x.estrategia); });
+    var all = Object.keys(C).filter(function (i) { var x = C[i]; return enBloque(i) && (num(x.vc) != null || num(x.priv) != null || num(x.pub) != null || num(x.gerd) != null || Object.keys(x.idx).length || x.estrategia); });
     var cols = [
       { t: "País", v: function (i) { return nombre(i); }, h: function (i) { return '<a href="#mapa" data-iso="' + esc(i) + '">' + esc(nombre(i)) + "</a>"; }, asc: true },
-      { t: "Inversión privada", num: true, v: function (i) { return num(C[i].priv); }, h: function (i) { return fig(C[i].priv, { noWhen: true }); } },
+      { t: "Capital de riesgo 2025", num: true, tip: "OCDE/Preqin: capital de riesgo en empresas de IA", v: function (i) { return num(C[i].vc); }, h: function (i) { return fig(C[i].vc, { noWhen: true }); } },
+      { t: "1.er sem. 2026", num: true, tip: "OCDE/Preqin, dato parcial", v: function (i) { return num(C[i].vc26); }, h: function (i) { return fig(C[i].vc26, { noWhen: true }); } },
+      { t: "Privada (AI Index)", num: true, tip: "Stanford AI Index 2026 (Quid); solo publica los 15 primeros", v: function (i) { return num(C[i].priv); }, h: function (i) { return fig(C[i].priv, { noWhen: true }); } },
       { t: "Privada acumulada", num: true, v: function (i) { return num(C[i].acum); }, h: function (i) { return fig(C[i].acum, { noWhen: true }); } },
       { t: "Presupuesto público", num: true, v: function (i) { return num(C[i].pub) != null && /usd|us\$/i.test(unitOf(C[i].pub)) ? toBn(C[i].pub) : null; }, h: function (i) { return fig(C[i].pub); } },
       { t: "I+D % PIB", num: true, tip: "Gasto total en I+D, todas las áreas", v: function (i) { return num(C[i].gerd); }, h: function (i) { return num(C[i].gerd) != null ? "<b>" + fmt(num(C[i].gerd)) + "%</b>" + lv(C[i].gerd) : '<span class="mut">—</span>'; } }
@@ -476,7 +490,12 @@
     $("qPais").oninput = t.redraw;
     $("tPaises").onclick = function (e) { var a = e.target.closest("a[data-iso]"); if (a) ficha(a.getAttribute("data-iso")); };
   }
-  function toBn(o) { var n = num(o), u = norm(unitOf(o)); if (n == null) return null; return /miles de millones|billion|\bbn\b/.test(u) ? n : /millones|million/.test(u) ? n / 1000 : n; }
+  function toBn(o) {
+    var n = num(o), u = unitOf(o); if (n == null) return null;
+    var k = cur(u);
+    if (k) return FX[k] ? n * scale(u) / FX[k] / 1e9 : null;
+    var sc = scale(u); return sc === 1 ? n : n * sc / 1e9;
+  }
 
   // ---- EMPRESAS ------------------------------------------------------------
   function empresas() {
@@ -515,9 +534,10 @@
     var t = table("tEmpresas", [
       { t: "Empresa", v: function (e) { return e.nombre; }, h: function (e) { return "<b>" + esc(e.nombre) + "</b>" + (e.ticker ? ' <span class="mut">' + esc(e.ticker) + "</span>" : "") + (e.foco_ia ? '<br><span class="mut">' + esc(e.foco_ia) + "</span>" : ""); }, cls: "wide", asc: true },
       { t: "País", v: function (e) { return nombre(e.pais_iso3); }, h: function (e) { return esc(nombre(e.pais_iso3)); }, asc: true },
-      { t: "Capex 2025", num: true, v: function (e) { return toBn(e.capex_2025); }, h: function (e) { return fig(e.capex_2025, { noWhen: true }); } },
+      { t: "Capex 2025", num: true, tip: "Último año fiscal completo; si es 2024 se indica", v: function (e) { return toBn(e.capex_2025 || e.capex_2024); }, h: function (e) { return e.capex_2025 ? fig(e.capex_2025, { noWhen: true }) : fig(e.capex_2024); } },
       { t: "Capex 2026", num: true, tip: "Guía oficial de la empresa o consenso de analistas", v: function (e) { return toBn(e.capex_2026); }, h: function (e) { return fig(e.capex_2026, { noWhen: true }) + (e.capex_2026 && e.capex_2026.tipo ? '<br><span class="mut">' + esc(String(e.capex_2026.tipo).replace(/_/g, " ")) + "</span>" : ""); } },
-      { t: "I+D 2025", num: true, v: function (e) { return toBn(e.id_2025); }, h: function (e) { return fig(e.id_2025, { noWhen: true }); } },
+      { t: "I+D 2025", num: true, v: function (e) { return toBn(e.id_2025 || e.id_2024); }, h: function (e) { return e.id_2025 ? fig(e.id_2025, { noWhen: true }) : fig(e.id_2024); } },
+      { t: "IA declarada", num: true, tip: "Monto que la empresa atribuye explícitamente a IA", v: function (e) { return toBn(e.ia_explicito); }, h: function (e) { return fig(e.ia_explicito); } },
       { t: "Valor en bolsa", num: true, v: function (e) { return toBn(e.market_cap); }, h: function (e) { return fig(e.market_cap, { noWhen: true }); } }
     ], es, { sort: 3, rank: true, filter: function (e) { var s = norm($("qEmp").value), f = $("fEmpPais").value; return (!s || norm(e.nombre + " " + (e.ticker || "")).indexOf(s) >= 0) && (!f || e.pais_iso3 === f); } });
     hook(["qEmp", "fEmpPais"], t.redraw);
@@ -550,7 +570,7 @@
         xAxis: axisCat(p, vc.map(function (r) { return String(r.periodo).replace("-Q", " T"); }), { axisLabel: { color: p.ink2, fontSize: 11 } }), yAxis: axisVal(p),
         series: [{ type: "bar", barMaxWidth: 26, data: vc.map(num), itemStyle: { color: p.s[0], borderRadius: [4, 4, 0, 0] } }]
       });
-      note("nVC", "Miles de millones de US$ por trimestre. " + srcNote(L.series));
+      note("nVC", "Miles de millones de US$ por trimestre. Los huecos son trimestres en que la fuente no publicó el monto de IA. " + srcNote(L.series));
     }
     fillPaises("fLabPais", es.map(function (e) { return e.pais_iso3; }));
     var t = table("tLabs", [
@@ -767,7 +787,7 @@
     Object.keys(keep).forEach(function (i) { $(i).value = keep[i]; });
   }
 
-  window.IA = { table: table, hbar: hbar, mk: mk, pal: pal, fig: fig, link: link, note: note, lv: lv, noData: noData, axisCat: axisCat, axisVal: axisVal, tipBase: tipBase, fillPaises: fillPaises, hook: hook, charts: charts, srcNote: srcNote, drawMap: function () { drawMap(); },
+  window.IA = { cur: cur, table: table, hbar: hbar, mk: mk, pal: pal, fig: fig, link: link, note: note, lv: lv, noData: noData, axisCat: axisCat, axisVal: axisVal, tipBase: tipBase, fillPaises: fillPaises, hook: hook, charts: charts, srcNote: srcNote, drawMap: function () { drawMap(); },
     BLOQUES: BLOQUES, C: C, nombre: nombre, num: num, fmt: fmt, money: money, unitOf: unitOf, when: when, toBn: toBn, norm: norm, esc: esc, ficha: ficha, rkNames: rkNames, IDX: IDX };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 })();
