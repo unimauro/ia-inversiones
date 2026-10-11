@@ -198,6 +198,10 @@ def degradar(o):
 
 
 degradar(data)
+# Filas de balance (saldos, flujos, compromisos globales) no son una participada: se marcan para no sumarlas.
+for fila in data["inv"].get("corporativos", []):
+    if any(k in fila.get("participada", "").lower() for k in ("saldo en balance", "flujo de caja", "compromisos de inversión pendientes", "método de participación")):
+        fila["agregado"] = True
 # Proyección de Gartner: la nota original no se pudo abrir (403); fuera hasta verificarla.
 if data["bigtech"].get("proyecciones"):
     data["bigtech"]["proyecciones"] = [x for x in data["bigtech"]["proyecciones"] if "Gartner" not in x.get("concepto", "")]

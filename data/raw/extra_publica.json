@@ -1,0 +1,770 @@
+{
+  "meta": {
+    "bloque": "gasto_publico_pais_extra",
+    "consultado": "2026-10-11",
+    "complementa": "data/raw/paises_publica.json (no lo reemplaza; unir por iso3)",
+    "advertencias": [
+      "Solo se incluyen campos verificados en una página abierta en esta consulta; los campos ausentes NO deben interpretarse como 'no existe'.",
+      "Estrategias tomadas de OECD.AI: 'anio' es el 'start year' que publica el tablero de país de OECD.AI, que a veces difiere del año de aprobación oficial (p. ej. Austria 2019 vs. 2021, Chile 2019 vs. 2021, Uruguay 2023 vs. 2024). La 'url' es la página que realmente se abrió (el tablero del país); el enlace a la ficha individual se deja en 'notas' y no fue abierto salvo Francia y Nigeria.",
+      "El tablero de OECD.AI lo resumió un modelo auxiliar: en países donde ninguna iniciativa está etiquetada explícitamente como estrategia nacional (Austria, Suiza, Finlandia, Marruecos, Ucrania, Sudáfrica, México) la elección es la mejor coincidencia y está advertida en 'notas'.",
+      "Solo se obtuvo UN 'publico_anual' nuevo (India 2026-27). Para China, Reino Unido, Francia, Alemania, Canadá, Singapur, Australia, España, Italia, Países Bajos, Israel, EAU, Arabia Saudita, Brasil, México, Chile y Colombia no se encontró un presupuesto anual de IA en una página abierta: lo verificado son compromisos plurianuales.",
+      "AI Index 2026 (cap. 8, Policy and Governance): la página del capítulo NO publica una tabla comparativa de presupuesto público de IA por país. Publica contratos y subvenciones públicas relacionados con IA ACUMULADOS 2013-2024 para EE.UU. y algunos países europeos; no son presupuestos anuales ni comparables con NITRD. Solo se leyó la página web del capítulo, no el PDF completo.",
+      "UE: InvestAI (200 mil millones EUR) es inversión MOVILIZADA, mayoritariamente privada. Las dos páginas oficiales de la Comisión describen las gigafábricas con cifras distintas: 'EUR 20 mil millones para financiar hasta cinco gigafábricas' (commission.europa.eu) frente a 'hasta EUR 10 mil millones de financiación UE y nacional' más 'al menos EUR 20 mil millones de inversión privada' (digital-strategy.ec.europa.eu). No sumar.",
+      "No se encontró en las páginas abiertas de la Comisión (European approach to AI, Apply AI, AI Factories, AI Continent) el monto anual de Horizon Europe / Digital Europe destinado a IA: hueco sin rellenar.",
+      "Reino Unido: los anuncios de 2026 (AI Hardware Plan, Sovereign AI Fund) se solapan con los ~2 mil millones GBP del Spending Review 2025 y con el Compute Roadmap; las fuentes no aclaran si es dinero nuevo. No sumar.",
+      "Conversión a USD con el tipo de cambio spot del 2026-10-11 indicado por el encargo (EUR 0.892438, GBP 0.755923, INR 96.829695, CAD 1.425015, SGD 1.280697 por USD), salvo cuando la fuente da el equivalente.",
+      "Incidencia técnica: el disco de la máquina se llenó (ENOSPC) durante la sesión; no se pudo usar la API masiva de OECD.AI (api.oecd.ai/policy-initiatives/public) ni scripts locales, por eso la cobertura de presupuestos por ficha OECD es parcial."
+    ],
+    "no_verificado": [
+      "Kazajistán: el 'Concepto de desarrollo de la IA 2024-2029' (Resolución 592, 24-jul-2024) aparece solo en resultados de búsqueda; la página (dig.watch) devolvió 403 y OECD.AI solo lista 'Digital Kazakhstan' (2018), que no es específico de IA.",
+      "Rusia: no se pudo abrir ficha ni fuente oficial de la estrategia.",
+      "China, estimaciones MERICS/ITIF de gasto público en IA: no se abrieron.",
+      "Brasil PBIA por año: gov.br/mcti devolvió CAPTCHA.",
+      "EAU (ai.gov.ae, 403; u.ae, 404) y Arabia Saudita (sdaia.gov.sa, 'Request Rejected'): sitios oficiales inaccesibles; estrategia verificada vía OECD.AI.",
+      "Humain (Arabia Saudita), México, Chile, Colombia, Australia, España, Italia, Países Bajos, Israel: sin cifras nuevas verificadas."
+    ]
+  },
+  "paises": [
+    {
+      "iso3": "EUU",
+      "nombre_es": "Unión Europea (bloque)",
+      "compromisos": [
+        {
+          "nombre": "InvestAI: inversión a movilizar en IA (confirmado en fuente oficial de la Comisión)",
+          "valor": 224.105,
+          "unidad": "USD miles de millones",
+          "periodo": "lanzado 11-feb-2025 (Cumbre de Acción sobre IA, París)",
+          "tipo": "plurianual",
+          "valor_original": 200,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Comisión Europea, página 'AI Continent' (revisada 10-abr-2026): 'the InvestAI initiative that will mobilise €200 billion for investment in AI in the EU'",
+          "url": "https://commission.europa.eu/topics/competitiveness/ai-continent_en",
+          "nivel": "A",
+          "nota": "Inversión MOVILIZADA (pública + privada), no presupuesto de la UE. La fecha de lanzamiento sale de digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence. Sustituye como fuente oficial a la ficha OECD.AI usada en paises_publica.json: misma cifra, no duplicar."
+        },
+        {
+          "nombre": "InvestAI: fondo para AI Gigafactories (hasta cinco)",
+          "valor": 22.41,
+          "unidad": "USD miles de millones",
+          "periodo": "anunciado feb-2025; AI Continent Action Plan 9-abr-2025",
+          "tipo": "infraestructura",
+          "valor_original": 20,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Comisión Europea, página 'AI Continent': '€20 billion to finance up to five AI gigafactories'; 'the InvestAI facility that aims to mobilise €20 billion, to drive private investment in gigafactories'",
+          "url": "https://commission.europa.eu/topics/competitiveness/ai-continent_en",
+          "nivel": "A",
+          "nota": "Está DENTRO de los 200 mil millones de InvestAI. Se solapa con la fila 'AI Gigafactories: financiación pública UE + nacional (hasta 10 mil millones EUR)' de paises_publica.json; la otra página oficial habla de 10 mil millones públicos + al menos 20 mil millones privados. No sumar."
+        }
+      ],
+      "notas": "Confirmados InvestAI (200 mil millones EUR) y gigafábricas (20 mil millones EUR) en commission.europa.eu. Hitos verificados: InvestAI 11-feb-2025, AI Continent Action Plan COM(2025)165 del 9-abr-2025, Apply AI Strategy 8-oct-2025. No se halló el monto anual de Horizon Europe/Digital Europe para IA."
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "estrategia": {
+        "nombre": "AI Opportunities Action Plan (DSIT)",
+        "anio": 2025,
+        "url": "https://www.gov.uk/government/publications/ai-opportunities-action-plan/ai-opportunities-action-plan",
+        "url_abierta": true
+      },
+      "compromisos": [
+        {
+          "nombre": "Spending Review 2025: asignación para inteligencia artificial",
+          "valor": 2.646,
+          "unidad": "USD miles de millones",
+          "periodo": "2026-27 a 2029-30",
+          "tipo": "plurianual",
+          "valor_original": 2,
+          "moneda_original": "GBP miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "HM Treasury, Spending Review 2025 (documento HTML): 'the government is allocating £2 billion for artificial intelligence (AI) from 2026-27 to 2029-30'; 'over £2 billion to drive the AI Action Plan including a 20-fold increase in support for compute capacity'",
+          "url": "https://www.gov.uk/government/publications/spending-review-2025-document/spending-review-2025-html",
+          "nivel": "A",
+          "nota": "Es la MISMA cifra que la fila 'Spending Review 2025' de paises_publica.json (allí con fuente secundaria nivel B): reemplazar, no sumar. Cuatro ejercicios; la fuente no da el desglose anual."
+        },
+        {
+          "nombre": "UK AI Hardware Plan (titular; incluye 750 M GBP para un supercomputador nacional de IA)",
+          "valor": 1.455,
+          "unidad": "USD miles de millones",
+          "periodo": "anunciado 8-jun-2026 (London Tech Week); supercomputador operativo en 2030",
+          "tipo": "infraestructura",
+          "valor_original": 1.1,
+          "moneda_original": "GBP miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Bristol Centre for Supercomputing (Universidad de Bristol), artículo invitado del 15-jun-2026",
+          "url": "https://www.bristol.ac.uk/research/centres/bristol-supercomputing/articles/2026/guest-article.html",
+          "nivel": "B",
+          "nota": "Dentro de los 750 M: 400 M GBP para chips especializados, que a su vez incluyen 150 M de compromiso anticipado de compra de chips de inferencia. El artículo cita además 120 M (AI Hardware Innovation Programme), 45 M (habilidades) y, aparte, 750 M GBP para el próximo servicio nacional de supercómputo en Edimburgo. La fuente no desglosa el titular de 1.1 mil millones ni aclara si es dinero nuevo; fecha del anuncio tomada de resultados de búsqueda (computing.co.uk devolvió 403)."
+        },
+        {
+          "nombre": "Sovereign AI Fund (fondo estatal para 'campeones nacionales' de IA)",
+          "valor": 0.675,
+          "unidad": "USD miles de millones",
+          "periodo": "creado abr-2026",
+          "tipo": "fondo_soberano",
+          "valor_original": 0.5,
+          "moneda_original": "GBP miles de millones",
+          "conversion": "USD dado por la fuente",
+          "fuente": "CIO.com, 17-abr-2026",
+          "url": "https://www.cio.com/article/4160453/uk-wants-to-build-sovereign-ai-with-just-0-08-of-openais-market-cap-2.html",
+          "nivel": "B",
+          "nota": "Inversiones de hasta 20 M GBP por startup, hasta 1 millón de horas-GPU y visados acelerados. Coincide con los 'hasta 500 millones para la Sovereign AI Unit' ya incluidos en el paquete del Spending Review: no sumar."
+        }
+      ],
+      "notas": "El AI Opportunities Action Plan (publicado el 13-ene-2025 por DSIT) no fija un presupuesto propio. Sin presupuesto ANUAL de IA publicado; lo verificado es la asignación cuatrienal de 2 mil millones GBP."
+    },
+    {
+      "iso3": "FRA",
+      "nombre_es": "Francia",
+      "estrategia": {
+        "nombre": "Stratégie nationale pour l'intelligence artificielle (National Strategy on AI)",
+        "anio": 2018,
+        "url": "https://oecd.ai/en/dashboards/policy-initiatives/national-strategy-on-ai-5864",
+        "url_abierta": true
+      },
+      "compromisos": [
+        {
+          "nombre": "Estrategia nacional de IA, primera fase",
+          "valor": 2.073,
+          "unidad": "USD miles de millones",
+          "periodo": "2018-2022",
+          "tipo": "plurianual",
+          "valor_original": 1.85,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "OECD.AI Policy Navigator, ficha 'National Strategy on AI' (Francia)",
+          "url": "https://oecd.ai/en/dashboards/policy-initiatives/national-strategy-on-ai-5864",
+          "nivel": "B",
+          "nota": "Difiere de los 1.5 mil millones EUR que cita la fuente secundaria de paises_publica.json para la misma fase; no sumar ambas."
+        },
+        {
+          "nombre": "Estrategia nacional de IA, segunda fase (France 2030)",
+          "valor": 1.121,
+          "unidad": "USD miles de millones",
+          "periodo": "2022-2025",
+          "tipo": "plurianual",
+          "valor_original": 1,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "OECD.AI Policy Navigator, ficha 'National Strategy on AI' (Francia)",
+          "url": "https://oecd.ai/en/dashboards/policy-initiatives/national-strategy-on-ai-5864",
+          "nivel": "B",
+          "nota": "Comprometido bajo France 2030. Se solapa con la fila '2.5 mil millones EUR 2018-2025' de paises_publica.json."
+        }
+      ],
+      "notas": "La ficha OECD.AI muestra además el campo 'estimated budget expenditure range per year: €500,000,000'; es una banda declarada a la OCDE (no se sabe si es techo o tramo), por lo que NO se registra como 'publico_anual'. También cita 40 M EUR para ampliar el supercomputador Jean Zay (France 2030). Sin presupuesto anual oficial de IA verificado."
+    },
+    {
+      "iso3": "DEU",
+      "nombre_es": "Alemania",
+      "estrategia": {
+        "nombre": "Nationale Strategie Künstliche Intelligenz der Bundesregierung (KI-Strategie; aprobada 15-nov-2018, actualizada 2-dic-2020)",
+        "anio": 2018,
+        "url": "https://www.ki-strategie-deutschland.de/",
+        "url_abierta": true
+      },
+      "compromisos": [
+        {
+          "nombre": "KI-Strategie (actualización 2020): inversión federal en IA hasta 2025",
+          "valor": 5.603,
+          "unidad": "USD miles de millones",
+          "periodo": "2019-2025",
+          "tipo": "plurianual",
+          "valor_original": 5,
+          "moneda_original": "EUR miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Gobierno Federal de Alemania, portal ki-strategie-deutschland.de",
+          "url": "https://www.ki-strategie-deutschland.de/",
+          "nivel": "A",
+          "nota": "Elevada de 3 a 5 mil millones EUR con el paquete de estímulo de 2020. Es el objetivo anunciado, no la ejecución: el mismo portal indica 'más de 2.5 mil millones EUR' en fondos de IA comprometidos desde 2019. Incluye los 1.6 mil millones del plan de acción del BMBF de paises_publica.json: no sumar."
+        }
+      ],
+      "notas": "Partidas anuales verificadas en el portal (parciales, no son el presupuesto federal de IA): 50 M EUR/año del Gobierno Federal para los centros de competencia en IA (más un monto igual de los estados sede, permanente desde julio 2022) y 22 M EUR/año para el DFKI (la mitad federal). No se halló un presupuesto anual consolidado de IA ni el plan de acción actual del BMFTR."
+    },
+    {
+      "iso3": "CAN",
+      "nombre_es": "Canadá",
+      "compromisos": [
+        {
+          "nombre": "Presupuesto 2025: infraestructura pública soberana de IA a gran escala",
+          "valor": 0.65,
+          "unidad": "USD miles de millones",
+          "periodo": "5 años desde 2025-26",
+          "tipo": "infraestructura",
+          "valor_original": 0.9256,
+          "moneda_original": "CAD miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Gobierno de Canadá, Budget 2025, capítulo 1: 'Budget 2025 proposes to provide $925.6 million over five years, starting in 2025-26'",
+          "url": "https://budget.canada.ca/2025/report-rapport/chap1-en.html",
+          "nivel": "A",
+          "nota": "Fuente oficial que reemplaza la secundaria (nivel B) de paises_publica.json para la misma cifra: no duplicar. El propio presupuesto precisa que 800 M CAD provienen de fondos ya provisionados en el marco fiscal: dinero nuevo = 125.6 M CAD. Además, 25 M CAD en seis años (y 4.5 M permanentes) para el programa TechStat de Statistics Canada."
+        }
+      ],
+      "notas": "Sin presupuesto anual de IA; el Budget 2025 solo da montos plurianuales."
+    },
+    {
+      "iso3": "IND",
+      "nombre_es": "India",
+      "estrategia": {
+        "nombre": "National Strategy on Artificial Intelligence (#AIforAll)",
+        "anio": 2018,
+        "url": "https://oecd.ai/en/dashboards/countries/India",
+        "url_abierta": true
+      },
+      "publico_anual": {
+        "valor": 0.103,
+        "unidad": "USD miles de millones",
+        "anio": "2026-27",
+        "valor_original": 10,
+        "moneda_original": "INR miles de millones",
+        "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+        "fuente": "MediaNama, 4-abr-2026 (respuesta de MeitY en la Rajya Sabha)",
+        "url": "https://www.medianama.com/2026/04/223-indiaai-mission-400-crore-over-rs-10000-crore-5-year-outlay-released/",
+        "nivel": "B",
+        "tipo": "presupuesto_anual",
+        "nota": "Estimación presupuestaria (BE) 2026-27 de la IndiaAI Mission: Rs 1,000 crore. Solo esta misión, no todo el gasto público en IA. Ejecución baja: estimado revisado 2025-26 de Rs 800 crore con Rs 379.15 crore liberados al 9-feb-2026; 2024-25: RE Rs 173 crore, liberados Rs 21.79 crore; nada liberado aún para 2026-27 a esa fecha."
+      },
+      "notas": "La estrategia nacional que registra OECD.AI es la de 2018 (NITI Aayog); la IndiaAI Mission (2024, Rs 10,371.92 crore en 5 años) es el programa de ejecución. Ficha: https://oecd.ai/en/dashboards/policy-initiatives/national-strategy-on-artificial-intelligence-3077 (no abierta)."
+    },
+    {
+      "iso3": "SGP",
+      "nombre_es": "Singapur",
+      "estrategia": {
+        "nombre": "Singapore National AI Strategy 2.0 (NAIS 2.0), lanzada en dic-2023; 'Update to NAIS' publicada en may-2026",
+        "anio": 2023,
+        "url": "https://www.smartnation.gov.sg/initiatives/national-ai-strategy/",
+        "url_abierta": true
+      },
+      "compromisos": [
+        {
+          "nombre": "Enterprise Compute Initiative (ECI)",
+          "valor": 0.117,
+          "unidad": "USD miles de millones",
+          "periodo": "no indicado en la fuente",
+          "tipo": "plurianual",
+          "valor_original": 0.15,
+          "moneda_original": "SGD miles de millones",
+          "conversion": "USD convertido con tipo de cambio del 2026-10-11 (open.er-api.com)",
+          "fuente": "Smart Nation Singapore, página oficial de la National AI Strategy",
+          "url": "https://www.smartnation.gov.sg/initiatives/national-ai-strategy/",
+          "nivel": "A",
+          "nota": "S$150 millones para que empresas accedan a herramientas de IA, cómputo en la nube y consultoría. Es la única cifra en S$ de la página."
+        }
+      ],
+      "notas": "La actualización de NAIS de mayo 2026 fija 10 prioridades renovadas; la página no da presupuesto anual ni total."
+    },
+    {
+      "iso3": "CHN",
+      "nombre_es": "China",
+      "estrategia": {
+        "nombre": "Plan de Desarrollo de la Nueva Generación de Inteligencia Artificial (Consejo de Estado, publicado el 20-jul-2017)",
+        "anio": 2017,
+        "url": "https://digichina.stanford.edu/work/full-translation-chinas-new-generation-artificial-intelligence-development-plan-2017/",
+        "url_abierta": true
+      },
+      "notas": "URL = traducción completa de Stanford DigiChina (no el sitio gov.cn). El plan fija metas de tamaño de INDUSTRIA, no de gasto público: industria central de IA >150 mil millones RMB (2020), >400 mil millones (2025), >1 billón (2030). Gasto público en I+D de IA: el único estudio abierto (CSET, Acharya y Arnold, dic-2019, https://cset.georgetown.edu/publication/chinese-public-ai-rd-spending-provisional-findings/) NO da una cifra puntual: estima con confianza baja a moderada que fue 'del orden de unos pocos miles de millones de dólares en 2018' y descarta, con mayor confianza, las 'decenas de miles de millones' anuales. Por ser cualitativo y de 2018 no se registra como 'publico_anual' (sería nivel C). El AI Index 2026 advierte que la inversión privada (12.4 mil millones USD en 2025) subestima el gasto total chino por los fondos de orientación estatales, sin cuantificarlos."
+    },
+    {
+      "iso3": "ITA",
+      "nombre_es": "Italia",
+      "estrategia": {
+        "nombre": "Strategia Italiana per l'Intelligenza Artificiale 2024-2026 (Italian Strategy for AI 2024-2026)",
+        "anio": 2024,
+        "url": "https://oecd.ai/en/dashboards/countries/Italy",
+        "url_abierta": true
+      },
+      "notas": "OECD.AI la lista a través de la ficha 'Public Administration Pillar in the Italian Strategy for AI (2024-2026)' (https://oecd.ai/en/dashboards/policy-initiatives/public-administration-pillar-in-the-italian-strategy-for-ai-2024-2026, no abierta) y registra el 'AI Strategic Program' anterior (2022). Sin presupuesto en el tablero."
+    },
+    {
+      "iso3": "DNK",
+      "nombre_es": "Dinamarca",
+      "estrategia": {
+        "nombre": "Strategic Approach to Artificial Intelligence: 'A more robust foundation for the responsible development and use of AI in Denmark'",
+        "anio": 2024,
+        "url": "https://oecd.ai/en/dashboards/countries/Denmark",
+        "url_abierta": true
+      },
+      "notas": "Actualiza la estrategia de 2019 que figura en paises_publica.json. OECD.AI la lista dos veces (también como 'Overarching National AI Strategy', 2024). Sin presupuesto en el tablero."
+    },
+    {
+      "iso3": "IRL",
+      "nombre_es": "Irlanda",
+      "estrategia": {
+        "nombre": "AI - Here for Good: Irish National AI Strategy 2021",
+        "anio": 2021,
+        "url": "https://oecd.ai/en/dashboards/countries/Ireland",
+        "url_abierta": true
+      },
+      "notas": "OECD.AI la titula 'Irish National AI Strategy 2021' (ficha: https://oecd.ai/en/dashboards/policy-initiatives/irish-national-ai-strategy-2021-3158, no abierta). También lista una estrategia sectorial 'AI for Care 2026-2030' (salud). Sin presupuesto en el tablero."
+    },
+    {
+      "iso3": "AUT",
+      "nombre_es": "Austria",
+      "estrategia": {
+        "nombre": "AI Mission Austria 2030 (AIM AT 2030)",
+        "anio": 2019,
+        "url": "https://oecd.ai/en/dashboards/countries/Austria",
+        "url_abierta": true
+      },
+      "notas": "El tablero no etiqueta explícitamente una estrategia nacional; 'AI Mission Austria 2030' es la mejor coincidencia y OECD.AI le asigna inicio 2019 (la estrategia del gobierno se publicó en 2021 según paises_publica.json: discrepancia sin resolver). Financiada por el Fonds Zukunft Österreich, sin monto."
+    },
+    {
+      "iso3": "NLD",
+      "nombre_es": "Países Bajos",
+      "notas": "El tablero de OECD.AI (https://oecd.ai/en/dashboards/countries/Netherlands) NO lista una estrategia nacional de IA general vigente; lo más cercano es la 'Vision on Generative AI' del gobierno (2024), que solo cubre IA generativa. Sin cifra presupuestal."
+    },
+    {
+      "iso3": "SWE",
+      "nombre_es": "Suecia",
+      "estrategia": {
+        "nombre": "Sweden's AI Strategy",
+        "anio": 2026,
+        "url": "https://oecd.ai/en/dashboards/countries/Sweden",
+        "url_abierta": true
+      },
+      "notas": "Confirma la estrategia de 2026 que paises_publica.json dejó sin verificar; objetivo: estar entre los 10 líderes mundiales en IA. Antecedente: 'National Approach to AI' (2018). Ficha: https://oecd.ai/en/dashboards/policy-initiatives/swedens-ai-strategy (no abierta). Sin presupuesto en el tablero."
+    },
+    {
+      "iso3": "FIN",
+      "nombre_es": "Finlandia",
+      "estrategia": {
+        "nombre": "AI 4.0 (Artificial Intelligence 4.0 Programme)",
+        "anio": 2020,
+        "url": "https://oecd.ai/en/dashboards/countries/Finland",
+        "url_abierta": true
+      },
+      "notas": "Es un programa (11 acciones clave), la mejor coincidencia en el tablero; no hay una estrategia posterior listada. Sin presupuesto."
+    },
+    {
+      "iso3": "BEL",
+      "nombre_es": "Bélgica",
+      "notas": "El tablero de OECD.AI (https://oecd.ai/en/dashboards/countries/Belgium) no lista ninguna estrategia nacional de IA; solo una 'Federal Data Strategy' (2025) e iniciativas regionales. Sin cifra presupuestal."
+    },
+    {
+      "iso3": "CHE",
+      "nombre_es": "Suiza",
+      "notas": "El tablero de OECD.AI (https://oecd.ai/en/dashboards/countries/Switzerland) no lista una estrategia específica de IA: figuran la 'Digital Switzerland Strategy' (2020, digital en general) y las 'Guidelines on AI' de la Confederación (2020). No se registra como estrategia de IA."
+    },
+    {
+      "iso3": "KOR",
+      "nombre_es": "Corea del Sur",
+      "estrategia": {
+        "nombre": "National Strategy for AI",
+        "anio": 2020,
+        "url": "https://oecd.ai/en/dashboards/countries/Korea",
+        "url_abierta": true
+      },
+      "notas": "'Start year' 2020 según OECD.AI (ficha: https://oecd.ai/en/dashboards/policy-initiatives/national-strategy-for-ai-9369, no abierta). El tablero lista además la AI Basic Act (vigente desde 2026), que ordena un Plan Maestro de IA, y programas de compra de GPU. Sin presupuesto en el tablero."
+    },
+    {
+      "iso3": "ARE",
+      "nombre_es": "Emiratos Árabes Unidos",
+      "estrategia": {
+        "nombre": "UAE National Strategy for Artificial Intelligence 2031",
+        "anio": 2017,
+        "url": "https://oecd.ai/en/dashboards/countries/United-Arab-Emirates",
+        "url_abierta": true
+      },
+      "notas": "OECD.AI la titula 'UAE National Strategy for AI' (anunciada en 2017, visión a 2031). Ficha: https://oecd.ai/en/dashboards/policy-initiatives/uae-national-strategy-for-ai-8711 (no abierta). Sitios oficiales ai.gov.ae (403) y u.ae (404) inaccesibles. Sin presupuesto."
+    },
+    {
+      "iso3": "SAU",
+      "nombre_es": "Arabia Saudita",
+      "estrategia": {
+        "nombre": "National Strategy for Data & AI (NSDAI); en OECD.AI 'National Data and AI Strategy'",
+        "anio": 2020,
+        "url": "https://oecd.ai/en/dashboards/countries/Saudi-Arabia",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/national-data-and-ai-strategy-9964 (no abierta). sdaia.gov.sa rechazó la consulta. Sin presupuesto en el tablero; no se verificó ninguna cifra de Humain."
+    },
+    {
+      "iso3": "TUR",
+      "nombre_es": "Turquía",
+      "estrategia": {
+        "nombre": "National AI Strategy (Estrategia Nacional de Inteligencia Artificial 2021-2025)",
+        "anio": 2021,
+        "url": "https://oecd.ai/en/dashboards/countries/Turkiye",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/national-ai-strategy-6021 (no abierta). Sin presupuesto en el tablero."
+    },
+    {
+      "iso3": "ZAF",
+      "nombre_es": "Sudáfrica",
+      "estrategia": {
+        "nombre": "South Africa National Artificial Intelligence Policy Framework",
+        "anio": 2024,
+        "url": "https://oecd.ai/en/dashboards/countries/South-Africa",
+        "url_abierta": true
+      },
+      "notas": "Descrito como 'un primer paso hacia una Política Nacional de IA completa': es un marco, no una estrategia definitiva. Sin presupuesto."
+    },
+    {
+      "iso3": "CHL",
+      "nombre_es": "Chile",
+      "estrategia": {
+        "nombre": "Política Nacional de Inteligencia Artificial 2021-2030 (en OECD.AI 'AI National Policy')",
+        "anio": 2019,
+        "url": "https://oecd.ai/en/dashboards/countries/Chile",
+        "url_abierta": true
+      },
+      "notas": "'Start year' 2019 según OECD.AI (inicio de la elaboración); la política cubre 2021-2030 con tres pilares. Ficha: https://oecd.ai/en/dashboards/policy-initiatives/ai-national-policy-1883 (no abierta). El tablero lista además el Plan Nacional de Data Centers (2024), el proyecto de ley de IA (2024) y LatamGPT (2024), todos sin monto. Sin presupuesto de IA verificado."
+    },
+    {
+      "iso3": "URY",
+      "nombre_es": "Uruguay",
+      "estrategia": {
+        "nombre": "Estrategia Nacional de Inteligencia Artificial 2024-2030",
+        "anio": 2023,
+        "url": "https://oecd.ai/en/dashboards/countries/Uruguay",
+        "url_abierta": true
+      },
+      "notas": "'Start year' 2023 según OECD.AI (proceso de revisión); el periodo de la estrategia es 2024-2030. Ficha: https://oecd.ai/en/dashboards/policy-initiatives/national-artificial-intelligence-strategy-20242030-8923 (no abierta). Sin presupuesto."
+    },
+    {
+      "iso3": "MEX",
+      "nombre_es": "México",
+      "notas": "OECD.AI (https://oecd.ai/en/dashboards/countries/Mexico) solo lista una PROPUESTA: 'Proposal for the National Agenda for Artificial Intelligence for Mexico 2024-2030' (2024), además de la 'Mexican National AI Agenda' de 2018. No hay estrategia aprobada: no se registra en 'estrategia'. Sin presupuesto anual de IA verificado."
+    },
+    {
+      "iso3": "ARG",
+      "nombre_es": "Argentina",
+      "estrategia": {
+        "nombre": "Plan Nacional de Inteligencia Artificial (AI National Plan)",
+        "anio": 2019,
+        "url": "https://oecd.ai/en/dashboards/countries/Argentina",
+        "url_abierta": true
+      },
+      "notas": "Plan de 2019; el tablero no muestra una actualización posterior, solo guías de 2026 para la administración pública (agentes de IA, prompting). Ficha: https://oecd.ai/en/dashboards/policy-initiatives/ai-national-plan-6774 (no abierta). Sin presupuesto."
+    },
+    {
+      "iso3": "NOR",
+      "nombre_es": "Noruega",
+      "estrategia": {
+        "nombre": "Nasjonal strategi for kunstig intelligens (National Strategy for AI)",
+        "anio": 2020,
+        "url": "https://oecd.ai/en/dashboards/countries/Norway",
+        "url_abierta": true
+      },
+      "notas": "Responsable: Ministerio de Gobierno Local y Modernización. Documento oficial enlazado por OECD.AI: https://www.regjeringen.no/en/dokumenter/nasjonal-strategi-for-kunstig-intelligens/id2685594/ (no abierto). Sin presupuesto en el tablero."
+    },
+    {
+      "iso3": "PRT",
+      "nombre_es": "Portugal",
+      "estrategia": {
+        "nombre": "AI Portugal 2030 - National Strategy for AI",
+        "anio": 2019,
+        "url": "https://oecd.ai/en/dashboards/countries/Portugal",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/ai-portugal-2030-national-strategy-for-ai-1250 (no abierta). El tablero lista también el LLM público AMALIA. Sin presupuesto."
+    },
+    {
+      "iso3": "GRC",
+      "nombre_es": "Grecia",
+      "estrategia": {
+        "nombre": "A Blueprint for Greece's AI Transformation",
+        "anio": 2024,
+        "url": "https://oecd.ai/en/dashboards/countries/Greece",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/a-blueprint-for-greece-s-ai-transformation-4618 (no abierta). Sin presupuesto."
+    },
+    {
+      "iso3": "CZE",
+      "nombre_es": "Chequia",
+      "estrategia": {
+        "nombre": "National AI Strategy of the Czech Republic 2030",
+        "anio": 2024,
+        "url": "https://oecd.ai/en/dashboards/countries/Czech-Republic",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/national-ai-strategy-of-the-czech-republic-2030-6563 (no abierta). La página del ministerio (mpo.gov.cz) devolvió 'no encontrada'. Sin presupuesto."
+    },
+    {
+      "iso3": "HUN",
+      "nombre_es": "Hungría",
+      "estrategia": {
+        "nombre": "Hungary's AI Strategy",
+        "anio": 2020,
+        "url": "https://oecd.ai/en/dashboards/countries/Hungary",
+        "url_abierta": true
+      },
+      "notas": "Elaborada con la Coalición Húngara de IA (más de 240 organizaciones). Ficha: https://oecd.ai/en/dashboards/policy-initiatives/hungarys-ai-strategy-8439 (no abierta). Sin presupuesto."
+    },
+    {
+      "iso3": "ROU",
+      "nombre_es": "Rumanía",
+      "estrategia": {
+        "nombre": "Romania's National Strategy on Artificial Intelligence (SN-IA) 2024-2027",
+        "anio": 2024,
+        "url": "https://oecd.ai/en/dashboards/countries/Romania",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/romanias-national-ai-strategy-3795 (no abierta). Sin presupuesto."
+    },
+    {
+      "iso3": "EST",
+      "nombre_es": "Estonia",
+      "estrategia": {
+        "nombre": "National AI Strategy 2.0 (sucede a la National AI Strategy 1.0 de 2019-2021)",
+        "anio": 2022,
+        "url": "https://oecd.ai/en/dashboards/countries/Estonia",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/national-ai-strategy-20-4102 (no abierta). Sin presupuesto en el tablero."
+    },
+    {
+      "iso3": "LUX",
+      "nombre_es": "Luxemburgo",
+      "estrategia": {
+        "nombre": "AI: A Strategic Vision for Luxembourg",
+        "anio": 2019,
+        "url": "https://oecd.ai/en/dashboards/countries/Luxembourg",
+        "url_abierta": true
+      },
+      "notas": "El tablero menciona de pasada una 'National AI2030 Strategy' más reciente que no está listada como iniciativa: posible estrategia sucesora no verificada. Ficha: https://oecd.ai/en/dashboards/policy-initiatives/ai-a-strategic-vision-for-luxembourg-7943 (no abierta). Sin presupuesto."
+    },
+    {
+      "iso3": "NZL",
+      "nombre_es": "Nueva Zelanda",
+      "estrategia": {
+        "nombre": "New Zealand's Strategy for Artificial Intelligence: 'Investing with Confidence'",
+        "anio": 2025,
+        "url": "https://oecd.ai/en/dashboards/countries/New-Zealand",
+        "url_abierta": true
+      },
+      "notas": "Centrada en adoptar tecnologías de IA existentes para elevar la productividad. La página de MBIE no devolvió contenido. Sin presupuesto."
+    },
+    {
+      "iso3": "MYS",
+      "nombre_es": "Malasia",
+      "estrategia": {
+        "nombre": "National AI Action Plan 2026-2030",
+        "anio": 2026,
+        "url": "https://ai.gov.my/",
+        "url_abierta": true
+      },
+      "notas": "Fuente: portal oficial de la Oficina Nacional de IA (NAIO). 'anio' = primer año del plan; la página no indica la fecha de publicación ni cifras en RM. OECD.AI no lista iniciativas de Malasia."
+    },
+    {
+      "iso3": "THA",
+      "nombre_es": "Tailandia",
+      "estrategia": {
+        "nombre": "Thailand National AI Strategy and Action Plan (2022-2027)",
+        "anio": 2022,
+        "url": "https://oecd.ai/en/dashboards/countries/Thailand",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/thailand-national-ai-strategy-and-action-plan-2022-2027-1728 (no abierta). Sin presupuesto."
+    },
+    {
+      "iso3": "VNM",
+      "nombre_es": "Vietnam",
+      "estrategia": {
+        "nombre": "National Strategy on R&D and Application of AI (hasta 2030)",
+        "anio": 2021,
+        "url": "https://oecd.ai/en/dashboards/countries/Viet-Nam",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/national-strategy-on-rd-and-application-of-ai-9280 (no abierta). El horizonte 2030 es de conocimiento general, no del tablero. Sin presupuesto."
+    },
+    {
+      "iso3": "PHL",
+      "nombre_es": "Filipinas",
+      "estrategia": {
+        "nombre": "National AI Strategy Roadmap 2.0 (NAISR 2.0)",
+        "anio": 2024,
+        "url": "https://oecd.ai/en/dashboards/countries/Philippines",
+        "url_abierta": true
+      },
+      "notas": "Actualiza la hoja de ruta de IA de 2021 e incorpora IA generativa. Ficha: https://oecd.ai/en/dashboards/policy-initiatives/national-ai-strategy-roadmap-20-naisr-20 (no abierta). Sin presupuesto."
+    },
+    {
+      "iso3": "PAK",
+      "nombre_es": "Pakistán",
+      "estrategia": {
+        "nombre": "National Artificial Intelligence (AI) Policy 2025",
+        "anio": 2025,
+        "url": "https://www.dawn.com/news/1927634/federal-cabinet-approves-national-ai-policy-2025",
+        "url_abierta": true
+      },
+      "notas": "Aprobada por el gabinete federal el 30-jul-2025. Fuente de prensa (Dawn), no el documento oficial. Prevé un AI Innovation Fund y un AI Venture Fund sin montos publicados; meta de un millón de profesionales de IA a 2030. OECD.AI no la lista."
+    },
+    {
+      "iso3": "BGD",
+      "nombre_es": "Bangladés",
+      "notas": "SIN estrategia aprobada verificada: al 18-jul-2026 el gobierno seguía 'formulando' una Política Nacional de IA (declaración del ministro de TIC en WAIC 2026, The Business Standard, https://www.tbsnews.net/node/1491516). OECD.AI no lista iniciativas del país. No registrar como país con estrategia vigente."
+    },
+    {
+      "iso3": "EGY",
+      "nombre_es": "Egipto",
+      "estrategia": {
+        "nombre": "Egypt National Artificial Intelligence Strategy (segunda edición, 2025-2030)",
+        "anio": 2025,
+        "url": "https://oecd.ai/en/dashboards/countries/Egypt",
+        "url_abierta": true
+      },
+      "notas": "Seis pilares; sucede a la 'Egypt National AI Strategy' de 2019. Ficha: https://oecd.ai/en/dashboards/policy-initiatives/egypt-national-artificial-intelligence-strategy (no abierta). Sin presupuesto."
+    },
+    {
+      "iso3": "NGA",
+      "nombre_es": "Nigeria",
+      "estrategia": {
+        "nombre": "National Artificial Intelligence Strategy (NAIS) 2025-2029",
+        "anio": 2025,
+        "url": "https://oecd.ai/en/dashboards/policy-initiatives/national-artificial-intelligence-strategy-nais",
+        "url_abierta": true
+      },
+      "notas": "Publicada en septiembre de 2025 por el Ministerio Federal de Comunicaciones, Innovación y Economía Digital, con NITDA como ejecutor. La ficha no asigna presupuesto y señala como desafío que el gasto público en I+D ronda el 0.2% del PIB."
+    },
+    {
+      "iso3": "KEN",
+      "nombre_es": "Kenia",
+      "estrategia": {
+        "nombre": "Kenya Artificial Intelligence Strategy 2025-2030",
+        "anio": 2025,
+        "url": "https://oecd.ai/en/dashboards/countries/Kenya",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/kenya-artificial-intelligence-strategy-2025-2030 (no abierta). Sin presupuesto en el tablero."
+    },
+    {
+      "iso3": "MAR",
+      "nombre_es": "Marruecos",
+      "estrategia": {
+        "nombre": "Strategy for Developing an AI Ecosystem",
+        "anio": 2021,
+        "url": "https://oecd.ai/en/dashboards/countries/Morocco",
+        "url_abierta": true
+      },
+      "notas": "OECD.AI la describe como el establecimiento de 'una estrategia y hoja de ruta nacional' para un ecosistema de IA: es la mejor coincidencia, no necesariamente una estrategia formalmente adoptada. Ficha: https://oecd.ai/en/dashboards/policy-initiatives/strategy-for-developing-an-ai-ecosystem-8061 (no abierta). Sin presupuesto."
+    },
+    {
+      "iso3": "RWA",
+      "nombre_es": "Ruanda",
+      "estrategia": {
+        "nombre": "The National AI Policy",
+        "anio": 2023,
+        "url": "https://oecd.ai/en/dashboards/countries/Rwanda",
+        "url_abierta": true
+      },
+      "notas": "Ficha: https://oecd.ai/en/dashboards/policy-initiatives/the-national-ai-policy (no abierta). Sin presupuesto en el tablero."
+    },
+    {
+      "iso3": "QAT",
+      "nombre_es": "Catar",
+      "estrategia": {
+        "nombre": "National Artificial Intelligence (AI) Strategy",
+        "anio": 2019,
+        "url": "https://www.gulf-times.com/story/645930/qatar-launches-strategy-to-tap-ai-for-future",
+        "url_abierta": true
+      },
+      "notas": "Lanzada en QITCOM 2019 (artículo del 29-oct-2019) por el ministro de Transporte y Comunicaciones; elaborada por el Qatar Computing Research Institute (HBKU). Fuente de prensa; sin presupuesto. No se halló una estrategia más reciente; OECD.AI no lista iniciativas de Catar."
+    },
+    {
+      "iso3": "UKR",
+      "nombre_es": "Ucrania",
+      "estrategia": {
+        "nombre": "Action Plan for the Implementation of the Concept for the Development of Artificial Intelligence in Ukraine for 2025-2026",
+        "anio": 2025,
+        "url": "https://oecd.ai/en/dashboards/countries/Ukraine",
+        "url_abierta": true
+      },
+      "notas": "Es el plan de acción vigente del Concepto de Desarrollo de la IA (horizonte 2030), no una estrategia nueva. El tablero lista además un 'Sectoral Analysis of AI and Initial Vision of AI Development in Ukraine' (2025) que traza la ruta hacia una estrategia nacional. Sin presupuesto."
+    },
+    {
+      "iso3": "SRB",
+      "nombre_es": "Serbia",
+      "estrategia": {
+        "nombre": "Strategy for the Development of AI in the Republic of Serbia for the Period 2020-2025",
+        "anio": 2020,
+        "url": "https://oecd.ai/en/dashboards/countries/Serbia",
+        "url_abierta": true
+      },
+      "notas": "Única iniciativa bajo el filtro 'National AI strategy' del tablero; su periodo terminó en 2025 y no se verificó la estrategia sucesora. Ficha: https://oecd.ai/en/dashboards/policy-initiatives/strategy-for-the-development-of-ai-in-the-republic-of-serbia-for-the-period-2020-2025-3461 (no abierta). Sin presupuesto."
+    }
+  ],
+  "ai_index_gasto_publico": [
+    {
+      "iso3": "USA",
+      "nombre_es": "Estados Unidos",
+      "valor": 20.4,
+      "unidad": "USD miles de millones",
+      "anio": "2013-2024 (acumulado)",
+      "concepto": "Contratos y subvenciones públicas relacionados con IA, total acumulado",
+      "fuente": "Stanford HAI, AI Index Report 2026, cap. 8 'Policy and Governance' (página web del capítulo)",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/policy-and-governance",
+      "nivel": "B"
+    },
+    {
+      "iso3": null,
+      "nombre_es": "Europa (total de los países cubiertos por el informe)",
+      "valor": 3.7,
+      "unidad": "USD miles de millones",
+      "anio": "2013-2024 (acumulado)",
+      "concepto": "Contratos públicos de IA, total acumulado (el gráfico marca 3.66)",
+      "fuente": "Stanford HAI, AI Index Report 2026, cap. 8 'Policy and Governance' (página web del capítulo)",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/policy-and-governance",
+      "nivel": "B"
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "valor": 1.6,
+      "unidad": "USD miles de millones",
+      "anio": "2013-2024 (acumulado)",
+      "concepto": "Contratos públicos de IA, total acumulado",
+      "fuente": "Stanford HAI, AI Index Report 2026, cap. 8 'Policy and Governance' (página web del capítulo)",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/policy-and-governance",
+      "nivel": "B"
+    },
+    {
+      "iso3": "GBR",
+      "nombre_es": "Reino Unido",
+      "valor": 0.4544,
+      "unidad": "USD miles de millones",
+      "anio": "2024",
+      "concepto": "Contratos públicos de IA en el año (28% del total de la década)",
+      "fuente": "Stanford HAI, AI Index Report 2026, cap. 8 'Policy and Governance' (página web del capítulo)",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/policy-and-governance",
+      "nivel": "B"
+    },
+    {
+      "iso3": "DEU",
+      "nombre_es": "Alemania",
+      "valor": 0.505,
+      "unidad": "USD miles de millones",
+      "anio": "2013-2024 (acumulado)",
+      "concepto": "Contratos públicos de IA, total acumulado",
+      "fuente": "Stanford HAI, AI Index Report 2026, cap. 8 'Policy and Governance' (página web del capítulo)",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/policy-and-governance",
+      "nivel": "B"
+    },
+    {
+      "iso3": "DEU",
+      "nombre_es": "Alemania",
+      "valor": 0.2066,
+      "unidad": "USD miles de millones",
+      "anio": "2024",
+      "concepto": "Contratos públicos de IA en el año (40% del total de la década)",
+      "fuente": "Stanford HAI, AI Index Report 2026, cap. 8 'Policy and Governance' (página web del capítulo)",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/policy-and-governance",
+      "nivel": "B"
+    },
+    {
+      "iso3": "FRA",
+      "nombre_es": "Francia",
+      "valor": 0.32,
+      "unidad": "USD miles de millones",
+      "anio": "2013-2024 (acumulado)",
+      "concepto": "Contratos públicos de IA, total acumulado",
+      "fuente": "Stanford HAI, AI Index Report 2026, cap. 8 'Policy and Governance' (página web del capítulo)",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/policy-and-governance",
+      "nivel": "B"
+    }
+  ]
+}

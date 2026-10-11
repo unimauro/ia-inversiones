@@ -640,12 +640,12 @@
     hook(["qFondo", "fFondoTipo", "fFondoPais"], t.redraw);
 
     var cs = arr(I.corporativos), tot = {};
-    cs.forEach(function (r) { var v = toBn(r.monto); if (v != null && /usd|us\$/i.test(unitOf(r.monto))) { tot[r.inversor] = tot[r.inversor] || { v: 0, ps: [] }; tot[r.inversor].v += v; tot[r.inversor].ps.push(r.participada); } });
+    cs.forEach(function (r) { var v = r.agregado ? null : toBn(r.monto); if (v != null && /usd|us\$/i.test(unitOf(r.monto))) { tot[r.inversor] = tot[r.inversor] || { v: 0, ps: [] }; tot[r.inversor].v += v; tot[r.inversor].ps.push(r.participada); } });
     hbar("cCorp", Object.keys(tot).map(function (k) { return { name: k, value: Math.round(tot[k].v * 100) / 100, extra: tot[k].ps.join(", ") }; }).sort(function (a, b) { return b.value - a.value; }).slice(0, 15), { color: 1, fmt: function (v) { return money(v, "USD miles de millones"); }, short: function (v) { return fmt(v); } });
-    note("nCorp", cs.length ? "Suma de montos reportados por inversor, miles de millones de US$. Mezcla dinero ya invertido con compromisos futuros (ver columna «Tipo» en el detalle); parte se paga en créditos de nube o chips, no en efectivo." : "");
+    note("nCorp", cs.length ? "Suma de montos reportados por participada, miles de millones de US$ (no incluye los totales de balance de Nvidia, que van en el detalle). Mezcla dinero ya invertido con compromisos futuros (ver columna «Tipo» en el detalle); parte se paga en créditos de nube o chips, no en efectivo." : "");
     table("tCorp", [
       { t: "Inversor", v: function (r) { return r.inversor; }, h: function (r) { return "<b>" + esc(r.inversor) + "</b>"; }, asc: true },
-      { t: "Participada", v: function (r) { return r.participada; }, h: function (r) { return esc(r.participada) + (r.nota ? '<br><span class="mut">' + esc(r.nota) + "</span>" : ""); }, cls: "wide", asc: true },
+      { t: "Participada", v: function (r) { return r.participada; }, h: function (r) { return esc(r.participada) + (r.agregado ? ' <span class="tag">total de balance</span>' : "") + (r.nota ? '<br><span class="mut">' + esc(r.nota) + "</span>" : ""); }, cls: "wide", asc: true },
       { t: "Monto", num: true, v: function (r) { return toBn(r.monto); }, h: function (r) { return fig(r.monto); } },
       { t: "Tipo", h: function (r) { return r.monto && r.monto.tipo ? '<span class="tag">' + esc(r.monto.tipo) + "</span>" : ""; } }
     ], cs, { sort: 2 });
