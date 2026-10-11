@@ -104,7 +104,7 @@
     arr(B.empresas).forEach(function (e) { var x = c(e.pais_iso3); if (x) x.empresas.push(e); });
     arr(L.empresas).forEach(function (e) { var x = c(e.pais_iso3); if (x) x.labs.push(e); });
   }
-  function nombre(iso) { return NOMBRES[iso] || (C[iso] && C[iso].nombre !== iso ? C[iso].nombre : iso) || iso; }
+  function nombre(iso) { if (!iso) return ""; return NOMBRES[iso] || (C[iso] && C[iso].nombre !== iso ? C[iso].nombre : iso) || iso; }
 
   // ---- tema / colores ------------------------------------------------------
   function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }

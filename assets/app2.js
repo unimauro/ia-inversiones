@@ -68,7 +68,7 @@
     $("feed").innerHTML = ns.map(function (n) {
       return '<div class="nw"><div class="dt">' + fecha(n.fecha, n.fecha_precision) + '</div><div><div class="hd">' + link(n.titular || n.empresa, n.url) + '</div><div class="mt">' +
         '<span class="tag t-' + esc(n.familia || "") + '">' + esc(n.familia || "") + (n.subcategoria ? " · " + esc(n.subcategoria) : "") + "</span> " +
-        "<b>" + esc(n.empresa || "") + "</b> · " + esc((n.ciudad ? n.ciudad + ", " : "") + nombre(n.pais_iso3)) + (n.operacion ? " · " + esc(n.operacion) : "") +
+        "<b>" + esc(n.empresa || "") + "</b>" + ([n.ciudad, nombre(n.pais_iso3)].filter(Boolean).length ? " · " + esc([n.ciudad, nombre(n.pais_iso3)].filter(Boolean).join(", ")) : "") + (n.operacion ? " · " + esc(n.operacion) : "") +
         (n.inversores ? '<br>Inversores: ' + esc(n.inversores) : "") + (n.nota ? '<br><span class="mut" style="color:var(--muted)">' + esc(n.nota) + "</span>" : "") + (n.fuente ? ' <span class="mut">· ' + esc(n.fuente) + "</span>" : "") + "</div></div>" +
         '<div class="amt">' + (num(n.monto) != null ? (IA.cur(unitOf(n.monto)) && toBn(n.monto) != null ? "≈ " + esc(money(toBn(n.monto), "USD miles de millones")) : esc(money(num(n.monto), unitOf(n.monto)))) : "") + (num(n.valoracion) != null ? "<small>valoración " + esc(money(num(n.valoracion), unitOf(n.valoracion))) + "</small>" : "") + "</div></div>";
     }).join("") || '<p class="empty">Sin resultados.</p>';
