@@ -689,7 +689,7 @@
     fillPaises("fUniPais", us.map(function (u) { return u.pais_iso3; }));
     var t = table("tUnis", uniCols(keys), us, { rank: true, sort: keys.length ? 2 + Math.max(0, keys.indexOf("qs_ds_ai")) : 0, dir: 1, filter: function (u) { var s = norm($("qUni").value), f = $("fUniPais").value; return (!s || norm(u.nombre).indexOf(s) >= 0) && (!f || u.pais_iso3 === f); } });
     hook(["qUni", "fUniPais"], t.redraw);
-    note("nUnis", arr((U.meta || {}).rankings).map(function (r) { return "<b>" + esc(r.corto || RK_CORTO[r.clave] || r.nombre) + "</b>: " + link((r.nombre || "") + (r.edicion ? " " + r.edicion : ""), r.url) + (r.metodo ? " — " + esc(r.metodo) : ""); }).join("<br>"));
+    note("nUnis", "Aparecen las universidades que están en el top 20 de al menos uno de los rankings; el orden inicial es por QS IA y se puede cambiar con clic en cada columna. «—» significa que no figura en ese ranking.<br>" + arr((U.meta || {}).rankings).map(function (r) { return "<b>" + esc(r.corto || RK_CORTO[r.clave] || r.nombre) + "</b>: " + link((r.nombre || "") + (r.edicion ? " " + r.edicion : ""), r.url) + (r.metodo ? " — " + esc(r.metodo) : ""); }).join("<br>"));
 
     var pr = arr(U.produccion_pais).filter(function (r) { return num(r.publicaciones) != null; }).sort(function (a, b) { return num(b.publicaciones) - num(a.publicaciones); });
     hbar("cPubs", pr.slice(0, 15).map(function (r) { return { name: nombre(r.iso3), value: num(r.publicaciones), iso: r.iso3 }; }), { color: 2, fmt: function (v, it) { return fmt(v) + " " + (unitOf(pr[0].publicaciones) || "publicaciones"); } });
@@ -697,8 +697,14 @@
     var cf = arr(U.conferencias).filter(function (r) { return num(r.papers) != null; });
     var conf = cf.length ? cf[0].conferencia : "";
     cf = cf.filter(function (r) { return r.conferencia === conf; }).sort(function (a, b) { return num(b.papers) - num(a.papers); });
+    // con menos de 5 instituciones (cifras autodeclaradas) no hay ranking que mostrar
+    var cc = $("cConf").closest(".card");
+    if (cf.length < 5) { cc.style.display = "none"; cc.parentNode.style.gridTemplateColumns = "1fr"; return universidadesResto(); }
     hbar("cConf", cf.slice(0, 15).map(function (r) { return { name: r.institucion, value: num(r.papers), extra: (r.tipo || "") + " · " + nombre(r.pais_iso3) }; }), { color: 0, fmt: function (v) { return fmt(v) + " papers"; } });
     if (cf.length) { $("tConf").textContent = "Papers aceptados en " + conf; note("nConf", "Incluye universidades y empresas. " + srcNote(cf[0])); }
+    universidadesResto();
+  }
+  function universidadesResto() {
     table("tTalento", [
       { t: "Indicador", h: function (r) { return esc(r.indicador); }, cls: "wide" },
       { t: "País", v: function (r) { return nombre(r.pais_iso3 || ""); }, h: function (r) { return r.pais_iso3 ? esc(nombre(r.pais_iso3)) : '<span class="mut">Mundo</span>'; }, asc: true },
