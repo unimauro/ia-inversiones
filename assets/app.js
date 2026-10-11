@@ -35,7 +35,7 @@
     var usd = /usd|us\$|dolar/.test(u) || u === "";
     if (!usd) return fmt(n) + " " + unidad;
     if (/miles de millones|billion|\bbn\b|mil m/.test(u)) {
-      if (Math.abs(n) >= 1000) return "US$ " + fmt(n / 1000) + " billones";
+      if (Math.abs(n) >= 1000) return "US$ " + fmt(n / 1000) + (Math.abs(n) < 1995 ? " billón" : " billones");
       if (Math.abs(n) < 1) return "US$ " + fmt(n * 1000) + " M";
       return "US$ " + fmt(n) + " mil M";
     }
@@ -322,7 +322,8 @@
     var r = u.rankings || {}, names = rkNames();
     return Object.keys(r).filter(function (k) { return r[k] != null && r[k] !== ""; }).map(function (k) { return esc(names[k] || k) + ": <b>#" + esc(r[k]) + "</b>"; }).join("<br>");
   }
-  function rkNames() { var o = {}; arr((U.meta || {}).rankings).forEach(function (r) { o[r.clave] = r.corto || r.nombre || r.clave; }); return o; }
+  var RK_CORTO = { csrankings: "CSRankings", qs_ds_ai: "QS IA", qs_cs: "QS Computación", usnews_ai: "US News IA", the_cs: "THE Computación", gras_ai: "Shanghái IA", gras_cs: "Shanghái Comp.", airankings: "AIRankings", nature_index: "Nature Index" };
+  function rkNames() { var o = {}; arr((U.meta || {}).rankings).forEach(function (r) { o[r.clave] = r.corto || RK_CORTO[r.clave] || r.nombre || r.clave; }); return o; }
 
   function ficha(iso) {
     selected = iso;
@@ -686,9 +687,9 @@
   function universidades() {
     var us = arr(U.universidades), keys = rkKeys(us);
     fillPaises("fUniPais", us.map(function (u) { return u.pais_iso3; }));
-    var t = table("tUnis", uniCols(keys), us, { sort: keys.length ? 2 : 0, dir: 1, filter: function (u) { var s = norm($("qUni").value), f = $("fUniPais").value; return (!s || norm(u.nombre).indexOf(s) >= 0) && (!f || u.pais_iso3 === f); } });
+    var t = table("tUnis", uniCols(keys), us, { rank: true, sort: keys.length ? 2 + Math.max(0, keys.indexOf("qs_ds_ai")) : 0, dir: 1, filter: function (u) { var s = norm($("qUni").value), f = $("fUniPais").value; return (!s || norm(u.nombre).indexOf(s) >= 0) && (!f || u.pais_iso3 === f); } });
     hook(["qUni", "fUniPais"], t.redraw);
-    note("nUnis", arr((U.meta || {}).rankings).map(function (r) { return "<b>" + esc(r.corto || r.nombre) + "</b>: " + link((r.nombre || "") + (r.edicion ? " " + r.edicion : ""), r.url) + (r.metodo ? " — " + esc(r.metodo) : ""); }).join("<br>"));
+    note("nUnis", arr((U.meta || {}).rankings).map(function (r) { return "<b>" + esc(r.corto || RK_CORTO[r.clave] || r.nombre) + "</b>: " + link((r.nombre || "") + (r.edicion ? " " + r.edicion : ""), r.url) + (r.metodo ? " — " + esc(r.metodo) : ""); }).join("<br>"));
 
     var pr = arr(U.produccion_pais).filter(function (r) { return num(r.publicaciones) != null; }).sort(function (a, b) { return num(b.publicaciones) - num(a.publicaciones); });
     hbar("cPubs", pr.slice(0, 15).map(function (r) { return { name: nombre(r.iso3), value: num(r.publicaciones), iso: r.iso3 }; }), { color: 2, fmt: function (v, it) { return fmt(v) + " " + (unitOf(pr[0].publicaciones) || "publicaciones"); } });
@@ -702,7 +703,7 @@
       { t: "Indicador", h: function (r) { return esc(r.indicador); }, cls: "wide" },
       { t: "País", v: function (r) { return nombre(r.pais_iso3 || ""); }, h: function (r) { return r.pais_iso3 ? esc(nombre(r.pais_iso3)) : '<span class="mut">Mundo</span>'; }, asc: true },
       { t: "Valor", num: true, v: function (r) { return num(r); }, h: function (r) { return fig(r, { raw: true }); } }
-    ], arr(U.talento));
+    ], arr(U.talento), { sort: 2 });
     table("tInvUni", [
       { t: "Universidad", h: function (r) { return "<b>" + esc(r.universidad) + "</b><br><span class=\"mut\">" + esc(nombre(r.pais_iso3)) + "</span>"; } },
       { t: "Concepto", h: function (r) { return link(r.concepto || "", r.url); }, cls: "wide" },
