@@ -124,6 +124,8 @@ def fusionar():
         en, ch = d.setdefault("energia", {}), d.setdefault("chips", {})
         por = {x.get("iso3"): x for x in en.setdefault("por_pais", [])}
         for x in e.get("por_pais") or []:
+            if x.get("es_region") or str(x.get("iso3", "")).startswith("X_"):
+                continue  # agregados regionales: no son países
             if x.get("iso3") in por:
                 for k, v in x.items():
                     if not tiene(por[x["iso3"]].get(k)) and (tiene(v) or k not in por[x["iso3"]]):
@@ -153,6 +155,12 @@ def fusionar():
             ch["fabricas"] = [x for x in ch.get("fabricas", []) if str(x.get("empresa", "")).split()[0].lower() not in emp and clave(x, ["nombre"]) not in nuevas] + e["fabricas"]
         else:
             ch["fabricas"] = [x for x in ch.get("fabricas", []) if clave(x, ["nombre"]) not in nuevas] + (e.get("fabricas") or [])
+        for x in ch["fabricas"]:
+            if "rapidus" in str(x.get("nombre", "")).lower() and tiene(x.get("inversion")):
+                x["estado"] = ((x.get("estado") or "") + " · El monto es el capital acumulado de la empresa, no el costo de la fábrica").strip(" ·")
+        for x in e.get("chips_datos") or []:
+            if "cuota" in str(x.get("concepto", "")).lower() and "epoch" in str(x.get("fuente", "")).lower():
+                x["nivel"] = "C"  # agregación propia sobre los CSV de Epoch, no cifra publicada
         anexar(d.setdefault("memorias", []), e.get("memorias"), ["concepto"])
         anexar(ch.setdefault("datos", []), e.get("chips_datos"), ["concepto"])
         anexar(en.setdefault("datos", []), e.get("agua"), ["concepto"])
