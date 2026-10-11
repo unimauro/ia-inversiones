@@ -1,0 +1,2308 @@
+{
+ "meta": {
+  "bloque": "extra_cadena",
+  "consultado": "2026-10-11",
+  "advertencias": [
+   "Bloque complementario de cadena_valor.json: no repite las cifras ya presentes allí (precio_kwh, consumo de EE.UU. 2024, Irlanda 2024, agua de LBNL vía Pew).",
+   "n_centros proviene de Cloudscene (páginas regionales y de mercado, sin fecha de actualización; consultadas el 2026-10-11). Data Center Map no se pudo abrir (HTTP 429 y verificación antibot de Vercel), así que no hay segundo conteo para contrastar. Cloudscene cuenta sobre todo colocation y puede subestimar centros propios de hiperescaladores. Su cifra para EE.UU. (5,427) coincide con la que cita el AI Index 2026.",
+   "Cloudscene no devolvió conteo para Emiratos Árabes Unidos ni Arabia Saudita (la página de mercado no muestra cifras) y no tiene página regional de África ni de Medio Oriente: solo se obtuvieron Sudáfrica e Israel.",
+   "capacidad_mw por país NO existe en una fuente abierta única. Se usó: AIE (vía Our World in Data) para EE.UU. y China; GPS Property 2S-2025 vía prensa chilena para Brasil, Chile, México, Colombia, Perú y Argentina (nivel C; la cifra de Chile es de la Región Metropolitana); MEXDC vía DPL News para México; Cushman & Wakefield vía prensa para Reino Unido. Sin capacidad verificada para Alemania, Japón, India, Australia, Malasia, Singapur, Uruguay, Panamá ni Costa Rica. Los informes completos de Cushman & Wakefield, JLL, CBRE y DC Byte con desglose por país están tras registro.",
+   "Las cifras de GPS Property cambian mucho entre semestres (Perú 10 MW en 1S-2025 y 30 MW en 2S-2025; Brasil 700 y ~920): tratarlas como órdenes de magnitud.",
+   "consumo_twh y pct_demanda solo para EE.UU., China, Irlanda, Países Bajos y Francia. La AIE no publica consumo por país más allá de EE.UU. y China (el resto son agregados regionales, incluidos aquí con es_region=true e iso3 ficticio 'X_...'). Sin dato para ningún país de América Latina: el agregado AIE de Centro y Sudamérica es 1.5 TWh y 0.12% de la demanda en 2025.",
+   "pct_demanda de EE.UU., China y regiones es un cálculo de Our World in Data (consumo AIE / demanda total de Ember), no una cifra publicada por la AIE.",
+   "en_construccion_mw: solo México (MEXDC), Chile (ingresos previstos 2026) y Francia (potencia reservada en la red, que NO es obra en curso). Para las Américas y EMEA se dan los agregados regionales de Cushman & Wakefield 1S-2026.",
+   "Discrepancia entre ediciones de Cushman & Wakefield: la comparación global 2026 (may-2026) da 43.4 GW operativos y 25.3 GW en construcción en las Américas y 11.4 GW operativos en EMEA; la actualización 1S-2026 (sep-2026) da 50.3 y 37.7 GW y 12.1 GW. Se usó la más reciente.",
+   "serie_twh: la AIE (vía Our World in Data) solo publica 2020, 2023, 2024 y 2025 en datos descargables; 2021 y 2022 NO están disponibles y no se interpolaron. El archivo XLSX original de la AIE requiere cuenta. El valor 2024 es 416 TWh en los datos y 'unos 415' en el texto del informe.",
+   "Fábricas: 22 con fuente primaria (fichas de NIST/CHIPS, notas de prensa de TSMC, Micron, Rapidus, Comisión Europea, PIB de India) o prensa financiera. NO se encontró fuente abierta para: TSMC Kaohsiung (N2) y Hsinchu/Baoshan, Samsung Pyeongtaek P4/P5, Intel Irlanda (Fab 34), SMIC, CXMT, YMTC ni las plantas de CoWoS de TSMC; se omiten.",
+   "Fábricas: lat/lon son las de la ciudad anfitriona (no del predio), salvo TSMC Arizona, que reutiliza las coordenadas de cadena_valor.json. Los alias de fábrica (Fab 52/62, ID1/ID2, SM1/SM2, LFAB2, Fab 8, Ohio One, IIM-1, Fab 21) son nombres de uso común que no figuran en las fichas citadas.",
+   "Fábricas: las fichas de NIST no dan fecha de adjudicación; reflejan los montos finales de la administración anterior y no recogen cambios posteriores (p. ej. la conversión de subsidios de Intel en participación accionaria del gobierno en 2025, que no se verificó aquí). El monto de Micron (USD 6.44 mil M) es el total de la empresa y aparece igual en las fichas de Nueva York e Idaho. La inversión de Amkor (USD 1.7 mil M) es la de la ficha y puede estar desactualizada.",
+   "Fábricas sin subsidio verificado (campo null): JASM Kumamoto, SK hynix Yongin y M15X, Micron Singapur, Tata Dholera y Tata Assam. M15X va sin monto de inversión.",
+   "Rapidus: 'inversion' es el capital acumulado de la empresa, no el costo de la fábrica; 'subsidio' suma dos aportes de capital de la agencia estatal IPA.",
+   "Memorias: cuota de HBM del 2T-2026 de Counterpoint vía Edaily (la página de Counterpoint no muestra las cifras en abierto). No se encontró tamaño del mercado de HBM para 2026 ni 2027; solo el TAM de Micron para 2025 y 2028 citado por un agregador (nivel C).",
+   "CoWoS: TSMC no publica capacidad; todas las cifras son estimaciones de analistas o prensa taiwanesa (nivel C) y difieren entre sí.",
+   "Precio de oblea A16/N2: no se encontró ningún reporte abierto nuevo; se omite.",
+   "AMD MI400/Helios: AMD publica configuración (72 GPU MI450 por rack) pero NO precio ni potencia; se omiten.",
+   "Cuotas de aceleradores: agregación propia de los CSV de Epoch AI (año 2025 completo). 2026 no se usó porque el dato de Amazon falta y el 3T está marcado como incompleto. No hay serie separada para Broadcom ni para los chips propios de Microsoft y Meta.",
+   "Alquiler de H100: la serie histórica es de Silicon Data (proveedor del índice SDH100RT), publicada como medianas por tramo de meses y por tipo de proveedor, no como serie trimestral; por eso 'periodo' es un rango y no '2023-Q3'. No hay dato de neocloud ni marketplace antes de jun-2024. La serie diaria completa es de pago (Bloomberg). No se encontró el índice de Ornn.",
+   "Agua: no se pudo abrir el informe de LBNL (403) ni se halló la cifra mundial de la AIE en las páginas abiertas (el PDF 'Key Questions' no trae consumo de agua). Solo hay cifras corporativas: Google (volumen), Microsoft (WUE) y Meta (agua restituida, no consumida).",
+   "Los montos se dejan en moneda original (USD, EUR, JPY, KRW, INR crore) sin convertir.",
+   "Incidencia técnica: el disco de la máquina estuvo lleno durante parte de la sesión, lo que impidió descargar algunos PDF grandes."
+  ]
+ },
+ "por_pais": [
+  {
+   "iso3": "BRA",
+   "nombre_es": "Brasil",
+   "n_centros": {
+    "valor": 197,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   },
+   "capacidad_mw": {
+    "valor": 920,
+    "unidad": "MW",
+    "anio": "2S-2025",
+    "fuente": "GPS Property, Informe de Mercado Data Centers 2S-2025, citado por Emol (12-feb-2026)",
+    "url": "https://www.emol.com/noticias/Economia/2026/02/12/1191254/data-centers-chile.html",
+    "nivel": "C",
+    "nota": "Capacidad instalada. El informe de 1S-2025 de la misma firma daba 700 MW (vía CPI Chile, https://cpichile.org/?p=91926). La fuente dice 'cerca de 920 MW'. CBRE reporta 493 MW de inventario solo en São Paulo (1T-2025)."
+   },
+   "nota": "CBRE Global Data Center Trends 2025: São Paulo 493 MW de inventario, vacancia 9.5% (1T-2025), https://www.cbre.com/insights/reports/global-data-center-trends-2025"
+  },
+  {
+   "iso3": "MEX",
+   "nombre_es": "México",
+   "n_centros": {
+    "valor": 173,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   },
+   "capacidad_mw": {
+    "valor": 279,
+    "unidad": "MW",
+    "anio": "2026",
+    "fuente": "MEXDC, citado por DPL News (22-abr-2026)",
+    "url": "https://dplnews.com/mexico-duplica-capacidad-de-data-centers-energia/",
+    "nivel": "C",
+    "nota": "115 MW en 2023. GPS Property (2S-2025) da 251 MW. Meta sectorial: 1,500 MW a 2030."
+   },
+   "en_construccion_mw": {
+    "valor": 205,
+    "unidad": "MW",
+    "anio": "2026",
+    "fuente": "MEXDC, citado por DPL News (22-abr-2026)",
+    "url": "https://dplnews.com/mexico-duplica-capacidad-de-data-centers-energia/",
+    "nivel": "C",
+    "nota": "En construcción."
+   }
+  },
+  {
+   "iso3": "CHL",
+   "nombre_es": "Chile",
+   "n_centros": {
+    "valor": 59,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   },
+   "capacidad_mw": {
+    "valor": 258.5,
+    "unidad": "MW",
+    "anio": "2S-2025",
+    "fuente": "GPS Property, Informe de Mercado Data Centers 2S-2025, citado por Emol (12-feb-2026)",
+    "url": "https://www.emol.com/noticias/Economia/2026/02/12/1191254/data-centers-chile.html",
+    "nivel": "C",
+    "nota": "Capacidad instalada. El informe de 1S-2025 de la misma firma daba 242.7 MW (vía CPI Chile, https://cpichile.org/?p=91926). La cifra corresponde a la Región Metropolitana (37 centros operativos); 89.7 MW en 2021."
+   },
+   "en_construccion_mw": {
+    "valor": 83.1,
+    "unidad": "MW",
+    "anio": "2026 (ingreso previsto)",
+    "fuente": "GPS Property, Informe de Mercado Data Centers 2S-2025, citado por Emol (12-feb-2026)",
+    "url": "https://www.emol.com/noticias/Economia/2026/02/12/1191254/data-centers-chile.html",
+    "nivel": "C",
+    "nota": "Cuatro centros nuevos previstos para 2026 en la Región Metropolitana; cartera 2026-2031: 367.8 MW adicionales y USD 1,616 millones comprometidos."
+   },
+   "nota": "Coordinador Eléctrico Nacional (vía Emol): demanda de centros de datos de 325 MW en 2025, proyectada a 1,207 MW en 2030 (+270%). CBRE: Santiago 148 MW de inventario (1T-2025). Sin dato de TWh ni % de la demanda."
+  },
+  {
+   "iso3": "COL",
+   "nombre_es": "Colombia",
+   "n_centros": {
+    "valor": 41,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   },
+   "capacidad_mw": {
+    "valor": 62,
+    "unidad": "MW",
+    "anio": "2S-2025",
+    "fuente": "GPS Property, Informe de Mercado Data Centers 2S-2025, citado por Emol (12-feb-2026)",
+    "url": "https://www.emol.com/noticias/Economia/2026/02/12/1191254/data-centers-chile.html",
+    "nivel": "C",
+    "nota": "Capacidad instalada. El informe de 1S-2025 de la misma firma daba 50 MW (vía CPI Chile, https://cpichile.org/?p=91926)."
+   },
+   "nota": "CBRE: Bogotá con vacancia de 21.2% (1T-2025), sin inventario publicado."
+  },
+  {
+   "iso3": "ARG",
+   "nombre_es": "Argentina",
+   "n_centros": {
+    "valor": 29,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   },
+   "capacidad_mw": {
+    "valor": 20,
+    "unidad": "MW",
+    "anio": "2S-2025",
+    "fuente": "GPS Property, Informe de Mercado Data Centers 2S-2025, citado por Emol (12-feb-2026)",
+    "url": "https://www.emol.com/noticias/Economia/2026/02/12/1191254/data-centers-chile.html",
+    "nivel": "C",
+    "nota": "Capacidad instalada. El informe de 1S-2025 de la misma firma daba 5 MW (vía CPI Chile, https://cpichile.org/?p=91926)."
+   }
+  },
+  {
+   "iso3": "PER",
+   "nombre_es": "Perú",
+   "n_centros": {
+    "valor": 21,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/market/data-centers-in-peru/all",
+    "nivel": "B"
+   },
+   "capacidad_mw": {
+    "valor": 30,
+    "unidad": "MW",
+    "anio": "2S-2025",
+    "fuente": "GPS Property, Informe de Mercado Data Centers 2S-2025, citado por Emol (12-feb-2026)",
+    "url": "https://www.emol.com/noticias/Economia/2026/02/12/1191254/data-centers-chile.html",
+    "nivel": "C",
+    "nota": "Capacidad instalada. El informe de 1S-2025 de la misma firma daba 10 MW (vía CPI Chile, https://cpichile.org/?p=91926)."
+   },
+   "nota": "Cloudscene: los 21 centros están en Lima; 40 proveedores de servicios. Sin dato de consumo eléctrico ni % de la demanda."
+  },
+  {
+   "iso3": "PAN",
+   "nombre_es": "Panamá",
+   "n_centros": {
+    "valor": 20,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "PRI",
+   "nombre_es": "Puerto Rico",
+   "n_centros": {
+    "valor": 19,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "GTM",
+   "nombre_es": "Guatemala",
+   "n_centros": {
+    "valor": 16,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "ECU",
+   "nombre_es": "Ecuador",
+   "n_centros": {
+    "valor": 15,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "CRI",
+   "nombre_es": "Costa Rica",
+   "n_centros": {
+    "valor": 13,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "URY",
+   "nombre_es": "Uruguay",
+   "n_centros": {
+    "valor": 6,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "BOL",
+   "nombre_es": "Bolivia",
+   "n_centros": {
+    "valor": 5,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "VEN",
+   "nombre_es": "Venezuela",
+   "n_centros": {
+    "valor": 4,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "DOM",
+   "nombre_es": "República Dominicana",
+   "n_centros": {
+    "valor": 3,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "PRY",
+   "nombre_es": "Paraguay",
+   "n_centros": {
+    "valor": 1,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-south-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "USA",
+   "nombre_es": "Estados Unidos",
+   "n_centros": {
+    "valor": 5427,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-north-america",
+    "nivel": "B"
+   },
+   "capacidad_mw": {
+    "valor": 52000,
+    "unidad": "MW",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295515.data.json",
+    "nivel": "A",
+    "nota": "52 GW de capacidad instalada (23 GW en 2020, 35 en 2023, 42 en 2024); proyección AIE 2030: 100 GW."
+   },
+   "consumo_twh": {
+    "valor": 224,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json",
+    "nivel": "A",
+    "nota": "108 TWh en 2020, 154 en 2023, 183 en 2024; proyección 2030: 426 TWh. DOE/LBNL (dic-2024): 176 TWh en 2023 (https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers)."
+   },
+   "pct_demanda": {
+    "valor": 4.94,
+    "unidad": "% de la demanda eléctrica nacional",
+    "anio": "2025",
+    "fuente": "Our World in Data con datos de AIE y Ember",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295514.data.json",
+    "nivel": "A",
+    "nota": "2.64% en 2020, 3.60% en 2023, 4.15% en 2024. DOE/LBNL: 4.4% en 2023 y 6.7-12% en 2028."
+   },
+   "nota": "Cushman & Wakefield (1S-2026): EE.UU. concentra 94.1% de los 50.3 GW operativos de las Américas; ver la fila regional 'Américas' para construcción y cartera."
+  },
+  {
+   "iso3": "CAN",
+   "nombre_es": "Canadá",
+   "n_centros": {
+    "valor": 337,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-north-america",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "DEU",
+   "nombre_es": "Alemania",
+   "n_centros": {
+    "valor": 529,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "GBR",
+   "nombre_es": "Reino Unido",
+   "n_centros": {
+    "valor": 523,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   },
+   "capacidad_mw": {
+    "valor": 1700,
+    "unidad": "MW",
+    "anio": "2026",
+    "fuente": "Cushman & Wakefield, citado por IT-Connect (23-sep-2026)",
+    "url": "https://www.it-connect.tech/u-s-data-center-capacity-dwarfs-14-countries-combined/",
+    "nivel": "C",
+    "nota": "'Alrededor de 1.7 GW' operativos; llegaría a 'casi 4 GW' con la cartera. Fuente secundaria: el gráfico original no se pudo abrir."
+   }
+  },
+  {
+   "iso3": "FRA",
+   "nombre_es": "Francia",
+   "n_centros": {
+    "valor": 322,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   },
+   "consumo_twh": {
+    "valor": 10,
+    "unidad": "TWh",
+    "anio": "2026 (vigente)",
+    "fuente": "RTE, 'L'essor des data centers en France'",
+    "url": "https://www.rte-france.com/bases-electricite/consommation-electricite/essor-data-centers-france",
+    "nivel": "A",
+    "nota": "'Alrededor de 10 TWh al año'. RTE cuenta ~300 centros de datos; 8 conectados a la red de RTE suman 800 MW. Proyección: 15-20 TWh en 2030 y 23-28 TWh en 2035."
+   },
+   "pct_demanda": {
+    "valor": 2,
+    "unidad": "% del consumo eléctrico nacional",
+    "anio": "2026 (vigente)",
+    "fuente": "RTE",
+    "url": "https://www.rte-france.com/bases-electricite/consommation-electricite/essor-data-centers-france",
+    "nivel": "A",
+    "nota": "'Alrededor de 2%'; ~3% en 2030 y ~4% en 2035."
+   },
+   "en_construccion_mw": {
+    "valor": 18000,
+    "unidad": "MW reservados en la red (solicitudes de conexión, no obra)",
+    "anio": "2026-05",
+    "fuente": "RTE",
+    "url": "https://www.rte-france.com/bases-electricite/consommation-electricite/essor-data-centers-france",
+    "nivel": "A",
+    "nota": "'Casi 18 GW' reservados para ~80 proyectos (5 GW a fines de 2024). Los centros conectados hace 2-3 años usan en promedio 20% de la potencia solicitada."
+   }
+  },
+  {
+   "iso3": "NLD",
+   "nombre_es": "Países Bajos",
+   "n_centros": {
+    "valor": 298,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   },
+   "consumo_twh": {
+    "valor": 5.1,
+    "unidad": "TWh",
+    "anio": "2024 (provisional)",
+    "fuente": "CBS (Statistics Netherlands), 15-dic-2025",
+    "url": "https://www.cbs.nl/en-gb/news/2025/51/data-centres-consume-4-6-percent-of-the-netherlands-electricity",
+    "nivel": "A",
+    "nota": "5,100 GWh. CBS cuenta 'aproximadamente 200 centros de datos' (solo conexiones cuya actividad principal es el procesamiento de datos)."
+   },
+   "pct_demanda": {
+    "valor": 4.6,
+    "unidad": "% del consumo eléctrico nacional",
+    "anio": "2024 (provisional)",
+    "fuente": "CBS (Statistics Netherlands)",
+    "url": "https://www.cbs.nl/en-gb/news/2025/51/data-centres-consume-4-6-percent-of-the-netherlands-electricity",
+    "nivel": "A",
+    "nota": "Serie: 1.48% (2017), 2.82% (2020), 3.29% (2021), 3.98% (2022), 4.19% (2023), 4.58% (2024)."
+   }
+  },
+  {
+   "iso3": "RUS",
+   "nombre_es": "Rusia",
+   "n_centros": {
+    "valor": 251,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "ITA",
+   "nombre_es": "Italia",
+   "n_centros": {
+    "valor": 168,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "POL",
+   "nombre_es": "Polonia",
+   "n_centros": {
+    "valor": 144,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "ESP",
+   "nombre_es": "España",
+   "n_centros": {
+    "valor": 144,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "CHE",
+   "nombre_es": "Suiza",
+   "n_centros": {
+    "valor": 121,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "SWE",
+   "nombre_es": "Suecia",
+   "n_centros": {
+    "valor": 95,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "BEL",
+   "nombre_es": "Bélgica",
+   "n_centros": {
+    "valor": 81,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "AUT",
+   "nombre_es": "Austria",
+   "n_centros": {
+    "valor": 68,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "UKR",
+   "nombre_es": "Ucrania",
+   "n_centros": {
+    "valor": 58,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "IRL",
+   "nombre_es": "Irlanda",
+   "n_centros": {
+    "valor": 55,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   },
+   "consumo_twh": {
+    "valor": 7.663,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "CSO Irlanda, Data Centres Metered Electricity Consumption 2025 (7-jul-2026)",
+    "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/",
+    "nivel": "A",
+    "nota": "7,663 GWh; 6,973 GWh en 2024 (+10%). 1,991 GWh solo en el 4T-2025."
+   },
+   "pct_demanda": {
+    "valor": 23,
+    "unidad": "% de la electricidad medida nacional",
+    "anio": "2025",
+    "fuente": "CSO Irlanda",
+    "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/",
+    "nivel": "A",
+    "nota": "5% en 2015. El consumo residencial total fue 28%."
+   }
+  },
+  {
+   "iso3": "DNK",
+   "nombre_es": "Dinamarca",
+   "n_centros": {
+    "valor": 50,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "FIN",
+   "nombre_es": "Finlandia",
+   "n_centros": {
+    "valor": 48,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   },
+   "nota": "Cushman & Wakefield (1S-2026): el mercado de Helsinki supera 1.1 GW de capacidad total (https://www.cushmanwakefield.com/en/insights/emea-data-centre-update)."
+  },
+  {
+   "iso3": "NOR",
+   "nombre_es": "Noruega",
+   "n_centros": {
+    "valor": 47,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "TUR",
+   "nombre_es": "Turquía",
+   "n_centros": {
+    "valor": 35,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "CZE",
+   "nombre_es": "Chequia",
+   "n_centros": {
+    "valor": 34,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "ROU",
+   "nombre_es": "Rumania",
+   "n_centros": {
+    "valor": 31,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "LUX",
+   "nombre_es": "Luxemburgo",
+   "n_centros": {
+    "valor": 23,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "PRT",
+   "nombre_es": "Portugal",
+   "n_centros": {
+    "valor": 21,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "GRC",
+   "nombre_es": "Grecia",
+   "n_centros": {
+    "valor": 14,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "ISL",
+   "nombre_es": "Islandia",
+   "n_centros": {
+    "valor": 6,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-europe",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "CHN",
+   "nombre_es": "China",
+   "n_centros": {
+    "valor": 449,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   },
+   "capacidad_mw": {
+    "valor": 28000,
+    "unidad": "MW",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295515.data.json",
+    "nivel": "A",
+    "nota": "28 GW (14 GW en 2020, 20 en 2023, 24 en 2024); proyección AIE 2030: 67 GW."
+   },
+   "consumo_twh": {
+    "valor": 117,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json",
+    "nivel": "A",
+    "nota": "62 TWh en 2020, 84 en 2023, 102 en 2024; proyección 2030: 277 TWh."
+   },
+   "pct_demanda": {
+    "valor": 1.11,
+    "unidad": "% de la demanda eléctrica nacional",
+    "anio": "2025",
+    "fuente": "Our World in Data con datos de AIE y Ember",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295514.data.json",
+    "nivel": "A",
+    "nota": "0.80% en 2020, 0.89% en 2023, 1.01% en 2024."
+   }
+  },
+  {
+   "iso3": "AUS",
+   "nombre_es": "Australia",
+   "n_centros": {
+    "valor": 314,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "JPN",
+   "nombre_es": "Japón",
+   "n_centros": {
+    "valor": 222,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "IND",
+   "nombre_es": "India",
+   "n_centros": {
+    "valor": 153,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   },
+   "nota": "CBRE: Mumbai ~670 MW de capacidad total (1T-2025). Sin total nacional verificado."
+  },
+  {
+   "iso3": "HKG",
+   "nombre_es": "Hong Kong",
+   "n_centros": {
+    "valor": 122,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "SGP",
+   "nombre_es": "Singapur",
+   "n_centros": {
+    "valor": 99,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "IDN",
+   "nombre_es": "Indonesia",
+   "n_centros": {
+    "valor": 88,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "NZL",
+   "nombre_es": "Nueva Zelanda",
+   "n_centros": {
+    "valor": 83,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "MYS",
+   "nombre_es": "Malasia",
+   "n_centros": {
+    "valor": 62,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "KOR",
+   "nombre_es": "Corea del Sur",
+   "n_centros": {
+    "valor": 43,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   },
+   "nota": "CBRE: Seúl 698 MW de inventario (1T-2025). Sin total nacional verificado."
+  },
+  {
+   "iso3": "THA",
+   "nombre_es": "Tailandia",
+   "n_centros": {
+    "valor": 42,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "PHL",
+   "nombre_es": "Filipinas",
+   "n_centros": {
+    "valor": 39,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "VNM",
+   "nombre_es": "Vietnam",
+   "n_centros": {
+    "valor": 33,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "KAZ",
+   "nombre_es": "Kazajistán",
+   "n_centros": {
+    "valor": 25,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "TWN",
+   "nombre_es": "Taiwán",
+   "n_centros": {
+    "valor": 19,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/region/datacenters-in-asia-pacific",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "ZAF",
+   "nombre_es": "Sudáfrica",
+   "n_centros": {
+    "valor": 68,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/market/data-centers-in-south-africa/all",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "ISR",
+   "nombre_es": "Israel",
+   "n_centros": {
+    "valor": 13,
+    "unidad": "centros de datos",
+    "anio": "2026 (consulta)",
+    "fuente": "Cloudscene, directorio de centros de datos (página sin fecha de actualización; consultada 2026-10-11)",
+    "url": "https://cloudscene.com/market/data-centers-in-israel/all",
+    "nivel": "B"
+   }
+  },
+  {
+   "iso3": "X_CSA",
+   "nombre_es": "Centro y Sudamérica (AIE)",
+   "es_region": true,
+   "capacidad_mw": {
+    "valor": 400,
+    "unidad": "MW",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295515.data.json",
+    "nivel": "A",
+    "nota": "0.4 GW (la AIE publica en GW redondeados). Proyección 2030 (caso base): 0.7 GW (https://api.ourworldindata.org/v1/indicators/1295513.data.json)."
+   },
+   "consumo_twh": {
+    "valor": 1.5,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json",
+    "nivel": "A",
+    "nota": "1.5 TWh en 2020, 1.2 en 2023, 1.4 en 2024. Proyección 2030 (caso base): 2.7 TWh (https://api.ourworldindata.org/v1/indicators/1295511.data.json)."
+   },
+   "pct_demanda": {
+    "valor": 0.12,
+    "unidad": "% de la demanda eléctrica de la región",
+    "anio": "2025",
+    "fuente": "Our World in Data con datos de AIE y Ember",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295514.data.json",
+    "nivel": "A"
+   }
+  },
+  {
+   "iso3": "X_NAM",
+   "nombre_es": "América del Norte (AIE)",
+   "es_region": true,
+   "capacidad_mw": {
+    "valor": 53000,
+    "unidad": "MW",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295515.data.json",
+    "nivel": "A",
+    "nota": "53 GW (la AIE publica en GW redondeados). Proyección 2030 (caso base): 102 GW (https://api.ourworldindata.org/v1/indicators/1295513.data.json)."
+   },
+   "consumo_twh": {
+    "valor": 229,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json",
+    "nivel": "A",
+    "nota": "112 TWh en 2020, 158 en 2023, 187 en 2024. Proyección 2030 (caso base): 434 TWh (https://api.ourworldindata.org/v1/indicators/1295511.data.json)."
+   },
+   "pct_demanda": {
+    "valor": 4.13,
+    "unidad": "% de la demanda eléctrica de la región",
+    "anio": "2025",
+    "fuente": "Our World in Data con datos de AIE y Ember",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295514.data.json",
+    "nivel": "A"
+   }
+  },
+  {
+   "iso3": "X_EUR",
+   "nombre_es": "Europa (AIE)",
+   "es_region": true,
+   "capacidad_mw": {
+    "valor": 17000,
+    "unidad": "MW",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295515.data.json",
+    "nivel": "A",
+    "nota": "17 GW (la AIE publica en GW redondeados). Proyección 2030 (caso base): 27 GW (https://api.ourworldindata.org/v1/indicators/1295513.data.json)."
+   },
+   "consumo_twh": {
+    "valor": 72,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json",
+    "nivel": "A",
+    "nota": "57 TWh en 2020, 66 en 2023, 68 en 2024. Proyección 2030 (caso base): 114 TWh (https://api.ourworldindata.org/v1/indicators/1295511.data.json)."
+   },
+   "pct_demanda": {
+    "valor": 1.87,
+    "unidad": "% de la demanda eléctrica de la región",
+    "anio": "2025",
+    "fuente": "Our World in Data con datos de AIE y Ember",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295514.data.json",
+    "nivel": "A"
+   }
+  },
+  {
+   "iso3": "X_APC",
+   "nombre_es": "Asia-Pacífico (AIE)",
+   "es_region": true,
+   "capacidad_mw": {
+    "valor": 41000,
+    "unidad": "MW",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295515.data.json",
+    "nivel": "A",
+    "nota": "41 GW (la AIE publica en GW redondeados). Proyección 2030 (caso base): 92 GW (https://api.ourworldindata.org/v1/indicators/1295513.data.json)."
+   },
+   "consumo_twh": {
+    "valor": 173,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json",
+    "nivel": "A",
+    "nota": "93 TWh en 2020, 128 en 2023, 150 en 2024. Proyección 2030 (caso base): 378 TWh (https://api.ourworldindata.org/v1/indicators/1295511.data.json)."
+   },
+   "pct_demanda": {
+    "valor": 1.07,
+    "unidad": "% de la demanda eléctrica de la región",
+    "anio": "2025",
+    "fuente": "Our World in Data con datos de AIE y Ember",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295514.data.json",
+    "nivel": "A"
+   }
+  },
+  {
+   "iso3": "X_MEA",
+   "nombre_es": "Medio Oriente (AIE)",
+   "es_region": true,
+   "capacidad_mw": {
+    "valor": 400,
+    "unidad": "MW",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295515.data.json",
+    "nivel": "A",
+    "nota": "0.4 GW (la AIE publica en GW redondeados). Proyección 2030 (caso base): 0.7 GW (https://api.ourworldindata.org/v1/indicators/1295513.data.json)."
+   },
+   "consumo_twh": {
+    "valor": 1.7,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json",
+    "nivel": "A",
+    "nota": "1.1 TWh en 2020, 1.3 en 2023, 1.5 en 2024. Proyección 2030 (caso base): 3 TWh (https://api.ourworldindata.org/v1/indicators/1295511.data.json)."
+   },
+   "pct_demanda": {
+    "valor": 0.28,
+    "unidad": "% de la demanda eléctrica de la región",
+    "anio": "2025",
+    "fuente": "Our World in Data con datos de AIE y Ember",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295514.data.json",
+    "nivel": "A"
+   }
+  },
+  {
+   "iso3": "X_AFR",
+   "nombre_es": "África (AIE)",
+   "es_region": true,
+   "capacidad_mw": {
+    "valor": 400,
+    "unidad": "MW",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295515.data.json",
+    "nivel": "A",
+    "nota": "0.4 GW (la AIE publica en GW redondeados). Proyección 2030 (caso base): 0.7 GW (https://api.ourworldindata.org/v1/indicators/1295513.data.json)."
+   },
+   "consumo_twh": {
+    "valor": 1.6,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json",
+    "nivel": "A",
+    "nota": "1.1 TWh en 2020, 1.3 en 2023, 1.4 en 2024. Proyección 2030 (caso base): 2.9 TWh (https://api.ourworldindata.org/v1/indicators/1295511.data.json)."
+   },
+   "pct_demanda": {
+    "valor": 0.25,
+    "unidad": "% de la demanda eléctrica de la región",
+    "anio": "2025",
+    "fuente": "Our World in Data con datos de AIE y Ember",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295514.data.json",
+    "nivel": "A"
+   }
+  },
+  {
+   "iso3": "X_WLD",
+   "nombre_es": "Mundo (AIE)",
+   "es_region": true,
+   "capacidad_mw": {
+    "valor": 114000,
+    "unidad": "MW",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295515.data.json",
+    "nivel": "A",
+    "nota": "114 GW (la AIE publica en GW redondeados). Proyección 2030 (caso base): 226 GW (https://api.ourworldindata.org/v1/indicators/1295513.data.json)."
+   },
+   "consumo_twh": {
+    "valor": 485,
+    "unidad": "TWh",
+    "anio": "2025",
+    "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json",
+    "nivel": "A",
+    "nota": "269 TWh en 2020, 360 en 2023, 416 en 2024. Proyección 2030 (caso base): 945 TWh (https://api.ourworldindata.org/v1/indicators/1295511.data.json)."
+   },
+   "pct_demanda": {
+    "valor": 1.53,
+    "unidad": "% de la demanda eléctrica de la región",
+    "anio": "2025",
+    "fuente": "Our World in Data con datos de AIE y Ember",
+    "url": "https://api.ourworldindata.org/v1/indicators/1295514.data.json",
+    "nivel": "A"
+   }
+  },
+  {
+   "iso3": "X_AMERICAS_CW",
+   "nombre_es": "Américas (Cushman & Wakefield)",
+   "es_region": true,
+   "capacidad_mw": {
+    "valor": 50300,
+    "unidad": "MW",
+    "anio": "1S-2026",
+    "fuente": "Cushman & Wakefield, Americas Data Center Update H1 2026 (14-sep-2026)",
+    "url": "https://www.cushmanwakefield.com/en/insights/americas-data-center-update",
+    "nivel": "B",
+    "nota": "50.3 GW operativos; 94.1% en EE.UU.; vacancia regional 3.8%."
+   },
+   "en_construccion_mw": {
+    "valor": 37700,
+    "unidad": "MW",
+    "anio": "1S-2026",
+    "fuente": "Cushman & Wakefield, Americas Data Center Update H1 2026",
+    "url": "https://www.cushmanwakefield.com/en/insights/americas-data-center-update",
+    "nivel": "B",
+    "nota": "37.7 GW en construcción (91.7% precomprometido); cartera planificada: 285 GW."
+   }
+  },
+  {
+   "iso3": "X_EMEA_CW",
+   "nombre_es": "EMEA (Cushman & Wakefield)",
+   "es_region": true,
+   "capacidad_mw": {
+    "valor": 12100,
+    "unidad": "MW",
+    "anio": "1S-2026",
+    "fuente": "Cushman & Wakefield, H1 2026 EMEA Data Centre Market Update (14-sep-2026)",
+    "url": "https://www.cushmanwakefield.com/en/insights/emea-data-centre-update",
+    "nivel": "B",
+    "nota": "12.1 GW operativos; +36% en dos años."
+   },
+   "en_construccion_mw": {
+    "valor": 3800,
+    "unidad": "MW",
+    "anio": "1S-2026",
+    "fuente": "Cushman & Wakefield, H1 2026 EMEA Data Centre Market Update",
+    "url": "https://www.cushmanwakefield.com/en/insights/emea-data-centre-update",
+    "nivel": "B",
+    "nota": "3.8 GW en construcción + 14.5 GW planificados = 18.3 GW de cartera comprometida."
+   }
+  }
+ ],
+ "serie_twh": [
+  {
+   "anio": 2020,
+   "valor": 269,
+   "proyeccion": false,
+   "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+   "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json"
+  },
+  {
+   "anio": 2023,
+   "valor": 360,
+   "proyeccion": false,
+   "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+   "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json"
+  },
+  {
+   "anio": 2024,
+   "valor": 416,
+   "proyeccion": false,
+   "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+   "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json",
+   "nota": "El resumen ejecutivo de la AIE redondea a 'unos 415 TWh'."
+  },
+  {
+   "anio": 2025,
+   "valor": 485,
+   "proyeccion": false,
+   "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data",
+   "url": "https://api.ourworldindata.org/v1/indicators/1295512.data.json"
+  },
+  {
+   "anio": 2030,
+   "valor": 945,
+   "proyeccion": true,
+   "fuente": "AIE, Energy and AI / Key Questions on Energy and AI (abr-2026), vía Our World in Data (caso base)",
+   "url": "https://api.ourworldindata.org/v1/indicators/1295511.data.json"
+  }
+ ],
+ "fabricas": [
+  {
+   "nombre": "TSMC Arizona (Fab 21)",
+   "empresa": "TSMC",
+   "pais_iso3": "USA",
+   "lugar": "Phoenix, Arizona",
+   "lat": 33.78,
+   "lon": -112.17,
+   "inversion": {
+    "valor": 165,
+    "unidad": "USD miles de millones",
+    "anio": "2025-03",
+    "fuente": "TSMC, nota de prensa (4-mar-2025)",
+    "url": "https://pr.tsmc.com/english/news/3210",
+    "nivel": "A",
+    "nota": "Total para sus operaciones en EE.UU.: USD 65 mil M ya en curso en Phoenix + USD 100 mil M adicionales (3 fábricas nuevas, 2 plantas de empaquetado avanzado y un centro de I+D)."
+   },
+   "subsidio": {
+    "valor": 6.6,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/tsmc-arizona-phoenix",
+    "nivel": "A",
+    "nota": "Financiamiento directo CHIPS; además USD 5 mil M en préstamos disponibles. Ligado a la inversión de 'más de USD 65 mil M' en tres fábricas."
+   },
+   "nodo": "Fab 1: 4/5 nm; Fab 2: 3 nm; Fab 3: 2 nm y A16",
+   "estado": "Fab 1 en producción en volumen desde fines de 2024; Fab 2 prevista para 2S-2027; Fab 3 antes de fin de la década",
+   "fuente": "TSMC (nota de prensa) y NIST CHIPS",
+   "url": "https://www.nist.gov/chips/tsmc-arizona-phoenix",
+   "nota": "Coordenadas tomadas del archivo cadena_valor.json (predio al norte de Phoenix)."
+  },
+  {
+   "nombre": "Samsung Taylor",
+   "empresa": "Samsung Electronics",
+   "pais_iso3": "USA",
+   "lugar": "Taylor, Texas",
+   "lat": 30.57,
+   "lon": -97.41,
+   "inversion": {
+    "valor": 37,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/samsung-electronics-texas-taylor",
+    "nivel": "A",
+    "nota": "'Más de USD 37 mil M' en la región (Taylor y ampliación de Austin)."
+   },
+   "subsidio": {
+    "valor": 4.745,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/samsung-electronics-texas-taylor",
+    "nivel": "A",
+    "nota": "Financiamiento directo CHIPS; cubre Taylor y Austin."
+   },
+   "nodo": "2 nm (dos fábricas de lógica) + fábrica de I+D",
+   "estado": "En construcción; 'todas las instalaciones operativas hacia 2030'",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/samsung-electronics-texas-taylor",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio."
+  },
+  {
+   "nombre": "Intel Ohio One",
+   "empresa": "Intel",
+   "pais_iso3": "USA",
+   "lugar": "New Albany, Ohio",
+   "lat": 40.08,
+   "lon": -82.81,
+   "inversion": {
+    "valor": 90,
+    "unidad": "USD miles de millones",
+    "anio": "5 años (plan)",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/intel-corporation-ohio-new-albany",
+    "nivel": "A",
+    "nota": "'Casi USD 90 mil M en 5 años', parte de un plan de más de USD 100 mil M; cubre Arizona, Nuevo México, Ohio y Oregón."
+   },
+   "subsidio": {
+    "valor": 1.5,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/intel-corporation-ohio-new-albany",
+    "nivel": "A",
+    "nota": "Monto total de Intel: hasta USD 7.865 mil M en cuatro estados; la inversión es de la empresa en los cuatro estados, no solo de este sitio."
+   },
+   "nodo": "Intel 14A y nodos futuros",
+   "estado": "En construcción (una fábrica nueva y otra adicional); la ficha no da fecha de producción",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/intel-corporation-ohio-new-albany",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio."
+  },
+  {
+   "nombre": "Intel Ocotillo (Fab 52 y 62)",
+   "empresa": "Intel",
+   "pais_iso3": "USA",
+   "lugar": "Chandler, Arizona",
+   "lat": 33.31,
+   "lon": -111.84,
+   "inversion": {
+    "valor": 90,
+    "unidad": "USD miles de millones",
+    "anio": "5 años (plan)",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/intel-corporation-arizona-chandler",
+    "nivel": "A",
+    "nota": "'Casi USD 90 mil M en 5 años', parte de un plan de más de USD 100 mil M; cubre Arizona, Nuevo México, Ohio y Oregón."
+   },
+   "subsidio": {
+    "valor": 3.94,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/intel-corporation-arizona-chandler",
+    "nivel": "A",
+    "nota": "Monto total de Intel: hasta USD 7.865 mil M en cuatro estados; la inversión es de la empresa en los cuatro estados, no solo de este sitio."
+   },
+   "nodo": "Intel 18A",
+   "estado": "Dos fábricas nuevas y modernización de una existente; sin fecha en la ficha",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/intel-corporation-arizona-chandler",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. Los nombres Fab 52/62 no figuran en la ficha de NIST."
+  },
+  {
+   "nombre": "Intel Rio Rancho (empaquetado avanzado)",
+   "empresa": "Intel",
+   "pais_iso3": "USA",
+   "lugar": "Rio Rancho, Nuevo México",
+   "lat": 35.23,
+   "lon": -106.66,
+   "inversion": {
+    "valor": 90,
+    "unidad": "USD miles de millones",
+    "anio": "5 años (plan)",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/intel-corporation-arizona-chandler",
+    "nivel": "A",
+    "nota": "'Casi USD 90 mil M en 5 años', parte de un plan de más de USD 100 mil M; cubre Arizona, Nuevo México, Ohio y Oregón."
+   },
+   "subsidio": {
+    "valor": 0.5,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/chips-america-awards?page=2",
+    "nivel": "A",
+    "nota": "Monto total de Intel: hasta USD 7.865 mil M en cuatro estados; la inversión es de la empresa en los cuatro estados, no solo de este sitio."
+   },
+   "nodo": "Empaquetado avanzado",
+   "estado": "Conversión de dos fábricas existentes en planta de empaquetado avanzado",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/intel-corporation-arizona-chandler",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio."
+  },
+  {
+   "nombre": "Intel Hillsboro (desarrollo de tecnología)",
+   "empresa": "Intel",
+   "pais_iso3": "USA",
+   "lugar": "Hillsboro, Oregón",
+   "lat": 45.52,
+   "lon": -122.99,
+   "inversion": {
+    "valor": 90,
+    "unidad": "USD miles de millones",
+    "anio": "5 años (plan)",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/intel-corporation-arizona-chandler",
+    "nivel": "A",
+    "nota": "'Casi USD 90 mil M en 5 años', parte de un plan de más de USD 100 mil M; cubre Arizona, Nuevo México, Ohio y Oregón."
+   },
+   "subsidio": {
+    "valor": 1.86,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/chips-america-awards?page=2",
+    "nivel": "A",
+    "nota": "Monto total de Intel: hasta USD 7.865 mil M en cuatro estados; la inversión es de la empresa en los cuatro estados, no solo de este sitio."
+   },
+   "nodo": "Desarrollo de 18A y nodos futuros; primeras herramientas EUV High-NA comerciales",
+   "estado": "Ampliación de instalaciones de I+D",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/intel-corporation-arizona-chandler",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio."
+  },
+  {
+   "nombre": "Micron megafábrica de Nueva York",
+   "empresa": "Micron",
+   "pais_iso3": "USA",
+   "lugar": "Clay, Nueva York",
+   "lat": 43.19,
+   "lon": -76.17,
+   "inversion": {
+    "valor": 100,
+    "unidad": "USD miles de millones",
+    "anio": "plan a dos décadas",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/micron-new-york-clay",
+    "nivel": "A",
+    "nota": "'Aproximadamente USD 100 mil M en Nueva York y USD 50 mil M en Idaho'; hasta USD 150 mil M en 20 años."
+   },
+   "subsidio": {
+    "valor": 6.44,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/micron-new-york-clay",
+    "nivel": "A",
+    "nota": "Financiamiento directo CHIPS tal como figura en la ficha; es el total de Micron, no desglosado por sitio (la misma cifra aparece en Clay y Boise)."
+   },
+   "nodo": "DRAM de punta",
+   "estado": "Primeras dos de cuatro fábricas planeadas; la ficha no da fecha de producción",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/micron-new-york-clay",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio."
+  },
+  {
+   "nombre": "Micron Boise (ID1/ID2)",
+   "empresa": "Micron",
+   "pais_iso3": "USA",
+   "lugar": "Boise, Idaho",
+   "lat": 43.62,
+   "lon": -116.2,
+   "inversion": {
+    "valor": 50,
+    "unidad": "USD miles de millones",
+    "anio": "plan a dos décadas",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/micron-idaho-boise",
+    "nivel": "A",
+    "nota": "'Aproximadamente USD 50 mil M en Idaho'."
+   },
+   "subsidio": {
+    "valor": 6.44,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/micron-idaho-boise",
+    "nivel": "A",
+    "nota": "Financiamiento directo CHIPS tal como figura en la ficha; es el total de Micron, no desglosado por sitio (la misma cifra aparece en Clay y Boise)."
+   },
+   "nodo": "DRAM de punta (habilita HBM)",
+   "estado": "Dos fábricas de alto volumen junto al centro de I+D; sin fecha en la ficha",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/micron-idaho-boise",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. Los nombres ID1/ID2 no figuran en la ficha de NIST."
+  },
+  {
+   "nombre": "SK hynix West Lafayette (empaquetado de HBM)",
+   "empresa": "SK hynix",
+   "pais_iso3": "USA",
+   "lugar": "West Lafayette, Indiana",
+   "lat": 40.43,
+   "lon": -86.91,
+   "inversion": {
+    "valor": 3.87,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/sk-hynix-indiana-west-lafayette",
+    "nivel": "A"
+   },
+   "subsidio": {
+    "valor": 0.458,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/sk-hynix-indiana-west-lafayette",
+    "nivel": "A",
+    "nota": "USD 458 millones de financiamiento directo; además USD 500 millones en préstamos disponibles."
+   },
+   "nodo": "Empaquetado avanzado de HBM de próxima generación + I+D",
+   "estado": "Producción en masa prevista para el 2S-2028",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/sk-hynix-indiana-west-lafayette",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio."
+  },
+  {
+   "nombre": "Amkor Arizona (empaquetado avanzado)",
+   "empresa": "Amkor Technology",
+   "pais_iso3": "USA",
+   "lugar": "Peoria, Arizona",
+   "lat": 33.58,
+   "lon": -112.24,
+   "inversion": {
+    "valor": 1.7,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/amkor-technology-inc-arizona-peoria",
+    "nivel": "A"
+   },
+   "subsidio": {
+    "valor": 0.407,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/amkor-technology-inc-arizona-peoria",
+    "nivel": "A",
+    "nota": "'Hasta USD 407 millones' de financiamiento directo."
+   },
+   "nodo": "Empaquetado 2.5D y prueba (~14,500 obleas/mes)",
+   "estado": "Producción en masa prevista para fines de 2027",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/amkor-technology-inc-arizona-peoria",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio."
+  },
+  {
+   "nombre": "Texas Instruments Sherman (SM1/SM2)",
+   "empresa": "Texas Instruments",
+   "pais_iso3": "USA",
+   "lugar": "Sherman, Texas",
+   "lat": 33.64,
+   "lon": -96.61,
+   "inversion": {
+    "valor": 18,
+    "unidad": "USD miles de millones",
+    "anio": "hasta fin de la década",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/texas-instruments-texas-sherman",
+    "nivel": "A",
+    "nota": "'Más de USD 18 mil M' para tres fábricas (dos en Sherman y una en Lehi, Utah)."
+   },
+   "subsidio": {
+    "valor": 0.9,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/texas-instruments-texas-sherman",
+    "nivel": "A",
+    "nota": "Porción de Sherman; el total de TI es hasta USD 1.61 mil M (Lehi: USD 700 millones)."
+   },
+   "nodo": "65-130 nm (analógico y embebido), obleas de 300 mm",
+   "estado": "Dos fábricas de 300 mm; sin fecha en la ficha",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/texas-instruments-texas-sherman",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. Los nombres SM1/SM2 no figuran en la ficha de NIST."
+  },
+  {
+   "nombre": "Texas Instruments Lehi (LFAB2)",
+   "empresa": "Texas Instruments",
+   "pais_iso3": "USA",
+   "lugar": "Lehi, Utah",
+   "lat": 40.39,
+   "lon": -111.85,
+   "inversion": {
+    "valor": 18,
+    "unidad": "USD miles de millones",
+    "anio": "hasta fin de la década",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/texas-instruments-texas-sherman",
+    "nivel": "A",
+    "nota": "Cifra conjunta de las tres fábricas de TI (Sherman y Lehi)."
+   },
+   "subsidio": {
+    "valor": 0.7,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/chips-america-awards?page=1",
+    "nivel": "A"
+   },
+   "nodo": "28-65 nm (analógico y embebido), obleas de 300 mm",
+   "estado": "Una fábrica de 300 mm; sin fecha en la ficha",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/texas-instruments-texas-sherman",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. El nombre LFAB2 no figura en la ficha de NIST."
+  },
+  {
+   "nombre": "GlobalFoundries Malta (Fab 8)",
+   "empresa": "GlobalFoundries",
+   "pais_iso3": "USA",
+   "lugar": "Malta, Nueva York",
+   "lat": 42.97,
+   "lon": -73.79,
+   "inversion": {
+    "valor": 14,
+    "unidad": "USD miles de millones",
+    "anio": "más de 10 años",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/globalfoundries-new-york-malta",
+    "nivel": "A",
+    "nota": "'Aproximadamente USD 14 mil M' entre Nueva York y Vermont."
+   },
+   "subsidio": {
+    "valor": 1.45,
+    "unidad": "USD miles de millones",
+    "anio": "adjudicación final",
+    "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+    "url": "https://www.nist.gov/chips/globalfoundries-new-york-malta",
+    "nivel": "A",
+    "nota": "Porción de Malta; la ficha también cita 1.575 y 'hasta 1.587' mil M para el conjunto (Burlington, Vermont: USD 125 millones)."
+   },
+   "nodo": "Fábrica nueva de 300 mm, ampliación de la existente y empaquetado avanzado (fotónica de silicio); la ficha no indica nodo",
+   "estado": "Sin fechas en la ficha",
+   "fuente": "Oficina del Programa CHIPS (NIST, Departamento de Comercio de EE.UU.)",
+   "url": "https://www.nist.gov/chips/globalfoundries-new-york-malta",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. El nombre Fab 8 no figura en la ficha de NIST."
+  },
+  {
+   "nombre": "JASM (Kumamoto, fábricas 1 y 2)",
+   "empresa": "TSMC (~86.5%) / Sony (~6.0%) / Denso (~5.5%) / Toyota (~2.0%)",
+   "pais_iso3": "JPN",
+   "lugar": "Kikuyo, Kumamoto",
+   "lat": 32.86,
+   "lon": 130.83,
+   "inversion": {
+    "valor": 20,
+    "unidad": "USD miles de millones",
+    "anio": "2024-02",
+    "fuente": "TSMC, nota de prensa (6-feb-2024)",
+    "url": "https://pr.tsmc.com/english/news/3105",
+    "nivel": "A",
+    "nota": "'Más de USD 20 mil M' sumando ambas fábricas; más de 100,000 obleas de 12 pulgadas al mes."
+   },
+   "subsidio": null,
+   "nodo": "40, 22/28, 12/16 y 6/7 nm",
+   "estado": "Fábrica 1 en operación desde 2024; fábrica 2 prevista para fines de 2027",
+   "fuente": "TSMC, nota de prensa",
+   "url": "https://pr.tsmc.com/english/news/3105",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. La nota menciona 'fuerte apoyo del gobierno japonés' sin monto: subsidio sin cifra verificada. La nota solo dice 'prefectura de Kumamoto'; Kikuyo viene de cadena_valor.json."
+  },
+  {
+   "nombre": "ESMC Dresde",
+   "empresa": "TSMC (70%) / Bosch (10%) / Infineon (10%) / NXP (10%)",
+   "pais_iso3": "DEU",
+   "lugar": "Dresde, Sajonia",
+   "lat": 51.05,
+   "lon": 13.74,
+   "inversion": {
+    "valor": 10,
+    "unidad": "EUR miles de millones",
+    "anio": "2023-08",
+    "fuente": "TSMC, nota de prensa (8-ago-2023)",
+    "url": "https://pr.tsmc.com/english/news/3049",
+    "nivel": "A",
+    "nota": "'Más de EUR 10 mil M'."
+   },
+   "subsidio": {
+    "valor": 5,
+    "unidad": "EUR miles de millones",
+    "anio": "2024-08",
+    "fuente": "Comisión Europea, IP/24/4287 (20-ago-2024)",
+    "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_24_4287",
+    "nivel": "A",
+    "nota": "Ayuda de Estado alemana aprobada bajo la Ley Europea de Chips."
+   },
+   "nodo": "28/22 nm CMOS planar y 16/12 nm FinFET; 40,000 obleas de 300 mm al mes",
+   "estado": "En construcción (primera piedra el 20-ago-2024); producción prevista para fines de 2027",
+   "fuente": "TSMC y Comisión Europea",
+   "url": "https://pr.tsmc.com/english/news/3049",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio."
+  },
+  {
+   "nombre": "Rapidus IIM-1",
+   "empresa": "Rapidus",
+   "pais_iso3": "JPN",
+   "lugar": "Chitose, Hokkaido",
+   "lat": 42.82,
+   "lon": 141.65,
+   "inversion": {
+    "valor": 424.95,
+    "unidad": "JPY miles de millones",
+    "anio": "2026-06",
+    "fuente": "Rapidus, nota de prensa (5-jun-2026)",
+    "url": "https://www.rapidus.inc/en/news_topics/information/20260605-2/",
+    "nivel": "A",
+    "nota": "Capital acumulado de la empresa (capital social + reserva legal), NO el costo total de la fábrica."
+   },
+   "subsidio": {
+    "valor": 250,
+    "unidad": "JPY miles de millones",
+    "anio": "2026-06",
+    "fuente": "Rapidus, nota de prensa (5-jun-2026)",
+    "url": "https://www.rapidus.inc/en/news_topics/information/20260605-2/",
+    "nivel": "A",
+    "nota": "Aportes de capital de la agencia estatal IPA (METI): 150 mil M en esta ronda + 100 mil M en la anterior (suma de las dos cifras publicadas). No incluye los subsidios de I+D vía NEDO."
+   },
+   "nodo": "2 nm (lógica)",
+   "estado": "Línea piloto; paso a producción en masa previsto para 2027",
+   "fuente": "Rapidus",
+   "url": "https://www.rapidus.inc/en/news_topics/information/20260605-2/",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. La nota no nombra el predio; Chitose figura en el listado de noticias de Rapidus."
+  },
+  {
+   "nombre": "SK hynix Yongin (primera fábrica del clúster)",
+   "empresa": "SK hynix",
+   "pais_iso3": "KOR",
+   "lugar": "Yongin, Gyeonggi",
+   "lat": 37.24,
+   "lon": 127.18,
+   "inversion": {
+    "valor": 31,
+    "unidad": "KRW billones (trillion)",
+    "anio": "2026-02",
+    "fuente": "Korea JoongAng Daily (25-feb-2026)",
+    "url": "https://www.koreajoongangdaily.com/business/sk-hynix-invests-151b-to-build-first-fab-plant-at-yongin-semiconductor-cluster/11961960",
+    "nivel": "B",
+    "nota": "~31 billones de wones en instalaciones de la primera fábrica (9.4 aprobados en jul-2024 + 21.6 en feb-2026, ~USD 15.1 mil M). Con equipos: ~150 billones. Clúster completo (4 fábricas): ~600 billones."
+   },
+   "subsidio": null,
+   "nodo": "HBM y DRAM de próxima generación",
+   "estado": "En construcción; terminación prevista para el 1S-2027",
+   "fuente": "Korea JoongAng Daily",
+   "url": "https://www.koreajoongangdaily.com/business/sk-hynix-invests-151b-to-build-first-fab-plant-at-yongin-semiconductor-cluster/11961960",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. Sin subsidio público verificado."
+  },
+  {
+   "nombre": "SK hynix M15X",
+   "empresa": "SK hynix",
+   "pais_iso3": "KOR",
+   "lugar": "Cheongju, Chungcheong del Norte",
+   "lat": 36.64,
+   "lon": 127.49,
+   "inversion": null,
+   "subsidio": null,
+   "nodo": "HBM de punta",
+   "estado": "Terminación esperada para fines de 2025 (según nota de feb-2025); estado actual no verificado",
+   "fuente": "The Korea Herald (25-feb-2025)",
+   "url": "https://www.koreaherald.com/article/10428310",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. Monto de inversión no verificado en una fuente abierta (solo apareció en resultados de búsqueda)."
+  },
+  {
+   "nombre": "Micron Hiroshima (nueva planta de DRAM)",
+   "empresa": "Micron",
+   "pais_iso3": "JPN",
+   "lugar": "Higashihiroshima, Hiroshima",
+   "lat": 34.43,
+   "lon": 132.74,
+   "inversion": {
+    "valor": 700,
+    "unidad": "JPY miles de millones",
+    "anio": "2024-05",
+    "fuente": "Nikkan Kogyo Shimbun, citado por TrendForce News (28-may-2024)",
+    "url": "https://www.trendforce.com/news/2024/05/28/news-micron-reportedly-set-to-build-new-dram-plant-in-hiroshima-japan-operational-expected-by-end-of-2027/",
+    "nivel": "C",
+    "nota": "Reporte de prensa, no anuncio de la empresa: JPY 600-800 mil M (~USD 5.1 mil M); se usa el punto medio.",
+    "min": 600,
+    "max": 800
+   },
+   "subsidio": {
+    "valor": 192,
+    "unidad": "JPY miles de millones",
+    "anio": "2024-05",
+    "fuente": "Nikkan Kogyo Shimbun, citado por TrendForce News (28-may-2024)",
+    "url": "https://www.trendforce.com/news/2024/05/28/news-micron-reportedly-set-to-build-new-dram-plant-in-hiroshima-japan-operational-expected-by-end-of-2027/",
+    "nivel": "C",
+    "nota": "'Hasta JPY 192 mil M' (~USD 1.3 mil M) del gobierno japonés."
+   },
+   "nodo": "DRAM 1-gamma con EUV",
+   "estado": "Inicio de obra previsto para inicios de 2026; operación 'tan pronto como fines de 2027'",
+   "fuente": "TrendForce News",
+   "url": "https://www.trendforce.com/news/2024/05/28/news-micron-reportedly-set-to-build-new-dram-plant-in-hiroshima-japan-operational-expected-by-end-of-2027/",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. Reportes de 2026 (Nikkei, no abiertos) hablan de una ampliación para HBM de ~JPY 1.5 billones con hasta JPY 500 mil M de subsidio: sin verificar."
+  },
+  {
+   "nombre": "Micron Singapur (empaquetado avanzado de HBM)",
+   "empresa": "Micron",
+   "pais_iso3": "SGP",
+   "lugar": "Singapur",
+   "lat": 1.35,
+   "lon": 103.82,
+   "inversion": {
+    "valor": 7,
+    "unidad": "USD miles de millones",
+    "anio": "2025-01",
+    "fuente": "Micron, nota de prensa (8-ene-2025)",
+    "url": "https://investors.micron.com/news-releases/news-release-details/micron-breaks-ground-new-hbm-advanced-packaging-facility",
+    "nivel": "A",
+    "nota": "'Aproximadamente USD 7 mil M' (SGD 9.5 mil M) hasta fin de la década y más allá."
+   },
+   "subsidio": null,
+   "nodo": "Empaquetado avanzado de HBM",
+   "estado": "Primera piedra en ene-2025; operación desde 2026 y ampliación de capacidad desde 2027",
+   "fuente": "Micron",
+   "url": "https://investors.micron.com/news-releases/news-release-details/micron-breaks-ground-new-hbm-advanced-packaging-facility",
+   "nota": "Coordenadas de la ciudad-Estado, no del predio. Sin subsidio público publicado."
+  },
+  {
+   "nombre": "Tata Electronics - PSMC",
+   "empresa": "Tata Electronics / PSMC",
+   "pais_iso3": "IND",
+   "lugar": "Dholera, Gujarat",
+   "lat": 22.25,
+   "lon": 72.19,
+   "inversion": {
+    "valor": 91000,
+    "unidad": "INR crore",
+    "anio": "2024",
+    "fuente": "Gobierno de India, Press Information Bureau (PRID 2010132)",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2010132",
+    "nivel": "A",
+    "nota": "Rs 91,000 crore; 50,000 obleas iniciadas por mes."
+   },
+   "subsidio": null,
+   "nodo": "28 nm (cómputo de alto rendimiento) y chips de gestión de potencia",
+   "estado": "Aprobada por el gabinete; fecha de producción no indicada en el comunicado",
+   "fuente": "Press Information Bureau (India)",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2010132",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio. El comunicado abierto no detalla el monto del apoyo fiscal de la India Semiconductor Mission."
+  },
+  {
+   "nombre": "Tata TSAT (ensamblaje y prueba)",
+   "empresa": "Tata Semiconductor Assembly and Test",
+   "pais_iso3": "IND",
+   "lugar": "Morigaon, Assam",
+   "lat": 26.25,
+   "lon": 92.34,
+   "inversion": {
+    "valor": 27000,
+    "unidad": "INR crore",
+    "anio": "2024",
+    "fuente": "Gobierno de India, Press Information Bureau (PRID 2010132)",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2010132",
+    "nivel": "A"
+   },
+   "subsidio": null,
+   "nodo": "Empaquetado: flip chip e ISIP (system in package)",
+   "estado": "Aprobada por el gabinete; fecha no indicada en el extracto leído",
+   "fuente": "Press Information Bureau (India)",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2010132",
+   "nota": "Coordenadas de la ciudad anfitriona, no del predio."
+  }
+ ],
+ "memorias": [
+  {
+   "concepto": "Cuota de mercado de HBM: SK hynix",
+   "valor": 50,
+   "unidad": "% de los ingresos",
+   "anio": "2T-2026",
+   "fuente": "Counterpoint Research, citado por Edaily (3-sep-2026)",
+   "url": "https://en.edaily.co.kr/news/eda202609035608/",
+   "nivel": "B",
+   "nota": "58% en el 1T-2026 (-8 puntos); sigue en primer lugar."
+  },
+  {
+   "concepto": "Cuota de mercado de HBM: Samsung",
+   "valor": 33,
+   "unidad": "% de los ingresos",
+   "anio": "2T-2026",
+   "fuente": "Counterpoint Research, citado por Edaily (3-sep-2026)",
+   "url": "https://en.edaily.co.kr/news/eda202609035608/",
+   "nivel": "B",
+   "nota": "21% en el 1T-2026 (+12 puntos)."
+  },
+  {
+   "concepto": "Cuota de mercado de HBM: Micron",
+   "valor": 18,
+   "unidad": "% de los ingresos",
+   "anio": "2T-2026",
+   "fuente": "Counterpoint Research, citado por Edaily (3-sep-2026)",
+   "url": "https://en.edaily.co.kr/news/eda202609035608/",
+   "nivel": "B",
+   "nota": "21% en el 1T-2026. Las tres cuotas suman 101% por redondeo."
+  },
+  {
+   "concepto": "Precio promedio combinado (ASP) de HBM en 2027",
+   "valor": 121,
+   "unidad": "% de aumento interanual",
+   "anio": "2027 (proyección)",
+   "fuente": "TrendForce, nota de prensa (29-sep-2026)",
+   "url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+   "nivel": "B",
+   "nota": "Los productos de 8 capas tendrían una prima de 10-20% por Gb sobre los de 12 capas en 2027."
+  },
+  {
+   "concepto": "Mercado total (TAM) de HBM",
+   "valor": 35,
+   "unidad": "USD miles de millones",
+   "anio": "2025",
+   "fuente": "Micron (Hot Chips 2026), citado por Silicon Analysts",
+   "url": "https://siliconanalysts.com/market-data/cowos-capacity",
+   "nivel": "C",
+   "nota": "Proyección ~USD 100 mil M en 2028 (~40% anual). Cifra de proveedor citada por un agregador; no se encontró tamaño de mercado para 2026 ni 2027."
+  },
+  {
+   "concepto": "Mercado total (TAM) de HBM proyectado",
+   "valor": 100,
+   "unidad": "USD miles de millones",
+   "anio": "2028 (proyección)",
+   "fuente": "Micron (Hot Chips 2026), citado por Silicon Analysts",
+   "url": "https://siliconanalysts.com/market-data/cowos-capacity",
+   "nivel": "C"
+  }
+ ],
+ "chips_datos": [
+  {
+   "concepto": "Capacidad CoWoS de TSMC, fin de 2024",
+   "valor": 40000,
+   "unidad": "obleas por mes",
+   "anio": "fin de 2024",
+   "fuente": "SemiVision / SemiWiki, vía Silicon Analysts",
+   "url": "https://siliconanalysts.com/market-data/cowos-capacity",
+   "nivel": "C",
+   "nota": "Capacidad nominal. Fin de 2023: ~13,000 obleas/mes según la misma página."
+  },
+  {
+   "concepto": "Capacidad CoWoS de TSMC, fin de 2025",
+   "valor": 72500,
+   "unidad": "obleas por mes",
+   "anio": "fin de 2025",
+   "fuente": "Nomad Semi / SemiVision, vía Silicon Analysts",
+   "url": "https://siliconanalysts.com/market-data/cowos-capacity",
+   "nivel": "C",
+   "min": 65000,
+   "max": 80000,
+   "nota": "Estimación de confianza media. TrendForce News (ago-2026) habla de 'aproximadamente 70,000' en 2025."
+  },
+  {
+   "concepto": "Capacidad CoWoS de TSMC, fin de 2026",
+   "valor": 135000,
+   "unidad": "obleas por mes",
+   "anio": "fin de 2026 (proyección)",
+   "fuente": "Mydrivers, citado por TrendForce News (5-ago-2026)",
+   "url": "https://www.trendforce.com/news/2026/08/05/news-tsmc-reportedly-expands-outsourcing-of-key-cowos-front-end-step-to-osats-amid-rising-nvidia-asic-demand/",
+   "nivel": "C",
+   "min": 130000,
+   "max": 140000,
+   "nota": "Punto medio del rango 130,000-140,000. Otras estimaciones: 125,000-130,000 (TipRanks, ene-2026) y 120,000-140,000 (Economic Daily News vía TrendForce, jun-2026, https://www.trendforce.com/news/?p=59316), más 50,000-60,000 de socios OSAT."
+  },
+  {
+   "concepto": "Participación de Nvidia en la capacidad CoWoS de TSMC",
+   "valor": 60,
+   "unidad": "%",
+   "anio": "2026",
+   "fuente": "Morgan Stanley, citado por TipRanks (20-ene-2026)",
+   "url": "https://www.tipranks.com/news/tsmc-expands-ai-chip-packaging-as-supply-limits-shift",
+   "nivel": "C",
+   "nota": "~700,000 obleas. Mydrivers vía TrendForce: 800,000-850,000 obleas, 'más de 50%'."
+  },
+  {
+   "concepto": "Participación de Broadcom en la capacidad CoWoS de TSMC",
+   "valor": 15,
+   "unidad": "%",
+   "anio": "2026",
+   "fuente": "TipRanks (20-ene-2026), sin atribución",
+   "url": "https://www.tipranks.com/news/tsmc-expands-ai-chip-packaging-as-supply-limits-shift",
+   "nivel": "C",
+   "nota": "Sobre todo chips de IA para Alphabet."
+  },
+  {
+   "concepto": "Participación de AMD en la capacidad CoWoS de TSMC",
+   "valor": 11,
+   "unidad": "%",
+   "anio": "2026",
+   "fuente": "TipRanks (20-ene-2026), sin atribución",
+   "url": "https://www.tipranks.com/news/tsmc-expands-ai-chip-packaging-as-supply-limits-shift",
+   "nivel": "C",
+   "nota": "Para Instinct MI350 y MI400."
+  },
+  {
+   "concepto": "Cuota de aceleradores de IA por cómputo (H100 equivalentes): Nvidia",
+   "valor": 65.5,
+   "unidad": "%",
+   "anio": "2025",
+   "fuente": "Epoch AI, AI Chip Sales (actualizado 8-oct-2026); agregación propia del CSV por diseñador",
+   "url": "https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv",
+   "nivel": "B",
+   "nota": "Derivado: suma de las medianas trimestrales de Epoch por diseñador. Epoch NO cubre chips propios de Microsoft, Meta ni Tesla, ni Intel, Cerebras o Groq; los intervalos abarcan ~1.5x a cada lado de la mediana. Total 2025: 13.62 millones de H100e. 2024: 65.4%; 2023: 85.0%."
+  },
+  {
+   "concepto": "Cuota de aceleradores de IA por cómputo: Google (TPU)",
+   "valor": 20.2,
+   "unidad": "%",
+   "anio": "2025",
+   "fuente": "Epoch AI, AI Chip Sales (actualizado 8-oct-2026); agregación propia del CSV por diseñador",
+   "url": "https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv",
+   "nivel": "B",
+   "nota": "14.3% en 2024. Derivado: suma de las medianas trimestrales de Epoch por diseñador. Epoch NO cubre chips propios de Microsoft, Meta ni Tesla, ni Intel, Cerebras o Groq; los intervalos abarcan ~1.5x a cada lado de la mediana."
+  },
+  {
+   "concepto": "Cuota de aceleradores de IA por cómputo: Amazon (Trainium)",
+   "valor": 5.2,
+   "unidad": "%",
+   "anio": "2025",
+   "fuente": "Epoch AI, AI Chip Sales (actualizado 8-oct-2026); agregación propia del CSV por diseñador",
+   "url": "https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv",
+   "nivel": "B",
+   "nota": "5.9% en 2024. Es la estimación menos fiable de Epoch."
+  },
+  {
+   "concepto": "Cuota de aceleradores de IA por cómputo: AMD (Instinct)",
+   "valor": 5.0,
+   "unidad": "%",
+   "anio": "2025",
+   "fuente": "Epoch AI, AI Chip Sales (actualizado 8-oct-2026); agregación propia del CSV por diseñador",
+   "url": "https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv",
+   "nivel": "B",
+   "nota": "10.8% en 2024."
+  },
+  {
+   "concepto": "Cuota de aceleradores de IA por cómputo: Huawei (Ascend)",
+   "valor": 3.9,
+   "unidad": "%",
+   "anio": "2025",
+   "fuente": "Epoch AI, AI Chip Sales (actualizado 8-oct-2026); agregación propia del CSV por diseñador",
+   "url": "https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv",
+   "nivel": "B",
+   "nota": "3.5% en 2024. Cambricon: 0.2%."
+  },
+  {
+   "concepto": "Cuota de aceleradores de IA por valor estimado: Nvidia",
+   "valor": 79.3,
+   "unidad": "%",
+   "anio": "2025",
+   "fuente": "Epoch AI, AI Chip Sales (actualizado 8-oct-2026); agregación propia del CSV por diseñador",
+   "url": "https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv",
+   "nivel": "B",
+   "nota": "Por costo estimado de compra: Huawei 7.8%, Google 6.8%, AMD 3.8%, Amazon 2.3%. Total 2025: ~USD 191.9 mil M. Los chips propios se valoran al costo estimado, no a precio de mercado. Derivado: suma de las medianas trimestrales de Epoch por diseñador. Epoch NO cubre chips propios de Microsoft, Meta ni Tesla, ni Intel, Cerebras o Groq; los intervalos abarcan ~1.5x a cada lado de la mediana."
+  },
+  {
+   "concepto": "Cuota de chips propios (ASIC de Google y Amazon) por cómputo",
+   "valor": 25.4,
+   "unidad": "%",
+   "anio": "2025",
+   "fuente": "Epoch AI, AI Chip Sales (actualizado 8-oct-2026); agregación propia del CSV por diseñador",
+   "url": "https://epoch.ai/data/ai_chip_sales_timelines_by_chip.csv",
+   "nivel": "B",
+   "nota": "Suma de Google (20.2%) y Amazon (5.2%); no incluye Microsoft Maia ni Meta MTIA, que Epoch no rastrea."
+  },
+  {
+   "concepto": "AMD Helios: GPU por rack",
+   "valor": 72,
+   "unidad": "GPU Instinct MI450 por rack",
+   "anio": "2025-10 (anuncio)",
+   "fuente": "AMD, blog oficial (14-oct-2025)",
+   "url": "https://www.amd.com/en/blogs/2025/amd-helios-ai-rack-built-on-metas-2025-ocp-design.html",
+   "nivel": "A",
+   "nota": "Hasta 432 GB de HBM4 por GPU; 31 TB de HBM4 por rack; hasta 1.4 exaFLOPS en FP8 y 2.9 en FP4. AMD NO publica precio ni potencia del rack: sin cifra verificada."
+  },
+  {
+   "concepto": "AMD Instinct MI450: memoria por GPU",
+   "valor": 432,
+   "unidad": "GB de HBM4",
+   "anio": "2025-10 (anuncio)",
+   "fuente": "AMD, blog oficial (14-oct-2025)",
+   "url": "https://www.amd.com/en/blogs/2025/amd-helios-ai-rack-built-on-metas-2025-ocp-design.html",
+   "nivel": "A",
+   "nota": "Ancho de banda de memoria: 19.6 TB/s."
+  }
+ ],
+ "alquiler_h100_historico": [
+  {
+   "periodo": "2023-08 a 2023-12",
+   "valor": 7.76,
+   "unidad": "USD/hora",
+   "serie": "hiperescalador",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 7.62,
+   "max": 7.77,
+   "nota": "Mediana del periodo. Único tipo de proveedor con datos hasta may-2024."
+  },
+  {
+   "periodo": "2024-01 a 2024-05",
+   "valor": 7.92,
+   "unidad": "USD/hora",
+   "serie": "hiperescalador",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 7.37,
+   "max": 8.24,
+   "nota": "Mediana del periodo."
+  },
+  {
+   "periodo": "2024-06 a 2024-12",
+   "valor": 9.34,
+   "unidad": "USD/hora",
+   "serie": "hiperescalador",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 8.98,
+   "max": 9.39,
+   "nota": "Mediana del periodo."
+  },
+  {
+   "periodo": "2025-01 a 2025-05",
+   "valor": 8.96,
+   "unidad": "USD/hora",
+   "serie": "hiperescalador",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 8.73,
+   "max": 9.3,
+   "nota": "Mediana del periodo."
+  },
+  {
+   "periodo": "2025-06",
+   "valor": 6.94,
+   "unidad": "USD/hora",
+   "serie": "hiperescalador",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time"
+  },
+  {
+   "periodo": "2025-07 a 2025-12",
+   "valor": 6.26,
+   "unidad": "USD/hora",
+   "serie": "hiperescalador",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 6.2,
+   "max": 6.64,
+   "nota": "Mediana del periodo."
+  },
+  {
+   "periodo": "2024-06 a 2024-12",
+   "valor": 2.99,
+   "unidad": "USD/hora",
+   "serie": "neocloud",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 2.74,
+   "max": 3.01,
+   "nota": "Mediana del periodo."
+  },
+  {
+   "periodo": "2025-01 a 2025-05",
+   "valor": 3.5,
+   "unidad": "USD/hora",
+   "serie": "neocloud",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 3.0,
+   "max": 4.19,
+   "nota": "Mediana del periodo."
+  },
+  {
+   "periodo": "2025-06",
+   "valor": 3.29,
+   "unidad": "USD/hora",
+   "serie": "neocloud",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time"
+  },
+  {
+   "periodo": "2025-07 a 2025-12",
+   "valor": 3.33,
+   "unidad": "USD/hora",
+   "serie": "neocloud",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 3.01,
+   "max": 3.4,
+   "nota": "Mediana del periodo."
+  },
+  {
+   "periodo": "2024-06 a 2024-12",
+   "valor": 2.58,
+   "unidad": "USD/hora",
+   "serie": "marketplace",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 2.5,
+   "max": 3.19,
+   "nota": "Mediana del periodo."
+  },
+  {
+   "periodo": "2025-01 a 2025-05",
+   "valor": 2.29,
+   "unidad": "USD/hora",
+   "serie": "marketplace",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 2.27,
+   "max": 2.46,
+   "nota": "Mediana del periodo."
+  },
+  {
+   "periodo": "2025-06",
+   "valor": 2.0,
+   "unidad": "USD/hora",
+   "serie": "marketplace",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time"
+  },
+  {
+   "periodo": "2025-07 a 2025-12",
+   "valor": 1.95,
+   "unidad": "USD/hora",
+   "serie": "marketplace",
+   "fuente": "Silicon Data, 'H100 Rental Price Over Time (2023-2025)' (21-dic-2025)",
+   "url": "https://www.silicondata.com/blog/h100-rental-price-over-time",
+   "min": 1.92,
+   "max": 2.0,
+   "nota": "Mediana del periodo."
+  },
+  {
+   "periodo": "2025-02",
+   "valor": 2.3,
+   "unidad": "USD/hora",
+   "serie": "índice SDH100RT",
+   "fuente": "Silicon Data, citado por IEEE Spectrum (28-may-2025)",
+   "url": "https://spectrum.ieee.org/gpu-prices",
+   "nota": "'Bajó a USD 2.30 por hora durante gran parte de febrero'; ~2.50 en enero de 2025."
+  },
+  {
+   "periodo": "2025-05-27",
+   "valor": 2.37,
+   "unidad": "USD/hora",
+   "serie": "índice SDH100RT",
+   "fuente": "Silicon Data, citado por IEEE Spectrum (28-may-2025)",
+   "url": "https://spectrum.ieee.org/gpu-prices",
+   "nota": "Precio promedio de alquiler por hora el día del lanzamiento público del índice."
+  },
+  {
+   "periodo": "2026-10-11",
+   "valor": 2.83,
+   "unidad": "USD/hora",
+   "serie": "índice SDH100RT (neocloud)",
+   "fuente": "Silicon Data, Silicon Index H100",
+   "url": "https://www.silicondata.com/products/silicon-index/h100",
+   "nota": "Valor del índice el día de la consulta (variación de 0.7% en 7 días). La misma página cita USD 2.53 en su sección de preguntas frecuentes, sin fecha."
+  }
+ ],
+ "agua": [
+  {
+   "concepto": "Google: agua consumida en centros de datos propios y oficinas",
+   "valor": 8.1,
+   "unidad": "miles de millones de galones",
+   "anio": "2024",
+   "fuente": "Google, Informe Ambiental 2025",
+   "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+   "nivel": "A",
+   "nota": "~31 mil millones de litros; +28% frente a 2023. Excluye centros operados por terceros. 72% de las extracciones de agua dulce vino de fuentes de bajo riesgo de escasez."
+  },
+  {
+   "concepto": "Google: agua repuesta por proyectos de gestión hídrica",
+   "valor": 4.5,
+   "unidad": "miles de millones de galones",
+   "anio": "2024",
+   "fuente": "Google, Informe Ambiental 2025",
+   "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+   "nivel": "A",
+   "nota": "~64% de su consumo de agua dulce (18% en 2023); meta: reponer 120%."
+  },
+  {
+   "concepto": "Microsoft: eficiencia de uso de agua (WUE) mundial",
+   "valor": 0.27,
+   "unidad": "litros por kWh de TI",
+   "anio": "AF2025 (jul-2024 a jun-2025)",
+   "fuente": "Microsoft Datacenters, eficiencia",
+   "url": "https://datacenters.microsoft.com/sustainability/efficiency/",
+   "nivel": "A",
+   "nota": "0.30 en AF2024. Por región AF2025: Américas 0.34; Asia-Pacífico 0.25; EMEA 0.03. Microsoft no publica aquí el volumen absoluto."
+  },
+  {
+   "concepto": "Meta: agua restituida en cuencas de estrés hídrico alto y medio",
+   "valor": 1.6,
+   "unidad": "miles de millones de galones",
+   "anio": "2024",
+   "fuente": "Meta Sustainability, agua",
+   "url": "https://sustainability.atmeta.com/water/",
+   "nivel": "A",
+   "nota": "'Más de 1.6'. Es agua restituida, NO consumo: la página no publica el total consumido."
+  }
+ ]
+}

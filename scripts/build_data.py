@@ -133,8 +133,26 @@ def fusionar():
         anios = {str(x.get("anio")) for x in en.setdefault("serie_twh", [])}
         en["serie_twh"] += [x for x in e.get("serie_twh") or [] if str(x.get("anio")) not in anios and x.get("valor") is not None]
         en["serie_twh"].sort(key=lambda x: int(str(x.get("anio"))[:4]))
+        # un mismo monto repetido en varias plantas de una empresa es el total del programa: se deja en la primera
+        vistos_prog = set()
+        for x in e.get("fabricas") or []:
+            inv = x.get("inversion")
+            if tiene(inv):
+                k = (x.get("empresa"), inv.get("valor"), inv.get("unidad"))
+                if k in vistos_prog:
+                    x["inversion"] = None
+                    x["estado"] = ((x.get("estado") or "") + " · Inversión incluida en el total del programa de " + str(x.get("empresa"))).strip(" ·")
+                else:
+                    vistos_prog.add(k)
+                    if sum(1 for y in e["fabricas"] if (y.get("empresa"), (y.get("inversion") or {}).get("valor")) == (k[0], k[1])) > 1:
+                        x["estado"] = ((x.get("estado") or "") + " · El monto es el total del programa de la empresa en el país, no solo esta planta").strip(" ·")
         nuevas = {clave(x, ["nombre"]) for x in e.get("fabricas") or []}
-        ch["fabricas"] = [x for x in ch.get("fabricas", []) if clave(x, ["nombre"]) not in nuevas] + (e.get("fabricas") or [])
+        if len(e.get("fabricas") or []) >= 10:
+            # el complemento usa fuentes primarias; de la lista original (Wikipedia) solo se conservan empresas que no cubre
+            emp = {str(x.get("empresa", "")).split()[0].lower() for x in e["fabricas"]}
+            ch["fabricas"] = [x for x in ch.get("fabricas", []) if str(x.get("empresa", "")).split()[0].lower() not in emp and clave(x, ["nombre"]) not in nuevas] + e["fabricas"]
+        else:
+            ch["fabricas"] = [x for x in ch.get("fabricas", []) if clave(x, ["nombre"]) not in nuevas] + (e.get("fabricas") or [])
         anexar(d.setdefault("memorias", []), e.get("memorias"), ["concepto"])
         anexar(ch.setdefault("datos", []), e.get("chips_datos"), ["concepto"])
         anexar(en.setdefault("datos", []), e.get("agua"), ["concepto"])

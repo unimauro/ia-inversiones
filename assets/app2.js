@@ -113,6 +113,7 @@
   }
 
   // ---- CADENA DE VALOR -----------------------------------------------------
+  var enSel = "";
   function cadena() {
     var p = pal(), E = K.energia || {}, CH = K.chips || {}, T = K.entrenamiento || {};
     var st = arr(E.serie_twh).filter(function (r) { return num(r) != null; });
@@ -128,7 +129,13 @@
     }
     var pp = arr(E.por_pais);
     var metric = [["capacidad_mw", "Capacidad instalada de centros de datos", "MW"], ["consumo_twh", "Consumo eléctrico de centros de datos", "TWh"], ["n_centros", "Número de centros de datos", ""], ["precio_kwh", "Precio de la electricidad para empresas", "USD/kWh"]]
-      .map(function (d) { return { k: d[0], t: d[1], u: d[2], n: pp.filter(function (r) { return num(r[d[0]]) != null; }).length }; }).sort(function (a, b) { return b.n - a.n; })[0];
+      .map(function (d) { return { k: d[0], t: d[1], u: d[2], n: pp.filter(function (r) { return num(r[d[0]]) != null; }).length }; }).filter(function (m) { return m.n >= 5; });
+    var CORTO = { capacidad_mw: "Capacidad (MW)", consumo_twh: "Consumo (TWh)", n_centros: "N.º de centros", precio_kwh: "Precio de la luz" };
+    var sgE = $("segEn");
+    if (!metric.filter(function (m) { return m.k === enSel; }).length) enSel = (metric.slice().sort(function (a, b) { return b.n - a.n; })[0] || {}).k;
+    sgE.innerHTML = metric.length > 1 ? metric.map(function (m) { return '<button role="tab" data-id="' + m.k + '" aria-selected="' + (m.k === enSel) + '">' + esc(CORTO[m.k]) + "</button>"; }).join("") : "";
+    sgE.onclick = function (e) { var b = e.target.closest("button"); if (!b) return; enSel = b.getAttribute("data-id"); cadena(); };
+    metric = metric.filter(function (m) { return m.k === enSel; })[0];
     if (metric && metric.n) {
       var rs = pp.filter(function (r) { return num(r[metric.k]) != null; }).sort(function (a, b) { return num(b[metric.k]) - num(a[metric.k]); });
       if (metric.k === "precio_kwh") rs.reverse();   // de más barata a más cara
@@ -174,16 +181,23 @@
     var cm = arr(T.costos_modelos).filter(function (r) { return num(r.costo) != null; }).sort(function (a, b) { return usd(b.costo) - usd(a.costo); });
     hbar("cTrain", cm.slice(0, 15).map(function (r) { return { name: r.modelo + (r.anio ? " (" + r.anio + ")" : ""), value: Math.round(usd(r.costo) / 1e4) / 100, extra: (r.organizacion || "") + (r.nota ? " · " + r.nota : "") }; }), { color: 4, fmt: function (v) { return money(v, "USD millones"); }, short: function (v) { return fmt(v); } });
     note("nTrain", cm.length ? "Millones de US$, costo estimado de cómputo del entrenamiento final (no incluye salarios ni experimentos fallidos). " + IA.srcNote(cm[0].costo) : "");
-    var hh = arr(T.alquiler_historico).filter(function (r) { return num(r) != null; });
+    var hh = arr(T.alquiler_historico).filter(function (r) { return num(r) != null && !/indice/.test(norm(r.serie || "")); });
     if (hh.length > 2) {
+      var sers = [], pers = [];
+      hh.forEach(function (r) { var k = r.serie || "H100"; if (sers.indexOf(k) < 0) sers.push(k); if (pers.indexOf(r.periodo) < 0) pers.push(r.periodo); });
+      pers.sort(); sers = sers.slice(0, 4);
       $("cH100").style.display = "";
       mk("cH100").setOption({
-        grid: { left: 8, right: 16, top: 16, bottom: 8, containLabel: true },
-        tooltip: Object.assign(IA.tipBase(p), { trigger: "axis", valueFormatter: function (v) { return "US$ " + fmt(v) + " por hora"; } }),
-        xAxis: IA.axisCat(p, hh.map(function (r) { return String(r.periodo).replace("-Q", " T"); }), { axisLabel: { color: p.ink2, fontSize: 11 } }), yAxis: IA.axisVal(p),
-        series: [{ type: "line", data: hh.map(num), lineStyle: { width: 2, color: p.s[0] }, itemStyle: { color: p.s[0] }, symbol: "circle", symbolSize: 6, showSymbol: false }]
+        color: p.s, grid: { left: 8, right: 110, top: 34, bottom: 8, containLabel: true },
+        legend: { top: 0, left: 0, textStyle: { color: p.ink2, fontSize: 12 }, icon: "roundRect", itemWidth: 12, itemHeight: 3 },
+        tooltip: Object.assign(IA.tipBase(p), { trigger: "axis", valueFormatter: function (v) { return v == null ? "—" : "US$ " + fmt(v) + " por hora"; } }),
+        xAxis: IA.axisCat(p, pers.map(function (x) { return String(x).replace(/ a .*/, ""); }), { axisLabel: { color: p.ink2, fontSize: 11 } }), yAxis: IA.axisVal(p),
+        series: sers.map(function (k) {
+          var m = {}; hh.forEach(function (r) { if ((r.serie || "H100") === k) m[r.periodo] = num(r); });
+          return { name: k.charAt(0).toUpperCase() + k.slice(1), type: "line", data: pers.map(function (x) { return m[x] == null ? null : m[x]; }), lineStyle: { width: 2 }, symbol: "circle", symbolSize: 6, connectNulls: true, endLabel: { show: true, formatter: "{a}", color: p.ink2, fontSize: 11.5 } };
+        })
       });
-      note("nH100", "Precio de alquiler de una GPU H100, US$ por hora. Fuente: " + link(hh[0].fuente || "ver", hh[0].url) + ".");
+      note("nH100", "Precio mediano de alquiler de una GPU H100, US$ por hora, por tipo de proveedor (cada punto es el inicio de un periodo de varios meses). Fuente: " + link(hh[0].fuente || "ver", hh[0].url) + ".");
     }
     table("tGpuHora", [
       { t: "GPU en alquiler", v: function (r) { return r.gpu; }, h: function (r) { return "<b>" + esc(r.gpu) + "</b>"; }, asc: true },
